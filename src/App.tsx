@@ -1,14 +1,41 @@
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Trainings from "./pages/Trainings";
+import Admissions from "./pages/Admissions";
+import Actualities from "./pages/Actualities";
+import Contact from "./pages/Contact";
+import ScrollProgress from "./ui/ScrollProgress";
+import BackToTop from "./ui/BackToTop";
+import PageLoaderWrapper from "./components/PageLoaderWrapper";
+
 
 function App() {
-
   return (
-    <>
-      <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center p-4">
-        <h1 className="text-3xl font-bold">Welcome to Lucane</h1>
-        <p className="mt-4">This is a simple React app styled with Tailwind CSS and DaisyUI.</p>
-      </div>
-    </>
-  )
+  
+   
+        <Router>
+         <PageLoaderWrapper>
+            <ScrollProgress />
+            <BackToTop />
+            <Routes>
+              <Route path="/" element={<Navbar />}>
+                <Route index element={<Home />} />
+                <Route path="/a-propos" element={<About />} />
+                <Route path="/formations" element={<Trainings />} />
+                <Route path="/admissions" element={<Admissions />} />
+                <Route path="/actualites" element={<Actualities />} />
+                <Route path="/contact" element={<Contact />} />
+              
+                
+              </Route>
+            </Routes>
+      </PageLoaderWrapper>
+        </Router>
+     
+     
+      );
 }
 
-export default App
+export default App;
