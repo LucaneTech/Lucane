@@ -1,5 +1,4 @@
 import React from "react";
-import type Home from "./Home";
 //logo
 const Logo = 'Lucane-light.png';
 
