@@ -23,16 +23,16 @@ const Navbar = () => {
 
   return (
     <>
-      
 
-      <motion.nav 
-        className={`w-full bg-white shadow-lg fixed top-0  left-0 z-20 transition-all duration-300 
+
+      <motion.nav
+        className={`w-full bg-transparent backdrop-blur-lg shadow-lg fixed top-0  left-0 z-20 transition-all duration-300 
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
-        <div className="flex justify-between xl:justify-around items-center px-4 sm:px-6 md:px-8 py-4 d">
+        <div className="flex justify-between  items-center px-4 sm:px-6 md:px-8 py-4 d">
           {/* Logo */}
           <Link to="/">
             <motion.img
@@ -45,52 +45,70 @@ const Navbar = () => {
           </Link>
 
           {/* Menu Desktop */}
-          <motion.div 
+          <motion.div
             className="hidden lg:flex items-center gap-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
+            {/* Accueil */}
             <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
               <Link to="/" className="hover:text-main-color transition relative group">
                 Accueil
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </motion.div>
+
+            {/* Services */}
+            <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
+              <Link to="/services" className="hover:text-main-color transition relative group">
+                Services
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+            </motion.div>
+
+            {/* Réalisations */}
+            <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
+              <Link to="/realisations" className="hover:text-main-color transition relative group">
+                Réalisations
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+            </motion.div>
+
+            {/* Technologies */}
+            <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
+              <Link to="/technologies" className="hover:text-main-color transition relative group">
+                Technologies
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+            </motion.div>
+
+            {/* À propos */}
             <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
               <Link to="/a-propos" className="hover:text-main-color transition relative group">
-                A propos
+                À propos
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </motion.div>
+
+            {/* Blog / Actualités */}
             <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-              <Link to="/admissions" className="hover:text-main-color transition relative group">
-                Admissions
+              <Link to="/blog" className="hover:text-main-color transition relative group">
+                Blog
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </motion.div>
-            <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-              <Link to="/formations" className="hover:text-main-color transition relative group">
-                Formations
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            </motion.div>
-            <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-              <Link to="/actualites" className="hover:text-main-color transition relative group">
-                Actualités
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            </motion.div>
-            
-            
+
+            {/* Contact */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
               <Button label="Contact" to="/contact" className="hidden lg:block" changeColor />
-            </motion.div> 
+            </motion.div>
           </motion.div>
+
 
           {/* Bouton Burger (Mobile) */}
           <div className="lg:hidden">
@@ -115,8 +133,8 @@ const Navbar = () => {
         {/* Overlay Mobile */}
         <AnimatePresence>
           {isOpen && (
-            <motion.div 
-              onClick={toggleMenu} 
+            <motion.div
+              onClick={toggleMenu}
               className="fixed inset-0 bg-black/60 z-50 lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -130,7 +148,7 @@ const Navbar = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-60"
+              className="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -138,9 +156,9 @@ const Navbar = () => {
             >
               {/* Header du menu */}
               <div className="flex justify-between items-center px-4 py-3 border-b">
-                <motion.img 
-                  src={logo} 
-                  alt="Logo" 
+                <motion.img
+                  src={logo}
+                  alt="Logo"
                   className="w-24 h-auto object-contain"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -161,7 +179,7 @@ const Navbar = () => {
               </div>
 
               {/* Liens Mobile */}
-              <motion.div 
+              <motion.div
                 className="flex flex-col px-6 py-4 gap-5 text-gray-700"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -181,9 +199,9 @@ const Navbar = () => {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.4 + index * 0.1 }}
                   >
-                    <Link 
-                      to={item.to} 
-                      onClick={toggleMenu} 
+                    <Link
+                      to={item.to}
+                      onClick={toggleMenu}
                       className="flex items-center gap-3 hover:text-main-color transition group"
                     >
                       <motion.div
@@ -217,7 +235,7 @@ const Navbar = () => {
                       Postuler maintenant
                     </Link>
                   </motion.div>
-                  
+
                   )
                 </motion.div>
               </motion.div>

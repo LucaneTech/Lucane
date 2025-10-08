@@ -10,13 +10,13 @@ export interface ButtonProps {
 
 const Button = ({ label, className = "", to, onClick, changeColor }: ButtonProps) => {
   const baseStyle = changeColor
-    ? `btn bg-main-color 
+    ? `btn  
        duration-300 hover:opacity-90 
-       hover:scale-95 transition-all text-white rounded-full 
+       hover:scale-95 transition-all 
        font-bold shadow-md border border-none py-3 px-5`
     : `btn bg-white duration-300 
-       hover:scale-95 transition-all text-[#042a64] rounded-full 
-       font-bold shadow-md border border-none py-3 px-5`;
+       hover:scale-95 transition-all text-[#042a64] 
+       font-bold shadow-md py-3 px-5`;
 
   const buttonElement = (
     <button
