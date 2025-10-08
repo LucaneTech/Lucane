@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import Button from "../ui/Button";
-import { Footer } from "./Footer";
 import {
   X,
   Menu,
@@ -11,28 +9,35 @@ import {
   BookOpen,
   Newspaper,
   Mail,
+
 } from "lucide-react";
-
+import Button from "../ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { Footer } from "./Footer";
 export const logo = "logo_color.png";
+
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  // const [isScrolled, setIsScrolled] = useState(false);
+
+
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  
 
   return (
     <>
-
-
-      <motion.nav
-        className={`w-full bg-transparent backdrop-blur-lg shadow-lg fixed top-0  left-0 z-20 transition-all duration-300 
+  
+      <motion.nav 
+        className={`w-full bg-white shadow-lg fixed top-0  left-0 z-20 transition-all duration-300 
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
-        <div className="flex justify-between  items-center px-4 sm:px-6 md:px-8 py-4 d">
+      <div className="flex justify-between  items-center px-4 sm:px-6 md:px-8 py-4 d">
           {/* Logo */}
           <Link to="/">
             <motion.img
@@ -130,11 +135,12 @@ const Navbar = () => {
           </div>
         </div>
 
+
         {/* Overlay Mobile */}
         <AnimatePresence>
           {isOpen && (
-            <motion.div
-              onClick={toggleMenu}
+            <motion.div 
+              onClick={toggleMenu} 
               className="fixed inset-0 bg-black/60 z-50 lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -148,7 +154,7 @@ const Navbar = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50"
+              className="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-60"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -156,9 +162,9 @@ const Navbar = () => {
             >
               {/* Header du menu */}
               <div className="flex justify-between items-center px-4 py-3 border-b">
-                <motion.img
-                  src={logo}
-                  alt="Logo"
+                <motion.img 
+                  src={logo} 
+                  alt="Logo" 
                   className="w-24 h-auto object-contain"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -179,7 +185,7 @@ const Navbar = () => {
               </div>
 
               {/* Liens Mobile */}
-              <motion.div
+              <motion.div 
                 className="flex flex-col px-6 py-4 gap-5 text-gray-700"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -192,6 +198,7 @@ const Navbar = () => {
                   { to: "/formations", icon: BookOpen, label: "Formations" },
                   { to: "/actualites", icon: Newspaper, label: "Actualités" },
                   { to: "/contact", icon: Mail, label: "Contact" },
+                  
                 ].map((item, index) => (
                   <motion.div
                     key={item.to}
@@ -199,9 +206,9 @@ const Navbar = () => {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.4 + index * 0.1 }}
                   >
-                    <Link
-                      to={item.to}
-                      onClick={toggleMenu}
+                    <Link 
+                      to={item.to} 
+                      onClick={toggleMenu} 
                       className="flex items-center gap-3 hover:text-main-color transition group"
                     >
                       <motion.div
@@ -235,17 +242,14 @@ const Navbar = () => {
                       Postuler maintenant
                     </Link>
                   </motion.div>
-
-                  )
+                 
                 </motion.div>
               </motion.div>
-            </motion.div>
-          )}
+            </motion.div>)}
         </AnimatePresence>
       </motion.nav>
-
-      <Outlet />
-      <Footer />
+      <Outlet/>
+      <Footer/>
     </>
   );
 };
