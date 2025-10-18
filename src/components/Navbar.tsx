@@ -5,15 +5,18 @@ import {
   Menu,
   Home,
   Info,
-  GraduationCap,
-  BookOpen,
+
   Newspaper,
-  Mail,
+
+  Phone,
+  Briefcase,
+  Cpu,
+  Settings
 
 } from "lucide-react";
 import Button from "../ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Footer } from "./Footer";
+// import { Footer } from "./Footer";
 export const logo = "logo_color.png";
 
 
@@ -25,19 +28,19 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  
+
 
   return (
     <>
-  
-      <motion.nav 
-        className={`w-full bg-white shadow-lg fixed top-0  left-0 z-20 transition-all duration-300 
+
+      <motion.nav
+        className={`w-11/12 mx-auto items-center mt-3 md:mt-5  shadow-xl bg-base-100 rounded-lg transition-all duration-300 
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
-      <div className="flex justify-between  items-center px-4 sm:px-6 md:px-8 py-4 d">
+        <div className="flex justify-between lg:justify-around  items-center px-4 sm:px-6 md:px-8 py-4 d">
           {/* Logo */}
           <Link to="/">
             <motion.img
@@ -75,7 +78,7 @@ const Navbar = () => {
             {/* Réalisations */}
             <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
               <Link to="/realisations" className="hover:text-main-color transition relative group">
-                Réalisations
+                Projets
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </motion.div>
@@ -104,15 +107,23 @@ const Navbar = () => {
               </Link>
             </motion.div>
 
-            {/* Contact */}
+
+          </motion.div>
+          {/* Contact */}
+          <div className="hidden lg:block">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
             >
-              <Button label="Contact" to="/contact" className="hidden lg:block" changeColor />
+              <Button
+                to="#"
+                label="Contactez-nous"
+                changeColor={true}
+                icon={<Phone className="w-5 h-5 inline-block mr-2" />}
+              />
             </motion.div>
-          </motion.div>
+          </div>
+
 
 
           {/* Bouton Burger (Mobile) */}
@@ -139,8 +150,8 @@ const Navbar = () => {
         {/* Overlay Mobile */}
         <AnimatePresence>
           {isOpen && (
-            <motion.div 
-              onClick={toggleMenu} 
+            <motion.div
+              onClick={toggleMenu}
               className="fixed inset-0 bg-black/60 z-50 lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -162,9 +173,9 @@ const Navbar = () => {
             >
               {/* Header du menu */}
               <div className="flex justify-between items-center px-4 py-3 border-b">
-                <motion.img 
-                  src={logo} 
-                  alt="Logo" 
+                <motion.img
+                  src={logo}
+                  alt="Logo"
                   className="w-24 h-auto object-contain"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -185,20 +196,19 @@ const Navbar = () => {
               </div>
 
               {/* Liens Mobile */}
-              <motion.div 
+              <motion.div
                 className="flex flex-col px-6 py-4 gap-5 text-gray-700"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
               >
                 {[
-                  { to: "/", icon: Home, label: "Accueil" },
-                  { to: "/a-propos", icon: Info, label: "A propos" },
-                  { to: "/admissions", icon: GraduationCap, label: "Admissions" },
-                  { to: "/formations", icon: BookOpen, label: "Formations" },
-                  { to: "/actualites", icon: Newspaper, label: "Actualités" },
-                  { to: "/contact", icon: Mail, label: "Contact" },
-                  
+                  { to: "/", label: "Accueil", icon: Home },              // Accueil → Home
+                  { to: "/services", label: "Services", icon: Settings }, // Services → Settings
+                  { to: "/realisations", label: "Projets", icon: Briefcase }, // Projets → Briefcase
+                  { to: "/technologies", label: "Technologies", icon: Cpu },  // Technologies → Cpu (tech)
+                  { to: "/a-propos", label: "À propos", icon: Info },     // À propos → Info
+                  { to: "/blog", label: "Blog", icon: Newspaper },        // Blog → Newspaper
                 ].map((item, index) => (
                   <motion.div
                     key={item.to}
@@ -206,9 +216,9 @@ const Navbar = () => {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.4 + index * 0.1 }}
                   >
-                    <Link 
-                      to={item.to} 
-                      onClick={toggleMenu} 
+                    <Link
+                      to={item.to}
+                      onClick={toggleMenu}
                       className="flex items-center gap-3 hover:text-main-color transition group"
                     >
                       <motion.div
@@ -239,17 +249,18 @@ const Navbar = () => {
                       onClick={toggleMenu}
                       className="mt-4 px-4 py-2 text-center bg-main-color text-white rounded-lg shadow-md hover:opacity-90 transition block"
                     >
-                      Postuler maintenant
+                     <Phone className="w-5 h-5 inline-block mr-2" />
+                      Contactez-nous
                     </Link>
                   </motion.div>
-                 
+
                 </motion.div>
               </motion.div>
             </motion.div>)}
         </AnimatePresence>
       </motion.nav>
-      <Outlet/>
-      <Footer/>
+      <Outlet />
+      {/* <Footer/> */}
     </>
   );
 };

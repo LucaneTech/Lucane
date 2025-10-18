@@ -1,11 +1,11 @@
 import React from "react";
-import HeroSection from "../components/HeroSection";
+import HeroSectionHome from "../components/home/Hero";
 const Home: React.FC = () => {
   return (
     <>
-      {/* Hero Section */}
-
-      <HeroSection />
+    {/* Hero Section */}
+    <HeroSectionHome/>
+     
 
     </>
   )
