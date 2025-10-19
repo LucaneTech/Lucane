@@ -1,5 +1,5 @@
 import React from "react";
-import { Video, Users } from "lucide-react";
+
 import Button from "../../ui/Button";
 
 const avatars = [
