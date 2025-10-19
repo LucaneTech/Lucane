@@ -72,7 +72,6 @@ const Footer: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* COMPANY LINKS */}
         <div className="flex flex-col lg:items-center lg:justify-center">
           <div className="flex flex-col text-sm space-y-2.5">
             <h2 className="font-bold mb-5 text-gray-800">Entreprise</h2>
