@@ -10,7 +10,7 @@ const PageLoaderWrapper = ({ children }: { children: React.ReactNode }) => {
     
     setLoading(true);
 
-    // Cache loader au bout de 700ms
+  
     const timer = setTimeout(() => setLoading(false), 2000);
 
     return () => clearTimeout(timer);
