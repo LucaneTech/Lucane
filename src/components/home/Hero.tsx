@@ -9,11 +9,10 @@ const avatars = [
 ];
 
 const HeroSection: React.FC = () => {
-  const strokePrimary = "#94a3b8";
-  const strokeSecondary = "#94a3b82d";
+  const strokePrimary = "#0080802a";
 
   return (
-    <section className="relative flex flex-col md:flex-row items-center justify-between mt-20 px-4 md:px-16 lg:px-24 xl:px-32 pb-20">
+    <section className="relative flex flex-col md:flex-row items-center justify-between mt-8 md:mt-20 px-4 md:px-8 lg:px-24 xl:px-32 pb-20">
       {/* Background SVG */}
       <svg
         className="absolute -z-10 inset-0 w-full h-full"
@@ -23,11 +22,10 @@ const HeroSection: React.FC = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path stroke={strokePrimary} strokeOpacity={1} strokeWidth={2} d="M-15.227 702.342H1439.7" />
         <circle cx="711.819" cy="372.562" r="308.334" stroke={strokePrimary} strokeOpacity={1} strokeWidth={2} />
         <circle cx="16.942" cy="20.834" r="308.334" stroke={strokePrimary} strokeOpacity={1} strokeWidth={2} />
-        <path stroke={strokeSecondary} strokeOpacity={1} strokeWidth={2} d="M-15.227 573.66H1439.7M-15.227 164.029H1439.7" />
         <circle cx="782.595" cy="411.166" r="308.334" stroke={strokePrimary} strokeOpacity={1} strokeWidth={2} />
+         <circle cx="1200.595" cy="611.166" r="308.334" stroke={strokePrimary} strokeOpacity={1} strokeWidth={2} />
       </svg>
 
       {/* Left content */}
@@ -47,7 +45,7 @@ const HeroSection: React.FC = () => {
           <p className="ml-2">Join community of 1m+ founders</p>
         </div>
 
-        <h1 className="text-center md:text-left text-5xl md:text-6xl font-medium leading-[68px] max-w-xl text-slate-900">
+        <h1 className="text-center md:text-left text-3xl md:text-6xl font-medium md:leading-[68px] max-w-xl text-slate-900">
           Accélérez vos projets numériques avec <span className="main-color">"Lucane"</span>...
         </h1>
 
@@ -62,7 +60,7 @@ const HeroSection: React.FC = () => {
         </div>
 
         {/* Card */}
-        <div className="hidden  lg:flex flex-row rounded-lg bg-white shadow-secondary-1 dark:bg-surface-dark dark:text-white mt-8 md:max-w-xl">
+        <div className="hidden lg:flex flex-row rounded-lg bg-white shadow-lg duration-300 hover:shadow-2xl mt-8 md:max-w-xl">
           <img
             className="h-24 w-full object-cover rounded-t-lg md:h-40 md:w-48 md:rounded-l-lg"
             src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
@@ -83,7 +81,7 @@ const HeroSection: React.FC = () => {
       <img
         src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/hero-section-showcase-4.png"
         alt="hero"
-        className="max-w-xs sm:max-w-sm lg:max-w-md transition-all duration-300 mt-10 md:mt-0"
+        className="transition-all duration-300 mt-10 md:mt-0"
       />
     </section>
   );
