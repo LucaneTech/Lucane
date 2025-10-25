@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Button from "../ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
+import { Footer } from "./Footer";
 // import { Footer } from "./Footer";
 export const logo = "logo_color.png";
 
@@ -261,6 +262,7 @@ const Navbar = () => {
       </motion.nav>
       <Outlet />
       {/* <Footer/> */}
+      <Footer/>
     </>
   );
 };
