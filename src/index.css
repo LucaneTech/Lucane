@@ -31,6 +31,10 @@
     background-color: #e0e0e0;
 
   }
+  .text-hover:hover{
+      transition: all 0.3s ease-in;
+      color: #008080;
+  }
 
   /*btn*/
   .border-btn{
