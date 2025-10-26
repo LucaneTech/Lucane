@@ -121,8 +121,8 @@ const ServicesSection: React.FC = () => {
         ) : (
           <button
             onClick={() => setAutoScroll(true)}
-            className="text-sm text-gray-600 hover:text-indigo-600 transition"
-          >
+            className="text-sm text-gray-600 text-hover"
+          > 
              <span className="flex flex-row items-center gap-2 ">
                  <Play className="main-color w-8 h-8 text-bold" />
                  <p className="text-lg text-gray-800">Relancer</p>

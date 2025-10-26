@@ -13,7 +13,7 @@ const Card: React.FC<CardProps> = ({
     imageUrl,
 }) => {
     return (
-        <div className="w-80 h-64 rounded-xl p-0.5 shadow-xl duration-300 hover:shadow-2xl cursor-pointer border-btn">
+        <div className="w-80 h-64 rounded-xl p-0.5 shadow-md duration-300 hover:shadow-2xl cursor-pointer border-btn">
             <div className="bg-white p-6 h-full w-full rounded-[10px] flex flex-col items-center justify-center text-center">
                 {icon && <div className="mb-4 main-color">{icon}</div>}
                 {imageUrl && (<img src={imageUrl} alt={title} className="mb-4 w-20 h-20 object-cover rounded-full" />)}

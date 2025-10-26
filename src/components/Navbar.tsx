@@ -119,7 +119,7 @@ const Navbar = () => {
               <Button
                 to="#"
                 label="Contactez-nous"
-                changeColor={true}
+                changeColor="primary"
                 icon={<Phone className="w-5 h-5 inline-block mr-2" />}
               />
             </motion.div>
