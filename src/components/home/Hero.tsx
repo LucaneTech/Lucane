@@ -55,8 +55,8 @@ const HeroSection: React.FC = () => {
         </p>
 
         <div className="flex items-center gap-4 mt-8 text-sm">
-          <Button label="Lancez-vous!" changeColor to="#" />
-          <Button label="Contactez-nous" changeColor={false} to="#" />
+          <Button label="Lancez-vous!" changeColor ='primary' to="#" />
+          <Button label="Contactez-nous" changeColor='secondary' to="#" />
         </div>
 
         {/* Card */}
