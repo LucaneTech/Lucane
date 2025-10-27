@@ -52,7 +52,7 @@ const ServicesSection: React.FC = () => {
 
     const scroll = () => {
       if (!autoScroll) return;
-      scrollPos += 0.5;
+      scrollPos += 1;
       if (scrollPos >= container.scrollWidth - container.clientWidth) {
         scrollPos = 0;
       }
