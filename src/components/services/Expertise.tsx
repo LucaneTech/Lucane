@@ -1,15 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Code, PenTool, BarChart3, Cloud, Cog, Wrench, Play, SquarePause } from "lucide-react";
-import Card from "../ui/Card";
-export interface ServiceProp {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  color?: string; 
-  shadowColor?: string;
-}
+import Card from "../../ui/Card";
+import type { ServiceProp } from "../ServicesSection";
 
-const services: ServiceProp[] = [
+
+const expertise: ServiceProp[] = [
   {
     title: "Développement Web",
     description: "Sites modernes et responsives.",
@@ -54,7 +49,7 @@ const services: ServiceProp[] = [
   },
 ];
 
-const ServicesSection: React.FC = () => {
+const Expertise: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [autoScroll, setAutoScroll] = useState(true);
 
@@ -98,7 +93,7 @@ const ServicesSection: React.FC = () => {
   return (
     <section className="flex flex-col bg-white px-4 py-4 md:py-10">
       <h1 className="main-color font-semibold text-center text-2xl md:text-4xl mb-4 md:mb-8">
-        Nos services de base
+       Nos Expertise de base
       </h1>
 
       <div className="flex items-center justify-center">
@@ -110,7 +105,7 @@ const ServicesSection: React.FC = () => {
             snap-x snap-mandatory scrollbar-hide
           "
         >
-          {services.map((item, index) => (
+          {expertise.map((item, index) => (
             <div
               key={index}
               className="flex-shrink-0 w-4/5 sm:w-[45%] lg:w-[30%] flex justify-center snap-center"
@@ -148,4 +143,4 @@ const ServicesSection: React.FC = () => {
   );
 };
 
-export default ServicesSection;
+export default Expertise;

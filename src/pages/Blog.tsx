@@ -2,7 +2,7 @@ import React from "react";
 //logo
 const Logo = 'Lucane-light.png';
 
-const Actualities: React.FC = () => {
+const Blog: React.FC = () => {
   return(
        <>
         <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center p-4">
@@ -14,4 +14,4 @@ const Actualities: React.FC = () => {
   )
 }
 
-export default  Actualities;
+export default  Blog;

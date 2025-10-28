@@ -76,9 +76,9 @@ const Navbar = () => {
               </Link>
             </motion.div>
 
-            {/* Réalisations */}
+            {/* Projets */}
             <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-              <Link to="/realisations" className="hover:text-main-color transition relative group">
+              <Link to="/projects" className="hover:text-main-color transition relative group">
                 Projets
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
               </Link>
@@ -94,7 +94,7 @@ const Navbar = () => {
 
             {/* À propos */}
             <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-              <Link to="/a-propos" className="hover:text-main-color transition relative group">
+              <Link to="/about" className="hover:text-main-color transition relative group">
                 À propos
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
               </Link>
@@ -117,7 +117,7 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Button
-                to="#"
+                to="/contact"
                 label="Contactez-nous"
                 changeColor="primary"
                 icon={<Phone className="w-5 h-5 inline-block mr-2" />}
@@ -206,9 +206,9 @@ const Navbar = () => {
                 {[
                   { to: "/", label: "Accueil", icon: Home },              // Accueil → Home
                   { to: "/services", label: "Services", icon: Settings }, // Services → Settings
-                  { to: "/realisations", label: "Projets", icon: Briefcase }, // Projets → Briefcase
+                  { to: "/projects", label: "Projets", icon: Briefcase }, // Projets → Briefcase
                   { to: "/technologies", label: "Technologies", icon: Cpu },  // Technologies → Cpu (tech)
-                  { to: "/a-propos", label: "À propos", icon: Info },     // À propos → Info
+                  { to: "/about", label: "À propos", icon: Info },     // À propos → Info
                   { to: "/blog", label: "Blog", icon: Newspaper },        // Blog → Newspaper
                 ].map((item, index) => (
                   <motion.div

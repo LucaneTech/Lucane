@@ -14,6 +14,9 @@
     background-color: #008080;
 
   }
+  .bg-main-color-opacity{
+    background-color: rgba(0, 128, 128, 0.521);
+  }
   .bg-main-color-hover:hover{
     background-color: #006666;
 

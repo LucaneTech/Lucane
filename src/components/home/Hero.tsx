@@ -66,7 +66,7 @@ const HeroSection: React.FC = () => {
             src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
             alt="card"
           />
-          <div className="flex flex-col justify-start p-2">
+          <div className="flex flex-col justify-start p-2 ">
             <h5 className="mb-2 text-xl font-medium main-color">Card title</h5>
             <p className="mb-4 text-base main-color">
               This is a wider card with supporting text below as a natural lead-in to additional content. This content

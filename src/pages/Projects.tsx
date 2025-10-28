@@ -2,7 +2,7 @@ import React from "react";
 //logo
 const Logo = 'Lucane-light.png';
 
-const Trainings: React.FC = () => {
+const Projects: React.FC = () => {
   return(
        <>
         <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center p-4">
@@ -13,4 +13,4 @@ const Trainings: React.FC = () => {
   )
 }
 
-export default Trainings;
+export default Projects;
