@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSectionHome from "../components/home/Hero";
-import ServicesSection from "../components/ServicesSection";
+import ServicesSection from "../components/home/ServicesSection";
 import FeaturedProjects from "../components/home/FeaturedProjects";
 import TrustedCompanies from "../components/home/TrustedCompanies";
 import Button from "../ui/Button";

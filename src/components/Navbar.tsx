@@ -119,7 +119,7 @@ const Navbar = () => {
               <Button
                 to="/contact"
                 label="Contactez-nous"
-                changeColor="primary"
+                changeColor="secondary"
                 icon={<Phone className="w-5 h-5 inline-block mr-2" />}
               />
             </motion.div>
@@ -248,7 +248,7 @@ const Navbar = () => {
                     <Link
                       to="#"
                       onClick={toggleMenu}
-                      className="mt-4 px-4 py-2 text-center bg-main-color text-white rounded-lg shadow-md hover:opacity-90 transition block"
+                      className="mt-4 px-4 py-2 text-center border-btn main-color rounded-lg shadow-md hover:opacity-90 transition block"
                     >
                      <Phone className="w-5 h-5 inline-block mr-2" />
                       Contactez-nous

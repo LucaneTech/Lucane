@@ -2,13 +2,7 @@ interface ElementProp {
   id: number;
   name: string;
 }
-const classes = [
-  "bg-red-200",
-  "bg-blue-200",
-  "bg-green-200",
-  "bg-yellow-200",
-  "bg-purple-200",
-];
+
 
 const Elements: ElementProp[] = [
   { id: 1, name: "Innovation" },
@@ -25,12 +19,12 @@ const Elements: ElementProp[] = [
 
 const AutoScrollElement: React.FC = () => {
   return (
-    <div className="w-full bg-main-color-opacity mx-auto py-4 overflow-hidden mt-5 shadow-lg">
+    <div className="w-full bg-main-color-opacity mx-auto py-4 overflow-hidden mt-10 shadow-lg">
       <div className="whitespace-nowrap animate-scroll flex gap-9 items-center">
         {Elements.map((item, index) => (
           <div
-            key={item.id}
-            className={`inline-block ${classes[index % classes.length]} shadow-lg rounded-lg px-5 md:px-8 py-3 text-lg font-semibold main-color mx-2 transition-transform duration-300 hover:scale-105`}
+            key={`${item.id}-${index}`}
+            className={`inline-block bg-white shadow-lg rounded-lg px-5 md:px-8 py-3 text-xl font-semibold main-color mx-2 transition-transform duration-300 hover:scale-105`}
           >
             <a href="#">{item.name}</a>
           </div>

@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="flex flex-col lg:items-center lg:justify-center">
-          <div className="flex flex-col text-sm space-y-2.5">
+          <div className="flex flex-col  text-sm space-y-2.5">
             <h2 className="font-bold mb-5 main-color text-lg">Liens rapides</h2>
             <a className="hover:text-slate-600 transition" href="#">
               Acceuil

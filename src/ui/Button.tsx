@@ -20,14 +20,14 @@ const Button = ({
 }: ButtonProps) => {
   const baseStyle = changeColor === "primary"
   ? `btn inline-flex items-center justify-center gap-1 bg-main-color text-white 
-      font-bold shadow-md border-none py-2 px-4 rounded-lg 
+      font-bold shadow-md border-none py-6 px-4 rounded-lg 
       transition-all duration-300 hover:opacity-90 select-none whitespace-nowrap`
   : changeColor === "secondary"
   ? `btn inline-flex items-center justify-center gap-1 main-color border-btn 
-      font-bold shadow-md py-2 px-4 rounded-md 
+      font-bold shadow-md py-6 px-4 rounded-md 
       transition-all duration-300 select-none `
   : `btn inline-flex items-center justify-center gap-1 bg-white main-color 
-      font-bold shadow-md py-2 px-4 rounded-md 
+      font-bold shadow-md py-6 px-4 rounded-md 
       transition-all duration-300 select-none whitespace-nowrap`;
 
 

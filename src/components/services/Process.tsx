@@ -1,5 +1,6 @@
 import React from "react";
 import { BarChart3, ShieldCheck, FileChartColumn } from "lucide-react";
+import { i } from "framer-motion/client";
 
 interface Feature {
   title: string;
@@ -39,6 +40,20 @@ const features: Feature[] = [
     bgColor: "bg-orange-100",
     iconColor: "text-orange-600",
   },
+  {
+    title: "Customizable Reports",
+    description:
+      "Export professional, audit-ready financial reports for tax or internal review.",
+    icon: (
+      <FileChartColumn
+        size={28}
+        strokeWidth={2.5}
+        className="text-orange-600"
+      />
+    ),
+    bgColor: "bg-orange-100",
+    iconColor: "text-orange-600",
+  },
 ];
 
 const FeaturesSection: React.FC = () => {
@@ -47,7 +62,7 @@ const FeaturesSection: React.FC = () => {
       {/* Image */}
       <div className="flex justify-center w-full md:w-1/2">
         <img
-          className="w-full max-w-lg rounded-2xl object-cover shadow-lg"
+          className="w-full max-w-lg rounded-2xl object-cover shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
           src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/features/card-image-1.png"
           alt="Feature Illustration"
         />
@@ -55,24 +70,24 @@ const FeaturesSection: React.FC = () => {
 
       {/* Feature list */}
       <div className="w-full md:w-1/2 space-y-10">
-        {features.map((feature, index) => (
+        {features.map((items, index) => (
           <div
             key={index}
             className="flex items-start sm:items-center gap-6 max-w-md mx-auto sm:mx-0"
           >
             <div
-              className={`flex items-center justify-center p-5 sm:p-6 ${feature.bgColor} rounded-full`}
+              className={`flex items-center justify-center p-5 sm:p-6 ${items.bgColor} rounded-full`}
             >
-              {feature.icon}
+              {items.icon}
             </div>
             <div className="space-y-2 text-left">
               <h3
-                className={`text-lg sm:text-xl md:text-2xl font-semibold text-slate-700 ${feature.iconColor}`}
+                className={`text-lg sm:text-xl md:text-2xl font-semibold ${items.iconColor}`}
               >
-                {feature.title}
+                {items.title}
               </h3>
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                {feature.description}
+                {items.description}
               </p>
             </div>
           </div>

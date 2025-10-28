@@ -1,145 +1,86 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Code, PenTool, BarChart3, Cloud, Cog, Wrench, Play, SquarePause } from "lucide-react";
-import Card from "../../ui/Card";
-import type { ServiceProp } from "../ServicesSection";
+import { Code, PenTool, BarChart3, Cloud, Cog, Wrench, Cpu, Server, ShieldCheck, Smartphone } from "lucide-react";
+import CardSection, { type ServiceProp } from "../CardSection";
 
 
 const expertise: ServiceProp[] = [
   {
     title: "Développement Web",
-    description: "Sites modernes et responsives.",
+    description: "Sites modernes, responsives et performants.",
     icon: <Code className="w-12 h-12" />,
-    color: "indigo-500",
-    shadowColor: 'indigo-100'
+    color: "text-indigo-500",
+    bgColor: 'bg-indigo-100'
   },
   {
     title: "Design UX/UI",
-    description: "Expériences utilisateurs fluides.",
+    description: "Expériences utilisateurs fluides et intuitives.",
     icon: <PenTool className="w-12 h-12" />,
-    color: "rose-500",
-    shadowColor: 'rose-100'
+    color: "text-rose-500",
+    bgColor: 'bg-rose-100'
   },
   {
     title: "Data Analytics",
-    description: "Décisions pilotées par la donnée.",
+    description: "Décisions pilotées par la donnée et insights actionnables.",
     icon: <BarChart3 className="w-12 h-12"/>,
-    color: "emerald-500 ", 
-    shadowColor: "emerald-100"
+    color: "text-emerald-500", 
+    bgColor: "bg-emerald-100"
   },
   {
     title: "Cloud Services",
-    description: "Scalabilité et performance assurées.",
+    description: "Scalabilité, performance et sécurité assurées.",
     icon: <Cloud className="w-12 h-12" />,
-    color: "sky-500 ", 
-    shadowColor: 'sky-100'
+    color: "text-sky-500",
+    bgColor: 'bg-sky-100'
   },
   {
     title: "Automatisation",
-    description: "Gagnez du temps avec des scripts smart.",
+    description: "Gagnez du temps avec des scripts intelligents et workflows automatisés.",
     icon: <Cog className="w-12 h-12"/>,
-    color: "amber-500 ", 
-    shadowColor: "amber-100"
+    color: "text-amber-500", 
+    bgColor: "bg-amber-100"
   },
   {
-    title: "Maintenance",
-    description: "Surveillance et support continu.",
+    title: "Maintenance & Support",
+    description: "Surveillance proactive et support continu 24/7.",
     icon: <Wrench className="w-12 h-12"/>,
-    color: "gray-600",
-    shadowColor: 'gray-100'
+    color: "text-gray-600",
+    bgColor: 'bg-gray-100'
   },
+  {
+    title: "Mobile App Development",
+    description: "Applications iOS & Android performantes et design-friendly.",
+    icon: <Smartphone className="w-12 h-12" />,
+    color: "text-purple-500",
+    bgColor: 'bg-purple-100'
+  },
+  {
+    title: "Sécurité Informatique",
+    description: "Protection des données, audits et hardening systèmes.",
+    icon: <ShieldCheck className="w-12 h-12" />,
+    color: "text-red-500",
+    bgColor: 'bg-red-100'
+  },
+  {
+    title: "Intelligence Artificielle",
+    description: "Solutions IA pour automatiser et prédire intelligemment.",
+    icon: <Cpu className="w-12 h-12" />,
+    color: "text-teal-500",
+    bgColor: 'bg-teal-100'
+  },
+  {
+    title: "DevOps & CI/CD",
+    description: "Déploiements rapides, fiables et infrastructure as code.",
+    icon: <Server className="w-12 h-12" />,
+    color: "text-cyan-500",
+    bgColor: 'bg-cyan-100'
+  }
 ];
 
+
 const Expertise: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [autoScroll, setAutoScroll] = useState(true);
-
-  useEffect(() => {
-    if (!scrollRef.current || !autoScroll) return;
-    const container = scrollRef.current;
-    let scrollPos = 0;
-    let animationFrame: number;
-
-    const scroll = () => {
-      if (!autoScroll) return;
-      scrollPos += 1;
-      if (scrollPos >= container.scrollWidth - container.clientWidth) {
-        scrollPos = 0;
-      }
-      container.scrollLeft = scrollPos;
-      animationFrame = requestAnimationFrame(scroll);
-    };
-
-    animationFrame = requestAnimationFrame(scroll);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [autoScroll]);
-
- //stop the interaction of scroll
-  useEffect(() => {
-    const stopAutoScroll = () => setAutoScroll(false);
-    const container = scrollRef.current;
-    if (!container) return;
-
-    container.addEventListener("touchstart", stopAutoScroll);
-    container.addEventListener("wheel", stopAutoScroll);
-    container.addEventListener("mousedown", stopAutoScroll);
-
-    return () => {
-      container.removeEventListener("touchstart", stopAutoScroll);
-      container.removeEventListener("wheel", stopAutoScroll);
-      container.removeEventListener("mousedown", stopAutoScroll);
-    };
-  }, []);
+ 
 
   return (
-    <section className="flex flex-col bg-white px-4 py-4 md:py-10">
-      <h1 className="main-color font-semibold text-center text-2xl md:text-4xl mb-4 md:mb-8">
-       Nos Expertise de base
-      </h1>
-
-      <div className="flex items-center justify-center">
-        <div
-          ref={scrollRef}
-          className="
-            flex flex-nowrap overflow-x-auto md:flex-wrap md:overflow-visible
-            gap-6 max-w-6xl w-full scroll-smooth py-4
-            snap-x snap-mandatory scrollbar-hide
-          "
-        >
-          {expertise.map((item, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 w-4/5 sm:w-[45%] lg:w-[30%] flex justify-center snap-center"
-            >
-              <Card {...item} />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="md:hidden flex justify-center mt-6">
-        {autoScroll ? (
-          <button
-            onClick={() => setAutoScroll(false)}
-            className="text-sm text-gray-600 hover:text-indigo-600 transition"
-          >
-            <span className="flex flex-row items-center gap-2 ">
-                 <SquarePause className="main-color w-8 h-8 text-bold" />
-                 <p className="text-lg text-gray-800">Arrêter</p>
-            </span>
-          </button>
-        ) : (
-          <button
-            onClick={() => setAutoScroll(true)}
-            className="text-sm text-gray-600 text-hover"
-          > 
-             <span className="flex flex-row items-center gap-2 ">
-                 <Play className="main-color w-8 h-8 text-bold" />
-                 <p className="text-lg text-gray-800">Relancer</p>
-            </span>
-          </button>
-        )}
-      </div>
-    </section>
+     <CardSection services={expertise} title="Nos Expertises" />
   );
 };
 
