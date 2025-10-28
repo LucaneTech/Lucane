@@ -1,4 +1,4 @@
-import { Code, PenTool, BarChart3, Cloud, Cog, Wrench, Play, SquarePause } from "lucide-react";
+import { Code, PenTool, BarChart3, Cloud, Cog, Wrench } from "lucide-react";
 import type { ServiceProp } from "../CardSection";
 import CardSection from "../CardSection";
 

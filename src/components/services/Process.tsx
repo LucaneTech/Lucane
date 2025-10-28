@@ -1,6 +1,5 @@
 import React from "react";
 import { BarChart3, ShieldCheck, FileChartColumn } from "lucide-react";
-import { i } from "framer-motion/client";
 
 interface Feature {
   title: string;
