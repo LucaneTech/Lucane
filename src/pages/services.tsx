@@ -8,7 +8,7 @@ import CallAction from "../components/CallAction";
 
 const Services: React.FC = () => {
   return(
-       <>
+        <div className="mt-32 md:mt-48">
         {/**services hero section */}
         <HeroSection />
         
@@ -28,7 +28,7 @@ const Services: React.FC = () => {
         <CallAction title="Lancez votre projet dès aujourd’hui" label="Lancez-vous!" description={"“Notre équipe transforme vos idées en solutions digitales performantes, fiables et sur mesure.” "} to={"/"} />
 
        
-       </>
+       </div>
   )
 }
 

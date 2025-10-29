@@ -21,7 +21,7 @@ function App() {
             <ScrollProgress />
             <BackToTop />
             <Routes>
-              <Route path="/" element={<Navbar />}>
+              <Route path="/" element={<Navbar className="bg-white "/>}>
                 <Route index element={<Home />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/projects" element={<Projects />} />

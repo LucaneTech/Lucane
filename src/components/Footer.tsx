@@ -38,8 +38,8 @@ const Footer: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-14">
         {/* LOGO & DESCRIPTION */}
         <div className="sm:col-span-2 lg:col-span-1">
-          <a href="/" className="flex items-center gap-2">
-            <Link to="/">
+       
+            <Link to="/" className="flex items-center gap-2">
               <motion.img
                 src={logo}
                 alt="Logo"
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               />
-            </Link>          </a>
+            </Link> 
           <p className="text-sm leading-7 mt-6">
             Lucane, c’est une équipe de développeurs passionnés qui conçoit des
             applications web, mobiles et logicielles modernes pour booster votre

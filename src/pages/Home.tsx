@@ -7,7 +7,7 @@ import Button from "../ui/Button";
 
 const Home: React.FC = () => {
   return (
-    <>
+    <div className="mt-32 md:mt-48">
       {/* Hero Section */}
       <HeroSectionHome />
 
@@ -31,7 +31,7 @@ const Home: React.FC = () => {
         </p>
          <Button label="Commençons aujourd'hui!" changeColor="white"  className="mt-8 md:mt-10"/>
       </section>
-    </>
+    </div>
   )
 }
 

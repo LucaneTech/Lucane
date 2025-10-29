@@ -20,9 +20,11 @@ import { Footer } from "./Footer";
 // import { Footer } from "./Footer";
 export const logo = "logo_color.png";
 
+interface NavbarProps {
+  className : string;
+}
 
-
-const Navbar = () => {
+const Navbar :React.FC <NavbarProps> = ({className}) => {
   const [isOpen, setIsOpen] = useState(false);
   // const [isScrolled, setIsScrolled] = useState(false);
 
@@ -35,7 +37,7 @@ const Navbar = () => {
     <>
 
       <motion.nav
-        className={`w-11/12 mx-auto items-center mt-3 md:mt-5  shadow-xl bg-base-100 rounded-lg transition-all duration-300 
+        className={`w-11/12 mx-auto items-center mt-3 md:mt-5  shadow-xl ${className}  rounded-lg transition-all duration-300  fixed top-4 z-50  left-0 right-0 py-1/2 md:py-3/2  
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
