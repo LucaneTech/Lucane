@@ -1,7 +1,7 @@
 import React from "react";
-import HeroSection from "../components/Projects/HeroSection";
+import HeroSection from "../components/projects/HeroSection";
 import ProjectSection from "../components/ProjectSection";
-import Testamonals from "../components/Projects/Testamonals";
+import Testamonals from "../components/projects/Testamonals";
 import CallAction from "../components/CallAction";
 
 const projects = [

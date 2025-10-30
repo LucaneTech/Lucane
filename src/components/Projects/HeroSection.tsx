@@ -3,10 +3,10 @@ import Button from "../../ui/Button";
 
 const HeroSection: React.FC = () => {
     return (
-        <section className="relative z-10 flex items-center justify-center h-[500px] md:h-[700px] overflow-hidden mt-12">
+        <section className="relative z-10 flex items-center justify-center h-[500px] md:h-[700px] overflow-hidden">
             {/* Image de fond */}
             <div
-                className="absolute inset-0 bg-cover bg-center bg-fixed"
+                className="hidden md:block absolute inset-0 bg-cover bg-center bg-fixed"
                 style={{
                     backgroundImage:
                         "url('images/bg.jpg')",
@@ -14,16 +14,29 @@ const HeroSection: React.FC = () => {
             >
                 {/* <div className="absolute inset-0 bg-black/10 backdrop-blur-sm"></div> */}
             </div>
+            <div
+                className="md:hidden absolute inset-0 bg-cover bg-center bg-fixed"
+                style={{
+                    backgroundImage:
+                        "url('images/project.jpg')",
+                }}
+            >
+                <div className="absolute inset-0 bg-black/5 backdrop-blur-xs"></div>
+            </div>
 
             {/* Contenu principal */}
-            <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+            <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20">
                 <h1 className="text-2xl sm:text-3xl md:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
                     <span className="bg-main-color p-2 rounded-lg">Projets Innovants pour un</span>
                     <br />
                     <span className="main-color mt-4 block">Avenir Meilleur</span>
                 </h1>
 
-                <p className="mt-4 text-base sm:text-lg md:text-xl text-black max-w-2xl mx-auto leading-relaxed">
+                <p className="hidden md:block mt-4 text-base sm:text-lg md:text-xl text-black max-w-2xl mx-auto leading-relaxed">
+                    Nous transformons les idées ambitieuses en solutions numériques concrètes,
+                    durables et prêtes pour le futur.
+                </p>
+                <p className="md:hidden mt-4 text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed">
                     Nous transformons les idées ambitieuses en solutions numériques concrètes,
                     durables et prêtes pour le futur.
                 </p>
@@ -37,7 +50,7 @@ const HeroSection: React.FC = () => {
                     <input
                         type="text"
                         placeholder="Rechercher des projets..."
-                        className="px-4 py-2 rounded-lg w-full max-w-md focus:outline-none focus:ring-2 focus:ring-main-color border-btn main-color"
+                        className="px-4 py-2 rounded-lg w-full max-w-md focus:outline-none focus:ring-2 focus:ring-main-color border-btn text-white md:text-gray-"
                     />
                     <Button label="Rechercher" changeColor="primary" to="/projects" />
                 </div>
