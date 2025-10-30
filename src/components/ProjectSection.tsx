@@ -52,7 +52,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
   className = "",
 }) => {
   return (
-    <section id="featured-projects" className={`py-20 bg-secondary-color ${className}`}>
+    <section  className={`py-20 bg-secondary-color ${className}`}>
       <motion.div
         variants={containerVariants}
         initial="hidden"

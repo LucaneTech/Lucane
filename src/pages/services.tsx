@@ -26,8 +26,8 @@ const Services: React.FC = () => {
 
         {/**callAction */}
         <CallAction title="Lancez votre projet dès aujourd’hui" label="Lancez-vous!" description={"“Notre équipe transforme vos idées en solutions digitales performantes, fiables et sur mesure.” "} to={"/"} />
-
-       
+      
+        
        </div>
   )
 }
