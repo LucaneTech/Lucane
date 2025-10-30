@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../ui/Button";
+import Button from "../../ui/Button";
 
-const HeroSection: React.FC = () => {
+const HeroProject: React.FC = () => {
     return (
         <section className="relative z-10 flex items-center justify-center h-[500px] md:h-[700px] overflow-hidden">
             {/* Image de fond */}
@@ -62,4 +62,4 @@ const HeroSection: React.FC = () => {
     );
 };
 
-export default HeroSection;
+export default HeroProject;

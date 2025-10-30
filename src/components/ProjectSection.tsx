@@ -89,17 +89,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
           ))}
         </motion.div>
 
-        {/* Button */}
-        {/* {showButton && (
-          <motion.div variants={itemVariants} className="text-center">
-            <Button
-              label={buttonLabel}
-              changeColor="secondary"
-              onClick={onButtonClick}
-              icon={<ArrowRight className="w-5 h-5 inline-block ml-2" />}
-            />
-          </motion.div>
-        )} */}
+      
       </motion.div>
     </section>
   );
