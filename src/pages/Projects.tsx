@@ -4,6 +4,7 @@ import ProjectSection from "../components/ProjectSection";
 import Testamonals from "../components/projects/Testamonals";
 import CallAction from "../components/CallAction";
 
+
 const projects = [
     {
       id: 1,
