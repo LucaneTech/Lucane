@@ -1,0 +1,36 @@
+# robots.txt pour Lucane Tech
+
+User-agent: *
+Disallow:
+
+# Autorise tous les robots à explorer le site
+Allow: /
+
+# Indique l’emplacement du sitemap
+Sitemap: https://lucane.tech/sitemap.xml
+
+# Empêche l'indexation de fichiers inutiles
+Disallow: /assets/
+Disallow: /static/
+Disallow: /node_modules/
+Disallow: /private/
+Disallow: /temp/
+
+# Quelques conseils pour Google
+User-agent: Googlebot
+Allow: /
+
+# Pour les images (Google Images)
+User-agent: Googlebot-Image
+Allow: /
+
+# Pour les publicités (Google AdsBot)
+User-agent: AdsBot-Google
+Allow: /
+
+# Bloquer certains bots indésirables (exemples)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

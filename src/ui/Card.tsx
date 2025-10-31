@@ -1,11 +1,13 @@
 interface CardProps {
   icon: React.ReactNode;
+  imageUrl?: string;
   color?: string;
   title: string;
-    bgColor?: string;
+  bgColor?: string;
   description: string;
-  imageUrl?: string;
 }
+
+
 
 const Card: React.FC<CardProps> = ({
   icon,

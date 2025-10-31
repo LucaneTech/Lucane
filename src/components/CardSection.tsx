@@ -6,6 +6,7 @@ export interface ServiceProp {
     title: string;
     description: string;
     icon: React.ReactNode;
+    image?: string;
     color?: string;
     bgColor?: string;
 }
