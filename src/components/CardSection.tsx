@@ -4,9 +4,9 @@ import Card from "../ui/Card";
 
 export interface ServiceProp {
     title: string;
-    description: string;
-    icon: React.ReactNode;
-    image?: string;
+    description?: string;
+    icon?: React.ReactNode;
+    imageUrl?: string;
     color?: string;
     bgColor?: string;
 }

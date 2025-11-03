@@ -1,10 +1,10 @@
 interface CardProps {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   imageUrl?: string;
   color?: string;
   title: string;
   bgColor?: string;
-  description: string;
+  description?: string;
 }
 
 
@@ -13,7 +13,7 @@ const Card: React.FC<CardProps> = ({
   icon,
   color,
   title,
-    bgColor,
+  bgColor,
   description,
   imageUrl,
 }) => {
@@ -34,6 +34,8 @@ const Card: React.FC<CardProps> = ({
             className="mb-4 w-20 h-20 object-cover rounded-full"
           />
         )}
+
+
         <h2 className={`text-2xl font-bold mb-1 ${color}`}>{title}</h2>
         <p className="text-base font-medium mb-4">{description}</p>
       </div>

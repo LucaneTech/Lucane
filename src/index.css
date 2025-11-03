@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark, cupcake;
+  themes: light --default, dark --prefersdark, dark;
 }
 
 @layer utilities {
@@ -18,7 +18,7 @@
     background-color: rgba(0, 128, 128, 0.521);
   }
   .bg-main-color-hover:hover{
-    background-color: #006666;
+    background-color: #006666d8;
 
   }
   .secondary-color{
