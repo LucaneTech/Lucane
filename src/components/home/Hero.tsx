@@ -15,16 +15,16 @@ const HeroSection: React.FC = () => {
     <section className="relative flex flex-col md:flex-row items-center justify-between mt-8 md:mt-20 px-4 md:px-8 lg:px-24 xl:px-32 pb-20 overflow-hidden">
       {/* Background SVG */}
       <svg
-        className="absolute -z-10 inset-0 w-full h-full"
+        className="absolute -z-10 inset-1 w-full h-full"
         width="1440"
         height="720"
         viewBox="0 0 1440 720"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+      
       >
-        <circle cx="711.819" cy="372.562" r="308.334" stroke={strokePrimary} strokeWidth={2} />
+        <circle cx="711.819" cy="372.562" r="308.334" stroke={strokePrimary} strokeWidth={3} />
         <circle cx="16.942" cy="20.834" r="308.334" stroke={strokePrimary} strokeWidth={2} />
-        <circle cx="782.595" cy="411.166" r="308.334" stroke={strokePrimary} strokeWidth={2} />
+        <circle cx="782.595" cy="411.166" r="308.334" stroke={strokePrimary} strokeWidth={3} />
         <circle cx="1200.595" cy="611.166" r="308.334" stroke={strokePrimary} strokeWidth={2} />
       </svg>
 

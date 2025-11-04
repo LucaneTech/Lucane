@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {  Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import {
   X,
   Menu,
@@ -58,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
     <>
 
-       <motion.nav
+      <motion.nav
         className={`w-11/12 mx-auto items-center mt-3 md:mt-5 dark:bg-gray-900 shadow-xl ${className} rounded-lg transition-all duration-300 fixed top-4 z-50 left-0 right-0 py-1/2 md:py-3/2`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -68,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           {/* Logo */}
           <Link to="/">
             <motion.img
-              src={theme === "dark" ? logoLight : logo} 
+              src={theme === "dark" ? logoLight : logo}
               alt="Logo"
               className="w-24 sm:w-28 md:w-48 h-auto object-contain"
               whileHover={{ scale: 1.05 }}
@@ -191,7 +191,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-60"
+              className="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-900 shadow-lg z-60"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -199,14 +199,17 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
             >
               {/* Header du menu */}
               <div className="flex justify-between items-center px-4 py-3 border-b">
-                <motion.img
-                  src={logo}
-                  alt="Logo"
-                  className="w-24 h-auto object-contain"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2 }}
-                />
+
+                {/* Logo */}
+                <Link to="/">
+                  <motion.img
+                    src={theme === "dark" ? logoLight : logo}
+                    alt="Logo"
+                    className="w-24 h-auto object-contain"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </Link>
                 <motion.button
                   onClick={toggleMenu}
                   aria-label="Fermer le menu"
@@ -223,7 +226,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
 
               {/* Liens Mobile */}
               <motion.div
-                className="flex flex-col px-6 py-4 gap-5 text-gray-700"
+                className="flex flex-col px-6 py-4 gap-5 text-gray-700 dark:text-white"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
@@ -273,7 +276,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                     <Link
                       to="#"
                       onClick={toggleMenu}
-                      className="mt-4 px-4 py-2 text-center border-btn main-color rounded-lg shadow-md hover:opacity-90 transition block"
+                      className="mt-4 px-4 py-2 text-center border-btn text-[#008080]  dark:text-white rounded-lg shadow-md hover:opacity-90 transition block"
                     >
                       <Phone className="w-5 h-5 inline-block mr-2" />
                       Contactez-nous
