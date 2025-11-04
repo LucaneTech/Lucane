@@ -3,9 +3,8 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx,html}",
   ],
-  theme: {
-    extend: {},
-  },
+  darkMode: "class",
+
   plugins: [require("daisyui")],
 
   daisyui: {
@@ -32,20 +31,9 @@ module.exports = {
       "luxury",
       "dracula",
       "night",
-     
-      {
-        mytheme: {
-          primary: "#3b82f6",
-          secondary: "#f59e0b",
-          accent: "#10b981",
-          neutral: "#1f2937",
-          "base-100": "#ffffff",
-          info: "#60a5fa",
-          success: "#34d399",
-          warning: "#fbbf24",
-          error: "#f87171",
-        },
-      },
+   
     ],
   },
+
+ 
 };

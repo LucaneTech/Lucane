@@ -52,7 +52,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
   className = "",
 }) => {
   return (
-    <section  className={`py-20 bg-secondary-color ${className}`}>
+    <section  className={`py-20  dark:bg-gray-900 ${className}`}>
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -62,7 +62,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
       >
         {/* Title + description */}
         <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-6">
             {title.split(" ").map((word, i) =>
               i === 1 ? (
                 <span key={i} className="main-color">
@@ -74,7 +74,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
               )
             )}
           </h2>
-          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-600 dark:text-white max-w-3xl mx-auto leading-relaxed">
             {description}
           </p>
         </motion.div>

@@ -13,6 +13,7 @@ interface Project {
   featured?: boolean;
   date?: string;
   bgColor?: string;
+  
 }
 
 interface ProjectCardProps {

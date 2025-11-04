@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import { Facebook, Github, Linkedin, Mail, Phone, Send } from "lucide-react";
 import { motion } from "framer-motion";
-import { logo } from "./Navbar";
+import { logo, logoLight } from "./Navbar";
 import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 const socialLinks = [
@@ -30,24 +30,47 @@ const socialLinks = [
     color: 'hover:text-red-400'
   }
 ];
+ 
 
 const Footer: React.FC = () => {
+
+   const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+      const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  
+      // Définir le thème initial
+      const initialTheme = darkMediaQuery.matches ? "dark" : "light";
+      setTheme(initialTheme);
+  
+      // Écouter les changements du thème navigateur
+      const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
+        setTheme(e.matches ? "dark" : "light");
+      };
+  
+      darkMediaQuery.addEventListener("change", handleChange);
+  
+      return () => {
+        darkMediaQuery.removeEventListener("change", handleChange);
+      };
+    }, []);
   return (
-    <footer className="px-6 md:px-16 lg:px-24 xl:px-32 w-full text-sm text-slate-500 bg-secondary-color pt-10 ">
+    <footer className="px-6 md:px-16 bg-[#fafafa] lg:px-24 xl:px-32 w-full text-sm text-slate-500 dark:text-white dark:bg-gray-800 pt-10 ">
       {/* GRID MAIN */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-14">
         {/* LOGO & DESCRIPTION */}
         <div className="sm:col-span-2 lg:col-span-1">
-       
-            <Link to="/" className="flex items-center gap-2">
-              <motion.img
-                src={logo}
-                alt="Logo"
-                className="w-24 sm:w-28 md:w-48 h-auto object-contain"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              />
-            </Link> 
+
+          <Link to="/">
+            <motion.img
+              src={theme === "dark" ? logoLight : logo}
+              alt="Logo"
+              className="w-24 sm:w-28 md:w-48 h-auto object-contain"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            />
+          </Link>
+
           <p className="text-sm leading-7 mt-6">
             Lucane, c’est une équipe de développeurs passionnés qui conçoit des
             applications web, mobiles et logicielles modernes pour booster votre
@@ -134,7 +157,7 @@ const Footer: React.FC = () => {
               <Send size={16} className="main-color" />
               contact@lucane.tech
             </p>
-           <Button label= "Demander un devis" icon ={<Phone/>}/>
+            <Button label="Demander un devis" icon={<Phone />} />
 
           </div>
         </div>
@@ -142,7 +165,7 @@ const Footer: React.FC = () => {
 
       {/* COPYRIGHT */}
       <div className="flex border-t mt-6 border-slate-200  py-4 justify-between items-center flex-col md:flex-row gap-4">
-        <p className="text-gray-600 xl:text-center">
+        <p className="text-gray-600 dark:text-white xl:text-center">
           Copyright © {new Date().getFullYear()}{" "}
           <a href="/" className="main-color font-semibold">
             Lucane
@@ -171,3 +194,4 @@ const Footer: React.FC = () => {
 };
 
 export { Footer };
+
