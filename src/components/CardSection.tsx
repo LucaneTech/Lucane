@@ -138,14 +138,14 @@ const CardSection: React.FC<ServicesCarouselProps> = ({
         {autoScroll ? (
           <button
             onClick={() => setAutoScroll(false)}
-            className="bg-main-color rounded-full p-2"
+            className="bg-main-color-opacity rounded-full p-2"
           >
             <SquarePause className="w-5 h-5 text-white" />
           </button>
         ) : (
           <button
             onClick={() => setAutoScroll(true)}
-            className="bg-main-color rounded-full p-2"
+            className="bg-main-color-opacity rounded-full p-2"
           >
             <Play className="w-5 h-5 text-white" />
           </button>
