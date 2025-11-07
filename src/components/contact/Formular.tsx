@@ -141,7 +141,7 @@ const ContactForm: React.FC = () => {
           whileTap={{ scale: 0.95 }}
           type="submit"
           disabled={isSubmitting}
-          className="w-full sm:w-auto flex items-center justify-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-blue-400 disabled:to-purple-400 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-sm sm:text-base"
+          className="w-full sm:w-auto mx-auto flex items-center justify-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-blue-400 disabled:to-purple-400 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-sm sm:text-base"
         >
           {isSubmitting ? (
             <>
@@ -159,7 +159,7 @@ const ContactForm: React.FC = () => {
             </>
           )}
         </motion.button>
-        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2">
+        <p className="text-xs text-center sm:text-sm text-slate-500 dark:text-slate-400 mt-2">
           * Champs obligatoires. Je m'engage à répondre dans les 24h.
         </p>
       </form>

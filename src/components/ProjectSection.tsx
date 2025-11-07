@@ -61,23 +61,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
         className="container mx-auto px-6"
       >
         {/* Title + description */}
-        <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-6">
-            {title.split(" ").map((word, i) =>
-              i === 1 ? (
-                <span key={i} className="main-color">
-                  {" "}
-                  {word}{" "}
-                </span>
-              ) : (
-                word + " "
-              )
-            )}
-          </h2>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-white max-w-3xl mx-auto leading-relaxed">
-            {description}
-          </p>
-        </motion.div>
+       
 
         {/* Cards */}
         <motion.div

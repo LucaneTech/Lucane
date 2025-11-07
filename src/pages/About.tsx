@@ -9,7 +9,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Alice Dupont",
     role: "CEO",
-    image: "/images/alice.jpg",
+    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=50",
     description: "Passionnée par la tech et l’innovation.",
     socials: [
       { type: "linkedin", url: "https://linkedin.com/in/alice" },
@@ -19,7 +19,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Bob Martin",
     role: "Lead Developer",
-    image: "/images/bob.jpg",
+    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=50",
     description: "Expert en développement web et mobile.",
     socials: [
       { type: "linkedin", url: "https://linkedin.com/in/bob" },
@@ -29,7 +29,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Bob Martin",
     role: "Lead Developer",
-    image: "/images/bob.jpg",
+    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=50",
     description: "Expert en développement web et mobile.",
     socials: [
       { type: "linkedin", url: "https://linkedin.com/in/bob" },

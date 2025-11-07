@@ -4,9 +4,9 @@ import { Code2, Users, Globe } from "lucide-react";
 
 const StatsSection: React.FC = () => {
   const stats = [
-    { label: "Projets livrés", value: 120, icon: <Code2 size={40} className="text-indigo-500" /> },
-    { label: "Clients satisfaits", value: 85, icon: <Users size={40} className="text-emerald-500" /> },
-    { label: "Pays couverts", value: 15, icon: <Globe size={40} className="text-orange-500" /> },
+    { label: "Projets réalisés", value: 50, icon: <Code2 size={40} className="text-indigo-500" /> },
+    { label: "Clients satisfaits", value: 20, icon: <Users size={40} className="text-emerald-500" /> },
+    { label: "Pays couverts", value: 10, icon: <Globe size={40} className="text-orange-500" /> },
   ];
 
   return (

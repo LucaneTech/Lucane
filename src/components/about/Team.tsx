@@ -73,7 +73,7 @@ const MeetOurPeople: React.FC<MeetOurPeopleProps> = ({ members }) => {
         {members.map((member, idx) => (
           <motion.div
             key={idx}
-            className="group flex flex-col items-center py-8 text-sm bg-white border border-gray-300/60 w-64 rounded-md cursor-pointer bg-main-color-hover"
+            className="group flex flex-col items-center py-8 text-sm bg-white dark:bg-gray-900/70 border border-gray-300/60 w-64 rounded-md cursor-pointer bg-main-color-hover"
             custom={idx}
             variants={cardVariants}
             initial="hidden"
@@ -82,7 +82,7 @@ const MeetOurPeople: React.FC<MeetOurPeopleProps> = ({ members }) => {
             whileHover="hover"
           >
             <motion.img
-              className="w-32 rounded-full border-btn"
+              className="w-24 rounded-full border-btn"
               src={member.image}
               alt={member.name}
               whileHover={{ scale: 1.1 }}
@@ -93,9 +93,9 @@ const MeetOurPeople: React.FC<MeetOurPeopleProps> = ({ members }) => {
               {member.name}
             </motion.h2>
 
-            <motion.p className="text-gray-700 group-hover:text-white/80">{member.role}</motion.p>
+            <motion.p className="text-gray-700 dark:text-gray-200 group-hover:text-white/80">{member.role}</motion.p>
 
-            <motion.p className="text-center text-gray-500/60 group-hover:text-white/60 w-3/4 mt-4">
+            <motion.p className="text-center text-gray-500/60 dark:text-gray-400 group-hover:text-white/60 w-3/4 mt-4">
               {member.description}
             </motion.p>
 
