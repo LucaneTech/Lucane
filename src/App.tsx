@@ -5,7 +5,6 @@ import ScrollProgress from "./ui/ScrollProgress";
 import BackToTop from "./ui/BackToTop";
 // import PageLoaderWrapper from "./components/PageLoaderWrapper";
 import About from "./pages/About";
-import Blog from "./pages/Blog";
 import Projects from "./pages/Projects";
 import Technologies from "./pages/Technologies";
 import Services from "./pages/services";
@@ -27,7 +26,6 @@ function App() {
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/technologies" element={<Technologies />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/blog" element={<Blog />} />
                 <Route path="/contact" element={<Contact/>} />
               
                 

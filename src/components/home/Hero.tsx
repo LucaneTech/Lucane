@@ -37,7 +37,7 @@ const HeroSection: React.FC = () => {
       >
         {/* Community avatars */}
         <motion.div
-          className="flex items-center flex-wrap justify-center p-1.5 rounded-full border border-slate-300 text-gray-500 text-xs mb-4 gap-1 bg-white/60 backdrop-blur-md dark:bg-gray-900 dark:text-white"
+          className="flex items-center flex-wrap justify-center p-1.5 rounded-full border border-slate-300 text-gray-500 text-xs mb-4 gap-1 bg-white/60 backdrop-blur-md dark:bg-gray-900/70 dark:text-white"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -90,7 +90,7 @@ const HeroSection: React.FC = () => {
 
         {/* Card */}
         <motion.div
-          className="hidden lg:flex flex-row rounded-xl bg-white dark:bg-gray-900 shadow-lg duration-300 hover:shadow-2xl mt-10 md:max-w-xl overflow-hidden"
+          className="hidden lg:flex flex-row rounded-xl bg-white dark:bg-gray-900/70 shadow-lg duration-300 hover:shadow-2xl mt-10 md:max-w-xl overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}

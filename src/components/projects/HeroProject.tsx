@@ -1,63 +1,87 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Button from "../../ui/Button";
 
 const HeroProject: React.FC = () => {
     return (
         <section className="relative z-10 flex items-center justify-center h-[500px] md:h-[700px] overflow-hidden">
-            {/* Image de fond */}
-            <div
-                className="hidden md:block absolute inset-0 bg-cover bg-center bg-fixed"
+            {/* Image de fond avec effet parallax */}
+            <motion.div
+                className="hidden md:block absolute inset-0 bg-cover bg-center"
                 style={{
-                    backgroundImage:
-                        "url('images/bg.jpg')",
+                    backgroundImage: "url('images/bg.jpg')",
                 }}
-            >
-                {/* <div className="absolute inset-0 bg-black/10 backdrop-blur-sm"></div> */}
-            </div>
-            <div
-                className="md:hidden absolute inset-0 bg-cover bg-center bg-fixed"
+                initial={{ scale: 1.1, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.8, ease: "easeOut" }}
+            />
+
+            <motion.div
+                className="md:hidden absolute inset-0 bg-cover bg-center"
                 style={{
-                    backgroundImage:
-                        "url('images/project.jpg')",
+                    backgroundImage: "url('images/project.jpg')",
                 }}
+                initial={{ scale: 1.1, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.6, ease: "easeOut" }}
             >
                 <div className="absolute inset-0 bg-black/5 backdrop-blur-xs"></div>
-            </div>
+            </motion.div>
 
-            {/* Contenu principal */}
+            {/* Contenu principal animé */}
             <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20">
-                <h1 className="text-2xl sm:text-3xl md:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
-                    <span className="bg-main-color p-2 rounded-lg">Projets Innovants pour un</span>
+                <motion.h1
+                    className="text-2xl sm:text-3xl md:text-6xl font-extrabold text-white leading-tight drop-shadow-md"
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.9, ease: "easeOut" }}
+                >
+                    <motion.span
+                        className="bg-main-color p-2 rounded-lg inline-block"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.4, duration: 0.6 }}
+                    >
+                        Projets Innovants pour un
+                    </motion.span>
                     <br />
-                    <span className="main-color mt-4 block">Avenir Meilleur</span>
-                </h1>
+                    <motion.span
+                        className="main-color mt-4 block"
+                        initial={{ x: -30, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.7, duration: 0.6 }}
+                    >
+                        Avenir Meilleur
+                    </motion.span>
+                </motion.h1>
 
-                <p className="hidden md:block mt-4 text-base sm:text-lg md:text-xl text-black max-w-2xl mx-auto leading-relaxed">
+                <motion.p
+                    className="mt-4 text-base sm:text-lg md:text-xl text-black max-w-2xl mx-auto leading-relaxed"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 1, duration: 0.8 }}
+                >
                     Nous transformons les idées ambitieuses en solutions numériques concrètes,
                     durables et prêtes pour le futur.
-                </p>
-                <p className="md:hidden mt-4 text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed">
-                    Nous transformons les idées ambitieuses en solutions numériques concrètes,
-                    durables et prêtes pour le futur.
-                </p>
+                </motion.p>
 
-                <div className="mt-8">
+                <motion.div
+                    className="mt-8"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.3, duration: 0.6, ease: "easeOut" }}
+                >
                     <Button label="Voir nos projets" changeColor="primary" to="/projects" />
-                </div>
-
-                {/**searching for projects */}
-                <div className="flex flex-row items-center justify-center mt-6 gap-2">
-                    <input
-                        type="text"
-                        placeholder="Rechercher des projets..."
-                        className="px-4 py-2 rounded-lg w-full max-w-md focus:outline-none focus:ring-2 focus:ring-main-color border-btn text-white md:text-gray-"
-                    />
-                    <Button label="Rechercher" changeColor="primary" to="/projects" />
-                </div>
+                </motion.div>
             </div>
 
             {/* Dégradé décoratif bas */}
-            <div className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <motion.div
+                className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-black/20 to-transparent"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5, duration: 1 }}
+            />
         </section>
     );
 };

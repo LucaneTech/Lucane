@@ -7,6 +7,8 @@ const technologies = [
     icon: '',
     imageUrl: 'icons/react.png',
     color: 'text-sky-500',
+    bgColor: 'bg-sky-100 dark:bg-sky-900/30',
+    borderColor: 'border-sky-300 dark:border-sky-700'
   },
   {
     title: 'TypeScript',
@@ -14,6 +16,8 @@ const technologies = [
     icon: '',
     imageUrl: 'icons/typescript.png',
     color: 'text-blue-600',
+    bgColor: 'bg-blue-100 dark:bg-blue-900/30',
+    borderColor: 'border-blue-300 dark:border-blue-700'
   },
   {
     title: 'Node.js',
@@ -21,6 +25,8 @@ const technologies = [
     icon: '',
     imageUrl: 'icons/nodejs.png',
     color: 'text-green-600',
+    bgColor: 'bg-green-100 dark:bg-green-900/30',
+    borderColor: 'border-green-300 dark:border-green-700'
   },
   {
     title: 'Tailwind CSS',
@@ -28,6 +34,8 @@ const technologies = [
     icon: '',
     imageUrl: 'icons/tailwindcss.png',
     color: 'text-cyan-500',
+    bgColor: 'bg-cyan-100 dark:bg-cyan-900/30',
+    borderColor: 'border-cyan-300 dark:border-cyan-700'
   },
   {
     title: 'Docker',
@@ -35,6 +43,8 @@ const technologies = [
     icon: '',
     imageUrl: 'icons/docker.png',
     color: 'text-blue-500',
+    bgColor: 'bg-blue-100 dark:bg-blue-900/30',
+    borderColor: 'border-blue-300 dark:border-blue-700'
   },
   {
     title: 'MongoDB',
@@ -42,6 +52,8 @@ const technologies = [
     icon: '',
     imageUrl: 'icons/mongodb.png',
     color: 'text-emerald-600',
+    bgColor: 'bg-emerald-100 dark:bg-emerald-900/30',
+    borderColor: 'border-emerald-300 dark:border-emerald-700'
   },
   {
     title: 'AWS',
@@ -49,6 +61,8 @@ const technologies = [
     icon: '',
     imageUrl: 'icons/aws.png',
     color: 'text-amber-500',
+    bgColor: 'bg-amber-100 dark:bg-amber-900/30',
+    borderColor: 'border-amber-300 dark:border-amber-700'
   },
   {
     title: 'Python',
@@ -56,15 +70,20 @@ const technologies = [
     icon: '',
     imageUrl: 'icons/python.png',
     color: 'text-yellow-400',
+    bgColor: 'bg-yellow-100 dark:bg-yellow-900/30',
+    borderColor: 'border-yellow-300 dark:border-yellow-700'
   },
   {
     title: 'GitHub',
     description: "Plateforme de versionnage et de collaboration pour le code source, indispensable en équipe.",
     icon: '',
     imageUrl: '/icons/github.png',
-    color: 'text-black-900 dark:text-black-200',
+    color: 'text-gray-800 dark:text-gray-200',
+    bgColor: 'bg-gray-100 dark:bg-gray-800/40',
+    borderColor: 'border-gray-300 dark:border-gray-700'
   }
 ];
+
 
 
 

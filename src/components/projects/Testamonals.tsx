@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 interface CardData {
   program: string;
@@ -9,63 +10,107 @@ interface CardData {
 }
 
 const Testamonals: React.FC = () => {
- const cardsData: CardData[] = [
+  const cardsData: CardData[] = [
   {
-    image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200',
-    name: 'Briar Martin',
-    program: 'Licence en Informatique',
-    testimonial: 'L’école m’a permis de développer des compétences solides et de décrocher mon premier stage en entreprise dès la 2ème année.',
-    date: 'Avril 2025'
+    image: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=200&auto=format&fit=crop&q=60',
+    name: 'Camille Dupont',
+    program: 'CEO — GreenTech Solutions',
+    testimonial:
+      "L’équipe a transformé notre idée en une plateforme SaaS complète en moins de 3 mois. Le suivi était hyper pro et la qualité du code irréprochable.",
+    date: 'Septembre 2025'
   },
   {
-    image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200',
-    name: 'Avery Johnson',
-    program: 'Master Marketing Digital',
-    testimonial: 'Les professeurs sont toujours disponibles et le réseau d’anciens m’a énormément aidé pour trouver une alternance.',
-    date: 'Mai 2025'
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&auto=format&fit=crop&q=60',
+    name: 'Nicolas Bernard',
+    program: 'Directeur Technique — Nova Digital',
+    testimonial:
+      "Leur approche agile nous a permis de sortir une version bêta ultra stable. Leur équipe frontend est juste incroyable — design moderne et super fluide.",
+    date: 'Août 2025'
   },
   {
-    image: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60',
-    name: 'Jordan Lee',
-    program: 'Bachelor Design Graphique',
-    testimonial: 'L’environnement est super stimulant, on travaille sur des projets concrets qui nous préparent directement au monde professionnel.',
+    image: 'https://images.unsplash.com/photo-1544725176-7c40e5a2c9f9?w=200&auto=format&fit=crop&q=60',
+    name: 'Sarah Lefebvre',
+    program: 'Fondatrice — MyFit App',
+    testimonial:
+      "Ils ont compris notre vision dès le premier call. L’application mobile qu’ils ont développée est stable, rapide et nos utilisateurs l’adorent.",
+    date: 'Juillet 2025'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1603415526960-f7e0328e3d31?w=200&auto=format&fit=crop&q=60',
+    name: 'Jonathan Mercier',
+    program: 'Chef de projet — FinanciaTech',
+    testimonial:
+      "Un vrai partenaire technique. Toujours disponibles, force de proposition, et surtout, à l’écoute. On a gagné un temps fou grâce à leur expertise backend.",
     date: 'Juin 2025'
   },
   {
-    image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60',
-    name: 'Sofia Mendes',
-    program: 'Licence Sciences de Gestion',
-    testimonial: 'Grâce à l’accompagnement personnalisé, j’ai gagné en confiance et j’ai pu présenter mon projet entrepreneurial devant un jury d’experts.',
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=60',
+    name: 'Lina Costa',
+    program: 'Responsable Communication — BeSeen Agency',
+    testimonial:
+      "Leur équipe UI/UX a complètement refondu notre site web. Résultat : +40% de conversions et un design qui fait l’unanimité.",
     date: 'Mai 2025'
   },
+  {
+    image: 'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=200&auto=format&fit=crop&q=60',
+    name: 'Hugo Delattre',
+    program: 'Entrepreneur — Freelance Connect',
+    testimonial:
+      "Ils m’ont accompagné sur tout le MVP, du prototypage au déploiement. Un mix parfait entre créativité et rigueur technique.",
+    date: 'Avril 2025'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60',
+    name: 'Aïcha Rahmani',
+    program: 'CTO — HealthLink',
+    testimonial:
+      "On cherchait une équipe capable de livrer vite sans sacrifier la qualité. Pari réussi. Leur code est propre, scalable et super bien documenté.",
+    date: 'Mars 2025'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=60',
+    name: 'Lucas Fontaine',
+    program: 'Fondateur — DataPulse Analytics',
+    testimonial:
+      "Collaboration au top ! Ils ont su intégrer des API complexes et optimiser notre tableau de bord. Leur réactivité est impressionnante.",
+    date: 'Février 2025'
+  }
 ];
 
-
-  // Props typées
+  // Carte animée
   const CreateCard: React.FC<{ card: CardData }> = ({ card }) => (
-    <div className="p-4 rounded-lg mx-4 shadow hover:shadow-lg transition-all duration-200 w-72 shrink-0">
+    <motion.div
+      className="p-4 rounded-lg mx-4 shadow hover:shadow-xl transition-all duration-300 w-72 shrink-0 dark:bg-gray-900/70 bg-white/80 backdrop-blur-sm border border-gray-100 dark:border-gray-800"
+      whileHover={{ scale: 1.05, y: -5 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
       <div className="flex gap-2">
         <img className="size-11 rounded-full" src={card.image} alt={card.name} />
         <div className="flex flex-col">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 font-semibold text-slate-800 dark:text-white">
             <p>{card.name}</p>
-            {/* ton svg check bleu */}
+            {/* Check bleu stylé */}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="#3b82f6" className="size-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
           </div>
           <span className="text-xs text-slate-500">{card.program}</span>
         </div>
       </div>
-      <p className="text-sm py-4 text-gray-800">
-        {card.testimonial}
+      <p className="text-sm py-4 text-gray-800 dark:text-gray-100 italic">
+        “{card.testimonial}”
       </p>
       <div className="flex items-center justify-between text-slate-500 text-xs">
-        <div className="flex items-center gap-1">
-          <span>Publié le </span>
-         
-        </div>
+        <span>Publié le</span>
         <p>{card.date}</p>
       </div>
-    </div>
+    </motion.div>
   );
+
+  const title = "Témoignages de nos clients";
 
   return (
     <>
@@ -81,31 +126,62 @@ const Testamonals: React.FC = () => {
           animation-direction: reverse;
         }
       `}</style>
-      <div className="text-center max-w-[800px] mx-auto mb-8 px-4 mt-16">
-        <h1 className="main-color font-semibold text-center text-2xl md:text-4xl mb-4 ">Temoignages de nos clients</h1>
-        <p>Don't just take our words. Découvrez ce que nos utilisateurs disent de nous. Nous cherchons constamment à nous améliorer. Si votre expérience est positive, n'hésitez pas à laisser un avis.</p>
-      </div>
+
+      <motion.div
+        className="text-center max-w-[800px] mx-auto mb-8 px-4 mt-16"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <motion.h2
+          className="text-4xl md:text-5xl font-extrabold text-slate-800 dark:text-white mb-6"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          {title.split(" ").map((word, i) =>
+            i === 1 ? (
+              <span key={i} className="main-color">
+                {" "}{word}{" "}
+              </span>
+            ) : (
+              word + " "
+            )
+          )}
+        </motion.h2>
+        <motion.p
+          className="text-lg md:text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+        >
+          Don’t just take our words. Découvrez ce que nos utilisateurs disent de nous.  
+          Nous cherchons constamment à nous améliorer.  
+          Si votre expérience est positive, laissez un avis et faites partie de l’aventure.
+        </motion.p>
+      </motion.div>
 
       {/* Ligne 1 */}
-      <div className="marquee-row w-full mx-auto max-w-5xl overflow-hidden relative">
-        <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent "></div>
-        <div className="marquee-inner flex transform-gpu min-w-[200%] pt-10 pb-5 ">
+      <div className="marquee-row w-full mx-auto max-w-6xl overflow-hidden relative">
+        <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white dark:from-transparent to-transparent"></div>
+        <div className="marquee-inner flex transform-gpu min-w-[200%] pt-10 pb-5">
           {[...cardsData, ...cardsData].map((card, index) => (
             <CreateCard key={index} card={card} />
           ))}
         </div>
-        <div className="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
+        <div className="absolute right-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-l from-white dark:from-transparent to-transparent"></div>
       </div>
 
       {/* Ligne 2 */}
-      <div className="marquee-row w-full mx-auto max-w-5xl overflow-hidden relative">
-        <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
+      <div className="marquee-row w-full mx-auto max-w-6xl overflow-hidden relative">
+        <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white dark:from-transparent to-transparent"></div>
         <div className="marquee-inner marquee-reverse flex transform-gpu min-w-[200%] pt-10 pb-5">
           {[...cardsData, ...cardsData].map((card, index) => (
             <CreateCard key={index} card={card} />
           ))}
         </div>
-        <div className="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
+        <div className="absolute right-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-l from-white dark:from-transparent to-transparent"></div>
       </div>
     </>
   );

@@ -100,7 +100,7 @@ const FeaturesSection: React.FC = () => {
                 {item.description.map((desc, i) => (
                   <motion.p
                     key={i}
-                    className="flex items-center gap-2 text-gray-900 dark:text-white"
+                    className="flex items-center gap-2 text-gray-900/70 dark:text-white"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.2 }}

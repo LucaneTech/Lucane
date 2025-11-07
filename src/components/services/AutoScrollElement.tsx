@@ -24,7 +24,7 @@ const AutoScrollElement: React.FC = () => {
         {Elements.map((item, index) => (
           <div
             key={`${item.id}-${index}`}
-            className={`inline-block bg-white dark:bg-gray-900 shadow-lg rounded-lg px-5 md:px-8 py-3 text-xl font-semibold text-[#008080] dark:text-white mx-2 transition-transform duration-300 hover:scale-105`}
+            className={`inline-block bg-white dark:bg-gray-900/70 shadow-lg rounded-lg px-5 md:px-8 py-3 text-xl font-semibold text-[#008080] dark:text-white mx-2 transition-transform duration-300 hover:scale-105`}
           >
             <a href="#">{item.name}</a>
           </div>

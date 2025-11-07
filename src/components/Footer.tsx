@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
           <Link to="/">
             <motion.img
               src={theme === "dark" ? logoLight : logo}
-              alt="Logo"
+              alt="Logo lucane"
               className="w-24 sm:w-28 md:w-48 h-auto object-contain"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}

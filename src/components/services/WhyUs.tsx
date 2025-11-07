@@ -31,7 +31,7 @@ const WhyUs: React.FC = () => {
   const title = "Pourquoi nous choisir";
 
   return (
-    <section className="px-4 py-10 mx-auto text-center bg-[#fafafa] dark:bg-gray-900">
+    <section className="px-4 py-10 mx-auto text-center bg-[#fafafa] dark:bg-gray-900/70">
       {/* Titre */}
       <motion.h2
         className="text-4xl md:text-5xl font-bold text-slate-800 mb-6 dark:text-white"

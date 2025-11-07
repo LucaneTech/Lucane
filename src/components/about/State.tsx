@@ -10,10 +10,10 @@ const StatsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-base-200">
+    <section className="py-20">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold mb-4 text-gray-800"
+          className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-[#008080] mb-6 "
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -22,7 +22,7 @@ const StatsSection: React.FC = () => {
           Nos Chiffres Clés
         </motion.h2>
         <motion.p
-          className="text-gray-600 mb-16 max-w-2xl mx-auto"
+          className="text-gray-600 dark:text-gray-200 mb-16 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -55,7 +55,7 @@ const StatCard: React.FC<StatCardProps> = ({ stat, delay }) => {
     if (inView) {
       let start = 0;
       const end = stat.value;
-      const duration = 1200; // ms
+      const duration = 1200; 
       const stepTime = Math.abs(Math.floor(duration / end));
 
       const timer = setInterval(() => {
@@ -71,15 +71,15 @@ const StatCard: React.FC<StatCardProps> = ({ stat, delay }) => {
   return (
     <motion.div
       ref={ref}
-      className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center justify-center hover:shadow-2xl transition-shadow cursor-default"
+      className="bg-white dark:bg-gray-900/70 border border-gray-500 rounded-xl shadow-lg p-8 flex flex-col items-center justify-center  hover:shadow-2xl hover:scale-90 cursor-pointer  transition duration-300 ease-in-out"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
     >
       <div className="mb-4">{stat.icon}</div>
-      <h3 className="text-3xl font-bold text-gray-800 mb-2">+{count}</h3>
-      <p className="text-gray-600 text-center">{stat.label}</p>
+      <h3 className="text-4xl font-bold text-gray-800 dark:text-white mb-2">+{count}</h3>
+      <p className="text-gray-600 text-center dark:text-gray-200">{stat.label}</p>
     </motion.div>
   );
 };

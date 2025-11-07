@@ -6,8 +6,6 @@ import {
   Home,
   Info,
 
-  Newspaper,
-
   Phone,
   Briefcase,
   Cpu,
@@ -17,7 +15,6 @@ import {
 import Button from "../ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Footer } from "./Footer";
-// import { Footer } from "./Footer";
 export const logo = "logo_color.png";
 export const logoLight = "logoLight.png";
 
@@ -69,7 +66,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           <Link to="/">
             <motion.img
               src={theme === "dark" ? logoLight : logo}
-              alt="Logo"
+              alt="Logo lucane"
               className="w-24 sm:w-28 md:w-48 h-auto object-contain"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
@@ -125,13 +122,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
               </Link>
             </motion.div>
 
-            {/* Blog / Actualités */}
-            <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-              <Link to="/blog" className="hover:text-main-color transition relative group">
-                Blog
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            </motion.div>
+           
 
 
           </motion.div>
@@ -204,7 +195,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                 <Link to="/">
                   <motion.img
                     src={theme === "dark" ? logoLight : logo}
-                    alt="Logo"
+                    alt="Logo lucane"
                     className="w-24 h-auto object-contain"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
@@ -237,7 +228,6 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                   { to: "/projects", label: "Projets", icon: Briefcase }, // Projets → Briefcase
                   { to: "/technologies", label: "Technologies", icon: Cpu },  // Technologies → Cpu (tech)
                   { to: "/about", label: "À propos", icon: Info },     // À propos → Info
-                  { to: "/blog", label: "Blog", icon: Newspaper },        // Blog → Newspaper
                 ].map((item, index) => (
                   <motion.div
                     key={item.to}

@@ -50,23 +50,24 @@ const MeetOurPeople: React.FC<MeetOurPeopleProps> = ({ members }) => {
         Contactez-nous!
       </motion.h3>
 
-      <motion.h1
-        className="text-3xl md:text-4xl font-semibold mb-4 text-gray-800"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        Rencontrez notre équipe talentueuse
-      </motion.h1>
+     <motion.h1
+  className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-6"
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.1 }}
+>
+  Rencontrez notre équipe talentueuse
+</motion.h1>
 
-      <motion.p
-        className="w-3/5 mb-14 text-gray-500 text-sm"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
-      </motion.p>
+<motion.p
+  className="w-3/5 mb-14 text-gray-500 text-md dark:text-gray-200"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+>
+  Derrière chaque projet, il y a des esprits passionnés. Découvrez les personnes créatives et déterminées qui donnent vie à nos idées et font avancer notre vision chaque jour.
+</motion.p>
+
 
       <div className="flex flex-wrap gap-6 items-center justify-center">
         {members.map((member, idx) => (
