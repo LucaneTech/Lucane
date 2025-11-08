@@ -53,7 +53,7 @@ const TrustedCompanies: React.FC = () => {
             </motion.p>
 
       <motion.div
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12 max-w-5xl mx-auto"
+        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 mt-12 max-w-5xl mx-auto"
         initial="hidden"
         whileInView="visible"
         variants={{

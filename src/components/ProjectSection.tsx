@@ -26,10 +26,6 @@ interface ProjectSectionProps {
 // Animation config
 const transition: Transition = { duration: 0.6, ease: "easeOut" };
 
-const itemVariants: Variants = {
-  hidden: { y: 30, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition },
-};
 
 const cardVariants: Variants = {
   hidden: { y: 50, opacity: 0 },
@@ -61,7 +57,32 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
         className="container mx-auto px-6"
       >
         {/* Title + description */}
-       
+        <motion.h2
+        className="text-4xl md:text-5xl font-bold text-slate-800 mb-6 dark:text-white"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ delay: 0.2, duration: 0.7 }}
+      >
+        {title.split(" ").map((word, i) =>
+          i === 1 ? (
+            <span key={i} className="main-color"> {word} </span>
+          ) : (
+            word + " "
+          )
+        )}
+      </motion.h2>
+
+      {/* Description */}
+      <motion.p
+        className="text-base max-w-3xl mx-auto"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ delay: 0.4, duration: 0.7 }}
+      >
+        {description}.
+      </motion.p>
 
         {/* Cards */}
         <motion.div
