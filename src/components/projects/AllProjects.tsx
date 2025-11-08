@@ -81,7 +81,7 @@ const AllProjects: React.FC = () => {
 
 
   return (
-    <ProjectSection projects={projects} />
+    <ProjectSection projects={projects} title='Nos plus pertinents projets' />
   );
 };
 

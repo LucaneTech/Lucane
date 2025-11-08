@@ -54,7 +54,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="container mx-auto px-6"
+        className="container mx-auto px-6 text-center"
       >
         {/* Title + description */}
         <motion.h2
@@ -75,7 +75,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
 
       {/* Description */}
       <motion.p
-        className="text-base max-w-3xl mx-auto"
+        className="text-base max-w-3xl mx-auto mb-8"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
