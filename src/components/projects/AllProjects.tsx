@@ -61,7 +61,7 @@ const AllProjects: React.FC = () => {
       githubUrl: 'https://github.com/francisco-mouanda/fastapi-mobile-api',
       liveUrl: 'https://api-docs.swagger.io',
       featured: true,
-      date: 'Janvier 2025',
+      date: 'Janvier 205',
       bgColor: 'bg-emerald-100'
     },
     {
