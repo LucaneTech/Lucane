@@ -61,12 +61,12 @@ const AllProjects: React.FC = () => {
       githubUrl: 'https://github.com/francisco-mouanda/fastapi-mobile-api',
       liveUrl: 'https://api-docs.swagger.io',
       featured: true,
-      date: 'Janvier 205',
+      date: 'Janvier 2025',
       bgColor: 'bg-emerald-100'
     },
     {
       id: 6,
-      title: 'E-commerce Laravel',
+      title: 'E-commerce ',
       description: 'Boutique en ligne complète avec catalogue de produits, panier d\'achat, système de paiement Stripe et interface d\'administration. Gestion des commandes et des utilisateurs.',
       image: "images/site.jpg",
       technologies: ['Laravel', 'PHP', 'MySQL', 'Tailwind CSS'],
