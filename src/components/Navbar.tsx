@@ -56,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
     <>
 
       <motion.nav
-        className={`w-11/12 mx-auto items-center mt-3 md:mt-5 dark:bg-gray-900 shadow-xl ${className} rounded-lg transition-all duration-300 fixed top-4 z-50 left-0 right-0 py-1/2 md:py-3/2`}
+        className={`w-11/12 mx-auto items-center mt-3 md:mt-5 dark:bg-gray-800/70  backdrop-blur-lg shadow-xl ${className} rounded-lg transition-all duration-300 fixed top-4 z-50 left-0 right-0 py-1/2 md:py-3/2`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}

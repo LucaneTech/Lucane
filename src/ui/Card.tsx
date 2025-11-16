@@ -23,7 +23,10 @@ const Card: React.FC<CardProps> = ({
     <div
       className={`w-80 h-64 rounded-xl p-0.5 duration-300 hover:shadow-2xl cursor-pointer shadow-lg`}
     >
-      <div className={`bg-white dark:bg-slate-800 p-6 h-full w-full rounded-[10px] flex flex-col items-center justify-center text-center border-2 ${borderColor}`}>
+      <div
+        className={`bg-transparent backdrop-blur-md p-6 h-full w-full rounded-[10px] flex flex-col items-center justify-center text-center border-2 ${borderColor}`}
+      >
+
         {icon && (
           <div className={`mb-4 ${color} p-3 rounded-full ${bgColor}`}>
             {icon}

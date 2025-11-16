@@ -121,7 +121,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
       <div className="p-4 flex-1 flex flex-col">
         <motion.h3
           whileHover={{ x: 3 }}
-          className="text-lg font-bold text-slate-800  mb-2 text-hover dark:group-hover:text-blue-400 transition-colors cursor-pointer line-clamp-2"
+          className="text-lg font-bold text-slate-800 dark:text-white  mb-2 text-hover dark:group-hover:text-blue-400 transition-colors cursor-pointer line-clamp-2"
         >
           {project.title}
         </motion.h3>

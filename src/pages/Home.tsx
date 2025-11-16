@@ -4,7 +4,7 @@ import ServicesSection from "../components/home/ServicesSection";
 import FeaturedProjects from "../components/home/FeaturedProjects";
 import TrustedCompanies from "../components/home/TrustedCompanies";
 import Button from "../ui/Button";
-
+import MemoryGrid from "../components/home/MemoryGrid";
 const Home: React.FC = () => {
   return (
     <div className="mt-32 md:mt-48">
@@ -14,7 +14,7 @@ const Home: React.FC = () => {
       {/**services section */}
       <ServicesSection />
 
-
+      <MemoryGrid />
       {/**featured projects section */}
       <FeaturedProjects />
 

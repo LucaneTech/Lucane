@@ -9,16 +9,18 @@ import Projects from "./pages/Projects";
 import Technologies from "./pages/Technologies";
 import Services from "./pages/services";
 import Contact from "./pages/Contact";
+import Layout from "./components/Layout";
 
 
 function App() {
   return (
   
-   
+      <Layout>
         <Router>
          {/* <PageLoaderWrapper> */}
             <ScrollProgress />
             <BackToTop />
+           
             <Routes>
               <Route path="/" element={<Navbar className="bg-white "/>}>
                 <Route index element={<Home />} />
@@ -31,8 +33,10 @@ function App() {
                 
               </Route>
             </Routes>
+            
       {/* </PageLoaderWrapper> */}
         </Router>
+        </Layout>
      
      
       );
