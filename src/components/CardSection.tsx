@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Play, SquarePause } from "lucide-react";
 import { motion } from "framer-motion"; 
 import Card from "../ui/Card";
 
@@ -27,7 +26,6 @@ const CardSection: React.FC<ServicesCarouselProps> = ({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [autoScroll, setAutoScroll] = useState(true);
 
-  // Auto-scroll logic
   useEffect(() => {
     if (!scrollRef.current || !autoScroll) return;
     const container = scrollRef.current;
@@ -48,7 +46,6 @@ const CardSection: React.FC<ServicesCarouselProps> = ({
     return () => cancelAnimationFrame(animationFrame);
   }, [autoScroll]);
 
-  // Stop auto-scroll on user interaction
   useEffect(() => {
     const stopAutoScroll = () => setAutoScroll(false);
     const container = scrollRef.current;
@@ -135,21 +132,7 @@ const CardSection: React.FC<ServicesCarouselProps> = ({
         whileInView={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
       >
-        {autoScroll ? (
-          <button
-            onClick={() => setAutoScroll(false)}
-            className="bg-main-color-opacity rounded-full p-2"
-          >
-            <SquarePause className="w-5 h-5 text-white" />
-          </button>
-        ) : (
-          <button
-            onClick={() => setAutoScroll(true)}
-            className="bg-main-color-opacity rounded-full p-2"
-          >
-            <Play className="w-5 h-5 text-white" />
-          </button>
-        )}
+        
       </motion.div>
     </motion.section>
   );

@@ -7,36 +7,55 @@ import CallAction from "../components/CallAction";
 
 const teamMembers: TeamMember[] = [
   {
-    name: "Alice Dupont",
-    role: "CEO",
-    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=50",
-    description: "Passionnée par la tech et l’innovation.",
+    name: "Francisco Mouanda",
+    role: "CEO & Fondateur",
+    image: "images/team/ceo.jpeg",
+    description: "Passionné par la tech, l'innovation et la création d'équipes performantes.",
     socials: [
-      { type: "linkedin", url: "https://linkedin.com/in/alice" },
-      { type: "twitter", url: "https://twitter.com/alice" }
+      { type: "linkedin", url: "#" },
+      { type: "twitter", url: "#" }
     ]
   },
   {
-    name: "Bob Martin",
-    role: "Lead Developer",
-    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=50",
-    description: "Expert en développement web et mobile.",
+    name: "Amina Diop",
+    role: "Lead Développeuse",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=50",
+    description: "Experte en développement web et mobile, passionnée par les nouvelles technologies.",
     socials: [
-      { type: "linkedin", url: "https://linkedin.com/in/bob" },
-      { type: "facebook", url: "https://facebook.com/bob" }
+      { type: "linkedin", url: "#" },
+     
     ]
   },
   {
-    name: "Bob Martin",
-    role: "Lead Developer",
-    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=50",
-    description: "Expert en développement web et mobile.",
+    name: "Lucas Ferreira",
+    role: "Designer UX/UI",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=50",
+    description: "Créatif et orienté utilisateur, il transforme les idées en interfaces intuitives.",
     socials: [
-      { type: "linkedin", url: "https://linkedin.com/in/bob" },
-      { type: "facebook", url: "https://facebook.com/bob" }
+      { type: "linkedin", url: "#" },
+    ]
+  },
+  {
+    name: "Dieff Sanchiez",
+    role: "Product Manager",
+    image: "images/team/product_manager.jpeg",
+    description: "Coordonne les projets et veille à ce que chaque produit réponde aux besoins réels des utilisateurs.",
+    socials: [
+      { type: "linkedin", url: "#" }
+    ]
+  },
+  {
+    name: "Omar Diallo",
+    role: "DevOps / Cloud Engineer",
+    image: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?q=80&w=50",
+    description: "Assure la scalabilité et la performance des infrastructures cloud.",
+    socials: [
+      { type: "linkedin", url: "#" },
+     
     ]
   }
 ];
+
 
 
 

@@ -1,6 +1,6 @@
-import React, { type JSX } from "react";
+// import { type JSX } from "react";
 import { motion, type Variants } from "framer-motion";
-import { Linkedin, Facebook, Twitter } from "lucide-react";
+// import { Linkedin, Facebook, Twitter } from "lucide-react";
 
 type SocialLink = {
   type: "linkedin" | "facebook" | "twitter";
@@ -20,11 +20,11 @@ type MeetOurPeopleProps = {
 };
 
 // Icônes sociales
-const socialIcons: Record<string, JSX.Element> = {
-  linkedin: <Linkedin size={16} className="text-sky-400 duration-300 hover:text-white" />,
-  facebook: <Facebook size={16} className="text-blue-800 duration-300 hover:text-white" />,
-  twitter: <Twitter size={16} className="text-red-700 duration-300 hover:text-white" />,
-};
+// const socialIcons: Record<string, JSX.Element> = {
+//   linkedin: <Linkedin size={16} className="text-sky-400 duration-300 hover:text-white" />,
+//   facebook: <Facebook size={16} className="text-blue-800 duration-300 hover:text-white" />,
+//   twitter: <Twitter size={16} className="text-red-700 duration-300 hover:text-white" />,
+// };
 
 // Variants pour les cartes de l’équipe
 const cardVariants: Variants = {
@@ -50,23 +50,23 @@ const MeetOurPeople: React.FC<MeetOurPeopleProps> = ({ members }) => {
         Contactez-nous!
       </motion.h3>
 
-     <motion.h1
-  className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-6"
-  initial={{ opacity: 0, y: -10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, delay: 0.1 }}
->
-  Rencontrez notre équipe talentueuse
-</motion.h1>
+      <motion.h1
+        className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-6"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+      >
+        Rencontrez notre équipe talentueuse
+      </motion.h1>
 
-<motion.p
-  className="w-3/5 mb-14 text-gray-500 text-md dark:text-gray-200"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 0.6, delay: 0.2 }}
->
-  Derrière chaque projet, il y a des esprits passionnés. Découvrez les personnes créatives et déterminées qui donnent vie à nos idées et font avancer notre vision chaque jour.
-</motion.p>
+      <motion.p
+        className="w-3/5 mb-14 text-gray-500 text-md dark:text-gray-200"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        Derrière chaque projet, il y a des esprits passionnés. Découvrez les personnes créatives et déterminées qui donnent vie à nos idées et font avancer notre vision chaque jour.
+      </motion.p>
 
 
       <div className="flex flex-wrap gap-6 items-center justify-center">
@@ -81,13 +81,18 @@ const MeetOurPeople: React.FC<MeetOurPeopleProps> = ({ members }) => {
             viewport={{ once: true, amount: 0.3 }}
             whileHover="hover"
           >
-            <motion.img
-              className="w-24 rounded-full border-btn"
-              src={member.image}
-              alt={member.name}
+            <motion.div
+              className="w-24 h-24 overflow-hidden rounded-full border-btn flex items-center justify-center"
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 150 }}
-            />
+            >
+              <motion.img
+                className="min-w-full min-h-full object-cover"
+                src={member.image}
+                alt={member.name}
+              />
+            </motion.div>
+
 
             <motion.h2 className="main-color group-hover:text-white text-lg font-medium mt-2">
               {member.name}
@@ -99,7 +104,7 @@ const MeetOurPeople: React.FC<MeetOurPeopleProps> = ({ members }) => {
               {member.description}
             </motion.p>
 
-            <motion.div className="flex items-center space-x-4 mt-6 text-gray-500">
+            {/* <motion.div className="flex items-center space-x-4 mt-6 text-gray-500">
               {member.socials.map((social, i) => (
                 <motion.a
                   key={i}
@@ -112,7 +117,7 @@ const MeetOurPeople: React.FC<MeetOurPeopleProps> = ({ members }) => {
                   {socialIcons[social.type]}
                 </motion.a>
               ))}
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         ))}
       </div>

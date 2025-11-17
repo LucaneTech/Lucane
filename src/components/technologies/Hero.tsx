@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
         custom={0.9}
       >
         <motion.img
-          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1470"
+          src="images/technologies/hero.png"
           alt="Hero"
           loading="lazy"
           className="w-full h-[450px] object-cover rounded-lg shadow-2xl"

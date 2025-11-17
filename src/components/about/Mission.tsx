@@ -1,6 +1,5 @@
 import React from "react";
 import { motion, type Variants, easeOut } from "framer-motion";
-import projectImage from "../../../public/images/project.jpg";
 import { Rocket, Code2, Globe } from "lucide-react";
 
 const containerVariants: Variants = {
@@ -73,7 +72,7 @@ const Mission: React.FC = () => {
 
         <motion.img
           variants={itemVariants}
-          src={projectImage}
+          src="images/about/lucane.png"
           alt="Innovation and teamwork illustration"
           className="rounded-2xl shadow-xl object-cover w-full max-w-lg mx-auto md:mx-0 transition-transform duration-500 hover:scale-105"
         />

@@ -81,6 +81,24 @@ const technologies = [
     color: 'text-gray-800 dark:text-gray-200',
     bgColor: 'bg-gray-100 dark:bg-gray-800/40',
     borderColor: 'border-gray-300 dark:border-gray-700'
+  },
+  {
+    title: 'Django',
+    description: "Framework web Python haut niveau qui encourage le développement rapide et propre.",
+    icon: '',
+    imageUrl: '/icons/django.png',
+    color: 'text-green-600 dark:text-green-400',
+    bgColor: 'bg-green-600 dark:bg-green-400',
+    borderColor: 'border-green-600 dark:border-green-400'
+  },
+  {
+    title: 'PostgreSQL',
+    description: "Système de gestion de base de données relationnelle puissant et open-source.",
+    icon: '',
+    imageUrl: '/icons/postgresql.png',
+    color: 'text-blue-600 dark:text-blue-400',
+    bgColor: 'bg-blue-600 dark:bg-blue-400',
+    borderColor: 'border-blue-600 dark:border-blue-400'
   }
 ];
 

@@ -70,10 +70,11 @@ const FeaturesSection: React.FC = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <img
-          className="w-full max-w-lg rounded-2xl object-cover shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
-          src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/features/card-image-1.png"
-          alt="Feature Illustration"
+          className="w-full max-w-lg rounded-2xl object-cover drop-shadow-[0_10px_15px_rgba(0,128,255,0.5)] cursor-pointer hover:scale-105 transition-transform duration-300"
+          src="images/services/app.jpeg"
+          alt="Process Illustration"
         />
+
       </motion.div>
 
       {/* Feature list */}
@@ -88,7 +89,7 @@ const FeaturesSection: React.FC = () => {
             transition={{ duration: 0.6, delay: index * 0.2 }}
           >
             <div
-              className={`flex items-center justify-center p-5 sm:p-6 ${item.bgColor} ${item.textColor} rounded-full text-2xl font-bold`}
+              className={`flex items-center justify-center p-4 sm:p-6 ${item.bgColor} ${item.textColor} rounded-full text-xl font-bold`}
             >
               {item.number}
             </div>

@@ -12,7 +12,7 @@ interface CardData {
 const Testamonals: React.FC = () => {
   const cardsData: CardData[] = [
   {
-    image: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=200&auto=format&fit=crop&q=60',
+    image: 'https://randomuser.me/api/portraits/women/68.jpg',
     name: 'Camille Dupont',
     program: 'CEO — GreenTech Solutions',
     testimonial:
@@ -20,7 +20,7 @@ const Testamonals: React.FC = () => {
     date: 'Septembre 2025'
   },
   {
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&auto=format&fit=crop&q=60',
+    image: 'https://randomuser.me/api/portraits/men/45.jpg',
     name: 'Nicolas Bernard',
     program: 'Directeur Technique — Nova Digital',
     testimonial:
@@ -28,7 +28,7 @@ const Testamonals: React.FC = () => {
     date: 'Août 2025'
   },
   {
-    image: 'https://images.unsplash.com/photo-1544725176-7c40e5a2c9f9?w=200&auto=format&fit=crop&q=60',
+    image: 'https://randomuser.me/api/portraits/women/21.jpg',
     name: 'Sarah Lefebvre',
     program: 'Fondatrice — MyFit App',
     testimonial:
@@ -36,7 +36,7 @@ const Testamonals: React.FC = () => {
     date: 'Juillet 2025'
   },
   {
-    image: 'https://images.unsplash.com/photo-1603415526960-f7e0328e3d31?w=200&auto=format&fit=crop&q=60',
+    image: 'https://randomuser.me/api/portraits/men/32.jpg',
     name: 'Jonathan Mercier',
     program: 'Chef de projet — FinanciaTech',
     testimonial:
@@ -44,7 +44,7 @@ const Testamonals: React.FC = () => {
     date: 'Juin 2025'
   },
   {
-    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=60',
+    image: 'https://randomuser.me/api/portraits/women/56.jpg',
     name: 'Lina Costa',
     program: 'Responsable Communication — BeSeen Agency',
     testimonial:
@@ -52,7 +52,7 @@ const Testamonals: React.FC = () => {
     date: 'Mai 2025'
   },
   {
-    image: 'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=200&auto=format&fit=crop&q=60',
+    image: 'https://randomuser.me/api/portraits/men/12.jpg',
     name: 'Hugo Delattre',
     program: 'Entrepreneur — Freelance Connect',
     testimonial:
@@ -60,7 +60,7 @@ const Testamonals: React.FC = () => {
     date: 'Avril 2025'
   },
   {
-    image: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60',
+    image: 'https://randomuser.me/api/portraits/women/14.jpg',
     name: 'Aïcha Rahmani',
     program: 'CTO — HealthLink',
     testimonial:
@@ -68,7 +68,7 @@ const Testamonals: React.FC = () => {
     date: 'Mars 2025'
   },
   {
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=60',
+    image: 'https://randomuser.me/api/portraits/men/23.jpg',
     name: 'Lucas Fontaine',
     program: 'Fondateur — DataPulse Analytics',
     testimonial:
@@ -76,6 +76,7 @@ const Testamonals: React.FC = () => {
     date: 'Février 2025'
   }
 ];
+
 
   // Carte animée
   const CreateCard: React.FC<{ card: CardData }> = ({ card }) => (

@@ -23,47 +23,48 @@ const AboutHero: React.FC = () => {
       </svg>
 
       {/* right content */}
-      <motion.div
-        className="flex flex-col items-center md:items-start"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.h1
-          className="text-center md:text-left text-3xl md:text-6xl font-medium md:leading-[68px] max-w-xl text-slate-900 dark:text-white"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          Accélérez vos projets numériques avec <span className="main-color">"Lucane"</span>...
-        </motion.h1>
+     <motion.div
+  className="flex flex-col items-center md:items-start"
+  initial={{ opacity: 0, x: -50 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+>
+  <motion.h1
+    className="text-center md:text-left text-3xl md:text-6xl font-medium md:leading-[68px] max-w-xl text-slate-900 dark:text-white"
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.2 }}
+  >
+    Découvrez <span className="main-color">Lucane</span> : notre histoire et nos valeurs
+  </motion.h1>
 
-        <motion.p
-          className="text-center md:text-left text-sm text-slate-700 dark:text-gray-200 max-w-lg mt-2"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          Nous sommes une agence de développement de logiciels passionnée par la création de solutions numériques
-          innovantes qui stimulent la croissance et transforment les entreprises.
-        </motion.p>
+  <motion.p
+    className="text-center md:text-left text-sm text-slate-700 dark:text-gray-200 max-w-lg mt-2"
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.4 }}
+  >
+    Chez Lucane, nous croyons en l'innovation responsable et la création de solutions numériques qui font la différence. 
+    Chaque projet que nous entreprenons reflète notre passion, notre éthique et notre engagement envers nos clients et la communauté tech.
+  </motion.p>
 
-        <motion.div
-          className="flex items-center gap-4 mt-8 text-sm"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <Button label="Lancez-vous!" changeColor="primary" to="#" />
-          <Button label="Contactez-nous" changeColor="secondary" to="#" />
-        </motion.div>
-      </motion.div>
+  <motion.div
+    className="flex items-center gap-4 mt-8 text-sm"
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.6 }}
+  >
+    <Button label="En savoir plus" changeColor="primary" to="#team" />
+    <Button label="Rejoignez-nous" changeColor="secondary" to="#contact" />
+  </motion.div>
+</motion.div>
+
 
       {/* left image */}
       <motion.img
-        src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/hero-section-showcase-4.png"
-        alt="hero"
-        className="transition-all duration-300 mt-10 md:mt-0"
+        src="images/about/logo.png"
+        alt="logo profile lucane"
+        className="transition-all duration-300 mt-10 md:mt-0 w-03/4 md:w-1/2 lg:w-2/5 rounded-xl shadow-xl object-cover"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.8 }}

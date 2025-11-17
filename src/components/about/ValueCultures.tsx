@@ -7,25 +7,25 @@ const values = [
     icon: <Lightbulb size={48} className="text-yellow-400" />,
     title: "Innovation",
     description: "Nous cherchons constamment à repousser les limites pour créer des solutions uniques et efficaces.",
-    image: "/images/project.jpg",
+    image: "/images/about/innovation.png",
   },
   {
     icon: <Users size={48} className="text-indigo-500" />,
     title: "Collaboration",
     description: "Le travail en équipe et l’échange d’idées sont au cœur de nos projets.",
-    image: "/images/project.jpg",
+    image: "/images/about/collaboration.png",
   },
   {
     icon: <Globe size={48} className="text-green-500" />,
     title: "Impact Global",
     description: "Nous développons des produits qui ont un effet concret et positif à l’échelle mondiale.",
-    image: "/images/project.jpg",
+    image: "/images/about/global.png",
   },
   {
     icon: <Heart size={48} className="text-red-500" />,
     title: "Passion & Éthique",
     description: "Chaque ligne de code est guidée par l’excellence et le respect des standards éthiques.",
-    image: "/images/project.jpg",
+    image: "/images/about/ethique.png",
   },
 ];
 

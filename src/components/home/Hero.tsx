@@ -2,17 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import Button from "../../ui/Button";
 
-const avatars = [
-  "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=50",
-  "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=50",
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=50&h=50&auto=format&fit=crop",
-];
 
 const HeroSection: React.FC = () => {
   const strokePrimary = "#0080802a";
 
   return (
-    <section className="relative flex flex-col md:flex-row items-center justify-between mt-8 md:mt-20 px-4 md:px-8 lg:px-24 xl:px-32 pb-20 overflow-hidden">
+    <section className="relative flex flex-col lg:flex-row items-center justify-center md:justify-between mt-8 md:mt-20 px-4 md:px-8 lg:px-24 xl:px-32 pb-20 overflow-hidden gap-6">
       {/* Background SVG */}
       <svg
         className="absolute -z-10 inset-1 w-full h-full"
@@ -20,7 +15,7 @@ const HeroSection: React.FC = () => {
         height="720"
         viewBox="0 0 1440 720"
         fill="none"
-      
+
       >
         <circle cx="711.819" cy="372.562" r="308.334" stroke={strokePrimary} strokeWidth={3} />
         <circle cx="16.942" cy="20.834" r="308.334" stroke={strokePrimary} strokeWidth={2} />
@@ -37,22 +32,12 @@ const HeroSection: React.FC = () => {
       >
         {/* Community avatars */}
         <motion.div
-          className="flex items-center flex-wrap justify-center p-1.5 rounded-full border border-slate-300 text-gray-500 text-xs mb-4 gap-1 bg-white/60 backdrop-blur-md dark:bg-gray-900/70 dark:text-white"
+          className="flex flex-col lg:flex-row  items-center  justify-center p-2 rounded-full border border-slate-300 text-gray-500 dark:text-white text-xs mb-4 gap-1 backdrop-blur-md dark:bg-gray-900/70 "
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-        >
-          <div className="flex -space-x-2">
-            {avatars.map((src, i) => (
-              <img
-                key={i}
-                className="w-7 h-7 rounded-full border-2 border-white"
-                src={src}
-                alt={`user${i + 1}`}
-              />
-            ))}
-          </div>
-          <p className="ml-2">Déjà +50 entreprises nous font confiance</p>
+        > 
+          <p className="ml-2">Déjà <span className="font-bold">+50</span> entreprises nous font confiance...</p>
         </motion.div>
 
         {/* Title */}
@@ -90,25 +75,28 @@ const HeroSection: React.FC = () => {
 
         {/* Card */}
         <motion.div
-          className="hidden lg:flex flex-row rounded-xl bg-white dark:bg-gray-900/70 shadow-lg duration-300 hover:shadow-2xl mt-10 md:max-w-xl overflow-hidden"
+          className="hidden 2xl:flex flex-row rounded-xl bg-white dark:bg-gray-900/70 shadow-lg duration-300 hover:shadow-2xl mt-10 md:max-w-xl overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
         >
           <img
             className="h-24 w-full object-cover rounded-t-lg md:h-40 md:w-48 md:rounded-l-lg"
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=400&auto=format&fit=crop"
-            alt="card"
+            src="images/home/beaute.jpeg"
+            alt="cart projet d'un de mes projets lucane"
           />
           <div className="flex flex-col justify-start p-4">
             <h5 className="mb-2 text-lg font-semibold text-teal-600">
-              Projet client : Espace Pro
+              Projet client : Boutique de beauté
             </h5>
+
             <p className="mb-3 text-sm text-slate-700 dark:text-gray-200">
-              Une application SaaS développée pour simplifier la gestion interne des équipes. 
-              Performance, sécurité et UX au cœur du produit.
+              Réalisation d’une plateforme moderne dédiée à une boutique de beauté.
+              L’objectif : mettre en avant les produits, offrir une expérience d’achat fluide
+              et faciliter la gestion des rendez-vous et des services.
             </p>
-            <p className="text-xs text-gray-400">Dernière mise à jour : il y a 3 min</p>
+
+          
           </div>
         </motion.div>
       </motion.div>
