@@ -264,7 +264,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                     whileTap={{ scale: 0.95 }}
                   >
                     <Link
-                      to="#"
+                      to="/contact"
                       onClick={toggleMenu}
                       className="mt-4 px-4 py-2 text-center border-btn text-[#008080]  dark:text-white rounded-lg shadow-md hover:opacity-90 transition block"
                     >

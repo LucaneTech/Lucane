@@ -7,28 +7,43 @@ interface ContactElementProps {
   icon: React.ReactNode;
   title: string;
   description: string;
+  border?: string;
+  color?: string;
+  bgColor?: string;
 }
 
 const contactElements: ContactElementProps[] = [
   {
     icon: <CircleQuestionMark />,
     title: "Centre d'aide",
-    description: "Des questions ? Nous avons les réponses."
+    description: "Des questions ? Nous avons les réponses.",
+    border: "border-blue-500",
+    color: "text-blue-500",
+    bgColor: "bg-blue-100"
   },
   {
     icon: <MessageSquareMore />,
     title: "Chattez avec nous",
-    description: "Notre équipe est prête à vous aider 24h/24 et 7j/7."
+    description: "Notre équipe est prête à vous aider 24h/24 et 7j/7.",
+    border: "border-green-500",
+    color: "text-green-500",
+    bgColor: "bg-green-100"
   },
   {
     icon: <Phone />,
     title: "Appelez-nous",
-    description: "Contactez-nous directement par téléphone."
+    description: "Contactez-nous directement par téléphone.",
+    border: "border-red-500",
+    color: "text-red-500",
+    bgColor: "bg-red-100"
   },
   {
     icon: <Send />,
     title: "Envoyez un message",
-    description: "Envoyez-nous un message et nous répondrons rapidement."
+    description: "Envoyez-nous un message et nous répondrons rapidement.",
+    border: "border-yellow-500",
+    color: "text-yellow-500",
+    bgColor: "bg-yellow-100"
   }
 ];
 
@@ -36,7 +51,7 @@ const Contact: React.FC = () => {
   const title = 'Contactez-nous'
   return (
     <>
-      <section className="mt-24 sm:mt-42 px-4 sm:px-6">
+      <section className="mt-32 sm:mt-42 px-4 sm:px-6 ">
        
          <motion.div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-6">
@@ -60,13 +75,13 @@ const Contact: React.FC = () => {
           {contactElements.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col sm:flex-row items-center sm:items-start p-6 sm:p-8 border border-gray-400 rounded-lg hover:shadow-lg transition gap-4 sm:gap-8 dark:bg-slate-800"
+              className={`flex flex-col sm:flex-row items-center sm:items-start p-6 sm:p-8 border ${item.border} rounded-2xl hover:shadow-lg transition gap-4 sm:gap-8 dark:bg-slate-800 hover:scale-90 duration-300`}
             >
-              <div className="text-4xl bg-gray-200 shadow-lg duration-300 transition ease-in-out hover:scale-90 main-color p-4 rounded-lg font-bold flex-shrink-0">
+              <div className={`text-4xl ${item.color} ${item.bgColor} shadow-lg duration-300 transition ease-in-out hover:scale-90  p-4  rounded-full font-bold flex-shrink-0`}>
                 {item.icon}
               </div>
               <div className="text-center sm:text-left">
-                <h3 className="font-semibold text-xl mb-1 main-color">{item.title}</h3>
+                <h3 className={`font-semibold text-xl mb-1 ${item.color}`}>{item.title}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-200">{item.description}</p>
               </div>
             </div>
