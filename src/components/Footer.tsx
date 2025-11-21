@@ -151,13 +151,13 @@ const Footer: React.FC = () => {
             </p>
             <p className="flex items-center gap-2">
               <Phone size={16} className="main-color" />
-              (+212) 781343642
+              <a href="tel:+212781343642">(+212) 781343642</a>
             </p>
             <p className="flex items-center gap-2">
               <Send size={16} className="main-color" />
-              contact@lucane.tech
+              <a href="mailto:contact@lucane.tech">contact@lucane.tech</a>
             </p>
-            <Button label="Demander un devis" icon={<Phone />} />
+            <Button label="Demander un devis" icon={<Phone />} to="/contact" />
 
           </div>
         </div>

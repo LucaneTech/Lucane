@@ -63,10 +63,10 @@ const Hero: React.FC = () => {
         custom={0.6}
       >
         <motion.div whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}>
-          <Button label="Découvrez nos projets" changeColor="primary" />
+          <Button label="Nous contactez" changeColor="primary" to="/contact" />
         </motion.div>
         <motion.div whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}>
-          <Button label="Nous contactez" changeColor="secondary" />
+          <Button label="Découvrez nos projets" changeColor="secondary" to="/projects" />
         </motion.div>
       </motion.div>
 
@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
           src="images/technologies/hero.png"
           alt="Hero"
           loading="lazy"
-          className="w-full h-[450px] object-cover rounded-lg shadow-2xl"
+          className="w-full h-[450px] object-cover rounded-xl shadow-2xl cursor-pointer"
           initial={{ scale: 1 }}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}

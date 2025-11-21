@@ -4,9 +4,9 @@ import { Code2, Users, Globe } from "lucide-react";
 
 const StatsSection: React.FC = () => {
   const stats = [
-    { label: "Projets réalisés", value: 50, icon: <Code2 size={40} className="text-indigo-500" /> },
-    { label: "Clients satisfaits", value: 20, icon: <Users size={40} className="text-emerald-500" /> },
-    { label: "Pays couverts", value: 10, icon: <Globe size={40} className="text-orange-500" /> },
+    { label: "Projets réalisés", value: 50, icon: <Code2 size={40} className="text-indigo-500 p-2" />, borderColor: "border-indigo-500" },
+    { label: "Clients satisfaits", value: 20, icon: <Users size={40} className="text-emerald-500 p-2" />, borderColor: "border-emerald-500" },
+    { label: "Pays couverts", value: 10, icon: <Globe size={40} className="text-orange-500 p-2" />, borderColor: "border-orange-500" },
   ];
 
   return (
@@ -42,7 +42,7 @@ const StatsSection: React.FC = () => {
 };
 
 type StatCardProps = {
-  stat: { label: string; value: number; icon: React.ReactNode };
+  stat: { label: string; value: number; icon: React.ReactNode; borderColor: string };
   delay: number;
 };
 
@@ -71,7 +71,7 @@ const StatCard: React.FC<StatCardProps> = ({ stat, delay }) => {
   return (
     <motion.div
       ref={ref}
-      className="bg-white dark:bg-gray-900/70 border border-gray-500 rounded-xl shadow-lg p-8 flex flex-col items-center justify-center  hover:shadow-2xl hover:scale-90 cursor-pointer  transition duration-300 ease-in-out"
+      className={`bg-white dark:bg-gray-900/70 border ${stat.borderColor} rounded-xl shadow-lg p-8 flex flex-col items-center justify-center  hover:shadow-2xl hover:scale-90 cursor-pointer  transition duration-300 ease-in-out`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

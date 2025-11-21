@@ -18,7 +18,7 @@ const Technologies: React.FC = () => {
         <p className="text-sm md:text-base text-white max-w-xl">
          We are a software development agency passionate about crafting innovative digital solutions that drive growth and transform businesses.
         </p>
-         <Button label="Commençons aujourd'hui!" changeColor="white"  className="mt-8 md:mt-10"/>
+         <Button label="Commençons aujourd'hui!" changeColor="white"  className="mt-8 md:mt-10" to="/contact"/>
       </section>
         
        </>

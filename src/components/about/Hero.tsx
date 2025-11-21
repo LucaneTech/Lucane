@@ -54,8 +54,8 @@ const AboutHero: React.FC = () => {
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, delay: 0.6 }}
   >
-    <Button label="En savoir plus" changeColor="primary" to="#team" />
-    <Button label="Rejoignez-nous" changeColor="secondary" to="#contact" />
+    <Button label="Découvrez nos technologies" changeColor="primary" to="/technologies" />
+    <Button label="Rejoignez-nous" changeColor="secondary" to="/contact" />
   </motion.div>
 </motion.div>
 

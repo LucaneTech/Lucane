@@ -19,12 +19,7 @@ type MeetOurPeopleProps = {
   members: TeamMember[];
 };
 
-// Icônes sociales
-// const socialIcons: Record<string, JSX.Element> = {
-//   linkedin: <Linkedin size={16} className="text-sky-400 duration-300 hover:text-white" />,
-//   facebook: <Facebook size={16} className="text-blue-800 duration-300 hover:text-white" />,
-//   twitter: <Twitter size={16} className="text-red-700 duration-300 hover:text-white" />,
-// };
+
 
 // Variants pour les cartes de l’équipe
 const cardVariants: Variants = {
@@ -40,9 +35,9 @@ const cardVariants: Variants = {
 
 const MeetOurPeople: React.FC<MeetOurPeopleProps> = ({ members }) => {
   return (
-    <div className="flex flex-col items-center text-center px-4 py-12">
+    <div className="flex flex-col items-center text-center px-4 py-8">
       <motion.h3
-        className="text-lg font-medium main-color mb-2"
+        className="text-xl font-medium main-color mb-2"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -56,16 +51,16 @@ const MeetOurPeople: React.FC<MeetOurPeopleProps> = ({ members }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        Rencontrez notre équipe talentueuse
+        Rencontrez le fondateur et l'équipe derrière Lucane
       </motion.h1>
 
       <motion.p
-        className="w-3/5 mb-14 text-gray-500 text-md dark:text-gray-200"
+        className="mb-14 text-gray-500 text-md dark:text-gray-300 max-w-2xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        Derrière chaque projet, il y a des esprits passionnés. Découvrez les personnes créatives et déterminées qui donnent vie à nos idées et font avancer notre vision chaque jour.
+        Chez Lucane, notre équipe est notre plus grande force. Découvrez les passionnés de technologie, les innovateurs et les créateurs qui façonnent notre vision et conduisent notre mission.
       </motion.p>
 
 

@@ -54,17 +54,8 @@ const Contact: React.FC = () => {
       <section className="mt-32 sm:mt-42 px-4 sm:px-6 ">
        
          <motion.div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-6">
-            {title.split(" ").map((word, i) =>
-              i === 1 ? (
-                <span key={i} className="text-[#008080]">
-                  {" "}
-                  {word}{" "}
-                </span>
-              ) : (
-                word + " "
-              )
-            )}
+          <h2 className="text-4xl md:text-5xl font-bold main-color mb-6">
+            {title}
           </h2>
           <p className="text-lg md:text-xl text-slate-600 dark:text-white max-w-3xl mx-auto leading-relaxed">
            N’hésitez pas à nous contacter ! Soumettez vos questions ici et nous vous répondrons rapidement.

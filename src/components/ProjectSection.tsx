@@ -10,7 +10,8 @@ export interface Project {
   image: string;
   technologies: string[];
   githubUrl: string;
-  liveUrl: string;
+  liveUrl?: string;
+  category?: string,
   featured?: boolean;
   date?: string;
   bgColor?: string;

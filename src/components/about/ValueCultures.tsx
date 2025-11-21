@@ -68,7 +68,7 @@ const ValuesCultureSection: React.FC = () => {
               <img
                 src={value.image}
                 alt={value.title}
-                className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-52 sm:h-64 md:h-72 object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gray-900/70 flex flex-col justify-center items-center text-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="mb-4">{value.icon}</div>

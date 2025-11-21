@@ -9,32 +9,14 @@ const teamMembers: TeamMember[] = [
   {
     name: "Francisco Mouanda",
     role: "CEO & Fondateur",
-    image: "images/team/ceo.jpeg",
+    image: "images/team/profil.jpeg",
     description: "Passionné par la tech, l'innovation et la création d'équipes performantes.",
     socials: [
       { type: "linkedin", url: "#" },
       { type: "twitter", url: "#" }
     ]
   },
-  {
-    name: "Amina Diop",
-    role: "Lead Développeuse",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=50",
-    description: "Experte en développement web et mobile, passionnée par les nouvelles technologies.",
-    socials: [
-      { type: "linkedin", url: "#" },
-     
-    ]
-  },
-  {
-    name: "Lucas Ferreira",
-    role: "Designer UX/UI",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=50",
-    description: "Créatif et orienté utilisateur, il transforme les idées en interfaces intuitives.",
-    socials: [
-      { type: "linkedin", url: "#" },
-    ]
-  },
+  
   {
     name: "Dieff Sanchiez",
     role: "Product Manager",
@@ -43,18 +25,10 @@ const teamMembers: TeamMember[] = [
     socials: [
       { type: "linkedin", url: "#" }
     ]
-  },
-  {
-    name: "Omar Diallo",
-    role: "DevOps / Cloud Engineer",
-    image: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?q=80&w=50",
-    description: "Assure la scalabilité et la performance des infrastructures cloud.",
-    socials: [
-      { type: "linkedin", url: "#" },
-     
-    ]
   }
 ];
+
+
 
 
 
