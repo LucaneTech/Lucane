@@ -46,8 +46,8 @@ const FeaturedProjects: React.FC = () => {
       description: 'Plateforme d\'apprentissage en ligne développée avec Django, permettant aux étudiants de suivre des cours, passer des évaluations et suivre leurs progrès. Interface intuitive avec système de gestion des utilisateurs.',
       image: "images/site.jpg",
       technologies: ['Django', 'ReactJs', 'SQite', 'Tailwindcss', 'JavaScript', 'Chart.js', 'Jwt'],
-      githubUrl: '#',
-      liveUrl: '#',
+      githubUrl: '',
+      liveUrl: '',
       featured: true,
       date: 'Janvier 2025',
       bgColor: 'bg-main-color'
