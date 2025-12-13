@@ -66,7 +66,7 @@ const Hero: React.FC = () => {
           <Button label="Nous contactez" changeColor="primary" to="/contact" />
         </motion.div>
         <motion.div whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}>
-          <Button label="Découvrez nos projets" changeColor="secondary" to="/projects" />
+          <Button label="Découvrez nos projets" changeColor="secondary" to="/projets" />
         </motion.div>
       </motion.div>
 

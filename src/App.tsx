@@ -25,9 +25,9 @@ function App() {
               <Route path="/" element={<Navbar className="bg-white "/>}>
                 <Route index element={<Home />} />
                 <Route path="/services" element={<Services />} />
-                <Route path="/projects" element={<Projects />} />
+                <Route path="/projets" element={<Projects />} />
                 <Route path="/technologies" element={<Technologies />} />
-                <Route path="/about" element={<About />} />
+                <Route path="/a-propos" element={<About />} />
                 <Route path="/contact" element={<Contact/>} />
               
                 

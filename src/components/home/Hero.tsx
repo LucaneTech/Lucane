@@ -69,7 +69,7 @@ const HeroSection: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6 }}
         >
-          <Button label="Découvrez nos projets" changeColor="primary" to="/projects" />
+          <Button label="Découvrez nos projets" changeColor="primary" to="/projets" />
           <Button label="Nous contacter" changeColor="secondary" to="/contact" />
         </motion.div>
 
