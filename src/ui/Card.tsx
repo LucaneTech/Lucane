@@ -1,4 +1,4 @@
-interface CardProps {
+export interface CardProps {
   icon?: React.ReactNode;
   imageUrl?: string;
   color?: string;
@@ -6,6 +6,7 @@ interface CardProps {
   bgColor?: string;
   description?: string;
   borderColor?: string
+  shadowColor?:string
 }
 
 
@@ -17,14 +18,15 @@ const Card: React.FC<CardProps> = ({
   bgColor,
   description,
   imageUrl,
-  borderColor
+  borderColor,
+  shadowColor
 }) => {
   return (
     <div
-      className={`w-80 h-64 rounded-xl p-0.5 duration-300 hover:shadow-2xl cursor-pointer shadow-lg`}
+      className={`w-80 h-64 rounded-xl p-0.5 duration-300  cursor-pointer hover:shadow-none shadow-2xl ${shadowColor} `}
     >
       <div
-        className={`bg-transparent backdrop-blur-md p-6 h-full w-full rounded-[10px] flex flex-col items-center justify-center text-center border-2 ${borderColor}`}
+        className={` p-6 h-full w-full rounded-[10px] flex flex-col items-center justify-center text-center border-2 ${borderColor}`}
       >
 
         {icon && (

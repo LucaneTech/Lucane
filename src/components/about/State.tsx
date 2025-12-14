@@ -3,11 +3,29 @@ import { motion, useInView } from "framer-motion";
 import { Code2, Users, Globe } from "lucide-react";
 
 const StatsSection: React.FC = () => {
-  const stats = [
-    { label: "Projets réalisés", value: 50, icon: <Code2 size={40} className="text-indigo-500 p-2" />, borderColor: "border-indigo-500" },
-    { label: "Clients satisfaits", value: 20, icon: <Users size={40} className="text-emerald-500 p-2" />, borderColor: "border-emerald-500" },
-    { label: "Pays couverts", value: 10, icon: <Globe size={40} className="text-orange-500 p-2" />, borderColor: "border-orange-500" },
-  ];
+ const stats = [
+  { 
+    label: "Projets réalisés",
+    value: 50,
+    icon: <Code2 size={40} className="text-indigo-500 p-2" />,
+    borderColor: "border-indigo-500",
+    bgColor: "bg-indigo-100"
+  },
+  { 
+    label: "Clients satisfaits",
+    value: 20,
+    icon: <Users size={40} className="text-emerald-500 p-2" />,
+    borderColor: "border-emerald-500",
+    bgColor: "bg-emerald-100"
+  },
+  { 
+    label: "Pays couverts",
+    value: 10,
+    icon: <Globe size={40} className="text-orange-500 p-2" />,
+    borderColor: "border-orange-500",
+    bgColor: "bg-orange-100"
+  },
+];
 
   return (
     <section className="py-20">
@@ -42,7 +60,7 @@ const StatsSection: React.FC = () => {
 };
 
 type StatCardProps = {
-  stat: { label: string; value: number; icon: React.ReactNode; borderColor: string };
+  stat: { label: string; value: number; icon: React.ReactNode; borderColor: string, bgColor:string };
   delay: number;
 };
 
@@ -71,13 +89,13 @@ const StatCard: React.FC<StatCardProps> = ({ stat, delay }) => {
   return (
     <motion.div
       ref={ref}
-      className={`bg-white dark:bg-gray-900/70 border ${stat.borderColor} rounded-xl shadow-lg p-8 flex flex-col items-center justify-center  hover:shadow-2xl hover:scale-90 cursor-pointer  transition duration-300 ease-in-out`}
+      className={` border ${stat.borderColor} rounded-xl shadow-lg p-8 flex flex-col items-center justify-center  hover:shadow-2xl hover:scale-90 cursor-pointer  transition duration-300 ease-in-out`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
     >
-      <div className="mb-4">{stat.icon}</div>
+      <div className={`mb-4 ${stat.bgColor} p-3 rounded-full text-xl`}>{stat.icon}</div>
       <h3 className="text-4xl font-bold text-gray-800 dark:text-white mb-2">+{count}</h3>
       <p className="text-gray-600 text-center dark:text-gray-200">{stat.label}</p>
     </motion.div>

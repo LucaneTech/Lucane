@@ -29,9 +29,9 @@ const MemoryGrid = () => {
  
   const floatAnimation = {
     y: [0, -8, 0, 8, 0],
-    x: [0, 4, 0, -4, 0],
+    x: [0, 10, 0, -8, 0],
     transition: {
-      duration: 8,
+      duration: 10,
       repeat: Infinity,
       repeatType: "loop",
       ease: [0.42, 0, 0.58, 1], 
@@ -41,7 +41,7 @@ const MemoryGrid = () => {
   return (
     <div ref={ref} className="w-full flex justify-center p-8 mb-6">
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-12 max-w-7xl"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-18 max-w-7xl"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}

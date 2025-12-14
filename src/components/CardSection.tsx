@@ -10,6 +10,7 @@ export interface ServiceProp {
   color?: string;
   bgColor?: string;
   borderColor?: string;
+  shadowColor?: string;
 }
 
 interface ServicesCarouselProps {

@@ -9,7 +9,8 @@ const services: ServiceProp[] = [
     icon: <Code className="w-12 h-12" />,
     color: 'text-indigo-500',
     bgColor: 'bg-indigo-100',
-    borderColor: 'border-indigo-300'
+    borderColor: 'border-indigo-300',
+    shadowColor: 'shadow-indigo-300/50'
   },
   {
     title: "Design UX/UI",
@@ -17,7 +18,8 @@ const services: ServiceProp[] = [
     icon: <PenTool className="w-12 h-12" />,
     color: "text-rose-500",
     bgColor: 'bg-rose-100',
-     borderColor: 'border-rose-300'
+     borderColor: 'border-rose-300',
+      shadowColor: 'shadow-rose-300/50'
   },
   {
     title: "Data Analytics",
@@ -25,7 +27,8 @@ const services: ServiceProp[] = [
     icon: <BarChart3 className="w-12 h-12"/>,
     color: "text-emerald-500 ", 
     bgColor: "bg-emerald-100",
-     borderColor: 'border-emerald-300'
+     borderColor: 'border-emerald-300',
+      shadowColor: 'shadow-emerald-300/50'
   },
   {
     title: "Cloud Services",
@@ -33,7 +36,8 @@ const services: ServiceProp[] = [
     icon: <Cloud className="w-12 h-12" />,
     color: "text-sky-500 ", 
     bgColor: 'bg-sky-100',
-     borderColor: 'border-sky-300'
+     borderColor: 'border-sky-300',
+      shadowColor: 'shadow-sky-300/50'
   },
   {
     title: "Automatisation",
@@ -41,7 +45,8 @@ const services: ServiceProp[] = [
     icon: <Cog className="w-12 h-12"/>,
     color: "text-amber-500 ", 
     bgColor: "bg-amber-100",
-     borderColor: 'border-amber-300'
+     borderColor: 'border-amber-300',
+      shadowColor: 'shadow-amber-300/50'
   },
   {
     title: "Maintenance",
@@ -49,7 +54,9 @@ const services: ServiceProp[] = [
     icon: <Wrench className="w-12 h-12"/>,
     color: "text-gray-500",
     bgColor: 'bg-gray-100',
-     borderColor: 'border-gray-300'
+    borderColor: 'border-gray-300',
+     shadowColor: 'shadow-gray-300/50'
+   
   },
 ];
 

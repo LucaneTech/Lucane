@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import { Facebook, Github, Linkedin, Mail, Phone, Send } from "lucide-react";
+import { Facebook, Github, Linkedin, Instagram, Mail, Phone, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { logo, logoLight } from "./Navbar";
 import { Link } from "react-router-dom";
@@ -23,12 +23,19 @@ const socialLinks = [
     icon: Facebook,
     color: 'hover:text-blue-400'
   },
+   {
+    name: 'Instagram',
+    url: '#',
+    icon: Instagram,
+    color: 'hover:text-red-400'
+  },
   {
     name: 'Email',
     url: 'mailto:profrancisco579@gmail.com',
     icon: Mail,
     color: 'hover:text-red-400'
-  }
+  },
+ 
 ];
  
 
@@ -83,57 +90,55 @@ const Footer: React.FC = () => {
         <div className="flex flex-col lg:items-center lg:justify-center">
           <div className="flex flex-col  text-sm space-y-2.5">
             <h2 className="font-bold mb-5 main-color text-lg">Liens rapides</h2>
-            <a className="hover:text-slate-600 transition" href="#">
+            <Link className="hover:text-slate-600 transition" to={'/'}>
               Acceuil
-            </a>
-            <a
+            </Link>
+            <Link
               className="hover:text-slate-600 transition flex items-center gap-2"
-              href="#"
+              to="/services"
             >
               Services
               {/* <span className="text-xs text-white bg-indigo-600 rounded-md px-2 py-0.5">
                 On recrute !
               </span> */}
-            </a>
-            <a className="hover:text-slate-600 transition" href="#">
+            </Link>
+            <Link className="hover:text-slate-600 transition" to="/projets">
               Projets
-            </a>
-            <a className="hover:text-slate-600 transition" href="#">
+            </Link>
+            <Link className="hover:text-slate-600 transition" to="/technologies">
               Technologies
-            </a>
-            <a className="hover:text-slate-600 transition" href="#">
+            </Link>
+            <Link className="hover:text-slate-600 transition" to= "/a-propos">
               À propos
-            </a>
-            <a className="hover:text-slate-600 transition" href="#">
-              Blog
-            </a>
+            </Link>
+           
           </div>
         </div>
         <div className="flex flex-col lg:items-center lg:justify-center">
           <div className="flex flex-col text-sm space-y-2.5">
             <h2 className="font-bold mb-5 main-color text-lg">Services</h2>
-            <a className="hover:text-slate-600 transition" href="#">
+            <a className="hover:text-slate-600 transition" >
               Développement web
             </a>
             <a
               className="hover:text-slate-600 transition flex items-center gap-2"
-              href="#"
+           
             >
               Développement mobile
-              {/* <span className="text-xs text-white bg-indigo-600 rounded-md px-2 py-0.5">
-                On recrute !
-              </span> */}
+              <span className="text-xs text-white bg-indigo-600 rounded-md px-2 py-0.5">
+                Point fort !
+              </span>
             </a>
-            <a className="hover:text-slate-600 transition" href="#">
+            <a className="hover:text-slate-600 transition" >
               UX/UI design
             </a>
-            <a className="hover:text-slate-600 transition" href="#">
+            <a className="hover:text-slate-600 transition" >
               Cloud & infrastructure
             </a>
-            <a className="hover:text-slate-600 transition" href="#">
+            <a className="hover:text-slate-600 transition">
               Conseil et accompagnement digital
             </a>
-            <a className="hover:text-slate-600 transition" href="#">
+            <a className="hover:text-slate-600 transition" >
               Marketing digital
             </a>
           </div>

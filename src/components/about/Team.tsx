@@ -1,123 +1,89 @@
-// import { type JSX } from "react";
 import { motion, type Variants } from "framer-motion";
-// import { Linkedin, Facebook, Twitter } from "lucide-react";
-
-type SocialLink = {
-  type: "linkedin" | "facebook" | "twitter";
-  url: string;
-};
 
 export interface TeamMember {
   name: string;
   role: string;
   image: string;
   description: string;
-  socials: SocialLink[];
-};
+  socials?: { type: string; url: string }[];
+}
 
 type MeetOurPeopleProps = {
-  members: TeamMember[];
+  member: TeamMember;
 };
 
-
-
-// Variants pour les cartes de l’équipe
+// Variants pour la carte
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 50, scale: 0.95 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { delay: i * 0.15, type: "spring", stiffness: 100 },
-  }),
-  hover: { scale: 1.05, boxShadow: "0px 10px 25px rgba(0,0,0,0.2)" },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 120 } },
+  hover: { scale: 1.05, boxShadow: "0px 15px 35px rgba(0,0,0,0.25)" },
 };
 
-const MeetOurPeople: React.FC<MeetOurPeopleProps> = ({ members }) => {
+const MeetOurFounder: React.FC<MeetOurPeopleProps> = ({ member }) => {
   return (
-    <div className="flex flex-col items-center text-center px-4 py-8">
+    <section className="py-20 px-4 flex flex-col items-center text-center bg-[#fafafa] dark:bg-gray-900">
+      {/* Header */}
       <motion.h3
-        className="text-xl font-medium main-color mb-2"
+        className="text-xl font-medium text-gray-500 mb-2"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        Contactez-nous!
+        Fondateur
       </motion.h3>
 
       <motion.h1
-        className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-6"
+        className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-6 max-w-3xl"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        Rencontrez le fondateur et l'équipe derrière Lucane
+        Rencontrez le fondateur de <span className="main-color">Lucane</span>
       </motion.h1>
 
       <motion.p
-        className="mb-14 text-gray-500 text-md dark:text-gray-300 max-w-2xl"
+        className="mb-16 text-gray-500 dark:text-gray-300 max-w-2xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        Chez Lucane, notre équipe est notre plus grande force. Découvrez les passionnés de technologie, les innovateurs et les créateurs qui façonnent notre vision et conduisent notre mission.
+        Découvrez la vision, la passion et l’expertise derrière notre startup. 
+        Notre fondateur guide chaque projet avec rigueur et innovation.
       </motion.p>
 
+      {/* Carte du fondateur */}
+      <motion.div
+        className="group flex flex-col items-center bg-white dark:bg-gray-800 border border-gray-300 rounded-xl w-80 p-8 cursor-pointer"
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="visible"
+        whileHover="hover"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.div
+          className="w-28 h-28 overflow-hidden rounded-full border border-gray-200 dark:border-gray-700 mb-4"
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 150 }}
+        >
+          <motion.img
+            className="w-full h-full object-cover"
+            src={member.image}
+            alt={member.name}
+          />
+        </motion.div>
 
-      <div className="flex flex-wrap gap-6 items-center justify-center">
-        {members.map((member, idx) => (
-          <motion.div
-            key={idx}
-            className="group flex flex-col items-center py-8 text-sm bg-white dark:bg-gray-900/70 border border-gray-300/60 w-64 rounded-md cursor-pointer bg-main-color-hover"
-            custom={idx}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            whileHover="hover"
-          >
-            <motion.div
-              className="w-24 h-24 overflow-hidden rounded-full border-btn flex items-center justify-center"
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 150 }}
-            >
-              <motion.img
-                className="min-w-full min-h-full object-cover"
-                src={member.image}
-                alt={member.name}
-              />
-            </motion.div>
+        <motion.h2 className="text-2xl font-semibold mb-1 text-slate-800 dark:text-white">
+          {member.name}
+        </motion.h2>
 
+        <motion.p className="text-gray-600 dark:text-gray-300 mb-4">{member.role}</motion.p>
 
-            <motion.h2 className="main-color group-hover:text-white text-lg font-medium mt-2">
-              {member.name}
-            </motion.h2>
-
-            <motion.p className="text-gray-700 dark:text-gray-200 group-hover:text-white/80">{member.role}</motion.p>
-
-            <motion.p className="text-center text-gray-500/60 dark:text-gray-400 group-hover:text-white/60 w-3/4 mt-4">
-              {member.description}
-            </motion.p>
-
-            {/* <motion.div className="flex items-center space-x-4 mt-6 text-gray-500">
-              {member.socials.map((social, i) => (
-                <motion.a
-                  key={i}
-                  href={social.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="border p-1 rounded-full"
-                  transition={{ type: "spring", stiffness: 150 }}
-                >
-                  {socialIcons[social.type]}
-                </motion.a>
-              ))}
-            </motion.div> */}
-          </motion.div>
-        ))}
-      </div>
-    </div>
+        <motion.p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+          {member.description}
+        </motion.p>
+      </motion.div>
+    </section>
   );
 };
 
-export default MeetOurPeople;
+export default MeetOurFounder;

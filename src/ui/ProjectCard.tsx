@@ -99,7 +99,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
             className="w-full py-1.5 bg-white/90 backdrop-blur-sm text-slate-800 font-medium rounded-lg hover:bg-white transition-all duration-200 flex items-center justify-center space-x-2 text-sm"
           >
             <Eye className="w-3 h-3" />
-            <span>Voir le projet</span>
+            <a href={`${project.liveUrl}`}>Voir le projet</a>
           </motion.button>
         </motion.div>
 

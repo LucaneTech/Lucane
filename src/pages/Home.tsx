@@ -23,7 +23,7 @@ const Home: React.FC = () => {
 
 
       {/***Call to Action Section */}
-      <section className="flex flex-col items-center justify-center mx-auto w-full text-center rounded-xl py-20 md:py-24 bg-[#008080]  dark:bg-gray-900/70 md:mt-20 px-4 md:px-0">
+      <section className="flex flex-col items-center justify-center mx-auto w-full text-center rounded-xl md:py-10  md:mt-20 px-4 md:px-0 mb-10">
         <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6  dark:text-[#008080] dark:main-color max-w-3xl">Prêt à construire quelque chose d’extraordinaire ?</h1>
         <div className="h-[3px] w-32 my-1 bg-[#008080] mb-4"></div>
         <p className="text-sm md:text-base text-white  max-w-xl">

@@ -100,7 +100,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
 
             {/* Projets */}
             <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-              <Link to="/projects" className="hover:text-main-color transition relative group">
+              <Link to="/projets" className="hover:text-main-color transition relative group">
                 Projets
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
               </Link>
@@ -116,7 +116,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
 
             {/* À propos */}
             <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-              <Link to="/about" className="hover:text-main-color transition relative group">
+              <Link to="/a-propos" className="hover:text-main-color transition relative group">
                 À propos
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-main-color transition-all duration-300 group-hover:w-full"></span>
               </Link>
