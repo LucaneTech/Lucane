@@ -7,7 +7,7 @@ import Button from "../ui/Button";
 const socialLinks = [
   {
     name: 'GitHub',
-    url: 'https://github.com/6code579',
+    url: 'https://github.com/LucaneTech',
     icon: Github,
     color: 'hover:text-gray-400'
   },
@@ -19,13 +19,13 @@ const socialLinks = [
   },
   {
     name: 'Facebook',
-    url: 'https://web.facebook.com/profile.php?id=61574184786834',
+    url: 'https://www.facebook.com/profile.php?id=61583245903926',
     icon: Facebook,
     color: 'hover:text-blue-400'
   },
    {
     name: 'Instagram',
-    url: '#',
+    url: 'https://www.instagram.com/lucane.tech/',
     icon: Instagram,
     color: 'hover:text-red-400'
   },
