@@ -8,7 +8,8 @@ const technologies = [
     imageUrl: 'icons/react.png',
     color: 'text-sky-500',
     bgColor: 'bg-sky-100 dark:bg-sky-900/30',
-    borderColor: 'border-sky-300 dark:border-sky-700'
+    borderColor: 'border-sky-300 dark:border-sky-700',
+    shadowColor: 'shadow-sky-300/50'
   },
   {
     title: 'TypeScript',
@@ -17,7 +18,8 @@ const technologies = [
     imageUrl: 'icons/typescript.png',
     color: 'text-blue-600',
     bgColor: 'bg-blue-100 dark:bg-blue-900/30',
-    borderColor: 'border-blue-300 dark:border-blue-700'
+    borderColor: 'border-blue-300 dark:border-blue-700',
+    shadowColor: 'shadow-blue-300/50'
   },
   {
     title: 'Node.js',
@@ -26,7 +28,8 @@ const technologies = [
     imageUrl: 'icons/nodejs.png',
     color: 'text-green-600',
     bgColor: 'bg-green-100 dark:bg-green-900/30',
-    borderColor: 'border-green-300 dark:border-green-700'
+    borderColor: 'border-green-300 dark:border-green-700',
+    shadowColor: 'shadow-green-300/50'
   },
   {
     title: 'Tailwind CSS',
@@ -35,7 +38,8 @@ const technologies = [
     imageUrl: 'icons/tailwindcss.png',
     color: 'text-cyan-500',
     bgColor: 'bg-cyan-100 dark:bg-cyan-900/30',
-    borderColor: 'border-cyan-300 dark:border-cyan-700'
+    borderColor: 'border-cyan-300 dark:border-cyan-700',
+    shadowColor: 'shadow-cyan-300/50'
   },
   {
     title: 'Docker',
@@ -44,7 +48,8 @@ const technologies = [
     imageUrl: 'icons/docker.png',
     color: 'text-blue-500',
     bgColor: 'bg-blue-100 dark:bg-blue-900/30',
-    borderColor: 'border-blue-300 dark:border-blue-700'
+    borderColor: 'border-blue-300 dark:border-blue-700',
+    shadowColor: 'shadow-blue-300/50'
   },
   {
     title: 'MongoDB',
@@ -53,7 +58,8 @@ const technologies = [
     imageUrl: 'icons/mongodb.png',
     color: 'text-emerald-600',
     bgColor: 'bg-emerald-100 dark:bg-emerald-900/30',
-    borderColor: 'border-emerald-300 dark:border-emerald-700'
+    borderColor: 'border-emerald-300 dark:border-emerald-700',
+    shadowColor: 'shadow-emerald-300/50'
   },
   {
     title: 'AWS',
@@ -62,7 +68,18 @@ const technologies = [
     imageUrl: 'icons/aws.png',
     color: 'text-amber-500',
     bgColor: 'bg-amber-100 dark:bg-amber-900/30',
-    borderColor: 'border-amber-300 dark:border-amber-700'
+    borderColor: 'border-amber-300 dark:border-amber-700',
+    shadowColor: 'shadow-amber-300/50'
+  },
+   {
+    title: 'GitHub',
+    description: "Plateforme de versionnage et de collaboration pour le code source, indispensable en équipe.",
+    icon: '',
+    imageUrl: '/icons/github.png',
+    color: 'text-gray-800 dark:text-gray-200',
+    bgColor: 'bg-gray-100 dark:bg-gray-800/40',
+    borderColor: 'border-gray-300 dark:border-gray-700',
+    shadowColor: 'shadow-gray-300/50'
   },
   {
     title: 'Python',
@@ -71,17 +88,10 @@ const technologies = [
     imageUrl: 'icons/python.png',
     color: 'text-yellow-400',
     bgColor: 'bg-yellow-100 dark:bg-yellow-900/30',
-    borderColor: 'border-yellow-300 dark:border-yellow-700'
+    borderColor: 'border-yellow-300 dark:border-yellow-700',
+    shadowColor: 'shadow-yellow-300/50'
   },
-  {
-    title: 'GitHub',
-    description: "Plateforme de versionnage et de collaboration pour le code source, indispensable en équipe.",
-    icon: '',
-    imageUrl: '/icons/github.png',
-    color: 'text-gray-800 dark:text-gray-200',
-    bgColor: 'bg-gray-100 dark:bg-gray-800/40',
-    borderColor: 'border-gray-300 dark:border-gray-700'
-  },
+ 
   {
     title: 'Django',
     description: "Framework web Python haut niveau qui encourage le développement rapide et propre.",
@@ -89,7 +99,8 @@ const technologies = [
     imageUrl: '/icons/django.png',
     color: 'text-green-600 dark:text-green-400',
     bgColor: 'bg-green-600 dark:bg-green-400',
-    borderColor: 'border-green-600 dark:border-green-400'
+    borderColor: 'border-green-600 dark:border-green-400',
+    shadowColor: 'shadow-green-300/50'
   },
   {
     title: 'PostgreSQL',
@@ -98,7 +109,8 @@ const technologies = [
     imageUrl: '/icons/postgresql.png',
     color: 'text-blue-600 dark:text-blue-400',
     bgColor: 'bg-blue-600 dark:bg-blue-400',
-    borderColor: 'border-blue-600 dark:border-blue-400'
+    borderColor: 'border-blue-600 dark:border-blue-400',
+    shadowColor: 'shadow-blue-300/50'
   }
 ];
 

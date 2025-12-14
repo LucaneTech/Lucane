@@ -64,7 +64,7 @@ const AboutHero: React.FC = () => {
       <motion.img
         src="images/about/logo.png"
         alt="logo profile lucane"
-        className="transition-all duration-300 mt-10 md:mt-0 w-03/4 md:w-1/2 lg:w-2/5 rounded-xl shadow-xl object-cover"
+        className="transition-all duration-300 mb-6 mt-6 mb:mt-10 md:mt-0 w-03/4 md:w-1/2 lg:w-2/5 rounded-xl shadow-xl object-cover"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.8 }}

@@ -9,21 +9,24 @@ const StatsSection: React.FC = () => {
     value: 50,
     icon: <Code2 size={40} className="text-indigo-500 p-2" />,
     borderColor: "border-indigo-500",
-    bgColor: "bg-indigo-100"
+    bgColor: "bg-indigo-100",
+    shadowColor: "shadow-indigo-300/50"
   },
   { 
     label: "Clients satisfaits",
     value: 20,
     icon: <Users size={40} className="text-emerald-500 p-2" />,
     borderColor: "border-emerald-500",
-    bgColor: "bg-emerald-100"
+    bgColor: "bg-emerald-100",
+    shadowColor: "shadow-emerald-300/50"
   },
   { 
     label: "Pays couverts",
     value: 10,
     icon: <Globe size={40} className="text-orange-500 p-2" />,
     borderColor: "border-orange-500",
-    bgColor: "bg-orange-100"
+    bgColor: "bg-orange-100",
+    shadowColor: "shadow-orange-300/50"
   },
 ];
 
@@ -60,7 +63,7 @@ const StatsSection: React.FC = () => {
 };
 
 type StatCardProps = {
-  stat: { label: string; value: number; icon: React.ReactNode; borderColor: string, bgColor:string };
+  stat: { label: string; value: number; icon: React.ReactNode; borderColor: string, bgColor:string, shadowColor?:string };
   delay: number;
 };
 
@@ -89,7 +92,7 @@ const StatCard: React.FC<StatCardProps> = ({ stat, delay }) => {
   return (
     <motion.div
       ref={ref}
-      className={` border ${stat.borderColor} rounded-xl shadow-lg p-8 flex flex-col items-center justify-center  hover:shadow-2xl hover:scale-90 cursor-pointer  transition duration-300 ease-in-out`}
+      className={` border ${stat.borderColor} rounded-xl shadow-xl p-8 flex flex-col items-center justify-center  hover:shadow-2xl  ${stat.shadowColor} hover:scale-90 cursor-pointer  transition duration-300 ease-in-out`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

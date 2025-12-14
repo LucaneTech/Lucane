@@ -62,7 +62,7 @@ const HeroProject: React.FC = () => {
                 </motion.h1>
 
                 <motion.p
-                    className="mt-4 text-base sm:text-lg md:text-xl text-black dark:text-white max-w-2xl mx-auto leading-relaxed"
+                    className="mt-4 text-base sm:text-lg md:text-xl md:text-black text-white max-w-2xl mx-auto leading-relaxed"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 1, duration: 0.8 }}

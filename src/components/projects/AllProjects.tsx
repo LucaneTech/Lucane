@@ -4,21 +4,7 @@ import ProjectSection from '../ProjectSection';
 
 const AllProjects: React.FC = () => {
   const projects = [
-  {
-    id: 1,
-    title: "Edusco – Plateforme EdTech SaaS",
-    description:
-      "Plateforme SaaS d’apprentissage en ligne permettant aux établissements et formateurs de gérer cours, étudiants, évaluations et statistiques pédagogiques en temps réel.",
-    image:
-      "https://images.unsplash.com/photo-1584697964403-b1e1a2f14b9c?q=80&w=1200&auto=format&fit=crop",
-    technologies: ["Django", "PostgreSQL", "React", "Docker", "Chart.js"],
-    githubUrl: "https://github.com/6code579/Edusco",
-    liveUrl: "#",
-    featured: true,
-    category: "SaaS / EdTech",
-    date: "Avril 2025",
-    bgColor: "bg-slate-100",
-  },
+  
 
   {
     id: 2,
@@ -48,6 +34,21 @@ const AllProjects: React.FC = () => {
     liveUrl: "https://francisco.lucane.tech",
     category: "Frontend / Branding",
     date: "Juillet 2025",
+    bgColor: "bg-slate-100",
+  },
+  {
+    id: 1,
+    title: "Edusco – Plateforme EdTech SaaS",
+    description:
+      "Plateforme SaaS d’apprentissage en ligne permettant aux établissements et formateurs de gérer cours, étudiants, évaluations et statistiques pédagogiques en temps réel.",
+    image:
+      "images/home/edusco.avif",
+    technologies: ["Django", "PostgreSQL", "React", "Docker", "Chart.js"],
+    githubUrl: "https://github.com/6code579/Edusco",
+    liveUrl: "#",
+    featured: true,
+    category: "SaaS / EdTech",
+    date: "Avril 2025",
     bgColor: "bg-slate-100",
   },
 
