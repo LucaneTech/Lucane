@@ -1,4 +1,4 @@
-import { CircleQuestionMark, MessageSquareMore, Phone, Send } from "lucide-react";
+import { MessageCircle, MessageSquareMore, Phone, Send } from "lucide-react";
 import React from "react";
 import ContactForm from "../components/contact/Formular";
 import { motion } from "framer-motion";
@@ -14,7 +14,7 @@ interface ContactElementProps {
 
 const contactElements: ContactElementProps[] = [
   {
-    icon: <CircleQuestionMark />,
+    icon: <MessageCircle />,
     title: "Centre d'aide",
     description: "Des questions ? Nous avons les réponses.",
     border: "border-blue-500",

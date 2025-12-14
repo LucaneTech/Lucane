@@ -224,10 +224,10 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
               >
                 {[
                   { to: "/", label: "Accueil", icon: Home },              // Accueil → Home
-                  { to: "/services", label: "Services", icon: Settings }, // Services → Settings
-                  { to: "/projects", label: "Projets", icon: Briefcase }, // Projets → Briefcase
-                  { to: "/technologies", label: "Technologies", icon: Cpu },  // Technologies → Cpu (tech)
-                  { to: "/about", label: "À propos", icon: Info },     // À propos → Info
+                  { to: "/services", label: "Services", icon: Settings }, 
+                  { to: "/projets", label: "Projets", icon: Briefcase },
+                  { to: "/technologies", label: "Technologies", icon: Cpu }, 
+                  { to: "/a-propos", label: "À propos", icon: Info },    
                 ].map((item, index) => (
                   <motion.div
                     key={item.to}

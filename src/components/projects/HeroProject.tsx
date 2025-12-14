@@ -17,16 +17,22 @@ const HeroProject: React.FC = () => {
             />
 
             <motion.div
-                className="md:hidden absolute inset-0 bg-cover bg-center"
-                style={{
-                    backgroundImage: "url('images/project.jpg')",
-                }}
-                initial={{ scale: 1.1, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.6, ease: "easeOut" }}
+                className="
+    md:hidden
+    absolute inset-0
+    bg-gradient-to-br
+    from-[#0f172a]
+    via-[#111827]
+    to-[#020617]
+  "
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
             >
-                <div className="absolute inset-0 bg-black/5 backdrop-blur-xs"></div>
+                {/* léger overlay pour profondeur */}
+                <div className="absolute inset-0 bg-white/5 backdrop-blur-[1px]" />
             </motion.div>
+
 
             {/* Contenu principal animé */}
             <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20">
@@ -56,7 +62,7 @@ const HeroProject: React.FC = () => {
                 </motion.h1>
 
                 <motion.p
-                    className="mt-4 text-base sm:text-lg md:text-xl text-black max-w-2xl mx-auto leading-relaxed"
+                    className="mt-4 text-base sm:text-lg md:text-xl text-black dark:text-white max-w-2xl mx-auto leading-relaxed"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 1, duration: 0.8 }}

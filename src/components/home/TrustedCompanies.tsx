@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 
 const companies = [
   { name: "Oralise", logo: "collaborators/oralise.png" },
-  { name: "Dynamic Servces", logo: "collaborators/eemci.webp" },
+  { name: "eemci", logo: "collaborators/eemci.webp" },
  
   { name: "Dynamic Servces", logo: "collaborators/dynamic.png" },
-   { name: "Dynamic Servces", logo: "collaborators/next.png" },
-  { name: "Dynamic Servces", logo: "collaborators/kone.png" },
+   { name: "next academy", logo: "collaborators/next.png" },
+  { name: "koneshop.online", logo: "collaborators/kone.png" },
 
 
 
