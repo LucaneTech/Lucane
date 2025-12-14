@@ -38,7 +38,10 @@ const HeroSection: React.FC = () => {
           src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1470"
           alt="Hero"
           loading="lazy"
-          className="w-full h-[500px] object-cover rounded-lg shadow-lg duration-300 hover:scale-90"
+          className="w-full h-[500px] object-cover rounded-2xl
+  shadow-[0_25px_60px_-15px_rgba(0,128,128,0.8)]
+  transition duration-300
+  hover:scale-90 mb-4"
         />
       </div>
     </section>

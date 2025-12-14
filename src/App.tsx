@@ -10,6 +10,7 @@ import Technologies from "./pages/Technologies";
 import Services from "./pages/services";
 import Contact from "./pages/Contact";
 import Layout from "./components/Layout";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Layout>
         <Router>
          {/* <PageLoaderWrapper> */}
+          <ScrollToTop />
             <ScrollProgress />
             <BackToTop />
            
