@@ -28,7 +28,7 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // 🛑 Anti-bot : soumission trop rapide (< 2s)
+    // 🛑 Anti-bot : soumission trop rapide (< 2 secondes)
     const elapsedTime = Date.now() - formStartTime.current;
     if (elapsedTime < 2000) {
       setSubmitStatus('error');
@@ -67,16 +67,17 @@ const ContactForm: React.FC = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200/50 dark:border-slate-700/50 max-w-2xl mx-auto mt-12 mb-8"
+      className="bg-white dark:bg-slate-800 rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-slate-200/50 dark:border-slate-700/50 max-w-lg sm:max-w-2xl mx-4 sm:mx-auto mt-12 mb-8"
     >
+      {/* Messages de statut */}
       {submitStatus === 'success' && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl flex items-center gap-3"
+          className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl flex items-center space-x-2 sm:space-x-3 text-sm sm:text-base"
         >
-          <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
-          <span>Message envoyé avec succès.</span>
+          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
+          <span>Message envoyé avec succès !</span>
         </motion.div>
       )}
 
@@ -84,93 +85,118 @@ const ContactForm: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl flex items-center gap-3"
+          className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl flex items-center space-x-2 sm:space-x-3 text-sm sm:text-base"
         >
-          <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
-          <span>Erreur lors de l’envoi. Réessaie plus tard.</span>
+          <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-600 dark:text-red-400 flex-shrink-0" />
+          <span>Erreur lors de l'envoi. Veuillez réessayer.</span>
         </motion.div>
       )}
 
       <form
         ref={formRef}
         onSubmit={handleSubmit}
-        className="space-y-4"
+        className="space-y-3 sm:space-y-4"
       >
-        {/*Honeypot anti-spam */}
+        {/* 🕵️ Honeypot anti-spam */}
         <input type="text" name="_honey" style={{ display: 'none' }} />
 
-        {/* Configuration FormSubmit */}
+        {/* ⚙️ Configuration FormSubmit */}
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_limit" value="1" />
         <input type="hidden" name="_template" value="table" />
 
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+              Nom complet *
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
+              placeholder="Votre nom"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+              Email *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
+              placeholder="votre@email.com"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+            Sujet *
+          </label>
           <input
             type="text"
-            name="name"
-            placeholder="Nom complet *"
-            required
-            value={formData.name}
+            id="subject"
+            name="subject"
+            value={formData.subject}
             onChange={handleChange}
-            className="input"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email *"
             required
-            value={formData.email}
-            onChange={handleChange}
-            className="input"
+            className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
+            placeholder="Objet de votre message"
           />
         </div>
 
-        <input
-          type="text"
-          name="subject"
-          placeholder="Sujet *"
-          required
-          value={formData.subject}
-          onChange={handleChange}
-          className="input"
-        />
-
-        <textarea
-          name="message"
-          placeholder="Ton message *"
-          required
-          rows={4}
-          value={formData.message}
-          onChange={handleChange}
-          className="input resize-none"
-        />
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+            Message *
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            rows={4}
+            className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
+            placeholder="Décrivez votre projet ou votre demande..."
+          />
+        </div>
 
         <motion.button
-          whileHover={{ scale: 1.03 }}
+          whileHover={{ scale: 1.03, y: -1 }}
           whileTap={{ scale: 0.95 }}
           type="submit"
           disabled={isSubmitting}
-          className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-main-color text-white font-semibold rounded-lg shadow-md"
+          className="w-full sm:w-auto mx-auto flex items-center justify-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 bg-main-color text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-sm sm:text-base"
         >
           {isSubmitting ? (
             <>
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full"
               />
-              <span>Envoi…</span>
+              <span>Envoi en cours...</span>
             </>
           ) : (
             <>
-              <Send className="w-5 h-5" />
-              <span>Envoyer</span>
+              <Send className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span>Envoyer le message</span>
             </>
           )}
         </motion.button>
 
-        <p className="text-xs text-center text-slate-500 mt-2">
-          Champs obligatoires — réponse sous 24h.
+        <p className="text-xs text-center sm:text-sm text-slate-500 dark:text-slate-400 mt-2">
+          * Champs obligatoires. Je m'engage à répondre dans les 24h.
         </p>
       </form>
     </motion.div>
