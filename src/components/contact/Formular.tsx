@@ -9,6 +9,8 @@ const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    telephone: '',
+    pays: '',
     subject: '',
     message: ''
   });
@@ -50,7 +52,7 @@ const ContactForm: React.FC = () => {
 
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', telephone: '',pays: '', subject: '', message: '' });
         formStartTime.current = Date.now();
         setTimeout(() => setSubmitStatus('idle'), 5000);
       } else {
@@ -135,6 +137,38 @@ const ContactForm: React.FC = () => {
               required
               className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
               placeholder="votre@email.com"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+              Téléphone *
+            </label>
+            <input
+              type="tel"
+              id="telephone"
+              name="telephone"
+              value={formData.telephone}
+              onChange={handleChange}
+              required
+              className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
+              placeholder="(+212) 000000000"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+              Pays *
+            </label>
+            <input
+              type="text"
+              id="pays"
+              name="pays"
+              value={formData.pays}
+              onChange={handleChange}
+              required
+              className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
+              placeholder="Maroc"
             />
           </div>
         </div>
