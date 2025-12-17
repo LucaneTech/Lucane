@@ -108,7 +108,7 @@ const CardSection: React.FC<ServicesCarouselProps> = ({
           ref={scrollRef}
           className="
             flex flex-nowrap overflow-x-auto md:flex-wrap md:overflow-visible
-            gap-6 max-w-6xl w-full scroll-smooth py-4
+            gap-6 max-w-6xl w-full scroll-smooth py-15
             snap-x snap-mandatory scrollbar-hide
           "
         >

@@ -7,7 +7,7 @@ const HeroSection: React.FC = () => {
   const strokePrimary = "#0080802a";
 
   return (
-    <section className="relative flex flex-col lg:flex-row items-center justify-center md:justify-between mt-8 md:mt-20 px-4 md:px-8 lg:px-24 xl:px-32 pb-20 overflow-hidden gap-6">
+    <section className="relative flex flex-col lg:flex-row items-center justify-center md:justify-around mt-8 md:mt-20 px-4 md:px-8 lg:px-24 pb-10 md:pb-20 overflow-hidden gap-12 w-full">
       {/* Background SVG */}
       <svg
         className="absolute -z-10 inset-1 w-full h-full"
@@ -36,13 +36,13 @@ const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-        > 
+        >
           <p className="ml-2">Déjà <span className="font-bold">+50</span> entreprises nous font confiance...</p>
         </motion.div>
 
         {/* Title */}
         <motion.h1
-          className="text-center md:text-left text-3xl md:text-6xl font-semibold md:leading-[68px] max-w-xl text-slate-900 dark:text-white"
+          className="text-center md:text-left text-3xl md:text-6xl font-semibold md:leading-[68px]  max-w-xl text-slate-900 dark:text-white"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
@@ -96,16 +96,17 @@ const HeroSection: React.FC = () => {
               et faciliter la gestion des rendez-vous et des services.
             </p>
 
-          
+
           </div>
         </motion.div>
       </motion.div>
 
       {/* Right image */}
       <motion.img
-        src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/hero-section-showcase-4.png"
+        src="images/home/heroHome.webp"
         alt="hero"
-        className="transition-all duration-500 mt-10 md:mt-0"
+        className="transition-all duration-300 mb-6 mt-6 md:mt-0 md:max-w-4xl   rounded-xl hover:shadow-2xl hover:shadow-[#008080]
+           outline-1 outline-offset-10 outline-[#008080] object-cover scale-x-95 hover:scale-90 cursor-pointer "
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}

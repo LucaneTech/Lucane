@@ -51,7 +51,8 @@ const MemoryGrid = () => {
             <motion.img
               src={src}
               alt={`template site projets réalisé par lucane: ${idx}`}
-              className="w-full h-auto rounded-lg object-cover shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-500"
+              className="w-full h-auto transition-all rounded-lg object-cover shadow-lg hover:scale-105 hover:shadow-2xl hover:shadow-[#008080]
+              transition-transform duration-500 cursor-pointer outline-1 outline-offset-10 outline-[#008080] mb-4"
               whileHover={{ scale: 1.08 }}
               animate={floatAnimation}
             />

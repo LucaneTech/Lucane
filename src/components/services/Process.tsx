@@ -70,7 +70,7 @@ const FeaturesSection: React.FC = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <img
-          className="w-full max-w-lg rounded-2xl object-cover shadow-2xl shadow-indigo-600/70 cursor-pointer hover:scale-105 transition-transform duration-300"
+          className="w-full max-w-lg rounded-2xl object-cover shadow-2xl shadow-indigo-600/70 cursor-pointer hover:scale-105 transition-transform duration-300 outline-1 outline-offset-15 outline-gray-300 dark:outline-gray-600 backdrop-blur-2xl"
           src="images/services/app.jpeg"
           alt="Process Illustration"
         />

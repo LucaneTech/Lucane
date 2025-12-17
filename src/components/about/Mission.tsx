@@ -74,7 +74,7 @@ const Mission: React.FC = () => {
           variants={itemVariants}
           src="images/about/lucane.png"
           alt="Innovation and teamwork illustration"
-          className="rounded-2xl shadow-xl object-cover w-full max-w-lg mx-auto md:mx-0 transition-transform duration-500 hover:scale-105"
+          className="rounded-2xl shadow-xl object-cover w-full max-w-lg mx-auto md:mx-0 transition-transform duration-500 hover:scale-105 outline-1 outline-offset-12 outline-gray-600 mt-4"
         />
       </motion.div>
 

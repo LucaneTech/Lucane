@@ -64,7 +64,9 @@ const ServicesSection: React.FC = () => {
  
 
   return (
-    <CardSection services={services} title="Nos Services" description="On développe des solutions web et mobiles adaptées à vos besoins. Notre équipe crée des outils fiables, rapides et faciles à utiliser pour faire passer vos projets au niveau supérieur." />
+ 
+      <CardSection services={services} title="Nos Services" description="On développe des solutions web et mobiles adaptées à vos besoins. Notre équipe crée des outils fiables, rapides et faciles à utiliser pour faire passer vos projets au niveau supérieur." />
+ 
   );
 };
 

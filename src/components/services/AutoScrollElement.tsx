@@ -19,14 +19,14 @@ const Elements: ElementProp[] = [
 
 const AutoScrollElement: React.FC = () => {
   return (
-    <div className="w-full bg-main-color-opacity  mx-auto py-4 overflow-hidden mt-10 shadow-lg">
+    <div className="w-full mx-auto py-4 overflow-hidden mt-10 shadow-lg mb-8">
       <div className="whitespace-nowrap animate-scroll flex gap-9 items-center">
         {Elements.map((item, index) => (
           <div
             key={`${item.id}-${index}`}
-            className={`inline-block bg-white dark:bg-gray-900/70 shadow-lg rounded-lg px-5 md:px-8 py-3 text-xl font-semibold text-[#008080] dark:text-white mx-2 transition-transform duration-300 hover:scale-105`}
+            className={`inline-block outline-1 outline-offset-5 outline-gray-300 dark:outline-gray-700 dark:bg-main-color-opacity   shadow-2xl hover:shadow-[#008080] rounded-lg px-5 md:px-8 py-3 text-[#008080] text-xl font-semibold  mx-2 transition-transform duration-300 hover:scale-105 cursor-pointer`}
           >
-            <a href="#">{item.name}</a>
+            <span>{item.name}</span>
           </div>
         ))}
       </div>

@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
   return (
     <motion.section
       ref={ref}
-      className="relative flex flex-col items-center justify-center text-center text-gray-700 px-4 overflow-hidden mt-48"
+      className="relative flex flex-col items-center justify-center text-center text-gray-700 px-6 overflow-hidden mt-32 md:mt-48"
       initial="hidden"
       animate={controls}
     >
@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
           src="images/technologies/hero.png"
           alt="Hero"
           loading="lazy"
-          className="w-full h-[450px] object-cover rounded-xl shadow-2xl cursor-pointer"
+          className="w-full h-[450px] object-cover rounded-xl shadow-2xl cursor-pointer outline-1 outline-offset-12 outline-gray-600 mb-12 mt-12"
           initial={{ scale: 1 }}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
