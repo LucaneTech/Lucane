@@ -5,6 +5,8 @@ import FeaturedProjects from "../components/home/FeaturedProjects";
 import TrustedCompanies from "../components/home/TrustedCompanies";
 import Button from "../ui/Button";
 import MemoryGrid from "../components/home/MemoryGrid";
+import Promotional from "../components/home/Promotional";
+import Ourdesign from "../components/home/Ourdesign";
 const Home: React.FC = () => {
   return (
     <div className="mt-32 md:mt-48">
@@ -14,9 +16,17 @@ const Home: React.FC = () => {
       {/**services section */}
       <ServicesSection />
 
-      <MemoryGrid />
+
       {/**featured projects section */}
       <FeaturedProjects />
+       
+       <Ourdesign/>
+       
+      <MemoryGrid />
+
+      <div className="flex justify-center w-full">
+        <Promotional />
+      </div>
 
       {/**Trusted:collaborators section */}
       <TrustedCompanies />
@@ -27,9 +37,9 @@ const Home: React.FC = () => {
         <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6  dark:text-[#008080] dark:main-color max-w-3xl">Prêt à construire quelque chose d’extraordinaire ?</h1>
         <div className="h-[3px] w-32 my-1 bg-[#008080] mb-4"></div>
         <p className="text-sm md:text-base text-white  max-w-xl">
-         We are a software development agency passionate about crafting innovative digital solutions that drive growth and transform businesses.
+          We are a software development agency passionate about crafting innovative digital solutions that drive growth and transform businesses.
         </p>
-         <Button label="Commençons aujourd'hui" changeColor="white"  className="mt-8 md:mt-10"  to="/contact"/>
+        <Button label="Commençons aujourd'hui" changeColor="white" className="mt-8 md:mt-10" to="/contact" />
       </section>
     </div>
   )
