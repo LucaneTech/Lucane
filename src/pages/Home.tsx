@@ -9,7 +9,7 @@ import Promotional from "../components/home/Promotional";
 import Ourdesign from "../components/home/Ourdesign";
 const Home: React.FC = () => {
   return (
-    <div className="mt-32 md:mt-48">
+    <div className="mt-32 md:mt-48 lg:mt-0">
       {/* Hero Section */}
       <HeroSectionHome />
 
@@ -21,7 +21,7 @@ const Home: React.FC = () => {
       <FeaturedProjects />
        
        <Ourdesign/>
-       
+
       <MemoryGrid />
 
       <div className="flex justify-center w-full">

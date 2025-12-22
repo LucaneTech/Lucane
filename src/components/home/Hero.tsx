@@ -7,7 +7,7 @@ const HeroSection: React.FC = () => {
   const strokePrimary = "#0080802a";
 
   return (
-    <section className="relative flex flex-col lg:flex-row items-center justify-center md:justify-around mt-8 md:mt-20 px-4 md:px-8 lg:px-24 pb-10 md:pb-20 overflow-hidden gap-8 md:gap-12 w-full">
+    <section className="relative flex flex-col lg:flex-row items-center justify-center md:justify-around mt-8  px-4 md:px-8 lg:px-24 pb-10 md:pb-20 overflow-hidden gap-8 md:gap-12 w-full">
       {/* Background SVG */}
       <svg
         className="absolute -z-10 inset-1 w-full h-full"
@@ -103,7 +103,7 @@ const HeroSection: React.FC = () => {
 
       {/* Right image */}
       <motion.img
-        src="images/home/heroimage.webp"
+        src="images/home/Image_hero.webp"
         alt="hero"
         className="transition-all duration-300 mb-6 mt-6 md:mt-0 md:max-w-xl
          object-cover cursor-pointer "
