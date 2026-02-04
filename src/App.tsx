@@ -36,7 +36,7 @@ function App() {
               </Route>
             </Routes>
             
-      {/* </PageLoaderWrapper> */}
+     
         </Router>
         </Layout>
      
