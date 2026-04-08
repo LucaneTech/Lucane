@@ -66,7 +66,7 @@ const Ourdesign = () => {
         <span className="text-[#008080] font-bold">Designs</span>
       </h1>
 
-      <div className="flex flex-wrap justify-center gap-8 mt-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-8 mt-8 mb-16">
         {designs.map((design) => (
           <DesignCard key={design.id} {...design} />
         ))}
