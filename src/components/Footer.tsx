@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col  text-sm space-y-2.5">
             <h2 className="font-bold mb-5 main-color text-lg">Liens rapides</h2>
             <Link className="hover:text-slate-600 transition" to={'/'}>
-              Acceuil
+              Accueil
             </Link>
             <Link
               className="hover:text-slate-600 transition flex items-center gap-2"
@@ -117,30 +117,24 @@ const Footer: React.FC = () => {
         <div className="flex flex-col lg:items-center lg:justify-center">
           <div className="flex flex-col text-sm space-y-2.5">
             <h2 className="font-bold mb-5 main-color text-lg">Services</h2>
-            <a className="hover:text-slate-600 transition" >
+            <span className="hover:text-slate-600 transition cursor-default">
               Développement web
-            </a>
-            <a
-              className="hover:text-slate-600 transition flex items-center gap-2"
-           
-            >
+            </span>
+            <span className="hover:text-slate-600 transition cursor-default">
               Développement mobile
-              <span className="text-xs text-white bg-indigo-600 rounded-md px-2 py-0.5">
-                Point fort !
-              </span>
-            </a>
-            <a className="hover:text-slate-600 transition" >
+            </span>
+            <span className="hover:text-slate-600 transition cursor-default">
               UX/UI design
-            </a>
-            <a className="hover:text-slate-600 transition" >
+            </span>
+            <span className="hover:text-slate-600 transition cursor-default">
               Cloud & infrastructure
-            </a>
-            <a className="hover:text-slate-600 transition">
+            </span>
+            <span className="hover:text-slate-600 transition cursor-default">
               Conseil et accompagnement digital
-            </a>
-            <a className="hover:text-slate-600 transition" >
+            </span>
+            <span className="hover:text-slate-600 transition cursor-default">
               Marketing digital
-            </a>
+            </span>
           </div>
         </div>
 
