@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import Button from '../../ui/Button';
 
 const ContactForm: React.FC = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -205,29 +206,13 @@ const ContactForm: React.FC = () => {
           />
         </div>
 
-        <motion.button
-          whileHover={{ scale: 1.03, y: -1 }}
-          whileTap={{ scale: 0.95 }}
+        <Button
           type="submit"
-          disabled={isSubmitting}
-          className="w-full sm:w-auto mx-auto flex items-center justify-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 bg-main-color text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-sm sm:text-base"
-        >
-          {isSubmitting ? (
-            <>
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full"
-              />
-              <span>Envoi en cours...</span>
-            </>
-          ) : (
-            <>
-              <Send className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span>Envoyer le message</span>
-            </>
-          )}
-        </motion.button>
+          label={isSubmitting ? "Envoi en cours…" : "Envoyer le message"}
+          icon={!isSubmitting ? <Send className="w-4 h-4" /> : undefined}
+          changeColor="primary"
+          className="w-full justify-center"
+        />
 
         <p className="text-xs text-center sm:text-sm text-slate-500 dark:text-slate-400 mt-2">
           * Champs obligatoires. Je m'engage à répondre dans les 24h.
