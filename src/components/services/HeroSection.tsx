@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 import Button from "../../ui/Button";
 
@@ -100,13 +99,12 @@ const HeroSection = () => {
       {/* Tagline */}
       <motion.div
         variants={fadeUp}
-        className="mb-6 flex items-center gap-2 rounded-full border border-gray-500/30 bg-gray-300/15 p-2 text-sm backdrop-blur-md dark:text-white"
+        className="mb-6"
       >
-        <button className="flex items-center gap-2 rounded-full border border-gray-500/30 bg-main-color px-3 py-2 bg-main-color-hover">
-          <span className="hidden text-white md:block">Startup</span>
-          <ArrowRight className="h-4 w-4 text-white" />
-        </button>
-        <p>Essayez nos services dès maintenant</p>
+        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#008080]/30 bg-[#008080]/10 text-sm font-semibold text-[#008080]">
+          <span className="w-2 h-2 rounded-full bg-[#008080] animate-pulse" />
+          Agence B2B · Depuis 2023
+        </span>
       </motion.div>
 
       {/* Title */}
@@ -114,16 +112,17 @@ const HeroSection = () => {
         variants={fadeUp}
         className="max-w-4xl text-3xl font-bold text-gray-800 sm:text-5xl md:text-6xl dark:text-white"
       >
-        Le moyen le plus rapide de passer de l’idée à l’impact.
+        L’expertise technique au service de{" "}
+          <span className="text-[#008080]">votre croissance.</span>
       </motion.h1>
 
       {/* Subtitle */}
       <motion.p
         variants={fadeUp}
-        className="mt-6 max-w-xl text-gray-600 dark:text-gray-200"
+        className="mt-6 max-w-xl text-gray-600 leading-relaxed dark:text-gray-200"
       >
-        Notre plateforme vous aide à créer, tester et livrer plus rapidement,
-        afin que vous puissiez vous concentrer sur ce qui compte vraiment.
+        Nous concevons, développons et faisons évoluer des solutions digitales
+        sur mesure — web, mobile et cloud — pour des entreprises qui veulent croître sans compromis.
       </motion.p>
 
       {/* Buttons */}
