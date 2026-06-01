@@ -1,0 +1,33 @@
+@theme {
+  /* Couleurs brand */
+  --color-primary: #008080;
+  --color-primary-dim: rgba(0,128,128,0.08);
+  --color-primary-hover: #006666;
+  --color-surface: #FAFAFA;
+  --color-surface-alt: #F3F4F6;
+  --color-ink: #2C2C2A;
+  --color-ink-muted: #888780;
+  --color-ink-faint: #C5C4BF;
+  --color-dark: #111110;
+  --color-dark-surface: #1C1C1A;
+  --color-dark-elevated: #242422;
+
+  /* Couleurs service */
+  --color-dev: #185FA5;
+  --color-design: #D85A30;
+  --color-growth: #3B6D11;
+  --color-cloud: #BA7517;
+
+  /* Typographie */
+  --font-family-sans: "Sen", system-ui, sans-serif;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-glow: 0 0 24px rgba(0,128,128,0.2);
+}
