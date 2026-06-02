@@ -1,5 +1,37 @@
 @import "./styles/tokens.css";
 @import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+/* Thème Light — override palette Lucane */
+:root,
+[data-theme="light"] {
+  --color-primary: #008080;
+  --color-primary-content: #ffffff;
+  --color-secondary: #2C2C2A;
+  --color-secondary-content: #ffffff;
+  --color-accent: #006666;
+  --color-neutral: #888780;
+  --color-base-100: #FAFAFA;
+  --color-base-200: #F3F4F6;
+  --color-base-300: #E5E7EB;
+  --color-base-content: #2C2C2A;
+}
+
+/* Thème Dark — override palette Lucane */
+[data-theme="dark"] {
+  --color-primary: #008080;
+  --color-primary-content: #ffffff;
+  --color-secondary: #FAFAFA;
+  --color-secondary-content: #111110;
+  --color-accent: #00A0A0;
+  --color-neutral: #888780;
+  --color-base-100: #111110;
+  --color-base-200: #1C1C1A;
+  --color-base-300: #242422;
+  --color-base-content: #FAFAFA;
+}
 
 @layer utilities {
   .animate-marquee-left {
