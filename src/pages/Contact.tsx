@@ -48,27 +48,89 @@ const commitments = [
 const Contact: React.FC = () => {
   return (
     <>
-      {/* En-tête */}
-      <section className="mt-32 sm:mt-40 px-4 sm:px-6">
+      {/* Hero Contact */}
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+        <motion.img
+          src="/images/bg.jpg"
+          alt="Contactez Lucane Tech"
+          className="absolute inset-0 w-full h-full object-cover"
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ opacity: { duration: 0.6 }, scale: { duration: 8, ease: "easeOut" } }}
+        />
         <motion.div
-          className="text-center mb-14"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          className="absolute inset-0 bg-[rgba(0,128,128,0.72)]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+        />
+        <motion.svg
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.08 }}
+          transition={{ duration: 1, delay: 0.3 }}
         >
-          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-widest mb-4 px-4 py-1.5 rounded-pill bg-primary/10 border border-primary/20">
-            Contact
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-ink mt-4 mb-6">
-            Contactez-<span className="text-primary">nous</span>
-          </h1>
-          <p className="text-lg text-ink-muted max-w-2xl mx-auto">
-            N'hésitez pas à nous contacter. Soumettez vos questions et nous vous
-            répondrons dans les meilleurs délais.
-          </p>
-        </motion.div>
+          <circle cx="80%" cy="20%" r="200" stroke="white" strokeWidth="1" fill="none" />
+          <circle cx="80%" cy="20%" r="360" stroke="white" strokeWidth="0.6" fill="none" />
+          <circle cx="20%" cy="80%" r="150" stroke="white" strokeWidth="0.8" fill="none" />
+          <circle cx="50%" cy="50%" r="420" stroke="white" strokeWidth="0.4" fill="none" />
+        </motion.svg>
 
-        {/* Canaux de contact */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 text-white w-full">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <motion.span
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.5 }}
+                className="inline-block text-xs uppercase tracking-[0.2em] font-medium mb-4 text-white/70"
+              >
+                Contact
+              </motion.span>
+              <motion.h1
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.6 }}
+                className="text-4xl lg:text-5xl font-bold mb-6 leading-tight"
+              >
+                Parlons de votre projet
+              </motion.h1>
+              <motion.p
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.7 }}
+                className="text-lg text-white/80 max-w-md"
+              >
+                Notre équipe est disponible pour répondre à toutes vos questions et transformer votre vision en réalité.
+              </motion.p>
+            </div>
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.8 }}
+              className="flex flex-col gap-4"
+            >
+              {[
+                { label: "Email", value: "contact@lucane.tech", href: "mailto:contact@lucane.tech" },
+                { label: "Réponse sous", value: "24 heures" },
+                { label: "Disponibilité", value: "Lun–Ven, 9h–18h" },
+              ].map((item) => (
+                <div key={item.label} className="flex items-center gap-4 text-white/90">
+                  <span className="text-sm text-white/50 w-28">{item.label}</span>
+                  {item.href ? (
+                    <a href={item.href} className="font-semibold hover:text-white transition-colors">{item.value}</a>
+                  ) : (
+                    <span className="font-semibold">{item.value}</span>
+                  )}
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Canaux de contact */}
+      <section className="px-4 sm:px-6 py-16">
         <div className="grid gap-4 sm:grid-cols-3 max-w-4xl mx-auto mb-16">
           {channels.map((channel, index) => (
             <motion.div

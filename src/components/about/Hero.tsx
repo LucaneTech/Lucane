@@ -1,73 +1,61 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Button from "../../ui/Button";
 
 const AboutHero: React.FC = () => {
   return (
-    <section className="bg-surface pt-32 pb-20 px-6">
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-        {/* Left — text */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+    <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+      <motion.img
+        src="/images/about/lucane.png"
+        alt="Équipe Lucane Tech"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        initial={{ opacity: 0, scale: 1.05 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ opacity: { duration: 0.6 }, scale: { duration: 8, ease: "easeOut" } }}
+      />
+      <motion.div
+        className="absolute inset-0 bg-[rgba(0,128,128,0.72)]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
+      />
+      <motion.svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.08 }}
+        transition={{ duration: 1, delay: 0.3 }}
+      >
+        <circle cx="50%" cy="50%" r="300" stroke="white" strokeWidth="1" fill="none" />
+        <circle cx="50%" cy="50%" r="450" stroke="white" strokeWidth="0.6" fill="none" />
+        <circle cx="20%" cy="30%" r="140" stroke="white" strokeWidth="0.8" fill="none" />
+        <circle cx="80%" cy="70%" r="180" stroke="white" strokeWidth="0.7" fill="none" />
+      </motion.svg>
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6 py-24 text-white text-center w-full">
+        <motion.span
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="inline-block text-xs uppercase tracking-[0.2em] font-medium mb-4 text-white/70"
         >
-          <motion.span
-            className="text-xs uppercase tracking-widest text-primary font-medium block mb-4"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            À propos
-          </motion.span>
-
-          <motion.h1
-            className="text-5xl font-bold text-ink mb-6 leading-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            Une équipe passionnée,
-            <br />
-            un <span className="text-primary">impact réel</span>
-          </motion.h1>
-
-          <motion.p
-            className="text-ink-muted text-lg leading-relaxed mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
-            Lucane Tech est une agence franco-congolaise fondée en 2021.
-            Nous concevons des produits digitaux ambitieux pour les entreprises
-            d'Afrique et de la diaspora, en combinant excellence technique et
-            design de qualité internationale.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-          >
-            <Button variant="primary" label="Nous contacter" to="/contact" />
-          </motion.div>
-        </motion.div>
-
-        {/* Right — image */}
-        <motion.div
-          className="relative"
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          À propos de Lucane
+        </motion.span>
+        <motion.h1
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="text-4xl lg:text-6xl font-bold mb-8 leading-tight"
         >
-          <img
-            src="/images/about/lucane.png"
-            alt="Équipe Lucane Tech"
-            className="rounded-xl w-full object-cover shadow-lg"
-          />
-          {/* Decorative teal accent */}
-          <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-xl -z-10" />
-        </motion.div>
+          Une équipe passionnée,<br />un impact réel
+        </motion.h1>
+        <motion.blockquote
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.7 }}
+          className="text-xl text-white/90 italic max-w-3xl mx-auto border-l-4 border-white/40 pl-6 text-left"
+        >
+          "La technologie est le meilleur levier pour développer l'Afrique. Notre mission est de la rendre accessible à tous les entrepreneurs."
+          <footer className="text-sm text-white/60 mt-3 not-italic">— Francisco Mouanda, Fondateur & CEO</footer>
+        </motion.blockquote>
       </div>
     </section>
   );

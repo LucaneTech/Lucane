@@ -1,75 +1,82 @@
 import { motion } from "framer-motion";
 
-const serviceBadges = [
-  "Dév Web",
-  "Dév Mobile",
-  "UX/UI Design",
-  "Cloud",
-  "Conseil",
-  "Marketing",
-];
-
-const HeroSection = () => {
+export default function HeroSection() {
   return (
-    <section className="relative bg-dark pt-32 pb-20 px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Eyebrow */}
+    <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+      {/* Image de fond */}
+      <motion.img
+        src="/images/services/app.jpeg"
+        alt="Services Lucane Tech"
+        className="absolute inset-0 w-full h-full object-cover"
+        initial={{ opacity: 0, scale: 1.05 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ opacity: { duration: 0.6 }, scale: { duration: 8, ease: "easeOut" } }}
+      />
+
+      {/* Overlay teal plate */}
+      <motion.div
+        className="absolute inset-0 bg-[rgba(0,128,128,0.72)]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
+      />
+
+      {/* Motifs circulaires SVG */}
+      <motion.svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.08 }}
+        transition={{ duration: 1, delay: 0.3 }}
+      >
+        <circle cx="10%" cy="80%" r="180" stroke="white" strokeWidth="1" fill="none" />
+        <circle cx="10%" cy="80%" r="300" stroke="white" strokeWidth="0.8" fill="none" />
+        <circle cx="85%" cy="20%" r="120" stroke="white" strokeWidth="1" fill="none" />
+        <circle cx="85%" cy="20%" r="220" stroke="white" strokeWidth="0.6" fill="none" />
+        <circle cx="50%" cy="50%" r="400" stroke="white" strokeWidth="0.5" fill="none" />
+      </motion.svg>
+
+      {/* Contenu */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 text-white text-center w-full">
         <motion.span
-          className="inline-block text-xs uppercase tracking-widest text-primary font-medium mb-4"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="inline-block text-xs uppercase tracking-[0.2em] font-medium mb-4 text-white/70"
         >
           Nos services
         </motion.span>
 
-        {/* Title */}
         <motion.h1
-          className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="text-4xl lg:text-6xl font-bold mb-6 leading-tight"
         >
-          Des solutions{" "}
-          <span className="text-primary">sur mesure</span>
-          <br />
-          pour votre croissance
+          Des solutions <br className="hidden lg:block" />sur mesure pour votre croissance
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.p
-          className="text-white/60 text-lg max-w-2xl mx-auto mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.7 }}
+          className="text-lg text-white/80 max-w-2xl mx-auto mb-10"
         >
-          De la conception à la mise en production, nous couvrons tous les
-          aspects de votre transformation digitale.
+          De la conception au déploiement, nous couvrons tous les aspects de votre transformation digitale avec une approche 100% sur mesure.
         </motion.p>
 
-        {/* Service pills */}
         <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.8 }}
           className="flex flex-wrap justify-center gap-3"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
         >
-          {serviceBadges.map((s) => (
-            <span
-              key={s}
-              className="rounded-pill bg-white/5 border border-white/10 text-white/70 px-5 py-2 text-sm"
-            >
+          {["Développement Web & Mobile", "UX/UI Design", "Cloud & Infrastructure", "Conseil & Stratégie"].map((s) => (
+            <span key={s} className="rounded-md bg-white/10 border border-white/20 text-white/90 px-5 py-2 text-sm font-medium">
               {s}
             </span>
           ))}
         </motion.div>
       </div>
-
-      {/* Decorative rings */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-primary/5 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-primary/10 pointer-events-none" />
     </section>
   );
-};
-
-export default HeroSection;
+}
