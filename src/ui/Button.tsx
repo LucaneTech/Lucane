@@ -35,7 +35,7 @@ const VARIANT_CLASSES: Record<string, string> = {
     "shadow-[0_4px_14px_rgba(0,128,128,0.35)] hover:shadow-[0_6px_20px_rgba(0,128,128,0.5)]",
   secondary:
     "border-2 border-primary text-primary bg-transparent rounded-xl " +
-    "hover:bg-primary/10",
+    "hover:bg-primary hover:text-white hover:border-primary",
   ghost:
     "text-primary bg-transparent relative " +
     "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 " +
