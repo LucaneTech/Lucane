@@ -1,95 +1,107 @@
 import { motion } from "framer-motion";
 import React from "react";
+import { Zap, Shield, Globe, Users } from "lucide-react";
 
-const items = [
+const reasons = [
   {
-    title: "Ingénierie de Prompt",
-    description:
-      "Nous concevons des prompts précis et performants pour aligner l’intention humaine avec les capacités des modèles IA.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=900&auto=format&fit=crop",
-    // femme black travaillant sur IA / ordinateur
+    icon: Zap,
+    title: "Livraison rapide",
+    stat: "2-4 semaines",
+    desc: "Premier prototype en moins de 2 semaines, grâce à une organisation agile rodée.",
+    color: "text-dev",
+    bg: "bg-dev/10",
+    altBg: false,
   },
   {
-    title: "Data Science",
-    description:
-      "Analyse, structuration et valorisation des données pour produire des décisions mesurables et exploitables.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1629904853716-f0bc54eea481?q=80&w=900&auto=format&fit=crop",
-    // homme black analysant données / dashboard
+    icon: Shield,
+    title: "Code de qualité",
+    stat: "99.9% uptime",
+    desc: "Tests automatisés et revues de code systématiques pour une fiabilité maximale.",
+    color: "text-design",
+    bg: "bg-design/10",
+    altBg: true,
   },
   {
-    title: "Développement Logiciel",
-    description:
-      "Architecture logicielle robuste, évolutive et pensée pour la performance à long terme.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?q=80&w=900&auto=format&fit=crop",
-    // développeur black en environnement pro
+    icon: Globe,
+    title: "Expertise internationale",
+    stat: "6 pays",
+    desc: "Présence en France, Congo et dans la diaspora africaine pour une perspective globale.",
+    color: "text-growth",
+    bg: "bg-growth/10",
+    altBg: true,
   },
   {
-    title: "Solutions IA",
-    description:
-      "Conception et intégration de systèmes intelligents adaptés à vos enjeux métiers.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=900&auto=format&fit=crop",
-    // profil black + visuels IA / tech avancée
+    icon: Users,
+    title: "Equipe dédiée",
+    stat: "+3 ans",
+    desc: "Une équipe senior à votre service, pas des freelances. Un interlocuteur unique et engagé.",
+    color: "text-cloud",
+    bg: "bg-cloud/10",
+    altBg: false,
   },
 ];
 
-
 const WhyUs: React.FC = () => {
   return (
-    <section className="py-20 px-4 ">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 px-6">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
-          className="max-w-3xl mx-auto text-center mb-16 "
+          className="max-w-3xl mx-auto text-center mb-14"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-slate-900 dark:text-white">
+          <h2 className="text-4xl md:text-5xl font-bold text-ink">
             Pourquoi nous choisir
           </h2>
-          <p className="mt-5 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p className="mt-5 text-lg text-ink-muted leading-relaxed">
             Une équipe experte, des choix techniques réfléchis et une exigence
             constante de qualité pour construire des produits durables.
           </p>
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {items.map((item, index) => (
-            <motion.article
-              key={index}
-              className="group relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-600 bg-white dark:bg-gray-900/70"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              {/* Image */}
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={item.imageUrl}
-                  alt={item.title}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/20" />
-              </div>
+        {/* 2x2 Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-ink-faint/20 rounded-xl overflow-hidden">
+          {reasons.map((reason, index) => {
+            const Icon = reason.icon;
+            const isAlt = reason.altBg;
+            return (
+              <motion.div
+                key={index}
+                className={`p-8 ${isAlt ? "bg-surface-alt" : "bg-white"} ${
+                  index < 2 ? "border-b border-ink-faint/20" : ""
+                } ${index % 2 === 0 ? "md:border-r border-ink-faint/20" : ""}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                {/* Icon */}
+                <div
+                  className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${reason.bg} mb-4`}
+                >
+                  <Icon className={`w-6 h-6 ${reason.color}`} />
+                </div>
 
-              {/* Content */}
-              <div className="p-8">
-                <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-3">
-                  {item.title}
+                {/* Stat */}
+                <div className={`text-2xl font-bold ${reason.color} mb-1`}>
+                  {reason.stat}
+                </div>
+
+                {/* Title */}
+                <h3 className="text-lg font-bold text-ink mb-2">
+                  {reason.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                  {item.description}
+
+                {/* Desc */}
+                <p className="text-ink-muted text-sm leading-relaxed">
+                  {reason.desc}
                 </p>
-              </div>
-            </motion.article>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

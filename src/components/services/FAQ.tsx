@@ -9,41 +9,36 @@ import {
 
 const faqs = [
   {
-    question: "Quels sont vos délais de livraison typiques ?",
-    answer:
-      "Les délais varient selon la complexité du projet. Un site vitrine prend généralement 3 à 6 semaines. Une application web ou mobile complète nécessite entre 2 et 6 mois. Nous établissons un planning détaillé dès la phase de découverte, avec des jalons clairs et des livrables intermédiaires validés ensemble.",
+    q: "Quels types de projets réalisez-vous ?",
+    a: "Nous développons des sites vitrines, applications web et mobiles, plateformes SaaS, outils métiers et solutions cloud. Chaque projet est traité sur mesure, de la conception au déploiement.",
   },
   {
-    question: "Comment sont structurés vos tarifs ?",
-    answer:
-      "Nous travaillons selon deux modèles : forfait fixe pour les projets avec un périmètre bien défini, ou régie au jour/homme pour les projets évolutifs. Chaque devis est personnalisé après une session de découverte gratuite. Nos engagements tarifaires sont transparents — aucuns frais cachés.",
+    q: "Quels sont vos délais habituels ?",
+    a: "Un MVP peut être livré en 4 à 8 semaines selon la complexité. Un site vitrine prend généralement 3 à 6 semaines. Nous établissons un planning détaillé avec des jalons clairs dès la phase de découverte.",
   },
   {
-    question: "Comment se déroule le suivi de projet ?",
-    answer:
-      "Vous bénéficiez d'un accès direct à votre chef de projet via un espace dédié (Notion, Linear ou Jira selon vos préférences). Des points d'avancement hebdomadaires sont planifiés. Chaque sprint se conclut par une démonstration en direct et votre validation avant de passer à l'étape suivante.",
+    q: "Travaillez-vous avec des clients à l'international ?",
+    a: "Oui, nous travaillons avec des clients en France, en Afrique et dans la diaspora africaine. Nos outils collaboratifs et notre organisation permettent une collaboration fluide à distance.",
   },
   {
-    question: "Quelles technologies maîtrisez-vous ?",
-    answer:
-      "Notre stack principale couvre React / Next.js et Django / FastAPI pour le développement web, React Native et Flutter pour le mobile, PostgreSQL et MongoDB pour les bases de données, et AWS / GCP pour le cloud. Nous maîtrisons également Docker, Kubernetes et l'ensemble de la chaîne CI/CD.",
+    q: "Comment se déroule la collaboration ?",
+    a: "Nous utilisons une approche agile avec des sprints bimensuels. Vous bénéficiez d'un accès direct à votre chef de projet, de points d'avancement hebdomadaires et de démonstrations régulières.",
   },
   {
-    question: "Proposez-vous de la maintenance post-livraison ?",
-    answer:
-      "Oui. Nous proposons des contrats de maintenance évolutive : corrections de bugs, mises à jour de sécurité, évolutions fonctionnelles et monitoring applicatif. La maintenance peut être incluse dans votre contrat dès le départ ou souscrite séparément après la livraison.",
+    q: "Proposez-vous de la maintenance ?",
+    a: "Oui, nous proposons des contrats de maintenance évolutive : corrections de bugs, mises à jour de sécurité, évolutions fonctionnelles et monitoring applicatif. La maintenance peut être incluse dès le départ.",
   },
   {
-    question: "Travaillez-vous sous NDA / accord de confidentialité ?",
-    answer:
-      "Absolument. La confidentialité de vos projets est une priorité. Nous signons systématiquement un accord de non-divulgation (NDA) avant toute présentation d'éléments sensibles : business plan, maquettes, données techniques ou stratégiques. La protection de votre propriété intellectuelle est garantie contractuellement.",
+    q: "Quelles sont vos technologies de prédilection ?",
+    a: "React, TypeScript, Node.js, Django, React Native pour le développement. AWS, GCP, Docker pour le cloud. PostgreSQL et MongoDB pour les bases de données. Nous choisissons la stack la plus adaptée à vos besoins.",
   },
 ];
 
 const FAQ: React.FC = () => {
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-6 bg-surface-alt">
       <div className="max-w-3xl mx-auto">
+        {/* Header */}
         <motion.div
           className="text-center mb-14"
           initial={{ opacity: 0, y: 16 }}
@@ -51,32 +46,32 @@ const FAQ: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white">
-            Questions <span className="text-[#008080]">fréquentes</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-ink">
+            Questions <span className="text-primary">fréquentes</span>
           </h2>
-          <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">
+          <p className="mt-4 text-lg text-ink-muted">
             Tout ce que vous devez savoir avant de démarrer votre projet avec nous.
           </p>
         </motion.div>
 
-        <Accordion type="single" collapsible className="space-y-3">
+        <Accordion type="single" collapsible className="bg-white rounded-xl border border-ink-faint/20 overflow-hidden divide-y divide-slate-100">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
+              transition={{ duration: 0.4, delay: index * 0.07 }}
             >
               <AccordionItem
                 value={`faq-${index}`}
-                className="border border-slate-200 dark:border-slate-700 rounded-xl px-6 bg-white dark:bg-slate-800/50"
+                className="border-b border-slate-100 last:border-b-0 px-6"
               >
-                <AccordionTrigger className="hover:no-underline text-left font-semibold text-slate-800 dark:text-white py-5 text-base">
-                  {faq.question}
+                <AccordionTrigger className="hover:no-underline text-left font-semibold text-ink py-5 text-base">
+                  {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="pb-5 text-slate-600 dark:text-slate-300 leading-relaxed text-sm">
-                  {faq.answer}
+                <AccordionContent className="pb-5 text-ink-muted leading-relaxed text-sm">
+                  {faq.a}
                 </AccordionContent>
               </AccordionItem>
             </motion.div>

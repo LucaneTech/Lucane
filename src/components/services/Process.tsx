@@ -1,120 +1,94 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Search, Palette, Code2, Rocket, Headphones } from "lucide-react";
 
-interface Feature {
-  title: string;
-  description: string[];
-  number: string;
-  bgColor: string;
-  textColor: string;
-  iconColor: string;
-}
-
-const features: Feature[] = [
+const steps = [
   {
-    title: "Découverte & Analyse",
-    description: [
-      "Compréhension de vos besoins et objectifs.",
-      "Analyse de votre marché et de vos utilisateurs.",
-    ],
-    number: "1",
-    bgColor: "bg-violet-100",
-    textColor: "text-violet-600",
-    iconColor: "text-violet-600",
+    num: "01",
+    title: "Découverte",
+    desc: "Analyse de vos besoins, objectifs et contraintes techniques.",
+    icon: Search,
   },
   {
-    title: "Conception & Prototypage",
-    description: [
-      "Création de maquettes et prototypes interactifs.",
-      "Validation avec vous avant le développement.",
-    ],
-    number: "2",
-    bgColor: "bg-green-100",
-    textColor: "text-green-600",
-    iconColor: "text-green-600",
+    num: "02",
+    title: "Design",
+    desc: "Conception UX/UI et prototypage interactif.",
+    icon: Palette,
   },
   {
-    title: "Développement & Intégration",
-    description: [
-      "Développement logiciel sur mesure.",
-      "Intégration avec vos systèmes existants.",
-    ],
-    number: "3",
-    bgColor: "bg-orange-100",
-    textColor: "text-orange-600",
-    iconColor: "text-orange-600",
+    num: "03",
+    title: "Développement",
+    desc: "Implémentation agile en sprints bimensuels.",
+    icon: Code2,
   },
   {
-    title: "Tests & Livraison",
-    description: [
-      "Tests fonctionnels et de performance.",
-      "Livraison et support continu pour assurer le succès.",
-    ],
-    number: "4",
-    bgColor: "bg-blue-100",
-    textColor: "text-blue-600",
-    iconColor: "text-blue-600",
+    num: "04",
+    title: "Livraison",
+    desc: "Tests, déploiement et formation de vos équipes.",
+    icon: Rocket,
+  },
+  {
+    num: "05",
+    title: "Support",
+    desc: "Maintenance, évolutions et support technique dédié.",
+    icon: Headphones,
   },
 ];
 
 const FeaturesSection: React.FC = () => {
   return (
-    <section className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16 lg:gap-24 px-6 md:px-12 lg:px-24 py-12">
-      {/* Image */}
-      <motion.div
-        className="flex justify-center w-full md:w-1/2"
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <img
-          className="w-full max-w-lg rounded-2xl object-cover shadow-2xl shadow-indigo-600/70 cursor-pointer hover:scale-105 transition-transform duration-300 outline-1 outline-offset-15 outline-gray-300 dark:outline-gray-600 backdrop-blur-2xl"
-          src="images/services/app.jpeg"
-          alt="Process Illustration"
-        />
+    <section className="py-20 px-6">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-ink">
+            Notre <span className="text-primary">processus</span>
+          </h2>
+          <p className="mt-4 text-lg text-ink-muted max-w-2xl mx-auto">
+            Un processus éprouvé, de la première réunion à la mise en
+            production, pour des livraisons fiables et prévisibles.
+          </p>
+        </motion.div>
 
-      </motion.div>
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical connector line */}
+          <div className="absolute left-[27px] top-8 bottom-8 w-px bg-gradient-to-b from-primary/0 via-primary/30 to-primary/0 hidden lg:block" />
 
-      {/* Feature list */}
-      <div className="w-full md:w-1/2 space-y-10">
-        {features.map((item, index) => (
-          <motion.div
-            key={index}
-            className="flex items-start sm:items-center gap-6 max-w-md mx-auto sm:mx-0"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-          >
-            <div
-              className={`flex items-center justify-center p-4 sm:p-6 ${item.bgColor} ${item.textColor} rounded-full text-xl font-bold`}
-            >
-              {item.number}
-            </div>
-            <div className="space-y-2 text-left">
-              <h3 className={`text-lg sm:text-xl md:text-2xl font-semibold ${item.iconColor}`}>
-                {item.title}
-              </h3>
-              <div className="space-y-1">
-                {item.description.map((desc, i) => (
-                  <motion.p
-                    key={i}
-                    className="flex items-center gap-2 text-gray-900/70 dark:text-white"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                  >
-                    <Check className="main-color" />
-                    {desc}
-                  </motion.p>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        ))}
+          {steps.map((step, i) => {
+            const Icon = step.icon;
+            return (
+              <motion.div
+                key={i}
+                className="flex gap-8 mb-12 last:mb-0"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+              >
+                {/* Numbered circle */}
+                <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center text-primary font-bold text-sm">
+                  {step.num}
+                </div>
+
+                {/* Content */}
+                <div className="pt-3">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Icon className="w-5 h-5 text-primary" />
+                    <h3 className="text-xl font-bold text-ink">{step.title}</h3>
+                  </div>
+                  <p className="text-ink-muted leading-relaxed">{step.desc}</p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
