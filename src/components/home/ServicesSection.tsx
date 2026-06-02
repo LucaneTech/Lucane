@@ -1,72 +1,117 @@
-import { Code, PenTool, BarChart3, Cloud, Cog, Wrench } from "lucide-react";
-import type { ServiceProp } from "../CardSection";
-import CardSection from "../CardSection";
+import React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import {
+  Code2,
+  Smartphone,
+  Palette,
+  Cloud,
+  Lightbulb,
+  TrendingUp,
+  ArrowRight,
+} from "lucide-react";
 
-const services: ServiceProp[] = [
+const services = [
   {
+    icon: Code2,
     title: "Développement Web",
-    description: "Sites modernes et responsives.",
-    icon: <Code className="w-12 h-12" />,
-    color: 'text-indigo-500',
-    bgColor: 'bg-indigo-100',
-    borderColor: 'border-indigo-300',
-    shadowColor: 'shadow-indigo-300/50'
+    desc: "Applications web modernes, rapides et performantes adaptées à vos besoins.",
+    color: "text-dev",
+    bg: "bg-dev/10",
+    link: "/services",
   },
   {
-    title: "Design UX/UI",
-    description: "Expériences utilisateurs fluides.",
-    icon: <PenTool className="w-12 h-12" />,
-    color: "text-rose-500",
-    bgColor: 'bg-rose-100',
-     borderColor: 'border-rose-300',
-      shadowColor: 'shadow-rose-300/50'
+    icon: Smartphone,
+    title: "Développement Mobile",
+    desc: "Apps iOS et Android natives et cross-platform à fort impact utilisateur.",
+    color: "text-dev",
+    bg: "bg-dev/10",
+    link: "/services",
   },
   {
-    title: "Data Analytics",
-    description: "Décisions pilotées par la donnée.",
-    icon: <BarChart3 className="w-12 h-12"/>,
-    color: "text-emerald-500 ", 
-    bgColor: "bg-emerald-100",
-     borderColor: 'border-emerald-300',
-      shadowColor: 'shadow-emerald-300/50'
+    icon: Palette,
+    title: "UX/UI Design",
+    desc: "Interfaces élégantes centrées sur l'expérience et la conversion.",
+    color: "text-design",
+    bg: "bg-design/10",
+    link: "/services",
   },
   {
-    title: "Cloud Services",
-    description: "Scalabilité et performance assurées.",
-    icon: <Cloud className="w-12 h-12" />,
-    color: "text-sky-500 ", 
-    bgColor: 'bg-sky-100',
-     borderColor: 'border-sky-300',
-      shadowColor: 'shadow-sky-300/50'
+    icon: Cloud,
+    title: "Cloud & Infrastructure",
+    desc: "Déploiement, scalabilité et architecture cloud robuste et sécurisée.",
+    color: "text-cloud",
+    bg: "bg-cloud/10",
+    link: "/services",
   },
   {
-    title: "Automatisation",
-    description: "Gagnez du temps avec des scripts smart.",
-    icon: <Cog className="w-12 h-12"/>,
-    color: "text-amber-500 ", 
-    bgColor: "bg-amber-100",
-     borderColor: 'border-amber-300',
-      shadowColor: 'shadow-amber-300/50'
+    icon: Lightbulb,
+    title: "Conseil & Stratégie",
+    desc: "Accompagnement expert dans votre transformation digitale.",
+    color: "text-growth",
+    bg: "bg-growth/10",
+    link: "/services",
   },
   {
-    title: "Maintenance",
-    description: "Surveillance et support continu.",
-    icon: <Wrench className="w-12 h-12"/>,
-    color: "text-gray-500",
-    bgColor: 'bg-gray-100',
-    borderColor: 'border-gray-300',
-     shadowColor: 'shadow-gray-300/50'
-   
+    icon: TrendingUp,
+    title: "Growth & Marketing",
+    desc: "Stratégies de croissance et acquisition digitale orientées résultats.",
+    color: "text-growth",
+    bg: "bg-growth/10",
+    link: "/services",
   },
 ];
 
 const ServicesSection: React.FC = () => {
- 
-
   return (
- 
-      <CardSection services={services} title="Nos Services" description="On développe des solutions web et mobiles adaptées à vos besoins. Notre équipe crée des outils fiables, rapides et faciles à utiliser pour faire passer vos projets au niveau supérieur." />
- 
+    <section className="py-20 px-4 md:px-8 lg:px-16 xl:px-24 bg-surface">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-3">
+            Ce que nous faisons
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-ink mb-4">
+            Nos <span className="text-primary">services</span>
+          </h2>
+          <p className="text-ink-muted max-w-xl mx-auto leading-relaxed">
+            Des solutions complètes pour construire, lancer et faire croître vos produits digitaux.
+          </p>
+        </motion.div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+            >
+              <div className={`w-12 h-12 rounded-lg ${service.bg} flex items-center justify-center mb-4`}>
+                <service.icon className={`w-6 h-6 ${service.color}`} />
+              </div>
+              <h3 className="text-lg font-bold text-ink mb-2">{service.title}</h3>
+              <p className="text-sm text-ink-muted leading-relaxed mb-4">{service.desc}</p>
+              <Link
+                to={service.link}
+                className={`text-sm font-medium ${service.color} inline-flex items-center gap-1 group-hover:gap-2 transition-all`}
+              >
+                En savoir plus <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 

@@ -1,57 +1,61 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 const companies = [
   { name: "Oralise", logo: "collaborators/oralise.png" },
   { name: "eemci", logo: "collaborators/eemci.webp" },
+  { name: "eemsi", logo: "collaborators/eemsi.png" },
   { name: "Dynamic Services", logo: "collaborators/dynamic.png" },
   { name: "Next Academy", logo: "collaborators/next.png" },
-  { name: "koneshop.online", logo: "collaborators/kone.png" },
+  { name: "Kone Shop", logo: "collaborators/kone.png" },
 ];
+
+// Duplicate for seamless loop
+const row1 = [...companies, ...companies];
+const row2 = [...companies, ...companies].reverse();
 
 const TrustedCompanies: React.FC = () => {
   return (
-    <motion.section
-      className="py-12 px-4 border-y border-slate-100 dark:border-slate-800"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ once: true }}
-    >
-      <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-8">
+    <section className="py-12 bg-surface-alt border-y border-slate-200/60">
+      <p className="text-xs uppercase tracking-[0.2em] text-ink-muted font-medium text-center mb-8">
         Ils nous font confiance
       </p>
 
-      <motion.div
-        className="max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-8 md:gap-16"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: {},
-          visible: { transition: { staggerChildren: 0.1 } },
-        }}
-      >
-        {companies.map((company, index) => (
-          <motion.div
-            key={index}
-            className="flex items-center justify-center"
-            variants={{
-              hidden: { opacity: 0, y: 10 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
-            <img
-              src={company.logo}
-              alt={company.name}
-              loading="lazy"
-              className="max-h-12 w-auto object-contain grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-            />
-          </motion.div>
-        ))}
-      </motion.div>
-    </motion.section>
+      <div className="relative overflow-hidden">
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-surface-alt to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-surface-alt to-transparent z-10 pointer-events-none" />
+
+        {/* Row 1 — scroll left */}
+        <div className="flex mb-4" style={{ overflow: "hidden" }}>
+          <div className="flex gap-12 items-center animate-marquee-left whitespace-nowrap">
+            {row1.map((company, index) => (
+              <img
+                key={index}
+                src={company.logo}
+                alt={company.name}
+                loading="lazy"
+                className="h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex-shrink-0"
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2 — scroll right */}
+        <div className="flex" style={{ overflow: "hidden" }}>
+          <div className="flex gap-12 items-center animate-marquee-right whitespace-nowrap">
+            {row2.map((company, index) => (
+              <img
+                key={index}
+                src={company.logo}
+                alt={company.name}
+                loading="lazy"
+                className="h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex-shrink-0"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

@@ -8,13 +8,19 @@ import MemoryGrid from "../components/home/MemoryGrid";
 import Promotional from "../components/home/Promotional";
 import Button from "../ui/Button";
 
+const teamAvatars = [
+  "images/team/ceo.jpeg",
+  "images/team/product_manager.jpeg",
+  "images/team/profil.jpeg",
+];
+
 const Home: React.FC = () => {
   return (
     <div>
       {/* Hero */}
       <HeroSectionHome />
 
-      {/* Social proof — juste après le hero */}
+      {/* Social proof */}
       <TrustedCompanies />
 
       {/* Services */}
@@ -29,21 +35,41 @@ const Home: React.FC = () => {
       {/* Galerie mémoire */}
       <MemoryGrid />
 
-      {/* Bandeau devis */}
-      <div className="flex justify-center w-full">
-        <Promotional />
-      </div>
+      {/* Bandeau devis + compteurs */}
+      <Promotional />
 
       {/* CTA final */}
-      <section className="flex flex-col items-center justify-center mx-auto w-full text-center rounded-xl md:py-10 md:mt-20 px-4 md:px-0 mb-10">
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6 dark:text-[#008080] max-w-3xl">
-          Prêt à construire quelque chose d'extraordinaire ?
-        </h1>
-        <div className="h-[3px] w-32 my-1 bg-[#008080] mb-4" />
-        <p className="text-sm md:text-base text-slate-600 dark:text-white max-w-xl">
-          Nous sommes une agence de développement logiciel passionnée par la création de solutions numériques innovantes qui accélèrent la croissance de nos clients.
-        </p>
-        <Button label="Commençons aujourd'hui" changeColor="white" className="mt-8 md:mt-10" to="/contact" />
+      <section className="py-24 px-6 bg-surface">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Stacked team avatars */}
+          <div className="flex items-center justify-center -space-x-3 mb-6">
+            {teamAvatars.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt=""
+                className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
+              />
+            ))}
+            <div className="w-10 h-10 rounded-full bg-primary/20 border-2 border-white flex items-center justify-center text-primary text-xs font-bold shadow-sm">
+              +
+            </div>
+          </div>
+
+          <p className="text-ink-muted text-sm mb-4">Notre équipe vous attend</p>
+
+          <h2 className="text-4xl lg:text-5xl font-bold text-ink mb-4">
+            Prêt à lancer votre projet ?
+          </h2>
+
+          <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-6" />
+
+          <p className="text-ink-muted max-w-xl mx-auto mb-8 leading-relaxed">
+            Discutons de votre vision. Nous transformons vos idées en produits digitaux qui ont un impact réel.
+          </p>
+
+          <Button variant="primary" size="lg" label="Démarrer un projet" to="/contact" />
+        </div>
       </section>
     </div>
   );

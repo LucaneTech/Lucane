@@ -1,65 +1,64 @@
-import { useRef } from "react";
-import { motion, useInView,type Variants,type Transition } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
-const MemoryGrid = () => {
-  const images = [
-    "images/home/memory1.jpeg",
-    "images/home/memory2.jpeg",
-    "images/home/memory3.jpeg",
-    "images/home/memory5.jpeg",
-    "images/home/memory4.jpeg",
-    "images/home/memory6.jpeg",
-  ];
+const images = [
+  "images/home/memory1.jpeg",
+  "images/home/memory2.jpeg",
+  "images/home/memory3.jpeg",
+  "images/home/memory5.jpeg",
+  "images/home/memory4.jpeg",
+  "images/home/memory6.jpeg",
+];
 
+const MemoryGrid: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
 
-  const transition: Transition = { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] };
-
-  const containerVariants: Variants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.15 } },
-  };
-
-  const getItemVariants = (idx: number): Variants => ({
-    hidden: { opacity: 0, y: idx % 2 === 0 ? 30 : -30, x: idx % 3 === 0 ? -20 : 20 },
-    visible: { opacity: 1, y: 0, x: 0, transition },
-  });
-
- 
-  const floatAnimation = {
-    y: [0, -8, 0, 8, 0],
-    x: [0, 10, 0, -8, 0],
-    transition: {
-      duration: 10,
-      repeat: Infinity,
-      repeatType: "loop",
-      ease: [0.42, 0, 0.58, 1], 
-    } as Transition,
-  };
-
   return (
-    <div ref={ref} className="w-full flex justify-center p-8 mb-6">
-      <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-18 max-w-7xl"
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-      >
-        {images.map((src, idx) => (
-          <motion.div key={idx} variants={getItemVariants(idx)} className="w-full">
-            <motion.img
-              src={src}
-              alt={`template site projets réalisé par lucane: ${idx}`}
-              className="w-full h-auto transition-all rounded-lg object-cover shadow-lg hover:scale-105 hover:shadow-2xl hover:shadow-[#008080]
-              transition-transform duration-500 cursor-pointer outline-1 outline-offset-10 outline-[#008080] mb-4"
-              whileHover={{ scale: 1.08 }}
-              animate={floatAnimation}
-            />
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
+    <section className="py-20 px-4 md:px-8 lg:px-16 xl:px-24 bg-surface-alt">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-3">
+            Behind the scenes
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-ink mb-4">
+            L'équipe <span className="text-primary">en action</span>
+          </h2>
+          <p className="text-ink-muted max-w-xl mx-auto leading-relaxed">
+            Des moments qui illustrent notre façon de travailler, collaborer et livrer.
+          </p>
+        </motion.div>
+
+        {/* Grid layout */}
+        <div ref={ref} className="grid grid-cols-3 gap-2 md:gap-3">
+          {images.map((src, idx) => (
+            <motion.div
+              key={idx}
+              className={`relative overflow-hidden rounded-xl group ${idx === 0 ? "col-span-2 row-span-2" : "col-span-1"}`}
+              initial={{ opacity: 0, y: idx % 2 === 0 ? 30 : -30, x: idx % 3 === 0 ? -20 : 20 }}
+              animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
+              transition={{ delay: idx * 0.1, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <motion.img
+                src={src}
+                alt={`Équipe Lucane — moment ${idx + 1}`}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                style={{ aspectRatio: idx === 0 ? "4/3" : "1/1" }}
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 

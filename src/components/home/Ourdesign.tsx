@@ -1,75 +1,82 @@
-interface DesignItem {
-  id: number;
-  imageSrc: string;
-  alt: string;
-  date: string;
-  title: string;
-  imageClassName?: string;
-}
+import React from "react";
+import { motion } from "framer-motion";
 
-const designs: DesignItem[] = [
+const designs = [
   {
     id: 1,
     imageSrc: "images/home/design1.jpg",
-    alt: "Design UI UX d'une application de gestion d'une école",
-    date: "Septembre 2025",
+    alt: "Design UI UX d'une application de gestion scolaire",
     title: "Application de Gestion Scolaire",
-    imageClassName: "rounded-tr-4xl rounded-bl-4xl",
   },
   {
     id: 2,
     imageSrc: "images/home/design3.jpg",
     alt: "Design UI UX d'une plateforme e-commerce",
-    date: "Octobre 2024",
     title: "Plateforme E-commerce Multi-vendeurs",
-    imageClassName: "rounded-tr-4xl shadow-lg",
   },
   {
     id: 3,
     imageSrc: "images/home/design4.jpg",
-    alt: "Design UI UX d'un site e-commerce de vente d'habits",
-    date: "Décembre 2024",
+    alt: "Design UI UX d'un site e-commerce de mode",
     title: "Boutique en Ligne de Mode",
-    imageClassName: "rounded-tr-4xl shadow-lg",
   },
   {
     id: 4,
     imageSrc: "images/home/design2.jpg",
     alt: "Design UI UX d'une application mobile de fitness",
-    date: "Janvier 2025",
-    title: "Application Mobile de Fitness & Coaching",
-    imageClassName: "rounded-tr-4xl rounded-bl-4xl",
+    title: "Application Mobile Fitness & Coaching",
   },
 ];
 
-
-const DesignCard = ({ imageSrc, alt, date, title, imageClassName }: DesignItem) => {
+const Ourdesign: React.FC = () => {
   return (
-    <div className="flex flex-col items-start text-start p-6">
-      <img
-        src={imageSrc}
-        alt={alt}
-        loading="lazy"
-        className={`mb-4 img-fluid max-w-xl w-full h-auto ${imageClassName}`}
-      />
-      <h2 className="text-xl md:text-2xl mb-2">{date}</h2>
-      <p className="text-2xl md:text-3xl font-bold text-[#008080]">{title}</p>
-    </div>
-  );
-};
+    <section className="py-20 px-4 md:px-8 lg:px-16 xl:px-24 bg-surface">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-3">
+            Nos réalisations visuelles
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-ink mb-4">
+            Notre travail <span className="text-primary">parle pour nous</span>
+          </h2>
+          <p className="text-ink-muted max-w-xl mx-auto leading-relaxed">
+            Des interfaces pensées pour l'impact et l'expérience utilisateur.
+          </p>
+        </motion.div>
 
-const Ourdesign = () => {
-  return (
-    <section className="md:py-12">
-      <h1 className="md:text-5xl text-3xl text-center mb-4 md:mb-12">
-        Explorez nos{" "}
-        <span className="text-[#008080] font-bold">Designs</span>
-      </h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-8 mt-8 mb-16">
-        {designs.map((design) => (
-          <DesignCard key={design.id} {...design} />
-        ))}
+        {/* Masonry grid */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
+          {designs.map((design, index) => (
+            <motion.div
+              key={design.id}
+              className="break-inside-avoid mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+            >
+              <div className="relative group overflow-hidden rounded-xl">
+                <img
+                  src={design.imageSrc}
+                  alt={design.alt}
+                  loading="lazy"
+                  className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 p-4">
+                  <span className="text-white font-semibold text-center text-sm">{design.title}</span>
+                  <span className="text-white/80 text-xs">Voir →</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
