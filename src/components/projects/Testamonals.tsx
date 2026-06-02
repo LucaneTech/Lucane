@@ -1,190 +1,197 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
-interface CardData {
-  program: string;
-  testimonial: string;
-  image: string;
+interface Testimonial {
   name: string;
-  date: string;
+  role: string;
+  company: string;
+  avatar: string;
+  rating: number;
+  quote: string;
 }
 
-const Testamonals: React.FC = () => {
-  const cardsData: CardData[] = [
+const testimonials: Testimonial[] = [
   {
-    image: 'https://randomuser.me/api/portraits/women/68.jpg',
-    name: 'Camille Dupont',
-    program: 'CEO — GreenTech Solutions',
-    testimonial:
-      "L’équipe a transformé notre idée en une plateforme SaaS complète en moins de 3 mois. Le suivi était hyper pro et la qualité du code irréprochable.",
-    date: 'Septembre 2025'
+    name: "Jean-Pierre Kone",
+    role: "CEO",
+    company: "Kone Group",
+    avatar: "/collaborators/kone.png",
+    rating: 5,
+    quote:
+      "Lucane Tech a transformé notre gestion commerciale. Livraison rapide, équipe professionnelle.",
   },
   {
-    image: 'https://randomuser.me/api/portraits/men/45.jpg',
-    name: 'Nicolas Bernard',
-    program: 'Directeur Technique — Nova Digital',
-    testimonial:
-      "Leur approche agile nous a permis de sortir une version bêta ultra stable. Leur équipe frontend est juste incroyable — design moderne et super fluide.",
-    date: 'Août 2025'
+    name: "Marie Dubois",
+    role: "Directrice Marketing",
+    company: "Oralise",
+    avatar: "/images/team/ceo.jpeg",
+    rating: 5,
+    quote:
+      "Excellent travail sur notre plateforme. Le design est moderne et l'UX est parfaite.",
   },
   {
-    image: 'https://randomuser.me/api/portraits/women/21.jpg',
-    name: 'Sarah Lefebvre',
-    program: 'Fondatrice — MyFit App',
-    testimonial:
-      "Ils ont compris notre vision dès le premier call. L’application mobile qu’ils ont développée est stable, rapide et nos utilisateurs l’adorent.",
-    date: 'Juillet 2025'
+    name: "François Eemci",
+    role: "DRH",
+    company: "EEMCI",
+    avatar: "/collaborators/eemci.webp",
+    rating: 5,
+    quote:
+      "Application mobile de qualité professionnelle. Notre équipe est ravie.",
   },
-  {
-    image: 'https://randomuser.me/api/portraits/men/32.jpg',
-    name: 'Jonathan Mercier',
-    program: 'Chef de projet — FinanciaTech',
-    testimonial:
-      "Un vrai partenaire technique. Toujours disponibles, force de proposition, et surtout, à l’écoute. On a gagné un temps fou grâce à leur expertise backend.",
-    date: 'Juin 2025'
-  },
-  {
-    image: 'https://randomuser.me/api/portraits/women/56.jpg',
-    name: 'Lina Costa',
-    program: 'Responsable Communication — BeSeen Agency',
-    testimonial:
-      "Leur équipe UI/UX a complètement refondu notre site web. Résultat : +40% de conversions et un design qui fait l’unanimité.",
-    date: 'Mai 2025'
-  },
-  {
-    image: 'https://randomuser.me/api/portraits/men/12.jpg',
-    name: 'Hugo Delattre',
-    program: 'Entrepreneur — Freelance Connect',
-    testimonial:
-      "Ils m’ont accompagné sur tout le MVP, du prototypage au déploiement. Un mix parfait entre créativité et rigueur technique.",
-    date: 'Avril 2025'
-  },
-  {
-    image: 'https://randomuser.me/api/portraits/women/14.jpg',
-    name: 'Aïcha Rahmani',
-    program: 'CTO — HealthLink',
-    testimonial:
-      "On cherchait une équipe capable de livrer vite sans sacrifier la qualité. Pari réussi. Leur code est propre, scalable et super bien documenté.",
-    date: 'Mars 2025'
-  },
-  {
-    image: 'https://randomuser.me/api/portraits/men/23.jpg',
-    name: 'Lucas Fontaine',
-    program: 'Fondateur — DataPulse Analytics',
-    testimonial:
-      "Collaboration au top ! Ils ont su intégrer des API complexes et optimiser notre tableau de bord. Leur réactivité est impressionnante.",
-    date: 'Février 2025'
-  }
 ];
 
+const variants = {
+  enter: (dir: number) => ({
+    x: dir > 0 ? 80 : -80,
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (dir: number) => ({
+    x: dir > 0 ? -80 : 80,
+    opacity: 0,
+  }),
+};
 
-  // Carte animée
-  const CreateCard: React.FC<{ card: CardData }> = ({ card }) => (
-    <motion.div
-      className="p-4 rounded-lg mx-4 shadow hover:shadow-xl transition-all duration-300 w-72 shrink-0 dark:bg-gray-900/70 bg-white/80 backdrop-blur-sm border border-gray-100 dark:border-gray-800"
-      whileHover={{ scale: 1.05, y: -5 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      viewport={{ once: true }}
-    >
-      <div className="flex gap-2">
-        <img className="size-11 rounded-full" src={card.image} alt={card.name} />
-        <div className="flex flex-col">
-          <div className="flex items-center gap-1 font-semibold text-slate-800 dark:text-white">
-            <p>{card.name}</p>
-            {/* Check bleu stylé */}
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="#3b82f6" className="size-4">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-            </svg>
-          </div>
-          <span className="text-xs text-slate-500">{card.program}</span>
-        </div>
-      </div>
-      <p className="text-sm py-4 text-gray-800 dark:text-gray-100 italic">
-        “{card.testimonial}”
-      </p>
-      <div className="flex items-center justify-between text-slate-500 text-xs">
-        <span>Publié le</span>
-        <p>{card.date}</p>
-      </div>
-    </motion.div>
+const Testamonals: React.FC = () => {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const go = useCallback(
+    (delta: number) => {
+      setDirection(delta);
+      setIndex(
+        (prev) => (prev + delta + testimonials.length) % testimonials.length
+      );
+    },
+    []
   );
 
-  const title = "Témoignages de nos clients";
+  // Auto-play every 4s
+  useEffect(() => {
+    const id = setInterval(() => go(1), 4000);
+    return () => clearInterval(id);
+  }, [go]);
+
+  const t = testimonials[index];
 
   return (
-    <>
-      <style>{`
-        @keyframes marqueeScroll {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
-        }
-        .marquee-inner {
-          animation: marqueeScroll 25s linear infinite;
-        }
-        .marquee-reverse {
-          animation-direction: reverse;
-        }
-      `}</style>
-
-      <motion.div
-        className="text-center max-w-[800px] mx-auto mb-8 px-4 mt-16"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true }}
-      >
-        <motion.h2
-          className="text-4xl md:text-5xl font-extrabold text-slate-800 dark:text-white mb-6"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          {title.split(" ").map((word, i) =>
-            i === 1 ? (
-              <span key={i} className="main-color">
-                {" "}{word}{" "}
-              </span>
-            ) : (
-              word + " "
-            )
-          )}
-        </motion.h2>
-        <motion.p
-          className="text-lg md:text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+    <section className="py-20 px-6 bg-surface-alt">
+      <div className="max-w-3xl mx-auto text-center">
+        {/* Section header */}
+        <motion.span
+          className="text-xs uppercase tracking-widest text-primary font-medium"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
         >
-          Don’t just take our words. Découvrez ce que nos utilisateurs disent de nous.  
-          Nous cherchons constamment à nous améliorer.  
-          Si votre expérience est positive, laissez un avis et faites partie de l’aventure.
-        </motion.p>
-      </motion.div>
+          Témoignages
+        </motion.span>
+        <motion.h2
+          className="text-3xl md:text-4xl font-bold text-ink mt-3 mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          Ce que disent nos{" "}
+          <span className="text-primary">clients</span>
+        </motion.h2>
 
-      {/* Ligne 1 */}
-      <div className="marquee-row w-full mx-auto max-w-6xl overflow-hidden relative">
-        <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white dark:from-transparent to-transparent"></div>
-        <div className="marquee-inner flex transform-gpu min-w-[200%] pt-10 pb-5">
-          {[...cardsData, ...cardsData].map((card, index) => (
-            <CreateCard key={index} card={card} />
-          ))}
-        </div>
-        <div className="absolute right-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-l from-white dark:from-transparent to-transparent"></div>
-      </div>
+        {/* Carousel card */}
+        <div className="relative overflow-hidden">
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={index}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+              className="bg-white rounded-xl shadow-sm border border-surface-alt p-8 md:p-10"
+            >
+              {/* Stars */}
+              <div className="flex justify-center gap-1 mb-6">
+                {Array.from({ length: t.rating }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-5 h-5 fill-primary text-primary"
+                  />
+                ))}
+              </div>
 
-      {/* Ligne 2 */}
-      <div className="marquee-row w-full mx-auto max-w-6xl overflow-hidden relative">
-        <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white dark:from-transparent to-transparent"></div>
-        <div className="marquee-inner marquee-reverse flex transform-gpu min-w-[200%] pt-10 pb-5">
-          {[...cardsData, ...cardsData].map((card, index) => (
-            <CreateCard key={index} card={card} />
-          ))}
+              {/* Quote */}
+              <blockquote className="text-ink text-lg md:text-xl leading-relaxed italic mb-8">
+                "{t.quote}"
+              </blockquote>
+
+              {/* Author */}
+              <div className="flex items-center justify-center gap-4">
+                <img
+                  src={t.avatar}
+                  alt={t.name}
+                  className="w-14 h-14 rounded-full object-cover border-2 border-primary/20 flex-shrink-0"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      "https://ui-avatars.com/api/?name=" +
+                      encodeURIComponent(t.name) +
+                      "&background=008080&color=fff";
+                  }}
+                />
+                <div className="text-left">
+                  <p className="font-bold text-ink">{t.name}</p>
+                  <p className="text-sm text-ink-muted">
+                    {t.role} — {t.company}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
-        <div className="absolute right-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-l from-white dark:from-transparent to-transparent"></div>
+
+        {/* Navigation */}
+        <div className="flex items-center justify-center gap-6 mt-8">
+          <button
+            onClick={() => go(-1)}
+            className="w-10 h-10 rounded-full border border-ink-faint flex items-center justify-center text-ink-muted hover:border-primary hover:text-primary transition-colors"
+            aria-label="Précédent"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Dots */}
+          <div className="flex gap-2">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  setDirection(i > index ? 1 : -1);
+                  setIndex(i);
+                }}
+                className={`rounded-full transition-all duration-300 ${
+                  i === index
+                    ? "w-6 h-2 bg-primary"
+                    : "w-2 h-2 bg-ink-faint hover:bg-ink-muted"
+                }`}
+                aria-label={`Témoignage ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={() => go(1)}
+            className="w-10 h-10 rounded-full border border-ink-faint flex items-center justify-center text-ink-muted hover:border-primary hover:text-primary transition-colors"
+            aria-label="Suivant"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
       </div>
-    </>
+    </section>
   );
 };
 

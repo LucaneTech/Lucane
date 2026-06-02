@@ -1,107 +1,90 @@
-import React, { useEffect, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import { Code2, Users, Globe } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
-const StatsSection: React.FC = () => {
- const stats = [
-  { 
-    label: "Projets réalisés",
-    value: 50,
-    icon: <Code2 size={40} className="text-indigo-500 p-2" />,
-    borderColor: "border-indigo-500",
-    bgColor: "bg-indigo-100",
-    shadowColor: "shadow-indigo-300/50"
-  },
-  { 
-    label: "Clients satisfaits",
-    value: 20,
-    icon: <Users size={40} className="text-emerald-500 p-2" />,
-    borderColor: "border-emerald-500",
-    bgColor: "bg-emerald-100",
-    shadowColor: "shadow-emerald-300/50"
-  },
-  { 
-    label: "Pays couverts",
-    value: 10,
-    icon: <Globe size={40} className="text-orange-500 p-2" />,
-    borderColor: "border-orange-500",
-    bgColor: "bg-orange-100",
-    shadowColor: "shadow-orange-300/50"
-  },
+interface Stat {
+  label: string;
+  value: number;
+  suffix: string;
+}
+
+const stats: Stat[] = [
+  { label: "Clients satisfaits", value: 50, suffix: "+" },
+  { label: "Taux de satisfaction", value: 98, suffix: "%" },
+  { label: "Ans d'expérience", value: 3, suffix: "" },
+  { label: "Pays couverts", value: 6, suffix: "" },
 ];
 
+interface CounterProps {
+  value: number;
+  suffix: string;
+}
+
+const Counter: React.FC<CounterProps> = ({ value, suffix }) => {
+  const [count, setCount] = useState(0);
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.4 });
+
+  useEffect(() => {
+    if (!inView) return;
+    let start = 0;
+    const duration = 1400;
+    const step = Math.max(Math.floor(duration / value), 14);
+    const timer = setInterval(() => {
+      start += 1;
+      setCount(start);
+      if (start >= value) clearInterval(timer);
+    }, step);
+    return () => clearInterval(timer);
+  }, [inView, value]);
+
   return (
-    <section className="py-20">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <motion.h2
-          className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-[#008080] mb-6 "
-          initial={{ opacity: 0, y: -30 }}
+    <span ref={ref} className="text-4xl md:text-5xl font-bold text-white">
+      {count}
+      {suffix}
+    </span>
+  );
+};
+
+const StatsSection: React.FC = () => {
+  return (
+    <section className="bg-dark py-20 px-6">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Nos Chiffres Clés
-        </motion.h2>
-        <motion.p
-          className="text-gray-600 dark:text-gray-200 mb-16 max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          Nous transformons les idées en produits digitaux puissants. Voici quelques statistiques qui montrent notre impact et notre expertise.
-        </motion.p>
+          <span className="text-xs uppercase tracking-widest text-primary font-medium">
+            Nos chiffres
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mt-3">
+            L'impact en <span className="text-primary">chiffres</span>
+          </h2>
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {stats.map((stat, index) => (
-            <StatCard key={index} stat={stat} delay={index * 0.3} />
+        {/* Stats grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              className="flex flex-col items-center text-center gap-2"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.12 }}
+            >
+              {/* Teal accent line */}
+              <div className="w-8 h-1 bg-primary rounded-full mb-2" />
+              <Counter value={stat.value} suffix={stat.suffix} />
+              <p className="text-white/60 text-sm mt-1">{stat.label}</p>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
-  );
-};
-
-type StatCardProps = {
-  stat: { label: string; value: number; icon: React.ReactNode; borderColor: string, bgColor:string, shadowColor?:string };
-  delay: number;
-};
-
-const StatCard: React.FC<StatCardProps> = ({ stat, delay }) => {
-  const ref = React.useRef<HTMLDivElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (inView) {
-      let start = 0;
-      const end = stat.value;
-      const duration = 1200; 
-      const stepTime = Math.abs(Math.floor(duration / end));
-
-      const timer = setInterval(() => {
-        start += 1;
-        setCount(start);
-        if (start === end) clearInterval(timer);
-      }, stepTime);
-
-      return () => clearInterval(timer);
-    }
-  }, [inView, stat.value]);
-
-  return (
-    <motion.div
-      ref={ref}
-      className={` border ${stat.borderColor} rounded-xl shadow-xl p-8 flex flex-col items-center justify-center  hover:shadow-2xl  ${stat.shadowColor} hover:scale-90 cursor-pointer  transition duration-300 ease-in-out`}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay }}
-    >
-      <div className={`mb-4 ${stat.bgColor} p-3 rounded-full text-xl`}>{stat.icon}</div>
-      <h3 className="text-4xl font-bold text-gray-800 dark:text-white mb-2">+{count}</h3>
-      <p className="text-gray-600 text-center dark:text-gray-200">{stat.label}</p>
-    </motion.div>
   );
 };
 

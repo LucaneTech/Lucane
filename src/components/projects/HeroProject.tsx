@@ -1,95 +1,72 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Button from "../../ui/Button";
 
-const HeroProject: React.FC = () => {
-    return (
-        <section className="relative z-10 flex items-center justify-center h-[500px] md:h-[700px] overflow-hidden">
-            {/* Image de fond avec effet parallax */}
-            <motion.div
-                className="hidden md:block absolute inset-0 bg-cover bg-center"
-                style={{
-                    backgroundImage: "url('images/bg.jpg')",
-                }}
-                initial={{ scale: 1.1, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.8, ease: "easeOut" }}
-            />
+interface HeroProjectProps {
+  filter: string;
+  setFilter: (f: string) => void;
+}
 
-            <motion.div
-                className="
-    md:hidden
-    absolute inset-0
-    bg-gradient-to-br
-    from-[#0f172a]
-    via-[#111827]
-    to-[#020617]
-  "
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
+const CATEGORIES = ["Tous", "Web", "Mobile", "Design", "SaaS"];
+
+const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
+  return (
+    <section className="relative bg-dark pt-32 pb-16 px-6">
+      <div className="max-w-5xl mx-auto text-center">
+        <motion.span
+          className="text-xs uppercase tracking-widest text-primary font-medium"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Nos réalisations
+        </motion.span>
+
+        <motion.h1
+          className="text-5xl lg:text-6xl font-bold text-white mt-4 mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          Des projets qui{" "}
+          <span className="text-primary">parlent d'eux-mêmes</span>
+        </motion.h1>
+
+        <motion.p
+          className="text-white/60 text-lg max-w-2xl mx-auto mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          Découvrez nos réalisations pour des clients en France, en Afrique et à
+          l'international.
+        </motion.p>
+
+        {/* Filtres catégories */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+        >
+          {CATEGORIES.map((cat) => (
+            <motion.button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`rounded-pill px-5 py-2 text-sm font-medium transition-colors cursor-pointer ${
+                filter === cat
+                  ? "bg-primary text-white"
+                  : "bg-white/5 text-white/60 border border-white/10 hover:bg-white/10"
+              }`}
+              layout
+              whileTap={{ scale: 0.96 }}
             >
-                {/* léger overlay pour profondeur */}
-                <div className="absolute inset-0 bg-white/5 backdrop-blur-[1px]" />
-            </motion.div>
-
-
-            {/* Contenu principal animé */}
-            <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20">
-                <motion.h1
-                    className="text-2xl sm:text-3xl md:text-6xl font-extrabold text-white leading-tight drop-shadow-md"
-                    initial={{ y: 40, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.9, ease: "easeOut" }}
-                >
-                    <motion.span
-                        className="bg-main-color p-2 rounded-lg inline-block"
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 0.4, duration: 0.6 }}
-                    >
-                        Projets Innovants pour un
-                    </motion.span>
-                    <br />
-                    <motion.span
-                        className="main-color mt-4 block"
-                        initial={{ x: -30, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.7, duration: 0.6 }}
-                    >
-                        Avenir Meilleur
-                    </motion.span>
-                </motion.h1>
-
-                <motion.p
-                    className="mt-4 text-base sm:text-lg md:text-xl md:text-black text-white max-w-2xl mx-auto leading-relaxed"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 1, duration: 0.8 }}
-                >
-                    Nous transformons les idées ambitieuses en solutions numériques concrètes,
-                    durables et prêtes pour le futur.
-                </motion.p>
-
-                <motion.div
-                    className="mt-8"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.3, duration: 0.6, ease: "easeOut" }}
-                >
-                    <Button label="Voir nos projets" changeColor="primary" to="/projects" />
-                </motion.div>
-            </div>
-
-            {/* Dégradé décoratif bas */}
-            <motion.div
-                className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-black/20 to-transparent"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 1 }}
-            />
-        </section>
-    );
+              {cat}
+            </motion.button>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
 };
 
 export default HeroProject;

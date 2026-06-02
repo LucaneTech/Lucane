@@ -1,82 +1,117 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Users, Lightbulb, Globe, Heart } from "lucide-react";
+import {
+  Zap,
+  Users,
+  Shield,
+  Globe,
+  Heart,
+  Award,
+  type LucideIcon,
+} from "lucide-react";
 
-const values = [
+interface Value {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+  color: string;
+  bg: string;
+}
+
+const values: Value[] = [
   {
-    icon: <Lightbulb size={48} className="text-yellow-400" />,
+    icon: Zap,
     title: "Innovation",
-    description: "Nous cherchons constamment à repousser les limites pour créer des solutions uniques et efficaces.",
-    image: "/images/about/innovation.png",
+    desc: "Nous explorons constamment de nouvelles technologies.",
+    color: "text-dev",
+    bg: "bg-dev/10",
   },
   {
-    icon: <Users size={48} className="text-indigo-500" />,
+    icon: Users,
     title: "Collaboration",
-    description: "Le travail en équipe et l’échange d’idées sont au cœur de nos projets.",
-    image: "/images/about/collaboration.png",
+    desc: "Le travail d'équipe et l'écoute sont au cœur de notre culture.",
+    color: "text-design",
+    bg: "bg-design/10",
   },
   {
-    icon: <Globe size={48} className="text-green-500" />,
-    title: "Impact Global",
-    description: "Nous développons des produits qui ont un effet concret et positif à l’échelle mondiale.",
-    image: "/images/about/global.png",
+    icon: Shield,
+    title: "Fiabilité",
+    desc: "Nos engagements sont respectés, toujours.",
+    color: "text-growth",
+    bg: "bg-growth/10",
   },
   {
-    icon: <Heart size={48} className="text-red-500" />,
-    title: "Passion & Éthique",
-    description: "Chaque ligne de code est guidée par l’excellence et le respect des standards éthiques.",
-    image: "/images/about/ethique.png",
+    icon: Globe,
+    title: "Impact",
+    desc: "Chaque projet doit créer une valeur réelle pour ses utilisateurs.",
+    color: "text-cloud",
+    bg: "bg-cloud/10",
+  },
+  {
+    icon: Heart,
+    title: "Passion",
+    desc: "Nous aimons ce que nous faisons et ça se voit.",
+    color: "text-design",
+    bg: "bg-design/10",
+  },
+  {
+    icon: Award,
+    title: "Excellence",
+    desc: "Nous visons le meilleur dans chaque ligne de code.",
+    color: "text-dev",
+    bg: "bg-dev/10",
   },
 ];
 
 const ValuesCultureSection: React.FC = () => {
-  const title = 'Nos Valeurs & Notre Culture'
-
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900/70">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-      
-
-        <motion.div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-6">
-            {title.split(" ").map((word, i) =>
-              i === 1 ? (
-                <span key={i} className="text-[#008080]">
-                  {" "}
-                  {word}{" "}
-                </span>
-              ) : (
-                word + " "
-              )
-            )}
+    <section className="py-20 px-6 bg-surface-alt">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="text-xs uppercase tracking-widest text-primary font-medium">
+            Ce qui nous guide
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-ink mt-3">
+            Nos <span className="text-primary">valeurs</span> &amp; culture
           </h2>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-white max-w-3xl mx-auto leading-relaxed">
-            La manière dont nous travaillons définit qui nous sommes. Voici ce qui nous guide au quotidien.
+          <p className="text-ink-muted mt-4 max-w-2xl mx-auto">
+            La manière dont nous travaillons définit qui nous sommes. Voici ce
+            qui nous guide au quotidien.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {values.map((value, index) => (
-            <motion.div
-              key={index}
-              className="relative group overflow-hidden rounded-2xl cursor-pointer"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-            >
-              <img
-                src={value.image}
-                alt={value.title}
-                className="w-full h-52 sm:h-64 md:h-72 object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gray-900/70 flex flex-col justify-center items-center text-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="mb-4">{value.icon}</div>
-                <h3 className="text-2xl font-bold text-white mb-2">{value.title}</h3>
-                <p className="text-white text-sm">{value.description}</p>
-              </div>
-            </motion.div>
-          ))}
+        {/* 2×3 grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {values.map((v, i) => {
+            const Icon = v.icon;
+            return (
+              <motion.div
+                key={v.title}
+                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-transparent hover:border-primary/10"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+              >
+                <div
+                  className={`w-12 h-12 rounded-xl ${v.bg} flex items-center justify-center mb-4`}
+                >
+                  <Icon className={`w-6 h-6 ${v.color}`} />
+                </div>
+                <h3 className="text-lg font-bold text-ink mb-2">{v.title}</h3>
+                <p className="text-ink-muted text-sm leading-relaxed">
+                  {v.desc}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

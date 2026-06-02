@@ -1,4 +1,6 @@
-import { motion, type Variants } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
+import { Linkedin } from "lucide-react";
 
 export interface TeamMember {
   name: string;
@@ -8,80 +10,81 @@ export interface TeamMember {
   socials?: { type: string; url: string }[];
 }
 
-type MeetOurPeopleProps = {
+interface MeetOurFounderProps {
   member: TeamMember;
-};
+}
 
-// Variants pour la carte
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 50, scale: 0.95 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 120 } },
-  hover: { scale: 1.05, boxShadow: "0px 15px 35px rgba(0,0,0,0.25)" },
-};
+const MeetOurFounder: React.FC<MeetOurFounderProps> = ({ member }) => {
+  const linkedIn = member.socials?.find((s) => s.type === "linkedin")?.url;
 
-const MeetOurFounder: React.FC<MeetOurPeopleProps> = ({ member }) => {
   return (
-    <section className="py-20 px-4 flex flex-col items-center text-center bg-[#fafafa] dark:bg-gray-900">
-      {/* Header */}
-      <motion.h3
-        className="text-xl font-medium text-gray-500 mb-2"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        Fondateur
-      </motion.h3>
-
-      <motion.h1
-        className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-6 max-w-3xl"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        Rencontrez le fondateur de <span className="main-color">Lucane</span>
-      </motion.h1>
-
-      <motion.p
-        className="mb-16 text-gray-500 dark:text-gray-300 max-w-2xl"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        Découvrez la vision, la passion et l’expertise derrière notre startup. 
-        Notre fondateur guide chaque projet avec rigueur et innovation.
-      </motion.p>
-
-      {/* Carte du fondateur */}
-      <motion.div
-        className="group flex flex-col items-center bg-white dark:bg-gray-800 border border-gray-300 rounded-xl w-80 p-8 cursor-pointer"
-        variants={cardVariants}
-        initial="hidden"
-        whileInView="visible"
-        whileHover="hover"
-        viewport={{ once: true, amount: 0.3 }}
-      >
+    <section className="py-20 px-6 bg-surface">
+      <div className="max-w-5xl mx-auto">
+        {/* Section header */}
         <motion.div
-          className="w-28 h-28 overflow-hidden rounded-full border border-gray-200 dark:border-gray-700 mb-4"
-          whileHover={{ scale: 1.1 }}
-          transition={{ type: "spring", stiffness: 150 }}
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          <motion.img
-            className="w-full h-full object-cover"
-            src={member.image}
-            alt={member.name}
-          />
+          <span className="text-xs uppercase tracking-widest text-primary font-medium">
+            Fondateur
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-ink mt-3">
+            Rencontrez le fondateur de{" "}
+            <span className="text-primary">Lucane</span>
+          </h2>
         </motion.div>
 
-        <motion.h2 className="text-2xl font-semibold mb-1 text-slate-800 dark:text-white">
-          {member.name}
-        </motion.h2>
+        {/* Founder card */}
+        <motion.div
+          className="max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          <div className="bg-white rounded-xl shadow-sm border border-surface-alt p-8 flex flex-col md:flex-row gap-8 items-start">
+            {/* Avatar */}
+            <img
+              src={member.image}
+              alt={member.name}
+              className="w-32 h-32 rounded-full object-cover flex-shrink-0 border-4 border-primary/20"
+            />
 
-        <motion.p className="text-gray-600 dark:text-gray-300 mb-4">{member.role}</motion.p>
+            {/* Content */}
+            <div className="flex-1">
+              <h3 className="text-2xl font-bold text-ink mb-1">
+                {member.name}
+              </h3>
+              <p className="text-primary font-medium mb-4">{member.role}</p>
+              <p className="text-ink-muted leading-relaxed mb-6">
+                {member.description}
+              </p>
 
-        <motion.p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-          {member.description}
-        </motion.p>
-      </motion.div>
+              {/* Quote */}
+              <blockquote className="bg-primary/5 border-l-4 border-primary rounded-r-lg px-6 py-4 italic text-ink-muted">
+                "La technologie est le meilleur levier pour développer l'Afrique.
+                Notre mission est de la rendre accessible."
+              </blockquote>
+
+              {/* LinkedIn */}
+              {linkedIn && (
+                <a
+                  href={linkedIn}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-5 text-primary font-medium hover:text-primary-hover transition-colors"
+                >
+                  <Linkedin className="w-4 h-4" />
+                  Voir le profil LinkedIn
+                </a>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 };

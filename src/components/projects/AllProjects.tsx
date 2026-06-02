@@ -1,87 +1,168 @@
-import React from 'react';
-import ProjectSection from '../ProjectSection';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const AllProjects: React.FC = () => {
-  const projects = [
-    {
-      id: 2,
-      title: "Plateforme E-commerce sur mesure",
-      description:
-        "Solution e-commerce complète intégrant gestion des produits, paiements sécurisés, commandes, clients et tableau de bord business.",
-      image:
-        "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1200&auto=format&fit=crop",
-      technologies: ["Node.js", "Express", "MongoDB", "React", "Stripe"],
-      githubUrl: "https://github.com/6code579/myShop",
-      liveUrl: "#",
-      featured: true,
-      category: "E-commerce",
-      date: "Décembre 2024",
-      bgColor: "bg-slate-100",
-    },
-    {
-      id: 3,
-      title: "Site vitrine premium orienté conversion",
-      description:
-        "Site vitrine moderne conçu pour startups et indépendants, avec UX optimisée, animations fluides et SEO prêt pour la croissance.",
-      image:
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-      githubUrl: "https://github.com/6code579/Portofolio",
-      liveUrl: "https://francisco.lucane.tech",
-      category: "Frontend / Branding",
-      date: "Juillet 2025",
-      bgColor: "bg-slate-100",
-    },
-    {
-      id: 1,
-      title: "Edusco – Plateforme EdTech SaaS",
-      description:
-        "Plateforme SaaS d'apprentissage en ligne permettant aux établissements et formateurs de gérer cours, étudiants, évaluations et statistiques pédagogiques en temps réel.",
-      image: "images/home/edusco.avif",
-      technologies: ["Django", "PostgreSQL", "React", "Docker", "Chart.js"],
-      githubUrl: "https://github.com/6code579/Edusco",
-      liveUrl: "#",
-      featured: true,
-      category: "SaaS / EdTech",
-      date: "Avril 2025",
-      bgColor: "bg-slate-100",
-    },
-    {
-      id: 4,
-      title: "CMS & Plateforme de contenu",
-      description:
-        "Système de gestion de contenu personnalisé avec éditeur avancé, gestion des médias, SEO intégré et workflows éditoriaux.",
-      image:
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop",
-      technologies: ["Django", "PostgreSQL", "Redis", "Celery"],
-      githubUrl: "#",
-      liveUrl: "#",
-      category: "CMS / Backend",
-      date: "Août 2024",
-      bgColor: "bg-slate-100",
-    },
-    {
-      id: 5,
-      title: "Task Manager SaaS",
-      description:
-        "Application SaaS de gestion de tâches orientée productivité, collaboration d'équipe et performance utilisateur.",
-      image:
-        "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1200&auto=format&fit=crop",
-      technologies: ["Vue.js", "JavaScript", "API REST"],
-      githubUrl: "#",
-      liveUrl: "#",
-      category: "SaaS / Productivité",
-      date: "Octobre 2024",
-      bgColor: "bg-slate-100",
-    },
-  ];
+interface Project {
+  title: string;
+  category: string;
+  tag: string;
+  tagColor: string;
+  image: string;
+  desc: string;
+  stack: string[];
+  link: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "Oralise",
+    category: "Web",
+    tag: "Web App",
+    tagColor: "text-dev bg-dev/10",
+    image: "/images/home/design1.jpg",
+    desc: "Plateforme d'apprentissage pour professionnels de santé.",
+    stack: ["React", "Node.js"],
+    link: "#",
+  },
+  {
+    title: "EEMCI",
+    category: "Mobile",
+    tag: "Mobile",
+    tagColor: "text-design bg-design/10",
+    image: "/images/home/design2.jpg",
+    desc: "App mobile de gestion RH.",
+    stack: ["React Native"],
+    link: "#",
+  },
+  {
+    title: "Kone Group",
+    category: "SaaS",
+    tag: "SaaS",
+    tagColor: "text-growth bg-growth/10",
+    image: "/images/home/design3.jpg",
+    desc: "Solution SaaS de gestion commerciale.",
+    stack: ["Next.js", "MongoDB"],
+    link: "#",
+  },
+  {
+    title: "Dynamic",
+    category: "Web",
+    tag: "Web",
+    tagColor: "text-dev bg-dev/10",
+    image: "/images/home/design4.jpg",
+    desc: "Site vitrine et catalogue produits.",
+    stack: ["React", "Tailwind"],
+    link: "#",
+  },
+  {
+    title: "Oralise App",
+    category: "Design",
+    tag: "Design",
+    tagColor: "text-design bg-design/10",
+    image: "/images/home/second.avif",
+    desc: "Refonte UX/UI de l'application mobile.",
+    stack: ["Figma"],
+    link: "#",
+  },
+  {
+    title: "EEMSI",
+    category: "Web",
+    tag: "Web",
+    tagColor: "text-cloud bg-cloud/10",
+    image: "/images/home/design2.jpg",
+    desc: "Plateforme de formation en ligne.",
+    stack: ["Next.js", "PostgreSQL"],
+    link: "#",
+  },
+];
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => (
+  <motion.div
+    layout
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+    exit={{ opacity: 0, scale: 0.95 }}
+    transition={{ duration: 0.3 }}
+    className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
+  >
+    <div className="relative overflow-hidden aspect-video">
+      <img
+        src={project.image}
+        alt={project.title}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+      {/* Live Preview overlay */}
+      <div className="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-pill bg-primary text-white px-5 py-2 text-sm font-medium"
+        >
+          Live Preview →
+        </a>
+      </div>
+    </div>
+    <div className="p-5">
+      <span
+        className={`text-xs font-semibold rounded-pill px-3 py-1 ${project.tagColor}`}
+      >
+        {project.tag}
+      </span>
+      <h3 className="text-lg font-bold text-ink mt-3 mb-2">{project.title}</h3>
+      <p className="text-sm text-ink-muted mb-3">{project.desc}</p>
+      <div className="flex flex-wrap gap-2">
+        {project.stack.map((s) => (
+          <span
+            key={s}
+            className="text-xs bg-surface-alt text-ink-muted rounded-pill px-2 py-0.5"
+          >
+            {s}
+          </span>
+        ))}
+      </div>
+    </div>
+  </motion.div>
+);
+
+interface AllProjectsProps {
+  filter: string;
+}
+
+const AllProjects: React.FC<AllProjectsProps> = ({ filter }) => {
+  const filtered =
+    filter === "Tous"
+      ? projects
+      : projects.filter((p) => p.category === filter);
 
   return (
-    <ProjectSection
-      projects={projects}
-      title="Nos plus pertinents projets"
-      description="Une sélection de réalisations représentatives : plateformes SaaS, e-commerce, applications mobiles et infrastructures cloud conçues pour nos clients."
-    />
+    <section className="py-20 px-6 bg-surface">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          layout
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {filtered.length === 0 && (
+          <motion.p
+            className="text-center text-ink-muted py-16 text-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            Aucun projet dans cette catégorie.
+          </motion.p>
+        )}
+      </div>
+    </section>
   );
 };
 
