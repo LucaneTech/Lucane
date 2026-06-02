@@ -6,7 +6,6 @@ import Button from "../../ui/Button";
 const rotatingWords = ["applications", "plateformes", "produits", "expériences"];
 
 const HeroSection: React.FC = () => {
-  const strokePrimary = "#0080802a";
   const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {
@@ -20,10 +19,10 @@ const HeroSection: React.FC = () => {
     <section className="relative pt-28 md:pt-36 pb-10 md:pb-20 px-4 md:px-8 lg:px-16 xl:px-24 overflow-hidden bg-surface">
       {/* Background SVG circles */}
       <svg className="absolute -z-10 inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 720" fill="none">
-        <circle cx="711.819" cy="372.562" r="308.334" stroke={strokePrimary} strokeWidth={3} />
-        <circle cx="16.942" cy="20.834" r="308.334" stroke={strokePrimary} strokeWidth={2} />
-        <circle cx="782.595" cy="411.166" r="308.334" stroke={strokePrimary} strokeWidth={3} />
-        <circle cx="1200.595" cy="611.166" r="308.334" stroke={strokePrimary} strokeWidth={2} />
+        <circle cx="711.819" cy="372.562" r="308.334" stroke="var(--color-primary)" strokeOpacity={0.16} strokeWidth={3} />
+        <circle cx="16.942" cy="20.834" r="308.334" stroke="var(--color-primary)" strokeOpacity={0.16} strokeWidth={2} />
+        <circle cx="782.595" cy="411.166" r="308.334" stroke="var(--color-primary)" strokeOpacity={0.16} strokeWidth={3} />
+        <circle cx="1200.595" cy="611.166" r="308.334" stroke="var(--color-primary)" strokeOpacity={0.16} strokeWidth={2} />
       </svg>
 
       <div className="grid lg:grid-cols-[55fr_45fr] gap-12 items-center max-w-7xl mx-auto">

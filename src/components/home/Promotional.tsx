@@ -164,7 +164,7 @@ const Promotional: React.FC = () => {
                   <button
                     type="submit"
                     disabled={sending}
-                    className="w-full mt-1 inline-flex items-center justify-center gap-2 bg-primary text-white rounded-lg px-6 py-3 font-semibold shadow-[0_4px_14px_rgba(0,128,128,0.35)] hover:shadow-[0_6px_20px_rgba(0,128,128,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-60"
+                    className="w-full mt-1 inline-flex items-center justify-center gap-2 bg-primary text-white rounded-pill px-6 py-3 font-semibold shadow-glow hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-60"
                   >
                     {sending ? "Envoi en cours…" : "Envoyer ma demande"}
                   </button>
