@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import { X, Menu, Home, Info, Phone, Briefcase, Cpu, Settings } from "lucide-react";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { X, Menu, Phone } from "lucide-react";
 import Button from "../ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Footer } from "./Footer";
@@ -12,10 +12,19 @@ interface NavbarProps {
   className?: string;
 }
 
+const navItems = [
+  { to: "/", label: "Accueil" },
+  { to: "/services", label: "Services" },
+  { to: "/projets", label: "Projets" },
+  { to: "/technologies", label: "Technologies" },
+  { to: "/a-propos", label: "À propos" },
+];
+
 const Navbar: React.FC<NavbarProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -34,6 +43,11 @@ const Navbar: React.FC<NavbarProps> = () => {
     return () => darkMediaQuery.removeEventListener("change", handleChange);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
   return (
@@ -41,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = () => {
       <motion.nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm border-b border-slate-200/50 dark:border-gray-700/50 py-3"
+            ? "backdrop-blur-xl bg-white/70 dark:bg-dark/80 border-b border-white/10 py-3"
             : "bg-transparent py-5"
         }`}
         initial={{ y: -100 }}
@@ -67,35 +81,53 @@ const Navbar: React.FC<NavbarProps> = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            {[
-              { to: "/", label: "Accueil" },
-              { to: "/services", label: "Services" },
-              { to: "/projets", label: "Projets" },
-              { to: "/technologies", label: "Technologies" },
-              { to: "/a-propos", label: "À propos" },
-            ].map((item) => (
-              <motion.div key={item.to} whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-                <Link
-                  to={item.to}
-                  className="text-slate-700 dark:text-slate-200 hover:text-[#008080] transition-colors relative group font-medium"
+            {navItems.map((item) => {
+              const isActive =
+                item.to === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.to);
+              return (
+                <motion.div
+                  key={item.to}
+                  className="relative"
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#008080] transition-all duration-300 group-hover:w-full" />
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    to={item.to}
+                    className={`font-medium text-sm tracking-wide transition-colors relative group ${
+                      isActive
+                        ? "text-primary"
+                        : "text-ink/70 dark:text-white/70 hover:text-primary"
+                    }`}
+                  >
+                    {item.label}
+                    {/* Animated underline on hover (non-active) */}
+                    {!isActive && (
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                    )}
+                  </Link>
+                  {/* Active dot indicator */}
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-dot"
+                      className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary"
+                    />
+                  )}
+                </motion.div>
+              );
+            })}
           </motion.div>
 
           {/* CTA Desktop */}
           <div className="hidden lg:block">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                to="/contact"
-                label="Contactez-nous"
-                changeColor="primary"
-                icon={<Phone className="w-4 h-4" />}
-              />
-            </motion.div>
+            <Button
+              to="/contact"
+              label="Contactez-nous"
+              variant="primary"
+              size="md"
+              iconLeft={<Phone className="w-4 h-4" />}
+            />
           </div>
 
           {/* Burger Mobile */}
@@ -103,105 +135,113 @@ const Navbar: React.FC<NavbarProps> = () => {
             <motion.button
               onClick={toggleMenu}
               className="p-2 rounded-md hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition"
-              aria-label="Ouvrir le menu"
+              aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <motion.div animate={{ rotate: isOpen ? 90 : 0 }} transition={{ duration: 0.3 }}>
-                {isOpen ? <X size={26} /> : <Menu size={26} />}
-              </motion.div>
+              <AnimatePresence mode="wait" initial={false}>
+                {isOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ opacity: 0, rotate: -90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: 90 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X size={26} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ opacity: 0, rotate: 90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: -90 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu size={26} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.button>
           </div>
         </div>
+      </motion.nav>
 
-        {/* Overlay Mobile */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              onClick={toggleMenu}
-              className="fixed inset-0 backdrop-blur-lg bg-black/40 z-50 lg:hidden"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-          )}
-        </AnimatePresence>
-
-        {/* Drawer Mobile */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              className="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-900 shadow-xl z-[60]"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 40, stiffness: 150 }}
-            >
-              <div className="flex justify-between items-center px-4 py-4 border-b border-slate-200 dark:border-gray-700">
-                <Link to="/" onClick={toggleMenu}>
-                  <img src={theme === "dark" ? logoLight : logo} alt="Logo lucane" className="w-24 h-auto object-contain" />
-                </Link>
-                <motion.button
-                  onClick={toggleMenu}
-                  className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-                  whileHover={{ scale: 1.1, rotate: 90 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <X size={22} />
-                </motion.button>
-              </div>
-
-              <motion.div
-                className="flex flex-col px-6 py-4 gap-5 text-gray-700 dark:text-white"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
+      {/* Full-screen Mobile Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 z-[200] bg-dark flex flex-col lg:hidden"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.96 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+          >
+            {/* Top row: logo + close button */}
+            <div className="relative flex items-center justify-center pt-8 pb-6">
+              <Link to="/" onClick={toggleMenu}>
+                <img
+                  src={logoLight}
+                  alt="Logo lucane"
+                  className="w-28 h-auto object-contain"
+                />
+              </Link>
+              <button
+                onClick={toggleMenu}
+                className="absolute top-0 right-6 mt-6 p-2 text-white/70 hover:text-white transition"
+                aria-label="Fermer le menu"
               >
-                {[
-                  { to: "/", label: "Accueil", icon: Home },
-                  { to: "/services", label: "Services", icon: Settings },
-                  { to: "/projets", label: "Projets", icon: Briefcase },
-                  { to: "/technologies", label: "Technologies", icon: Cpu },
-                  { to: "/a-propos", label: "À propos", icon: Info },
-                ].map((item, index) => (
+                <X size={28} />
+              </button>
+            </div>
+
+            {/* Nav links — vertically centered */}
+            <div className="flex-1 flex flex-col items-center justify-center gap-8 px-6">
+              {navItems.map((item, index) => {
+                const isActive =
+                  item.to === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(item.to);
+                return (
                   <motion.div
                     key={item.to}
-                    initial={{ x: 50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.3 + index * 0.08 }}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.07, duration: 0.3 }}
                   >
                     <Link
                       to={item.to}
                       onClick={toggleMenu}
-                      className="flex items-center gap-3 hover:text-[#008080] transition-colors group"
+                      className={`text-3xl md:text-4xl font-bold transition-colors ${
+                        isActive ? "text-primary" : "text-white hover:text-primary"
+                      }`}
                     >
-                      <item.icon size={20} className="text-[#008080]" />
-                      <span className="group-hover:translate-x-1 transition-transform">{item.label}</span>
+                      {item.label}
                     </Link>
                   </motion.div>
-                ))}
+                );
+              })}
+            </div>
 
-                <motion.div
-                  initial={{ x: 50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.75 }}
-                  className="mt-4"
-                >
-                  <Button
-                    to="/contact"
-                    label="Contactez-nous"
-                    changeColor="primary"
-                    icon={<Phone className="w-4 h-4" />}
-                    className="w-full justify-center"
-                    onClick={toggleMenu}
-                  />
-                </motion.div>
-              </motion.div>
+            {/* Bottom CTA */}
+            <motion.div
+              className="flex justify-center pb-12"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: navItems.length * 0.07 + 0.1, duration: 0.3 }}
+            >
+              <Button
+                to="/contact"
+                label="Contactez-nous"
+                variant="primary"
+                size="lg"
+                onClick={toggleMenu}
+              />
             </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <Outlet />
       <Footer />
     </>
