@@ -40,7 +40,7 @@ const LivePreviewCard: React.FC<LivePreviewCardProps> = ({ liveUrl, image, title
               sandbox="allow-same-origin allow-scripts"
             />
             <div className="absolute top-2 right-2 pointer-events-none">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#008080] text-white text-xs font-semibold rounded-full shadow-md">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-primary text-white text-xs font-semibold rounded-full shadow-md">
                 <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
                 Live
               </span>
