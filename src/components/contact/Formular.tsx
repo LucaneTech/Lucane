@@ -1,224 +1,220 @@
-import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
-import Button from '../../ui/Button';
+import React, { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import { AlertCircle, Check } from "lucide-react";
+import Button from "../../ui/Button";
+
+const inputClass =
+  "w-full bg-surface border border-surface-alt rounded-lg px-4 py-3 text-ink " +
+  "placeholder:text-ink-faint focus:outline-none focus:border-primary focus:ring-2 " +
+  "focus:ring-primary/10 transition-colors";
 
 const ContactForm: React.FC = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
   const formStartTime = useRef<number>(Date.now());
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    telephone: '',
-    pays: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    telephone: "",
+    pays: "",
+    service: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // 🛑 Anti-bot : soumission trop rapide (< 2 secondes)
+    // Anti-bot: soumission trop rapide (< 2 secondes)
     const elapsedTime = Date.now() - formStartTime.current;
     if (elapsedTime < 2000) {
-      setSubmitStatus('error');
+      setSubmitStatus("error");
       return;
     }
 
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
     try {
-      const response = await fetch(
-        'https://formsubmit.co/contact@lucane.tech',
-        {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: new FormData(formRef.current as HTMLFormElement)
-        }
-      );
+      const response = await fetch("https://formsubmit.co/contact@lucane.tech", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(formRef.current as HTMLFormElement),
+      });
 
       if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', telephone: '',pays: '', subject: '', message: '' });
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", telephone: "", pays: "", service: "", message: "" });
         formStartTime.current = Date.now();
-        setTimeout(() => setSubmitStatus('idle'), 5000);
       } else {
-        setSubmitStatus('error');
+        setSubmitStatus("error");
       }
     } catch {
-      setSubmitStatus('error');
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-slate-800 rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-slate-200/50 dark:border-slate-700/50 max-w-lg sm:max-w-2xl mx-4 sm:mx-auto mt-12 mb-8"
-    >
-      {/* Messages de statut */}
-      {submitStatus === 'success' && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl flex items-center space-x-2 sm:space-x-3 text-sm sm:text-base"
-        >
-          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
-          <span>Message envoyé avec succès !</span>
-        </motion.div>
-      )}
-
-      {submitStatus === 'error' && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl flex items-center space-x-2 sm:space-x-3 text-sm sm:text-base"
-        >
-          <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-600 dark:text-red-400 flex-shrink-0" />
-          <span>Erreur lors de l'envoi. Veuillez réessayer.</span>
-        </motion.div>
-      )}
-
-      <form
-        ref={formRef}
-        onSubmit={handleSubmit}
-        className="space-y-3 sm:space-y-4"
+  // Success state
+  if (submitStatus === "success") {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="text-center py-12"
       >
-        {/* 🕵️ Honeypot anti-spam */}
-        <input type="text" name="_honey" style={{ display: 'none' }} />
+        <motion.div
+          className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4"
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <Check className="w-8 h-8 text-primary" />
+        </motion.div>
+        <h3 className="text-xl font-bold text-ink mb-2">Message envoyé !</h3>
+        <p className="text-ink-muted">Nous vous répondrons dans les 24 heures.</p>
+      </motion.div>
+    );
+  }
 
-        {/* ⚙️ Configuration FormSubmit */}
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_limit" value="1" />
-        <input type="hidden" name="_template" value="table" />
+  return (
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+      {/* Honeypot anti-spam */}
+      <input type="text" name="_honey" style={{ display: "none" }} />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-              Nom complet *
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
-              placeholder="Votre nom"
-            />
-          </div>
+      {/* Configuration FormSubmit */}
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_limit" value="1" />
+      <input type="hidden" name="_template" value="table" />
 
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-              Email *
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
-              placeholder="votre@email.com"
-            />
-          </div>
+      {/* Error banner */}
+      {submitStatus === "error" && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3 text-sm"
+        >
+          <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
+          <span className="text-red-700">Erreur lors de l'envoi. Veuillez réessayer.</span>
+        </motion.div>
+      )}
 
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-              Téléphone *
-            </label>
-            <input
-              type="tel"
-              id="telephone"
-              name="telephone"
-              value={formData.telephone}
-              onChange={handleChange}
-              required
-              className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
-              placeholder="(+212) 000000000"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-              Pays *
-            </label>
-            <input
-              type="text"
-              id="pays"
-              name="pays"
-              value={formData.pays}
-              onChange={handleChange}
-              required
-              className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
-              placeholder="Maroc"
-            />
-          </div>
-        </div>
-
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-            Sujet *
+          <label className="block text-sm font-medium text-ink mb-2">
+            Votre nom <span className="text-primary">*</span>
           </label>
           <input
             type="text"
-            id="subject"
-            name="subject"
-            value={formData.subject}
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
-            placeholder="Objet de votre message"
+            placeholder="François Dupont"
+            className={inputClass}
           />
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-            Message *
+          <label className="block text-sm font-medium text-ink mb-2">
+            Email <span className="text-primary">*</span>
           </label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
             required
-            rows={4}
-            className="w-full px-2 sm:px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm sm:text-base"
-            placeholder="Décrivez votre projet ou votre demande..."
+            placeholder="votre@email.com"
+            className={inputClass}
           />
         </div>
 
-        <Button
-          type="submit"
-          label={isSubmitting ? "Envoi en cours…" : "Envoyer le message"}
-          icon={!isSubmitting ? <Send className="w-4 h-4" /> : undefined}
-          changeColor="primary"
-          className="w-full justify-center"
-        />
+        <div>
+          <label className="block text-sm font-medium text-ink mb-2">
+            Téléphone <span className="text-primary">*</span>
+          </label>
+          <input
+            type="tel"
+            name="telephone"
+            value={formData.telephone}
+            onChange={handleChange}
+            required
+            placeholder="(+212) 000 000 000"
+            className={inputClass}
+          />
+        </div>
 
-        <p className="text-xs text-center sm:text-sm text-slate-500 dark:text-slate-400 mt-2">
-          * Champs obligatoires. Je m'engage à répondre dans les 24h.
-        </p>
-      </form>
-    </motion.div>
+        <div>
+          <label className="block text-sm font-medium text-ink mb-2">
+            Pays <span className="text-primary">*</span>
+          </label>
+          <input
+            type="text"
+            name="pays"
+            value={formData.pays}
+            onChange={handleChange}
+            required
+            placeholder="Maroc"
+            className={inputClass}
+          />
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-ink mb-2">
+          Service souhaité
+        </label>
+        <select
+          name="service"
+          value={formData.service}
+          onChange={handleChange}
+          className={inputClass}
+        >
+          <option value="">Sélectionner un service</option>
+          <option>Développement Web</option>
+          <option>Développement Mobile</option>
+          <option>UX/UI Design</option>
+          <option>Cloud &amp; Infrastructure</option>
+          <option>Conseil &amp; Stratégie</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-ink mb-2">
+          Message <span className="text-primary">*</span>
+        </label>
+        <textarea
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          required
+          placeholder="Décrivez votre projet ou votre demande..."
+          className={`${inputClass} resize-y min-h-[120px]`}
+        />
+      </div>
+
+      <Button
+        type="submit"
+        variant="primary"
+        size="lg"
+        label={isSubmitting ? "Envoi en cours…" : "Envoyer le message"}
+        className="w-full justify-center"
+        disabled={isSubmitting}
+      />
+
+      <p className="text-xs text-center text-ink-faint mt-1">
+        * Champs obligatoires. Nous nous engageons à répondre dans les 24h.
+      </p>
+    </form>
   );
 };
 

@@ -1,132 +1,137 @@
-import CardSection from "../CardSection";
+import { motion } from "framer-motion";
 
-const technologies = [
+interface Tech {
+  label: string;
+  icon: string;
+  level: number;
+}
+
+interface Category {
+  name: string;
+  color: string;
+  techs: Tech[];
+}
+
+const categories: Category[] = [
   {
-    title: 'React',
-    description: "Bibliothèque JavaScript pour construire des interfaces utilisateur dynamiques et réactives.",
-    icon: '',
-    imageUrl: 'icons/react.png',
-    color: 'text-sky-500',
-    bgColor: 'bg-sky-100 dark:bg-sky-900/30',
-    borderColor: 'border-sky-300 dark:border-sky-700',
-    shadowColor: 'shadow-sky-300/50'
+    name: "Frontend",
+    color: "text-dev",
+    techs: [
+      { label: "React", icon: "/icons/react.png", level: 95 },
+      { label: "TypeScript", icon: "/icons/typescript.png", level: 90 },
+      { label: "Tailwind CSS", icon: "/icons/tailwindcss.png", level: 95 },
+    ],
   },
   {
-    title: 'TypeScript',
-    description: "Surcouche de JavaScript qui ajoute un typage statique, idéale pour les projets à grande échelle.",
-    icon: '',
-    imageUrl: 'icons/typescript.png',
-    color: 'text-blue-600',
-    bgColor: 'bg-blue-100 dark:bg-blue-900/30',
-    borderColor: 'border-blue-300 dark:border-blue-700',
-    shadowColor: 'shadow-blue-300/50'
+    name: "Backend",
+    color: "text-growth",
+    techs: [
+      { label: "Node.js", icon: "/icons/nodejs.png", level: 88 },
+      { label: "Django", icon: "/icons/django.png", level: 85 },
+      { label: "Python", icon: "/icons/python.png", level: 85 },
+    ],
   },
   {
-    title: 'Node.js',
-    description: "Environnement d’exécution côté serveur pour JavaScript, performant et orienté événements.",
-    icon: '',
-    imageUrl: 'icons/nodejs.png',
-    color: 'text-green-600',
-    bgColor: 'bg-green-100 dark:bg-green-900/30',
-    borderColor: 'border-green-300 dark:border-green-700',
-    shadowColor: 'shadow-green-300/50'
+    name: "Base de données",
+    color: "text-design",
+    techs: [
+      { label: "PostgreSQL", icon: "/icons/postgresql.png", level: 88 },
+      { label: "MongoDB", icon: "/icons/mongodb.png", level: 85 },
+    ],
   },
   {
-    title: 'Tailwind CSS',
-    description: "Framework CSS utilitaire pour créer rapidement des interfaces modernes et responsives.",
-    icon: '',
-    imageUrl: 'icons/tailwindcss.png',
-    color: 'text-cyan-500',
-    bgColor: 'bg-cyan-100 dark:bg-cyan-900/30',
-    borderColor: 'border-cyan-300 dark:border-cyan-700',
-    shadowColor: 'shadow-cyan-300/50'
+    name: "Cloud & DevOps",
+    color: "text-cloud",
+    techs: [
+      { label: "AWS", icon: "/icons/aws.png", level: 80 },
+      { label: "Docker", icon: "/icons/docker.png", level: 85 },
+      { label: "GitHub", icon: "/icons/github.png", level: 95 },
+    ],
   },
   {
-    title: 'Docker',
-    description: "Outil de conteneurisation qui facilite le déploiement et la scalabilité des applications.",
-    icon: '',
-    imageUrl: 'icons/docker.png',
-    color: 'text-blue-500',
-    bgColor: 'bg-blue-100 dark:bg-blue-900/30',
-    borderColor: 'border-blue-300 dark:border-blue-700',
-    shadowColor: 'shadow-blue-300/50'
+    name: "Mobile",
+    color: "text-dev",
+    techs: [
+      { label: "React Native", icon: "/icons/react.png", level: 88 },
+    ],
   },
-  {
-    title: 'MongoDB',
-    description: "Base de données NoSQL orientée documents, parfaite pour les applications rapides et évolutives.",
-    icon: '',
-    imageUrl: 'icons/mongodb.png',
-    color: 'text-emerald-600',
-    bgColor: 'bg-emerald-100 dark:bg-emerald-900/30',
-    borderColor: 'border-emerald-300 dark:border-emerald-700',
-    shadowColor: 'shadow-emerald-300/50'
-  },
-  {
-    title: 'AWS',
-    description: "Plateforme cloud complète pour héberger, déployer et gérer des applications à grande échelle.",
-    icon: '',
-    imageUrl: 'icons/aws.png',
-    color: 'text-amber-500',
-    bgColor: 'bg-amber-100 dark:bg-amber-900/30',
-    borderColor: 'border-amber-300 dark:border-amber-700',
-    shadowColor: 'shadow-amber-300/50'
-  },
-   {
-    title: 'GitHub',
-    description: "Plateforme de versionnage et de collaboration pour le code source, indispensable en équipe.",
-    icon: '',
-    imageUrl: '/icons/github.png',
-    color: 'text-gray-800 dark:text-gray-200',
-    bgColor: 'bg-gray-100 dark:bg-gray-800/40',
-    borderColor: 'border-gray-300 dark:border-gray-700',
-    shadowColor: 'shadow-gray-300/50'
-  },
-  {
-    title: 'Python',
-    description: "Langage polyvalent, utilisé pour le backend, l’analyse de données et l’intelligence artificielle.",
-    icon: '',
-    imageUrl: 'icons/python.png',
-    color: 'text-yellow-400',
-    bgColor: 'bg-yellow-100 dark:bg-yellow-900/30',
-    borderColor: 'border-yellow-300 dark:border-yellow-700',
-    shadowColor: 'shadow-yellow-300/50'
-  },
- 
-  {
-    title: 'Django',
-    description: "Framework web Python haut niveau qui encourage le développement rapide et propre.",
-    icon: '',
-    imageUrl: '/icons/django.png',
-    color: 'text-green-600 dark:text-green-400',
-    bgColor: 'bg-green-600 dark:bg-green-400',
-    borderColor: 'border-green-600 dark:border-green-400',
-    shadowColor: 'shadow-green-300/50'
-  },
-  {
-    title: 'PostgreSQL',
-    description: "Système de gestion de base de données relationnelle puissant et open-source.",
-    icon: '',
-    imageUrl: '/icons/postgresql.png',
-    color: 'text-blue-600 dark:text-blue-400',
-    bgColor: 'bg-blue-600 dark:bg-blue-400',
-    borderColor: 'border-blue-600 dark:border-blue-400',
-    shadowColor: 'shadow-blue-300/50'
-  }
 ];
 
+const TechCard: React.FC<{ tech: Tech; delay: number }> = ({ tech, delay }) => (
+  <div className="flex items-center gap-4 bg-white border border-slate-100 rounded-xl p-4 hover:shadow-sm transition-shadow">
+    <img
+      src={tech.icon}
+      alt={tech.label}
+      className="w-10 h-10 object-contain flex-shrink-0"
+      onError={(e) => {
+        (e.target as HTMLImageElement).style.display = "none";
+      }}
+    />
+    <div className="flex-1 min-w-0">
+      <p className="font-medium text-ink text-sm mb-1">{tech.label}</p>
+      <div className="h-1.5 bg-surface-alt rounded-full overflow-hidden">
+        <motion.div
+          className="h-full bg-primary rounded-full"
+          initial={{ width: 0 }}
+          whileInView={{ width: `${tech.level}%` }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay }}
+        />
+      </div>
+    </div>
+    <span className="text-xs text-ink-muted font-mono flex-shrink-0">
+      {tech.level}%
+    </span>
+  </div>
+);
 
+const OurTechnologies: React.FC = () => {
+  return (
+    <section className="py-20 px-6 bg-surface">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-ink mb-4">
+            Notre pile technologique
+          </h2>
+          <p className="text-ink-muted max-w-2xl mx-auto">
+            Des outils choisis pour leur robustesse, leur adoption dans
+            l'industrie et leur capacité à évoluer avec vos besoins.
+          </p>
+        </motion.div>
 
-
-
-const OurTechnologies = () => {
-    return (
-        <section>
-          
-
-         <CardSection services={technologies} title="Notre pile technologique de base"/>
-
-        
-        </section>
-    );
+        <div className="space-y-12">
+          {categories.map((category, catIdx) => (
+            <motion.div
+              key={category.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: catIdx * 0.08 }}
+            >
+              <h3 className={`text-sm font-semibold uppercase tracking-widest mb-4 ${category.color}`}>
+                {category.name}
+              </h3>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {category.techs.map((tech, techIdx) => (
+                  <TechCard
+                    key={tech.label}
+                    tech={tech}
+                    delay={techIdx * 0.1}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
+
 export default OurTechnologies;

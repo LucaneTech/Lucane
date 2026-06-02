@@ -1,105 +1,45 @@
 import React from "react";
-import { motion, useAnimation,type Variants } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import Button from "../../ui/Button";
+import { motion } from "framer-motion";
 
 const Hero: React.FC = () => {
-  // Animation controls
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.3 });
-
-  React.useEffect(() => {
-    if (inView) controls.start("visible");
-    else controls.start("hidden");
-  }, [controls, inView]);
-
-  // Variants typés TS pour fadeUp
-  const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 60 },
-    visible: (custom: number = 0) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.42, 0, 0.58, 1], // Bézier pour TS
-        delay: custom,
-      },
-    }),
-  };
-
   return (
-    <motion.section
-      ref={ref}
-      className="relative flex flex-col items-center justify-center text-center text-gray-700 px-6 overflow-hidden mt-32 md:mt-48"
-      initial="hidden"
-      animate={controls}
-    >
-      {/* Heading */}
-      <motion.h1
-        className="text-3xl sm:text-5xl md:text-6xl font-bold max-w-4xl main-color leading-tight"
-        variants={fadeUp}
-        custom={0}
-      >
-        <span className="text-black dark:text-white">
-          Le moyen le plus rapide{" "}
-        </span>
-        de passer de l’idée à l’impact...
-      </motion.h1>
+    <section className="relative bg-dark pt-32 pb-20 px-6 overflow-hidden">
+      {/* Decorative circles */}
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full border border-primary/10 pointer-events-none" />
+      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[400px] h-[400px] rounded-full border border-primary/15 pointer-events-none" />
+      <div className="absolute top-32 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full bg-primary/5 blur-2xl pointer-events-none" />
 
-      {/* Subtitle */}
-      <motion.p
-        className="max-w-xl mt-6 text-gray-600 dark:text-gray-200"
-        variants={fadeUp}
-        custom={0.3}
-      >
-        Notre plateforme vous aide à créer, tester et livrer plus rapidement,
-        afin que vous puissiez vous concentrer sur ce qui compte.
-      </motion.p>
+      <div className="max-w-5xl mx-auto text-center relative z-10">
+        <motion.span
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="inline-block text-sm font-semibold text-primary uppercase tracking-widest mb-4 px-4 py-1.5 rounded-pill bg-primary/10 border border-primary/20"
+        >
+          Technologies
+        </motion.span>
 
-      {/* Buttons */}
-      <motion.div
-        className="flex flex-row justify-center items-center gap-6 mt-8"
-        variants={fadeUp}
-        custom={0.6}
-      >
-        <motion.div whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}>
-          <Button label="Nous contactez" changeColor="primary" to="/contact" />
-        </motion.div>
-        <motion.div whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}>
-          <Button label="Découvrez nos projets" changeColor="secondary" to="/projets" />
-        </motion.div>
-      </motion.div>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-5xl lg:text-6xl font-bold text-white mt-4 mb-6"
+        >
+          Notre stack{" "}
+          <span className="text-primary">moderne</span>
+        </motion.h1>
 
-      {/* Hero image */}
-      <motion.div
-        className="w-full max-w-7xl mt-10"
-        variants={fadeUp}
-        custom={0.9}
-      >
-        <motion.img
-          src="images/technologies/hero.png"
-          alt="Hero"
-          loading="lazy"
-          className="w-full h-[450px] object-cover rounded-xl shadow-2xl cursor-pointer outline-1 outline-offset-12 outline-gray-600 mb-12 mt-12"
-          initial={{ scale: 1 }}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ duration: 0.4, ease: [0.42, 0, 0.58, 1] }}
-        />
-      </motion.div>
-
-      {/* Subtle glow overlay */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 0.2 } : { opacity: 0 }}
-        transition={{ duration: 1.2, ease: [0.42, 0, 0.58, 1] }}
-        style={{
-          background:
-            "radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%)",
-        }}
-      />
-    </motion.section>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-white/60 text-lg max-w-2xl mx-auto"
+        >
+          Nous utilisons les technologies les plus éprouvées et modernes pour
+          construire des produits durables.
+        </motion.p>
+      </div>
+    </section>
   );
 };
 

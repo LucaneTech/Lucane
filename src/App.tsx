@@ -9,6 +9,7 @@ import Projects from "./pages/Projects";
 import Technologies from "./pages/Technologies";
 import Services from "./pages/services";
 import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import { ScrollToTop } from "./components/ScrollToTop";
 import CursorEffect from "./ui/CursorEffect";
@@ -41,9 +42,8 @@ function App() {
                 <Route path="/technologies" element={<Technologies />} />
                 <Route path="/a-propos" element={<About />} />
                 <Route path="/contact" element={<Contact/>} />
-
-
               </Route>
+              <Route path="*" element={<NotFound />} />
             </Routes>
 
 
