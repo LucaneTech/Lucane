@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import type { ReactNode } from "react";
+import { cn } from "./utils";
 
 export interface ButtonProps {
   variant?: "primary" | "secondary" | "ghost" | "dark";
@@ -25,8 +27,7 @@ export interface ButtonProps {
 const BASE =
   "inline-flex items-center justify-center gap-2 font-semibold select-none whitespace-nowrap " +
   "transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 " +
-  "focus-visible:ring-primary/50 focus-visible:ring-offset-2 " +
-  "disabled:opacity-50 disabled:cursor-not-allowed";
+  "focus-visible:ring-primary/50 focus-visible:ring-offset-2";
 
 // ─── Variant class maps ────────────────────────────────────────────────────────
 const VARIANT_CLASSES: Record<string, string> = {
@@ -56,16 +57,23 @@ const SIZE_CLASSES: Record<string, string> = {
   lg: "px-8 py-4 text-lg",
 };
 
+// ─── Shimmer variants (C1 fix) ────────────────────────────────────────────────
+const shimmerVariants: Variants = {
+  rest: { x: "-110%", skewX: "-20deg" },
+  hover: { x: "110%", skewX: "-20deg" },
+};
+
 // ─── Shimmer overlay (used for primary, dark, white) ──────────────────────────
-const Shimmer = () => (
-  <motion.span
-    className="absolute inset-0 bg-white/20 rounded-[inherit] pointer-events-none"
-    initial={{ x: "-110%", skewX: "-20deg" }}
-    whileHover={{ x: "110%" }}
-    transition={{ duration: 0.5, ease: "easeInOut" }}
-    aria-hidden
-  />
-);
+function Shimmer() {
+  return (
+    <motion.span
+      className="absolute inset-0 bg-white/20 rounded-[inherit] pointer-events-none"
+      variants={shimmerVariants}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      aria-hidden
+    />
+  );
+}
 
 // ─── Component ────────────────────────────────────────────────────────────────
 const Button = ({
@@ -84,8 +92,8 @@ const Button = ({
   changeColor,
   icon,
 }: ButtonProps) => {
-  // Resolve variant: explicit `variant` prop wins, then fall back to `changeColor`
-  const resolvedVariant: string = variant ?? changeColor ?? "primary";
+  // Resolve variant: explicit `variant` prop wins, then fall back to `changeColor` (M1 fix)
+  const resolvedVariant = (variant ?? changeColor ?? "primary") as keyof typeof VARIANT_CLASSES;
 
   // Resolve icon: explicit `iconLeft` wins, then fall back to deprecated `icon`
   const resolvedIconLeft = iconLeft ?? icon;
@@ -99,7 +107,11 @@ const Button = ({
 
   const variantClasses = VARIANT_CLASSES[resolvedVariant] ?? VARIANT_CLASSES.primary;
   const sizeClasses = SIZE_CLASSES[size] ?? SIZE_CLASSES.md;
-  const composedClass = `${BASE} ${variantClasses} ${sizeClasses} ${className}`.trim();
+
+  // I2 fix: use cn() instead of string concatenation
+  // C2 + I1 fix: apply disabled classes conditionally (not via CSS :disabled pseudo-class)
+  const disabledClasses = disabled ? "opacity-50 cursor-not-allowed pointer-events-none" : "";
+  const composedClass = cn(BASE, variantClasses, sizeClasses, className, disabledClasses);
 
   // ── Inner content (icons + label + shimmer) ──
   const inner = (
@@ -115,29 +127,58 @@ const Button = ({
     </>
   );
 
-  // ── Render as React Router Link ──
+  // ── Render as React Router Link (or span if disabled) ──
   if (to) {
+    // C2 fix: disabled → render a span to block navigation
+    if (disabled) {
+      return (
+        <motion.div
+          initial="rest"
+          whileHover="hover"
+          whileTap={hasTap ? { scale: 0.97 } : undefined}
+          className="inline-flex"
+        >
+          <span role="button" aria-disabled className={composedClass}>
+            {inner}
+          </span>
+        </motion.div>
+      );
+    }
     return (
       <motion.div
+        initial="rest"
+        whileHover="hover"
         whileTap={hasTap ? { scale: 0.97 } : undefined}
         className="inline-flex"
       >
-        <Link
-          to={to}
-          onClick={onClick}
-          className={composedClass}
-          aria-disabled={disabled || undefined}
-        >
+        <Link to={to} onClick={onClick} className={composedClass}>
           {inner}
         </Link>
       </motion.div>
     );
   }
 
-  // ── Render as external anchor ──
+  // ── Render as external anchor (or span if disabled) ──
   if (href) {
+    // C2 fix: disabled → render a span to block navigation
+    if (disabled) {
+      return (
+        <motion.div
+          initial="rest"
+          whileHover="hover"
+          whileTap={hasTap ? { scale: 0.97 } : undefined}
+          className="inline-flex"
+        >
+          <span role="button" aria-disabled className={composedClass}>
+            {inner}
+          </span>
+        </motion.div>
+      );
+    }
     return (
       <motion.div
+        initial="rest"
+        whileHover="hover"
         whileTap={hasTap ? { scale: 0.97 } : undefined}
         className="inline-flex"
       >
@@ -147,7 +188,6 @@ const Button = ({
           rel="noopener noreferrer"
           onClick={onClick}
           className={composedClass}
-          aria-disabled={disabled || undefined}
         >
           {inner}
         </a>
@@ -162,6 +202,8 @@ const Button = ({
       onClick={onClick}
       disabled={disabled}
       className={composedClass}
+      initial="rest"
+      whileHover="hover"
       whileTap={hasTap ? { scale: 0.97 } : undefined}
     >
       {inner}
