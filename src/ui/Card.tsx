@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div
-      className={`w-80 h-64 rounded-xl p-0.5 duration-300  cursor-pointer hover:shadow-none shadow-2xl ${shadowColor} `}
+      className={`w-80 h-64 rounded-md p-0.5 duration-300  cursor-pointer hover:shadow-none shadow-2xl ${shadowColor} `}
     >
       <div
         className={` p-6 h-full w-full rounded-[10px] flex flex-col items-center justify-center text-center border-2 ${borderColor}`}

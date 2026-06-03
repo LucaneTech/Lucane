@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 
 const projects = [
   {
-    title: "Edusco",
+    title: "KFKAgroBusiness",
     tag: "Web App",
     tagColor: "text-dev bg-dev/10",
     image: "images/home/edusco.avif",
     desc: "Plateforme e-learning complète pour les institutions modernes. Gestion des cours, suivi de performance et tableaux de bord analytiques.",
     stack: ["Django", "PostgreSQL", "Tailwind CSS", "Chart.js"],
     link: "/projets",
+    liveUrl: "https://kfkagrobusiness.com",
   },
   {
     title: "NovaShop",
@@ -20,6 +21,7 @@ const projects = [
     desc: "Solution e-commerce scalable pensée pour la conversion. Catalogue intelligent, paiement sécurisé Stripe et back-office optimisé.",
     stack: ["Django", "Stripe", "PostgreSQL", "JavaScript"],
     link: "/projets",
+    liveUrl: "https://francisco.lucane.tech",
   },
   {
     title: "CoreAPI",
@@ -29,12 +31,13 @@ const projects = [
     desc: "API REST haute performance pour applications web et mobiles. Architecture sécurisée, auth JWT et documentation Swagger.",
     stack: ["FastAPI", "Python", "MongoDB", "Docker"],
     link: "/projets",
+    liveUrl: "https://oralise.pro",
   },
 ];
 
 const FeaturedProjects: React.FC = () => {
   return (
-    <section className="py-20 px-4 md:px-8 lg:px-16 xl:px-24 bg-surface-alt">
+    <section className="py-20 px-4 md:px-8 lg:px-16 xl:px-24 bg-surface-alt ">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -69,27 +72,50 @@ const FeaturedProjects: React.FC = () => {
               {/* Mockup */}
               <div className="lg:w-3/5 w-full">
                 <motion.div
-                  className="relative rounded-xl overflow-hidden shadow-xl border border-slate-200"
+                  className="relative rounded-md overflow-hidden shadow-xl border border-slate-200"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
                   {/* Browser chrome */}
                   <div className="flex items-center gap-1.5 px-4 py-2.5 bg-surface border-b border-slate-200">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
                     <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
+
+                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
+
                     <div className="flex-1 mx-3 bg-surface-alt rounded-pill h-4 border border-slate-200 px-3 flex items-center">
                       <span className="text-[10px] text-ink-faint">{project.title.toLowerCase()}.app</span>
                     </div>
                   </div>
                   <div className="hover:shadow-glow transition-shadow duration-300">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
+  {project.liveUrl ? (
+    <div className="relative overflow-hidden h-[300px] lg:h-[450px]">
+      <iframe
+        src={project.liveUrl}
+        title={`Preview – ${project.title}`}
+        scrolling="no"
+        className="
+          absolute top-0
+          left-0
+      
+          w-[1440px]
+          h-[1000px]
+          border-0
+          pointer-events-none
+          origin-top-left
+          scale-[0.35]
+          lg:scale-[0.45]
+        "
+      />
+    </div>
+  ) : (
+    <img
+      src={project.image}
+      alt={project.title}
+      className="w-full h-auto lg:h-96 object-cover"
+    />
+  )}
+</div>
                 </motion.div>
               </div>
 

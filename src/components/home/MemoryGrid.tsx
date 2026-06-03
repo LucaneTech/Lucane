@@ -41,7 +41,7 @@ const MemoryGrid: React.FC = () => {
           {images.map((src, idx) => (
             <motion.div
               key={idx}
-              className={`relative overflow-hidden rounded-xl group ${idx === 0 ? "col-span-2 row-span-2" : "col-span-1"}`}
+              className={`relative overflow-hidden rounded-md group ${idx === 0 ? "col-span-2 row-span-2" : "col-span-1"}`}
               initial={{ opacity: 0, y: idx % 2 === 0 ? 30 : -30, x: idx % 3 === 0 ? -20 : 20 }}
               animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
               transition={{ delay: idx * 0.1, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -53,7 +53,7 @@ const MemoryGrid: React.FC = () => {
                 style={{ aspectRatio: idx === 0 ? "4/3" : "1/1" }}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+              <div className="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md" />
             </motion.div>
           ))}
         </div>

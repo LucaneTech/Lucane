@@ -138,9 +138,9 @@ const Contact: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-white border border-slate-200 rounded-xl p-6 flex items-start gap-4 hover:shadow-glow transition-shadow"
+              className="bg-white border border-slate-200 rounded-md p-6 flex items-start gap-4 hover:shadow-glow transition-shadow"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
                 <channel.icon className="w-5 h-5 text-primary" />
               </div>
               <div>
@@ -182,7 +182,7 @@ const Contact: React.FC = () => {
             <div className="space-y-5">
               {commitments.map(({ icon: Icon, title, desc }) => (
                 <div key={title} className="flex items-start gap-3">
-                  <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
+                  <div className="p-2 bg-primary/10 rounded-md flex-shrink-0">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
@@ -202,7 +202,7 @@ const Contact: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-8">
+            <div className="bg-white rounded-md shadow-xl border border-slate-100 p-8">
               <h3 className="text-xl font-bold text-ink mb-6">
                 Envoyez votre message
               </h3>

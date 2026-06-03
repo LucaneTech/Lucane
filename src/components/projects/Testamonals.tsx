@@ -112,7 +112,7 @@ const Testamonals: React.FC = () => {
               animate="center"
               exit="exit"
               transition={{ duration: 0.35, ease: "easeInOut" }}
-              className="bg-white rounded-xl shadow-sm border border-surface-alt p-8 md:p-10"
+              className="bg-white rounded-md shadow-sm border border-surface-alt p-8 md:p-10"
             >
               {/* Stars */}
               <div className="flex justify-center gap-1 mb-6">
@@ -157,7 +157,7 @@ const Testamonals: React.FC = () => {
         <div className="flex items-center justify-center gap-6 mt-8">
           <button
             onClick={() => go(-1)}
-            className="w-10 h-10 rounded-full border border-ink-faint flex items-center justify-center text-ink-muted hover:border-primary hover:text-primary transition-colors"
+            className="w-10 h-10 rounded-md border border-ink-faint flex items-center justify-center text-ink-muted hover:border-primary hover:text-primary transition-colors"
             aria-label="Précédent"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -184,7 +184,7 @@ const Testamonals: React.FC = () => {
 
           <button
             onClick={() => go(1)}
-            className="w-10 h-10 rounded-full border border-ink-faint flex items-center justify-center text-ink-muted hover:border-primary hover:text-primary transition-colors"
+            className="w-10 h-10 rounded-md border border-ink-faint flex items-center justify-center text-ink-muted hover:border-primary hover:text-primary transition-colors"
             aria-label="Suivant"
           >
             <ChevronRight className="w-5 h-5" />

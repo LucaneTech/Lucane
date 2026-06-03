@@ -32,29 +32,29 @@ const BASE =
 // ─── Variant class maps ────────────────────────────────────────────────────────
 const VARIANT_CLASSES: Record<string, string> = {
   primary:
-    "relative overflow-hidden bg-primary text-white rounded-pill " +
+    "relative overflow-hidden bg-primary text-white rounded-sm " +
     "shadow-[0_4px_14px_rgba(0,128,128,0.35)] hover:shadow-[0_6px_20px_rgba(0,128,128,0.5)]",
   secondary:
-    "border-2 border-primary text-primary bg-transparent rounded-xl " +
+    "border-1 shadow-xl border-primary text-primary bg-transparent rounded-sm " +
     "hover:bg-primary hover:text-white hover:border-primary",
   ghost:
     "text-primary bg-transparent relative " +
     "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 " +
     "after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
   dark:
-    "relative overflow-hidden bg-ink text-white rounded-pill " +
+    "relative overflow-hidden bg-ink text-white rounded-sm " +
     "hover:bg-ink-muted",
   // Legacy variant — kept for backward compat with changeColor="white"
   white:
-    "relative overflow-hidden bg-white text-primary rounded-pill " +
+    "relative overflow-hidden bg-white text-primary rounded-sm " +
     "shadow-md hover:bg-slate-50",
 };
 
 // ─── Size class maps ───────────────────────────────────────────────────────────
 const SIZE_CLASSES: Record<string, string> = {
-  sm: "px-4 py-2 text-sm",
+  sm: "px-4 py-1 text-sm",
   md: "px-6 py-3 text-base",
-  lg: "px-8 py-4 text-lg",
+  lg: "px-7 py-3 text-md",
 };
 
 // ─── Shimmer variants (C1 fix) ────────────────────────────────────────────────

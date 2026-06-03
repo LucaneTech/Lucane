@@ -64,7 +64,7 @@ const services = [
 
 const ServicesSection: React.FC = () => {
   return (
-    <section className="py-20 px-4 md:px-8 lg:px-16 xl:px-24 bg-surface">
+    <section className="py-20 px-4 md:px-8 lg:px-16 xl:px-24 bg-surface dark:bg-transparent">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -77,10 +77,10 @@ const ServicesSection: React.FC = () => {
           <p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-3">
             Ce que nous faisons
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-ink mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-ink dark:text-white mb-4">
             Nos <span className="text-primary">services</span>
           </h2>
-          <p className="text-ink-muted max-w-xl mx-auto leading-relaxed">
+          <p className="text-ink-muted dark:text-slate-200 max-w-xl mx-auto leading-relaxed">
             Des solutions complètes pour construire, lancer et faire croître vos produits digitaux.
           </p>
         </motion.div>
@@ -90,25 +90,29 @@ const ServicesSection: React.FC = () => {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
+              className="relative  overflow-clip bg-white dark:bg-dark-surface backdrop-blur-lg border border-slate-100 dark:border-slate-700/50 rounded-md p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
               whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 20 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <div className={`w-12 h-12 rounded-lg ${service.bg} flex items-center justify-center mb-4`}>
+              <div className={`w-12 h-12 rounded-md shadow-md ${service.bg} flex items-center justify-center mb-4`}>
                 <service.icon className={`w-6 h-6 ${service.color}`} />
               </div>
-              <h3 className="text-lg font-bold text-ink mb-2">{service.title}</h3>
-              <p className="text-sm text-ink-muted leading-relaxed mb-4">{service.desc}</p>
+              <h3 className="text-lg font-bold text-ink dark:text-white mb-2">{service.title}</h3>
+              <p className="text-sm text-ink-muted dark:text-slate-200 leading-relaxed mb-4 z-2">{service.desc}</p>
               <Link
                 to={service.link}
                 className={`text-sm font-medium ${service.color} inline-flex items-center gap-1 group-hover:gap-2 transition-all`}
               >
                 En savoir plus <ArrowRight className="w-4 h-4" />
               </Link>
+
+
+              <div className='absolute w-25 h-25 bg-primary/40 rounded-full -bottom-5 -right-2.5 -z-1 border-1 border-white/5 blur-2xl '/>
+              <div className='absolute w-15 h-15 bg-gray-300/50 dark:bg-dark rounded-full -top-2 -left-2 -z-1 border-1 border-white/5 blur-lg'/>
             </motion.div>
-          ))}
+          ))}  
         </div>
       </div>
     </section>

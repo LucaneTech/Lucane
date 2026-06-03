@@ -1,132 +1,107 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ProjectCard from "../../ui/ProjectCard";
 
 interface Project {
+  id: number;
   title: string;
-  category: string;
-  tag: string;
-  tagColor: string;
+  description: string;
   image: string;
-  desc: string;
-  stack: string[];
-  link: string;
+  technologies: string[];
+  githubUrl: string;
+  liveUrl?: string;
+  videoUrl?: string;
+  featured?: boolean;
+  date?: string;
+  bgColor?: string;
+  category?: string;
 }
 
 const projects: Project[] = [
+   {
+      id: 1,
+      title: 'Agrobusiness',
+      description: "Site vitrine de KFK Agro Business, une entreprise spécialisée dans l'agriculture et l'élevage en République Démocratique du Congo. La plateforme présente les activités et les solutions de l'entreprise à destination des professionnels et entrepreneurs du secteur agroalimentaire congolais.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      githubUrl: 'https://github.com/LucaneTech/agrobusiness',
+      liveUrl: 'https://www.kfkagrobusiness.com/',
+      featured: true,
+      category: 'Frontend',
+      date: 'Mai 2026',
+      bgColor: '',
+    },
   {
-    title: "Oralise",
-    category: "Web",
-    tag: "Web App",
-    tagColor: "text-dev bg-dev/10",
-    image: "/images/home/design1.jpg",
-    desc: "Plateforme d'apprentissage pour professionnels de santé.",
-    stack: ["React", "Node.js"],
-    link: "#",
-  },
+      id: 2,
+      title: 'Active Rise',
+      description: "Site vitrine d'Active Rise, une agence de marketing stratégique accompagnant les entreprises dans leur développement et leur visibilité digitale. Le site met en avant les expertises, les offres de services et les réalisations de l'agence pour aider ses clients à accroître leur croissance commerciale.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      githubUrl: 'https://github.com/LucaneTech/Active_rise',
+      liveUrl: 'https://activerise.netlify.app',
+      featured: false,
+      category: 'Frontend',
+      date: 'Mai 2026',
+      bgColor: '',
+    },
+
   {
-    title: "EEMCI",
-    category: "Mobile",
-    tag: "Mobile",
-    tagColor: "text-design bg-design/10",
-    image: "/images/home/design2.jpg",
-    desc: "App mobile de gestion RH.",
-    stack: ["React Native"],
-    link: "#",
-  },
-  {
-    title: "Kone Group",
-    category: "SaaS",
-    tag: "SaaS",
-    tagColor: "text-growth bg-growth/10",
-    image: "/images/home/design3.jpg",
-    desc: "Solution SaaS de gestion commerciale.",
-    stack: ["Next.js", "MongoDB"],
-    link: "#",
-  },
-  {
-    title: "Dynamic",
-    category: "Web",
-    tag: "Web",
-    tagColor: "text-dev bg-dev/10",
-    image: "/images/home/design4.jpg",
-    desc: "Site vitrine et catalogue produits.",
-    stack: ["React", "Tailwind"],
-    link: "#",
-  },
-  {
-    title: "Oralise App",
-    category: "Design",
-    tag: "Design",
-    tagColor: "text-design bg-design/10",
-    image: "/images/home/second.avif",
-    desc: "Refonte UX/UI de l'application mobile.",
-    stack: ["Figma"],
-    link: "#",
-  },
-  {
-    title: "EEMSI",
-    category: "Web",
-    tag: "Web",
-    tagColor: "text-cloud bg-cloud/10",
-    image: "/images/home/design2.jpg",
-    desc: "Plateforme de formation en ligne.",
-    stack: ["Next.js", "PostgreSQL"],
-    link: "#",
-  },
+      id: 3,
+      title: 'Folio Francisco',
+      description: "Portfolio professionnel de Francisco Mouanda, développeur web full-stack spécialisé dans des technologies modernes telles que Django, Laravel, Python et JavaScript. Le site met en valeur ses projets, ses compétences techniques et son parcours, à destination d'entreprises à la recherche d'un développeur web expérimenté.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Daisyui'],
+      githubUrl: 'https://github.com/LucaneTech/Portofolio',
+      liveUrl: 'https://francisco.lucane.tech/',
+      featured: false,
+      category: 'Frontend',
+      date: 'Avril 2025',
+      bgColor: '',
+    },
+    {
+      id: 4,
+      title: 'Trip Manager',
+      description: "Application web de réservation et de gestion de voyages touristiques conçue pour simplifier l’organisation des séjours et améliorer l’expérience des voyageurs. La plateforme permet de rechercher des destinations, réserver des circuits et hébergements, gérer les itinéraires, suivre les réservations et centraliser les informations des clients via une interface moderne, fluide et sécurisée avec système d’authentification intégré.",
+      image: '#',
+      technologies: ['Django', 'React TS', 'Tailwindcss','JwT', 'Axios'],
+      githubUrl: 'https://github.com/LucaneTech/trip_management',
+      // liveUrl: 'https://contact-filter.up.railway.app/',
+      videoUrl: "https://res.cloudinary.com/dvjwcal8e/video/upload/v1779129908/Trip_app_zuwcpj.mp4",
+      featured: false,
+      category: 'Web App',
+      date: 'Mai 2026',
+      bgColor: 'bg-white',
+    },
+   {
+      id: 5,
+      title: 'Oralise',
+      description: "Site web moderne de l'établissement scolaire Oralise, conçu pour présenter l'institution, ses programmes pédagogiques, son corps enseignant et ses actualités. La plateforme offre une interface claire et professionnelle facilitant la communication entre l'école, les élèves et les familles.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      githubUrl: 'https://github.com/LucaneTech/Oralise',
+      liveUrl: 'https://oralise.pro/',
+      featured: false,
+      category: 'Frontend',
+      date: 'Mai 2026',
+      bgColor: '',
+    },
+   
+
+   {
+      id: 6,
+      title: 'Lucane Filter',
+      description: "Application web de filtrage et gestion de contacts développée pour optimiser les opérations des équipes de call center. L'outil permet de trier, filtrer et organiser efficacement des listes de contacts grâce à une interface simple et sécurisée, avec système d'authentification intégré pour protéger l'accès aux données.",
+      image: '#',
+      technologies: ['Full Django', 'Docker', 'Celery', 'Pandas', 'Django-tailwind', 'Pillow'],
+      githubUrl: 'https://github.com/LucaneTech/contact_filter2026',
+      // liveUrl: 'https://contact-filter.up.railway.app/',
+      videoUrl: "https://res.cloudinary.com/dvjwcal8e/video/upload/v1779128287/Demo_contactFilter_lwlnyj.mp4",
+      featured: false,
+      category: 'Web App',
+      date: 'Mars 2026',
+      bgColor: 'bg-white',
+    },
 ];
-
-interface ProjectCardProps {
-  project: Project;
-}
-
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => (
-  <motion.div
-    layout
-    initial={{ opacity: 0, scale: 0.95 }}
-    animate={{ opacity: 1, scale: 1 }}
-    exit={{ opacity: 0, scale: 0.95 }}
-    transition={{ duration: 0.3 }}
-    className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
-  >
-    <div className="relative overflow-hidden aspect-video">
-      <img
-        src={project.image}
-        alt={project.title}
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-      />
-      {/* Live Preview overlay */}
-      <div className="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-pill bg-primary text-white px-5 py-2 text-sm font-medium"
-        >
-          Live Preview →
-        </a>
-      </div>
-    </div>
-    <div className="p-5">
-      <span
-        className={`text-xs font-semibold rounded-pill px-3 py-1 ${project.tagColor}`}
-      >
-        {project.tag}
-      </span>
-      <h3 className="text-lg font-bold text-ink mt-3 mb-2">{project.title}</h3>
-      <p className="text-sm text-ink-muted mb-3">{project.desc}</p>
-      <div className="flex flex-wrap gap-2">
-        {project.stack.map((s) => (
-          <span
-            key={s}
-            className="text-xs bg-surface-alt text-ink-muted rounded-pill px-2 py-0.5"
-          >
-            {s}
-          </span>
-        ))}
-      </div>
-    </div>
-  </motion.div>
-);
 
 interface AllProjectsProps {
   filter: string;
@@ -146,8 +121,17 @@ const AllProjects: React.FC<AllProjectsProps> = ({ filter }) => {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           <AnimatePresence mode="popLayout">
-            {filtered.map((project) => (
-              <ProjectCard key={project.title} project={project} />
+            {filtered.map((project, index) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ProjectCard project={project} index={index} />
+              </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>

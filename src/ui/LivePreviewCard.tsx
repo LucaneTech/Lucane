@@ -2,7 +2,7 @@ import React from "react";
 
 interface LivePreviewCardProps {
   liveUrl?: string;
-  image: string;
+  image?: string;
   title: string;
   bgColor?: string;
 }

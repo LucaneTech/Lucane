@@ -99,11 +99,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
       </div>
 
       {/* Contenu */}
-      <div className="p-4 flex-1 flex flex-col">
-        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-1.5 group-hover:text-[#008080] transition-colors line-clamp-1">
+      <div className="relative p-4 flex-1 flex flex-col">
+        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-1.5 group-hover:text-[#008080] transition-colors line-clamp-1 ">
           {project.title}
         </h3>
-        <p className="text-slate-500 dark:text-slate-300 mb-3 text-sm line-clamp-2 leading-relaxed flex-1">
+        <p className="text-slate-500 dark:text-slate-300 mb-3 text-sm line-clamp-2 leading-relaxed flex-1 ">
           {project.description}
         </p>
 
@@ -150,6 +150,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
             {project.date}
           </div>
         )}
+
+        <div className='absolute w-20 h-20 bg-primary/50 rounded-full -bottom-5 -right-7 z-1 border-1 border-white/5'/>
+        <div className='absolute w-10 h-10 bg-primary/50 rounded-full -top-2 -left-2 z-1 border-1 border-white/5'/>
       </div>
 
       {/* Modal vidéo */}
@@ -174,9 +177,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
                   </div>
                 )}
                 {embed.type === 'video' ? (
-                  <video src={embed.src} controls autoPlay
+                  <video src={embed.src} controls autoPlay 
                     className="w-full h-full"
-                    onCanPlay={() => setVideoLoading(false)} />
+                    onCanPlay={() => setVideoLoading(false)}
+                    muted/>
                 ) : (
                   <iframe src={embed.src} title={`Démo – ${project.title}`}
                     allow="autoplay; fullscreen"

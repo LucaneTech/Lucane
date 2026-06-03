@@ -91,7 +91,7 @@ const Promotional: React.FC = () => {
         </div>
 
         {/* Main promo block */}
-        <div className="flex flex-col md:flex-row items-stretch rounded-2xl overflow-hidden bg-dark-surface border border-white/10">
+        <div className="flex flex-col md:flex-row items-stretch rounded-md overflow-hidden bg-dark-surface border border-white/10">
           {/* Left: methodology */}
           <div className="flex flex-col justify-center p-10 md:p-14 md:w-1/2 text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
@@ -103,7 +103,7 @@ const Promotional: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-6">
               {steps.map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-3">
-                  <div className="bg-primary/20 rounded-full p-2.5 flex-shrink-0">
+                  <div className="bg-primary/20 rounded-md p-2.5 flex-shrink-0">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <span className="font-semibold text-sm">{label}</span>
@@ -114,7 +114,7 @@ const Promotional: React.FC = () => {
 
           {/* Right: mini-form */}
           <div className="md:w-1/2 p-8 md:p-12 flex items-center bg-dark-elevated">
-            <div className="bg-dark-surface rounded-xl p-6 w-full border border-white/10">
+            <div className="bg-dark-surface rounded-md p-6 w-full border border-white/10">
               {submitted ? (
                 <div className="text-center py-8">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -136,7 +136,7 @@ const Promotional: React.FC = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
-                    className="w-full px-4 py-2.5 border border-white/10 rounded-lg text-sm bg-dark-elevated text-white placeholder-ink-faint focus:ring-2 focus:ring-primary focus:outline-none transition"
+                    className="w-full px-4 py-2.5 border border-white/10 rounded-md text-sm bg-dark-elevated text-white placeholder-ink-faint focus:ring-2 focus:ring-primary focus:outline-none transition"
                   />
                   <input
                     type="email"
@@ -144,13 +144,13 @@ const Promotional: React.FC = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
-                    className="w-full px-4 py-2.5 border border-white/10 rounded-lg text-sm bg-dark-elevated text-white placeholder-ink-faint focus:ring-2 focus:ring-primary focus:outline-none transition"
+                    className="w-full px-4 py-2.5 border border-white/10 rounded-md text-sm bg-dark-elevated text-white placeholder-ink-faint focus:ring-2 focus:ring-primary focus:outline-none transition"
                   />
                   <select
                     value={formData.besoin}
                     onChange={(e) => setFormData({ ...formData, besoin: e.target.value })}
                     required
-                    className="w-full px-4 py-2.5 border border-white/10 rounded-lg text-sm bg-dark-elevated text-white focus:ring-2 focus:ring-primary focus:outline-none transition"
+                    className="w-full px-4 py-2.5 border border-white/10 rounded-md text-sm bg-dark-elevated text-white focus:ring-2 focus:ring-primary focus:outline-none transition"
                   >
                     <option value="">Votre besoin principal</option>
                     <option value="Site web">Site web</option>
@@ -164,7 +164,7 @@ const Promotional: React.FC = () => {
                   <button
                     type="submit"
                     disabled={sending}
-                    className="w-full mt-1 inline-flex items-center justify-center gap-2 bg-primary text-white rounded-pill px-6 py-3 font-semibold shadow-glow hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-60"
+                    className="w-full mt-1 inline-flex items-center justify-center gap-2 bg-primary text-white rounded-md px-6 py-3 font-semibold shadow-glow hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-60"
                   >
                     {sending ? "Envoi en cours…" : "Envoyer ma demande"}
                   </button>

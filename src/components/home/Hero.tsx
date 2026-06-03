@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative pt-28 md:pt-36 pb-10 md:pb-20 px-4 md:px-8 lg:px-16 xl:px-24 overflow-hidden bg-surface">
+    <section className="relative pt-28 md:pt-36 pb-10 md:pb-20 px-4 md:px-8 lg:px-16 xl:px-24 overflow-hidden">
       {/* Background SVG circles */}
       <svg className="absolute -z-10 inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 720" fill="none">
         <circle cx="711.819" cy="372.562" r="308.334" stroke="var(--color-primary)" strokeOpacity={0.16} strokeWidth={3} />
@@ -46,7 +46,7 @@ const HeroSection: React.FC = () => {
 
           {/* Title */}
           <motion.h1
-            className="text-center lg:text-left text-4xl lg:text-6xl font-bold text-ink leading-tight mb-5"
+            className="text-center lg:text-left text-4xl lg:text-6xl font-bold text-ink dark:text-white leading-tight mb-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
@@ -71,7 +71,7 @@ const HeroSection: React.FC = () => {
 
           {/* Subtitle */}
           <motion.p
-            className="text-center lg:text-left text-base leading-relaxed text-ink-muted max-w-lg mb-8"
+            className="text-center lg:text-left text-base leading-relaxed text-ink-muted dark:text-slate-100 max-w-lg mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
@@ -100,18 +100,20 @@ const HeroSection: React.FC = () => {
         >
           {/* Browser mockup */}
           <motion.div
-            className="relative rounded-xl overflow-hidden shadow-2xl border border-slate-200 bg-white w-full max-w-md"
+            className="relative rounded-md overflow-hidden shadow-2xl border border-slate-200 dark:bg-dark-surface dark:border-slate-700/50 bg-white w-full max-w-md"
             style={{ rotate: -3 }}
             whileHover={{ rotate: 0 }}
             transition={{ duration: 0.4 }}
           >
             {/* Browser chrome */}
-            <div className="flex items-center gap-1.5 px-4 py-3 bg-surface-alt border-b border-slate-200">
-              <span className="w-3 h-3 rounded-full bg-red-400" />
-              <span className="w-3 h-3 rounded-full bg-yellow-400" />
+            <div className="flex items-center gap-1.5 px-4 py-3 bg-surface-alt dark:bg-dark-elevated border-b border-slate-200 dark:border-slate-700/50">
               <span className="w-3 h-3 rounded-full bg-green-400" />
-              <div className="flex-1 mx-4 bg-white rounded-pill h-5 border border-slate-200 px-3 flex items-center">
-                <span className="text-xs text-ink-faint">lucane.tech</span>
+
+              <span className="w-3 h-3 rounded-full bg-yellow-400" />
+              <span className="w-3 h-3 rounded-full bg-red-400" />
+
+              <div className="flex-1 mx-4 bg-white dark:bg-dark-surface rounded-sm h-6 border border-slate-200 dark:border-slate-700/50 px-3 flex items-center">
+                <span className="text-xs text-ink-faint dark:text-slate-300">https://lucane.tech</span>
               </div>
             </div>
             <img
@@ -123,7 +125,7 @@ const HeroSection: React.FC = () => {
 
           {/* Floating card: Clients */}
           <motion.div
-            className="absolute -bottom-4 -left-4 md:-left-8 bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl shadow-lg px-4 py-3 flex items-center gap-3"
+            className="absolute -bottom-4 -left-4 md:-left-8 bg-white/90 dark:bg-dark-surface backdrop-blur-sm border border-white/30 dark:border-slate-700/50 rounded-md shadow-lg px-4 py-3 flex items-center gap-3"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
@@ -133,19 +135,19 @@ const HeroSection: React.FC = () => {
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               className="flex items-center gap-3"
             >
-              <div className="bg-primary/10 p-2 rounded-lg flex-shrink-0">
-                <Users className="w-5 h-5 text-primary" />
+              <div className="bg-primary/10 dark:bg-primary/50 p-2 rounded-sm flex-shrink-0">
+                <Users className="w-5 h-5 text-primary dark:text-white" />
               </div>
               <div>
-                <p className="text-lg font-bold text-ink leading-none">+50</p>
-                <p className="text-xs text-ink-muted mt-0.5">Clients satisfaits</p>
+                <p className="text-lg font-bold text-ink dark:text-white leading-none">+50</p>
+                <p className="text-xs text-ink-muted dark:text-slate-200 mt-0.5">Clients satisfaits</p>
               </div>
             </motion.div>
           </motion.div>
 
           {/* Floating card: Satisfaction */}
           <motion.div
-            className="absolute -top-4 -right-4 md:-right-8 bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl shadow-lg px-4 py-3 flex items-center gap-3"
+            className="absolute -top-4 -right-4 md:-right-8 bg-white/90 dark:bg-dark-surface backdrop-blur-sm border border-white/30 dark:border-slate-700/50 rounded-md shadow-lg px-4 py-3 flex items-center gap-3"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.4, duration: 0.6 }}
@@ -155,12 +157,12 @@ const HeroSection: React.FC = () => {
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
               className="flex items-center gap-3"
             >
-              <div className="bg-primary/10 p-2 rounded-lg flex-shrink-0">
-                <Award className="w-5 h-5 text-primary" />
+              <div className="bg-primary/10 dark:bg-primary/50 p-2 rounded-sm flex-shrink-0">
+                <Award className="w-5 h-5 text-primary dark:text-white" />
               </div>
               <div>
-                <p className="text-lg font-bold text-ink leading-none">98%</p>
-                <p className="text-xs text-ink-muted mt-0.5">Satisfaction client</p>
+                <p className="text-lg font-bold text-ink dark:text-white leading-none">98%</p>
+                <p className="text-xs text-ink-muted dark:text-slate-200 mt-0.5">Satisfaction client</p>
               </div>
             </motion.div>
           </motion.div>

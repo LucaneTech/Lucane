@@ -58,7 +58,7 @@ const categories: Category[] = [
 ];
 
 const TechCard: React.FC<{ tech: Tech; delay: number }> = ({ tech, delay }) => (
-  <div className="flex items-center gap-4 bg-white border border-slate-100 rounded-xl p-4 hover:shadow-sm transition-shadow">
+  <div className="flex items-center gap-4 bg-white border border-slate-100 rounded-md p-4 hover:shadow-sm transition-shadow">
     <img
       src={tech.icon}
       alt={tech.label}

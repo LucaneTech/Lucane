@@ -158,12 +158,12 @@ const Footer: React.FC = () => {
                 placeholder="Votre email..."
                 required
                 className="flex-1 bg-dark-surface border border-white/10 text-white placeholder-white/30
-                           rounded-pill px-4 py-2 text-sm focus:outline-none focus:border-primary
+                           rounded-md px-4 py-2 text-sm focus:outline-none focus:border-primary
                            transition-colors"
               />
               <button
                 type="submit"
-                className="bg-primary text-white rounded-pill px-4 py-2 text-sm font-semibold
+                className="bg-primary text-white rounded-md px-4 py-2 text-sm font-semibold
                            hover:bg-primary-hover transition-colors whitespace-nowrap"
               >
                 S'abonner
