@@ -39,7 +39,7 @@ const Home: React.FC = () => {
       <Promotional />
 
       {/* CTA final */}
-      <section className="py-24 px-6 bg-surface">
+      <section className="py-24 px-6 bg-surface dark:bg-transparent">
         <div className="max-w-4xl mx-auto text-center">
           {/* Stacked team avatars */}
           <div className="flex items-center justify-center -space-x-3 mb-6">
@@ -56,15 +56,15 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-ink-muted text-sm mb-4">Notre équipe vous attend</p>
+          <p className="text-ink-muted dark:text-slate-300 text-sm mb-4">Notre équipe vous attend</p>
 
-          <h2 className="text-4xl lg:text-5xl font-bold text-ink mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-ink dark:text-primary mb-4">
             Prêt à lancer votre projet ?
           </h2>
 
           <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-6" />
 
-          <p className="text-ink-muted max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-ink-muted dark:text-slate-300 max-w-xl mx-auto mb-8 leading-relaxed">
             Discutons de votre vision. Nous transformons vos idées en produits digitaux qui ont un impact réel.
           </p>
 

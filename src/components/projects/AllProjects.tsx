@@ -20,7 +20,7 @@ interface Project {
 const projects: Project[] = [
    {
       id: 1,
-      title: 'Agrobusiness',
+      title: 'KFK Agrobusiness',
       description: "Site vitrine de KFK Agro Business, une entreprise spécialisée dans l'agriculture et l'élevage en République Démocratique du Congo. La plateforme présente les activités et les solutions de l'entreprise à destination des professionnels et entrepreneurs du secteur agroalimentaire congolais.",
       image: '',
       technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
