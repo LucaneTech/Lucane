@@ -13,7 +13,7 @@ const TechDNA: React.FC = () => {
     return Object.entries(counts).sort((a, b) => b[1] - a[1]);
   }, []);
 
-  const maxCount = Math.max(...techCounts.map(([, c]) => c));
+  const maxCount = techCounts.length > 0 ? Math.max(...techCounts.map(([, c]) => c)) : 1;
 
   const getBubbleSize = (count: number) => {
     const ratio = count / maxCount;
