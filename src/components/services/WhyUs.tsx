@@ -25,7 +25,7 @@ const reasons = [
     icon: Globe,
     title: "Expertise internationale",
     stat: "6 pays",
-    desc: "Présence en France, Congo et dans la diaspora africaine pour une perspective globale.",
+    desc: "Présence au Congo et dans la diaspora africaine pour une perspective globale.",
     color: "text-growth",
     bg: "bg-growth/10",
     altBg: true,
@@ -34,7 +34,7 @@ const reasons = [
     icon: Users,
     title: "Equipe dédiée",
     stat: "+3 ans",
-    desc: "Une équipe senior à votre service, pas des freelances. Un interlocuteur unique et engagé.",
+    desc: "Une équipe senior à votre service. Un interlocuteur unique et engagé.",
     color: "text-cloud",
     bg: "bg-cloud/10",
     altBg: false,
@@ -53,26 +53,26 @@ const WhyUs: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-ink">
+          <h2 className="text-4xl md:text-5xl font-bold text-ink dark:text-primary">
             Pourquoi nous choisir
           </h2>
-          <p className="mt-5 text-lg text-ink-muted leading-relaxed">
-            Une équipe experte, des choix techniques réfléchis et une exigence
+          <p className="mt-5 text-lg text-ink-muted dark:text-slate-300 leading-relaxed">
+            Une équipe experte, des choices techniques réfléchis et une exigence
             constante de qualité pour construire des produits durables.
           </p>
         </motion.div>
 
         {/* 2x2 Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-ink-faint/20 rounded-xl overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-ink-faint/20 rounded-md overflow-hidden">
           {reasons.map((reason, index) => {
             const Icon = reason.icon;
             const isAlt = reason.altBg;
             return (
               <motion.div
                 key={index}
-                className={`p-8 ${isAlt ? "bg-surface-alt" : "bg-white"} ${
-                  index < 2 ? "border-b border-ink-faint/20" : ""
-                } ${index % 2 === 0 ? "md:border-r border-ink-faint/20" : ""}`}
+                className={`p-8 ${isAlt ? "bg-surface-alt dark:bg-dark-surface" : "bg-white dark:bg-dark-elevated"} ${
+                  index < 2 ? "border-b border-ink-faint/20 dark:border-slate-700" : ""
+                } ${index % 2 === 0 ? "md:border-r border-ink-faint/20 dark:border-slate-700" : ""}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -91,12 +91,12 @@ const WhyUs: React.FC = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-bold text-ink mb-2">
+                <h3 className="text-lg font-bold text-ink mb-2 dark:text-white">
                   {reason.title}
                 </h3>
 
                 {/* Desc */}
-                <p className="text-ink-muted text-sm leading-relaxed">
+                <p className="text-ink-muted dark:text-slate-300 text-sm leading-relaxed">
                   {reason.desc}
                 </p>
               </motion.div>

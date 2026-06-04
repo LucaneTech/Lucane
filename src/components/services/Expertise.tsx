@@ -124,25 +124,25 @@ const colorMap: Record<
   { header: string; icon: string; badge: string; dot: string }
 > = {
   dev: {
-    header: "from-dev/15 to-transparent",
-    icon: "bg-dev/10 text-dev",
+    header: "",
+    icon: "bg-dev/10 text-primary",
     badge: "bg-dev/10 text-dev",
     dot: "bg-dev",
   },
   design: {
-    header: "from-design/15 to-transparent",
+    header: "",
     icon: "bg-design/10 text-design",
     badge: "bg-design/10 text-design",
     dot: "bg-design",
   },
   growth: {
-    header: "from-growth/15 to-transparent",
+    header: "",
     icon: "bg-growth/10 text-growth",
     badge: "bg-growth/10 text-growth",
     dot: "bg-growth",
   },
   cloud: {
-    header: "from-cloud/15 to-transparent",
+    header: "",
     icon: "bg-cloud/10 text-cloud",
     badge: "bg-cloud/10 text-cloud",
     dot: "bg-cloud",
@@ -166,7 +166,7 @@ const itemVariants: Variants = {
 const Expertise: React.FC = () => {
   return (
     <motion.section
-      className="py-20 px-6 bg-surface"
+      className="py-20 px-6 bg-surface dark:bg-dark-surface"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -181,10 +181,10 @@ const Expertise: React.FC = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-ink">
+          <h2 className="text-4xl md:text-5xl font-bold text-ink dark:text-white">
             Nos <span className="text-primary">Expertises</span>
           </h2>
-          <p className="mt-4 text-lg text-ink-muted max-w-3xl mx-auto">
+          <p className="mt-4 text-lg text-ink-muted  dark:text-slate-300 max-w-3xl mx-auto">
             Nous concevons, développons et faisons évoluer des solutions
             digitales modernes, performantes et orientées résultats.
           </p>
@@ -206,7 +206,7 @@ const Expertise: React.FC = () => {
                 <Accordion type="single" collapsible>
                   <AccordionItem
                     value={service.id}
-                    className="border border-ink-faint/30 rounded-xl overflow-hidden bg-white"
+                    className="border border-ink-faint/30 dark:border-slate-700/50 rounded-md overflow-hidden bg-white dark:bg-dark/40 backdrop-blur-lg shadow-lg"
                   >
                     {/* Gradient header */}
                     <div
@@ -215,11 +215,11 @@ const Expertise: React.FC = () => {
                       <AccordionTrigger className="hover:no-underline py-3 pb-4">
                         <div className="flex items-center gap-3">
                           <div
-                            className={`p-2.5 rounded-lg ${colors.icon} flex-shrink-0`}
+                            className={`p-2.5 rounded-full ${colors.icon} flex-shrink-0`}
                           >
                             <Icon className="w-5 h-5" />
                           </div>
-                          <span className="text-base font-bold text-ink text-left">
+                          <span className="text-base font-bold text-ink dark:text-white text-left">
                             {service.title}
                           </span>
                         </div>
@@ -227,17 +227,17 @@ const Expertise: React.FC = () => {
                     </div>
 
                     <AccordionContent className="px-5 pb-5 pt-2">
-                      <p className="text-ink-muted text-sm leading-relaxed mb-4">
+                      <p className="text-ink-muted  dark:text-slate-300 text-sm leading-relaxed mb-4">
                         {service.desc}
                       </p>
                       <ul className="space-y-1.5">
                         {service.bullets.map((b) => (
                           <li
                             key={b}
-                            className="flex items-start gap-2 text-sm text-ink-muted"
+                            className="flex items-start gap-2 text-sm text-ink-muted  dark:text-slate-300"
                           >
                             <span
-                              className={`w-1.5 h-1.5 rounded-full ${colors.dot} flex-shrink-0 mt-1.5`}
+                              className={`w-1.5 h-1.5 rounded-md ${colors.dot} flex-shrink-0 mt-1.5`}
                             />
                             {b}
                           </li>

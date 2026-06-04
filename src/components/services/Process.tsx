@@ -47,10 +47,10 @@ const FeaturesSection: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-ink">
+          <h2 className="text-4xl md:text-5xl font-bold text-ink dark:text-white">
             Notre <span className="text-primary">processus</span>
           </h2>
-          <p className="mt-4 text-lg text-ink-muted max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-ink-muted  dark:text-slate-300 max-w-2xl mx-auto">
             Un processus éprouvé, de la première réunion à la mise en
             production, pour des livraisons fiables et prévisibles.
           </p>
@@ -59,7 +59,7 @@ const FeaturesSection: React.FC = () => {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical connector line */}
-          <div className="absolute left-[27px] top-8 bottom-8 w-px bg-gradient-to-b from-primary/0 via-primary/30 to-primary/0 hidden lg:block" />
+          <div className="absolute left-[27px] top-8 bottom-8 w-px bg-gradient-to-b from-primary/0 via-primary/80 to-primary/0 hidden lg:block" />
 
           {steps.map((step, i) => {
             const Icon = step.icon;
@@ -73,7 +73,7 @@ const FeaturesSection: React.FC = () => {
                 transition={{ delay: i * 0.1, duration: 0.5 }}
               >
                 {/* Numbered circle */}
-                <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center text-primary font-bold text-sm">
+                <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary *: border border-gray-400/50 dark:border-slate-400 flex items-center justify-center text-white  font-bold text-sm">
                   {step.num}
                 </div>
 
@@ -81,9 +81,9 @@ const FeaturesSection: React.FC = () => {
                 <div className="pt-3">
                   <div className="flex items-center gap-3 mb-2">
                     <Icon className="w-5 h-5 text-primary" />
-                    <h3 className="text-xl font-bold text-ink">{step.title}</h3>
+                    <h3 className="text-xl font-bold text-ink dark:text-white">{step.title}</h3>
                   </div>
-                  <p className="text-ink-muted leading-relaxed">{step.desc}</p>
+                  <p className="text-ink-muted  dark:text-slate-300 leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             );

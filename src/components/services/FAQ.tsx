@@ -36,7 +36,7 @@ const faqs = [
 
 const FAQ: React.FC = () => {
   return (
-    <section className="py-20 px-6 bg-surface-alt">
+    <section className="py-20 px-6 bg-surface-alt dark:bg-dark-surface">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <motion.div
@@ -46,15 +46,15 @@ const FAQ: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-ink">
+          <h2 className="text-4xl md:text-5xl font-bold text-ink dark:text-white">
             Questions <span className="text-primary">fréquentes</span>
           </h2>
-          <p className="mt-4 text-lg text-ink-muted">
+          <p className="mt-4 text-lg text-ink-muted dark:text-slate-300">
             Tout ce que vous devez savoir avant de démarrer votre projet avec nous.
           </p>
         </motion.div>
 
-        <Accordion type="single" collapsible className="bg-white rounded-xl border border-ink-faint/20 overflow-hidden divide-y divide-slate-100">
+        <Accordion type="single" collapsible className="bg-white dark:bg-dark-elevated rounded-md border border-ink-faint/20 dark:border-slate-400/20 overflow-hidden divide-y divide-slate-100 dark:divide-slate-400/20 shadow-lg">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -67,10 +67,10 @@ const FAQ: React.FC = () => {
                 value={`faq-${index}`}
                 className="border-b border-slate-100 last:border-b-0 px-6"
               >
-                <AccordionTrigger className="hover:no-underline text-left font-semibold text-ink py-5 text-base">
+                <AccordionTrigger className="hover:no-underline text-left font-semibold text-ink dark:text-white py-5 text-base">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="pb-5 text-ink-muted leading-relaxed text-sm">
+                <AccordionContent className="pb-5 text-ink-muted dark:text-slate-300   leading-relaxed text-sm">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>

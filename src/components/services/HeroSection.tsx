@@ -5,7 +5,7 @@ export default function HeroSection() {
     <section className="relative min-h-[70vh] flex items-center overflow-hidden">
       {/* Image de fond */}
       <motion.img
-        src="/images/services/app.jpeg"
+        src="/images/services/service_developpement.png"
         alt="Services Lucane Tech"
         className="absolute inset-0 w-full h-full object-cover"
         initial={{ opacity: 0, scale: 1.05 }}
@@ -15,7 +15,7 @@ export default function HeroSection() {
 
       {/* Overlay teal plate */}
       <motion.div
-        className="absolute inset-0 bg-[rgba(0,128,128,0.72)]"
+        className="absolute inset-0 bottom-0 bg-gradient-to-t from-primary/80 to-transparent"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4 }}
@@ -28,11 +28,11 @@ export default function HeroSection() {
         animate={{ opacity: 0.08 }}
         transition={{ duration: 1, delay: 0.3 }}
       >
-        <circle cx="10%" cy="80%" r="180" stroke="white" strokeWidth="1" fill="none" />
-        <circle cx="10%" cy="80%" r="300" stroke="white" strokeWidth="0.8" fill="none" />
-        <circle cx="85%" cy="20%" r="120" stroke="white" strokeWidth="1" fill="none" />
-        <circle cx="85%" cy="20%" r="220" stroke="white" strokeWidth="0.6" fill="none" />
-        <circle cx="50%" cy="50%" r="400" stroke="white" strokeWidth="0.5" fill="none" />
+        <circle cx="10%" cy="80%" r="180" stroke="white" strokeWidth="4" fill="none" />
+        <circle cx="10%" cy="80%" r="300" stroke="white" strokeWidth="5" fill="none" />
+        <circle cx="85%" cy="20%" r="120" stroke="white" strokeWidth="4" fill="none" />
+        <circle cx="85%" cy="20%" r="220" stroke="white" strokeWidth="5" fill="none" />
+        <circle cx="50%" cy="50%" r="400" stroke="white" strokeWidth="4" fill="none" />
       </motion.svg>
 
       {/* Contenu */}
@@ -52,7 +52,7 @@ export default function HeroSection() {
           transition={{ duration: 0.7, delay: 0.6 }}
           className="text-4xl lg:text-6xl font-bold mb-6 leading-tight"
         >
-          Des solutions <br className="hidden lg:block" />sur mesure pour votre croissance
+          Des solutions <br className="hidden lg:block" />sur mesure 
         </motion.h1>
 
         <motion.p
