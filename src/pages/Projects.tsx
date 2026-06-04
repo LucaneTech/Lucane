@@ -3,22 +3,23 @@ import HeroProject from "../components/projects/HeroProject";
 import Testamonals from "../components/projects/Testamonals";
 import CallAction from "../components/CallAction";
 import AllProjects from "../components/projects/AllProjects";
+import TechDNA from "../components/projects/TechDNA";
+import ProjectTimeline from "../components/projects/ProjectTimeline";
+import ImpactStrip from "../components/projects/ImpactStrip";
+import GeographicReach from "../components/projects/GeographicReach";
 
 const Projects: React.FC = () => {
   const [filter, setFilter] = useState<string>("Tous");
 
   return (
     <div>
-      {/* Hero section with filter controls */}
       <HeroProject filter={filter} setFilter={setFilter} />
-
-      {/* Filtered projects grid */}
       <AllProjects filter={filter} />
-
-      {/* Testimonials */}
+      <TechDNA />
+      <ProjectTimeline />
+      <ImpactStrip />
       <Testamonals />
-
-      {/* CTA */}
+      <GeographicReach />
       <CallAction
         title={"Prêt à construire quelque chose d'extraordinaire ?"}
         description={
