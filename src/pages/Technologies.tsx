@@ -1,6 +1,9 @@
 import React from "react";
 import Hero from "../components/technologies/Hero";
-import OurTechnologies from "../components/technologies/OurTechnologies";
+import StackTopography from "../components/technologies/StackTopography";
+import Arbitrages from "../components/technologies/Arbitrages";
+import TechInProd from "../components/technologies/TechInProd";
+import Veille from "../components/technologies/Veille";
 import Button from "../ui/Button";
 import { motion } from "framer-motion";
 
@@ -8,10 +11,12 @@ const Technologies: React.FC = () => {
   return (
     <>
       <Hero />
+      <StackTopography />
+      <Arbitrages />
+      <TechInProd />
+      <Veille />
 
-      <OurTechnologies />
-
-      {/* Call to Action */}
+      {/* CTA */}
       <section className="py-20 md:py-24 px-6 bg-dark">
         <motion.div
           className="max-w-3xl mx-auto text-center"
