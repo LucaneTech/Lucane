@@ -109,10 +109,10 @@ const Veille: React.FC = () => {
                 >
                   {/* Dot + year above axis */}
                   <div className="absolute -top-[42px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-0.5">
+                    <span className="text-primary text-xs">◉</span>
                     <span className="font-mono text-[10px] text-ink-faint">
                       {event.year}
                     </span>
-                    <span className="text-primary text-xs">◉</span>
                   </div>
 
                   {/* Content */}
