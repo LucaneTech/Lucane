@@ -18,7 +18,7 @@ const MeetOurFounder: React.FC<MeetOurFounderProps> = ({ member }) => {
   const linkedIn = member.socials?.find((s) => s.type === "linkedin")?.url;
 
   return (
-    <section className="py-20 px-6 bg-surface">
+    <section className="py-20 px-6 bg-surface dark:bg-dark-surface">
       <div className="max-w-5xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -31,7 +31,7 @@ const MeetOurFounder: React.FC<MeetOurFounderProps> = ({ member }) => {
           <span className="text-xs uppercase tracking-widest text-primary font-medium">
             Fondateur
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-ink mt-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-3">
             Rencontrez le fondateur de{" "}
             <span className="text-primary">Lucane</span>
           </h2>
@@ -45,26 +45,29 @@ const MeetOurFounder: React.FC<MeetOurFounderProps> = ({ member }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
-          <div className="bg-white rounded-xl shadow-sm border border-surface-alt p-8 flex flex-col md:flex-row gap-8 items-start">
+          <div className="bg-white rounded-md shadow-sm border border-surface-alt dark:bg-dark-elevated dark:border-slate-200/20 p-8 flex flex-col md:flex-row gap-8 items-start">
             {/* Avatar */}
-            <img
-              src={member.image}
-              alt={member.name}
-              className="w-32 h-32 rounded-full object-cover flex-shrink-0 border-4 border-primary/20"
-            />
+            <div className="relative flex justify-center items-center">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="relative z-10 w-32 h-32 rounded-full object-cover flex-shrink-0 border-4 border-primary/50"
+              />
 
+              <div className="absolute bottom-0 w-40 h-40 bg-primary/40 rounded-full duration-300  blur-2xl" />
+            </div>
             {/* Content */}
             <div className="flex-1">
-              <h3 className="text-2xl font-bold text-ink mb-1">
+              <h3 className="text-2xl font-bold text-ink dark:text-white mb-1">
                 {member.name}
               </h3>
               <p className="text-primary font-medium mb-4">{member.role}</p>
-              <p className="text-ink-muted leading-relaxed mb-6">
+              <p className="text-ink-muted leading-relaxed mb-6 dark:text-slate-300">
                 {member.description}
               </p>
 
-              {/* Quote */}
-              <blockquote className="bg-primary/5 border-l-4 border-primary rounded-r-lg px-6 py-4 italic text-ink-muted">
+              {/* Quote */} 
+              <blockquote className="bg-primary/5 border-l-4 border-primary rounded-r-lg px-6 py-4 italic text-ink-muted dark:text-slate-300  ">
                 "La technologie est le meilleur levier pour développer l'Afrique.
                 Notre mission est de la rendre accessible."
               </blockquote>

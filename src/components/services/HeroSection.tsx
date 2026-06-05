@@ -8,18 +8,24 @@ export default function HeroSection() {
         src="/images/services/service_developpement.png"
         alt="Services Lucane Tech"
         className="absolute inset-0 w-full h-full object-cover"
-        initial={{ opacity: 0, scale: 1.05 }}
+        initial={{ opacity: 0, scale: 1.5 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ opacity: { duration: 0.6 }, scale: { duration: 8, ease: "easeOut" } }}
+        transition={{ opacity: { duration: 0.7 }, scale: { duration: 8, ease: "easeOut" } }}
       />
 
       {/* Overlay teal plate */}
       <motion.div
-        className="absolute inset-0 bottom-0 bg-gradient-to-t from-primary/80 to-transparent"
+        className="absolute inset-0 bottom-0 bg-gradient-to-t from-primary/70 to-transparent pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4 }}
       />
+       <motion.div
+              className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4 }}
+            />
 
       {/* Motifs circulaires SVG */}
       <motion.svg

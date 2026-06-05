@@ -16,7 +16,7 @@ const TechItem: React.FC<{ icon: string; label: string }> = ({ icon, label }) =>
       src={icon}
       alt={label}                  
       aria-hidden="true"
-      className="w-7 h-7 md:w-10 md:h-10 rounded-full object-contain  "
+      className="w-7 h-7 md:w-10 md:h-10  object-contain  grayscale hover:grayscale-0 transition duration-300"
       onError={(e) => {
         (e.currentTarget as HTMLImageElement).style.display = "none";
       }}
@@ -30,7 +30,7 @@ const TechItem: React.FC<{ icon: string; label: string }> = ({ icon, label }) =>
 const AutoScrollElement: React.FC = () => {
   return (
     <div
-      className="w-full bg-surface-alt dark:bg-dark-surface py-4 md:py-6 overflow-hidden group border-b  border-slate-200 dark:border-slate-700/50"
+      className="w-full bg-surface-alt dark:bg-dark py-4 md:py-6 overflow-hidden group border-b  border-slate-200 dark:border-slate-700/50"
       role="marquee"
       aria-label="Technologies maîtrisées"
     >

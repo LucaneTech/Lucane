@@ -39,7 +39,7 @@ const TechDNA: React.FC = () => {
             Notre TechDNA
           </h2>
           <p className="text-ink-muted dark:text-slate-400 mt-3 max-w-md mx-auto text-sm leading-relaxed">
-            Toutes les technologies que nous maîtrisons, à travers nos projets.
+            Toutes les technologies que nous maîtrisons, à travers nos projets présents dans notre portfolio.
           </p>
         </motion.div>
 
@@ -52,7 +52,7 @@ const TechDNA: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: i * 0.04 }}
               whileHover={{ scale: 1.12, transition: { duration: 0.15 } }}
-              className={`relative group cursor-default rounded-full border border-primary/25 bg-primary/5 dark:bg-primary/10 text-primary font-medium transition-colors duration-150 hover:bg-primary/15 hover:border-primary/50 ${getBubbleSize(count)}`}
+              className={`relative group cursor-default rounded-md border border-primary/25 bg-primary/5 dark:bg-primary/10 text-primary font-medium transition-colors duration-150 hover:bg-primary/15 hover:border-primary/50 ${getBubbleSize(count)}`}
             >
               {tech}
               <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-ink dark:bg-white text-white dark:text-ink text-[10px] px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10 shadow-sm">

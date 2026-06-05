@@ -63,7 +63,7 @@ const Veille: React.FC = () => {
   const isInView = useInView(axisRef, { once: true, margin: "-60px" });
 
   return (
-    <section className="py-20 px-6 bg-surface overflow-hidden">
+    <section className="py-20 px-6 bg-transparent overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -76,7 +76,7 @@ const Veille: React.FC = () => {
           <span className="inline-block text-xs uppercase tracking-[0.2em] font-mono text-primary mb-3">
             Engagement
           </span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-ink max-w-xl leading-tight">
+          <h2 className="text-3xl lg:text-4xl font-bold text-ink dark:text-white max-w-xl leading-tight">
             On ne consomme pas les technos. On les pratique.
           </h2>
         </motion.div>
@@ -88,7 +88,7 @@ const Veille: React.FC = () => {
         >
           <div className="min-w-[640px]">
             {/* Axis */}
-            <div ref={axisRef} className="relative h-px bg-surface-alt mb-10">
+            <div ref={axisRef} className="relative h-px bg-transparent mb-10">
               <motion.div
                 className="absolute inset-0 bg-primary origin-left"
                 initial={{ scaleX: 0 }}
@@ -110,7 +110,7 @@ const Veille: React.FC = () => {
                   {/* Dot + year above axis */}
                   <div className="absolute -top-[42px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-0.5">
                     <span className="text-primary text-xs">◉</span>
-                    <span className="font-mono text-[10px] text-ink-faint">
+                    <span className="font-mono text-[15px] text-ink-faint">
                       {event.year}
                     </span>
                   </div>
@@ -121,10 +121,10 @@ const Veille: React.FC = () => {
                   >
                     {event.type}
                   </span>
-                  <p className="text-sm text-ink font-semibold mt-2 leading-snug">
+                  <p className="text-sm text-ink dark:text-white font-semibold mt-2 leading-snug">
                     {event.title}
                   </p>
-                  <p className="text-xs text-ink-muted mt-1 leading-relaxed">
+                  <p className="text-xs text-ink-muted dark:text-white/70 mt-1 leading-relaxed">
                     {event.description}
                   </p>
                 </motion.div>
@@ -140,14 +140,14 @@ const Veille: React.FC = () => {
               key={stat.label}
               className={`flex flex-col items-center ${
                 i < STATS.length - 1
-                  ? "sm:border-r sm:border-surface-alt sm:pr-12 sm:mr-12"
+                  ? "sm:border-r sm:border-primary sm:pr-12 sm:mr-12"
                   : ""
               }`}
             >
-              <span className="font-mono text-3xl font-bold text-ink">
+              <span className="font-mono text-3xl font-bold text-ink dark:text-primary">
                 {stat.value}
               </span>
-              <span className="text-xs text-ink-muted font-mono mt-1">
+              <span className="text-xs text-ink-muted dark:text-slate-300 font-mono mt-1">
                 {stat.label}
               </span>
             </div>

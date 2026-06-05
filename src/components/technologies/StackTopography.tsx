@@ -139,7 +139,7 @@ const StackTopography: React.FC = () => {
   }, [calculateLines]);
 
   return (
-    <section className="py-20 px-6 bg-dark overflow-hidden">
+    <section className="py-20 px-6 bg-transparent overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -187,7 +187,7 @@ const StackTopography: React.FC = () => {
           {LAYERS.map((layer, layerIdx) => (
             <div key={layer.name} className="flex items-center gap-6 relative z-10">
               <div className="w-36 flex-shrink-0">
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary/50">
+                <span className="font-mono text-[12px] uppercase tracking-[0.3em] text-primary">
                   {layer.name}
                 </span>
               </div>

@@ -104,10 +104,10 @@ const TechInProd: React.FC = () => {
               initial={{ opacity: 0, x: -8 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -8 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-6 py-8 border-b border-white/8 hover:bg-white/[0.03] transition-colors duration-150"
+              className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-6 px-4 py-8 border-b border-white/8 hover:bg-white/[0.03] transition-colors duration-150"
             >
               {/* Domain */}
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary w-28 flex-shrink-0">
+              <span className="font-mono text-[12px] uppercase tracking-[0.3em] text-primary w-28 flex-shrink-0">
                 {domain.name}
               </span>
 
@@ -140,7 +140,7 @@ const TechInProd: React.FC = () => {
                 {domain.stack.map((tech) => (
                   <span
                     key={tech}
-                    className="text-[11px] text-white/30 border border-white/10 px-2 py-0.5 rounded"
+                    className="text-[11px] text-primary border border-primary/30 px-2 py-0.5 rounded"
                   >
                     {tech}
                   </span>

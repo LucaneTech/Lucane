@@ -17,7 +17,7 @@ const Technologies: React.FC = () => {
       <Veille />
 
       {/* CTA */}
-      <section className="py-20 md:py-24 px-6 bg-dark">
+      <section className="py-20 md:py-24 px-6 bg-transparent">
         <motion.div
           className="max-w-3xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}

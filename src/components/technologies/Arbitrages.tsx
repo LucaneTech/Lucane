@@ -106,20 +106,20 @@ function ArbitrageRow({
       {/* VS separator */}
       <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
         <div className="w-10 border-t border-primary/15" />
-        <span className="font-mono text-xs text-primary/40">VS</span>
+        <span className="font-mono text-xs text-primary">VS</span>
         <div className="w-10 border-t border-primary/15" />
       </div>
 
       {/* Chosen + pill */}
       <div className="flex-1 flex items-center gap-3">
         <span className="text-white font-semibold">{item.chosen}</span>
-        <span className="bg-primary/15 text-primary border border-primary/30 rounded-full text-[10px] px-2 py-0.5 font-mono uppercase tracking-wide flex-shrink-0">
+        <span className="bg-primary/15 text-primary border border-primary/30 rounded-sm text-[10px] px-2 py-0.5 font-mono uppercase tracking-wide flex-shrink-0">
           Retenu
         </span>
       </div>
 
       {/* Reason */}
-      <p className="text-white/55 text-sm flex-1 sm:text-right max-w-xs sm:ml-auto">
+      <p className="text-white/80 text-sm flex-1 sm:text-right max-w-xs sm:ml-auto">
         {item.reason}
       </p>
     </motion.div>

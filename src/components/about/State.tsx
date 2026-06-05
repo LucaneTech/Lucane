@@ -11,8 +11,8 @@ interface Stat {
 const stats: Stat[] = [
   { label: "Clients satisfaits", value: 50, suffix: "+" },
   { label: "Taux de satisfaction", value: 98, suffix: "%" },
-  { label: "Ans d'expérience", value: 3, suffix: "" },
-  { label: "Pays couverts", value: 6, suffix: "" },
+  { label: "Ans d'expérience", value: 3, suffix: "+" },
+  { label: "Pays couverts", value: 6, suffix: "+" },
 ];
 
 interface CounterProps {
@@ -40,7 +40,7 @@ const Counter: React.FC<CounterProps> = ({ value, suffix }) => {
   return (
     <span ref={ref} className="text-4xl md:text-5xl font-bold text-white">
       {count}
-      {suffix}
+      <span className="text-2xl md:text-4xl text-primary">{suffix}</span>
     </span>
   );
 };

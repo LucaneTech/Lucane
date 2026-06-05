@@ -4,7 +4,7 @@ import { Globe, Sparkles } from "lucide-react";
 
 const Mission: React.FC = () => {
   return (
-    <section className="py-20 px-6 bg-white">
+    <section className="py-20 px-6 bg-transparent">
       <div className="max-w-5xl mx-auto">
         {/* Section label */}
         <motion.div
@@ -17,7 +17,7 @@ const Mission: React.FC = () => {
           <span className="text-xs uppercase tracking-widest text-primary font-medium">
             Notre raison d'être
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-ink mt-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-3">
             Mission &amp; Vision
           </h2>
         </motion.div>
@@ -32,8 +32,8 @@ const Mission: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <Globe className="w-12 h-12 text-primary mb-4" />
-            <h3 className="text-2xl font-bold text-ink mb-4">Notre Mission</h3>
-            <p className="text-ink-muted leading-relaxed">
+            <h3 className="text-2xl font-bold text-ink dark:text-white mb-4">Notre Mission</h3>
+            <p className="text-ink-muted leading-relaxed dark:text-slate-300">
               Rendre la technologie accessible aux entreprises d'Afrique et de la
               diaspora. Nous concevons des solutions digitales sur mesure qui
               répondent aux défis concrets des marchés africains et internationaux,
@@ -46,7 +46,7 @@ const Mission: React.FC = () => {
                 "Livrer des produits utiles et durables",
                 "Accompagner chaque client de A à Z",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-ink-muted">
+                <li key={item} className="flex items-start gap-3 text-ink-muted dark:text-gray-400">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
                   {item}
                 </li>
@@ -55,7 +55,7 @@ const Mission: React.FC = () => {
           </motion.div>
 
           {/* Separator */}
-          <div className="w-px bg-primary/30 self-stretch hidden lg:block" />
+          <div className="w-px bg-primary/30 dark:bg-slate-200/50 self-stretch hidden lg:block" />
 
           {/* Vision */}
           <motion.div
@@ -65,8 +65,8 @@ const Mission: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <Sparkles className="w-12 h-12 text-primary mb-4" />
-            <h3 className="text-2xl font-bold text-ink mb-4">Notre Vision</h3>
-            <p className="text-ink-muted leading-relaxed">
+            <h3 className="text-2xl font-bold text-ink dark:text-white mb-4">Notre Vision</h3>
+            <p className="text-ink-muted leading-relaxed dark:text-slate-300">
               Devenir la référence tech africaine à l'échelle internationale.
               Nous croyons que l'Afrique est le continent de la prochaine
               révolution numérique, et Lucane Tech ambitionne d'en être un
@@ -80,7 +80,7 @@ const Mission: React.FC = () => {
                 "Inspirer une génération de builders africains",
                 "Créer de la valeur à l'échelle continentale",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-ink-muted">
+                <li key={item} className="flex items-start gap-3 text-ink-muted dark:text-gray-400">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
                   {item}
                 </li>

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const LOCATIONS = [
   { name: "France", cx: 506, cy: 114 },
-  { name: "RD Congo", cx: 542, cy: 262 },
+  { name: "Congo BZ", cx: 542, cy: 262 },
   { name: "Sénégal", cx: 451, cy: 209 },
   { name: "International", cx: 294, cy: 137 },
 ] as const;
@@ -24,7 +24,7 @@ const CONTINENTS = [
 ];
 
 const GeographicReach: React.FC = () => (
-  <section className="py-20 px-6 bg-surface dark:bg-transparent overflow-hidden">
+  <section className="py-20 px-6 bg-transparent overflow-hidden">
     <div className="max-w-5xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}

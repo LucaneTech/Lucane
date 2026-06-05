@@ -46,6 +46,42 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden group h-full flex flex-col"
     >
+
+      {/* ── Browser / Video chrome ──────────────────────────────────── */}
+      {(project.liveUrl || project.videoUrl) && (
+        project.liveUrl ? (
+          /* Chrome navigateur — existant */
+          <div className="flex items-center gap-1.5 px-4 py-2.5 bg-slate-100 dark:bg-dark-elevated border-b border-slate-200 dark:border-slate-700/50">
+            <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
+            <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+            <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
+            <div className="flex-1 mx-3 bg-surface-alt dark:bg-dark-elevated rounded-sm h-5 py-2 border border-slate-200 dark:border-slate-700/50 px-3 flex items-center">
+              <span className="text-[10px] text-slate-500 dark:text-slate-300">
+                https://{project.liveUrl.replace(/https?:\/\//, "").split("/")[0]}
+              </span>
+            </div>
+          </div>
+        ) : (
+          /* Chrome vidéo — minimal */
+          <div className="flex items-center justify-between gap-3 px-4 py-2.5 bg-slate-100 dark:bg-dark-elevated border-b border-slate-200 dark:border-slate-700/50">
+            <div className="flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
+              <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+              <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="flex items-center gap-1.5 text-[10px] text-slate-500 dark:text-slate-400 font-medium">
+                {/* Icône play */}
+               <Play className="w-4 h-4 text-primary ml-0.5" fill="transparent" />
+                Aperçu vidéo
+              </span>
+              <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-semibold">
+                {project.title}
+              </span>
+            </div>
+          </div>
+        )
+      )}
       {/* Zone preview */}
       <div className="relative overflow-hidden h-44 bg-slate-100 dark:bg-slate-700 flex-shrink-0">
         {hasLiveUrl ? (
@@ -75,7 +111,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
             onClick={() => { setIsVideoModalOpen(true); setVideoLoading(true); }}
             className="w-full h-full flex flex-col items-center justify-center gap-2 bg-slate-900 dark:bg-slate-950 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors duration-150 cursor-pointer group/play"
           >
-            <div className="w-12 h-12 rounded-full bg-[#008080] flex items-center justify-center transition-colors duration-150">
+            <div className="w-12 h-12 rounded-full bg-primary/50 border border-slate-400/50 flex items-center justify-center transition-colors duration-150">
               <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
             </div>
             <span className="text-slate-300 text-xs font-medium">Voir la démo</span>
@@ -151,8 +187,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
           </div>
         )}
 
-        <div className='absolute w-20 h-20 bg-primary/50 rounded-full -bottom-5 -right-7 z-1 border-1 border-white/5'/>
-        <div className='absolute w-10 h-10 bg-primary/50 rounded-full -top-2 -left-2 z-1 border-1 border-white/5'/>
+        <div className='absolute w-25 h-25 bg-primary rounded-full -bottom-5 -right-7 z-1 border-1 border-white/5 blur-2xl' />
+        <div className='absolute w-15 h-15 bg-primary rounded-full -top-2 -left-2 z-1 border-1 border-white/5 blur-2xl' />
       </div>
 
       {/* Modal vidéo */}
@@ -177,10 +213,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
                   </div>
                 )}
                 {embed.type === 'video' ? (
-                  <video src={embed.src} controls autoPlay 
+                  <video src={embed.src} controls autoPlay
                     className="w-full h-full"
                     onCanPlay={() => setVideoLoading(false)}
-                    muted/>
+                    muted />
                 ) : (
                   <iframe src={embed.src} title={`Démo – ${project.title}`}
                     allow="autoplay; fullscreen"

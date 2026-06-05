@@ -30,8 +30,8 @@ const designs = [
 
 const Ourdesign: React.FC = () => {
   return (
-    <section className=" py-20 px-4 md:px-8 lg:px-16 xl:px-24 bg-surface dark:bg-transparent">
-      <div className="relative max-w-7xl mx-auto">
+    <section className="relative overflow-clip z-10 py-20 px-4 md:px-8 lg:px-16 xl:px-24 bg-surface dark:bg-transparent">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
           className="text-center mb-14"
@@ -62,7 +62,7 @@ const Ourdesign: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <div className="relative group overflow-hidden rounded-md">
+              <div className="relative group overflow-hidden z-10 rounded-md">
                 <img
                   src={design.imageSrc}
                   alt={design.alt}
@@ -77,9 +77,9 @@ const Ourdesign: React.FC = () => {
             </motion.div>
           ))}
         </div>
-        <div className="absolute -bottom-20 -right-15 w-60 h-60 bg-primary/50 rounded-full blur-2xl" />
+       
       </div>
-      
+       <div className="absolute -bottom-20 -right-10 w-100 h-100 bg-gradient-to-t from-primary/50 to-transparent rounded-full z-1  blur-3xl" />
     </section>
   );
 };

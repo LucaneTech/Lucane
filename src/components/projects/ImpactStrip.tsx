@@ -10,9 +10,9 @@ interface Metric {
 
 const METRICS: Metric[] = [
   { value: 2400, suffix: "+", label: "commits GitHub" },
-  { value: 6, suffix: "", label: "pays couverts" },
+  { value: 5, suffix: "+", label: "pays couverts" },
   { prefix: "< ", value: 10, suffix: "j", label: "délai moy. livraison" },
-  { value: 6, suffix: "", label: "repos open source" },
+  { value: 15, suffix: "+", label: "repos open source" },
 ];
 
 function AnimatedCounter({
@@ -54,9 +54,9 @@ const ImpactStrip: React.FC = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="py-16 px-6 bg-dark">
+    <section ref={ref} className="py-16 px-6 bg-transparent border-t border-b border-gray-300/50 dark:border-gray-700/50">
       <div className="max-w-5xl mx-auto">
-        <p className="text-center text-xs uppercase tracking-[0.25em] font-mono text-slate-500 mb-10">
+        <p className="text-center text-xs uppercase tracking-[0.25em] font-mono text-slate-500 dark:text-slate-300 mb-10">
           &gt;_ impact en chiffres
         </p>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -75,7 +75,7 @@ const ImpactStrip: React.FC = () => {
                 suffix={m.suffix}
                 active={isInView}
               />
-              <p className="font-mono text-slate-400 text-sm mt-2">
+              <p className="font-mono text-slate-400 dark:text-slate-300 text-sm mt-2">
                 // {m.label}
               </p>
             </div>

@@ -32,7 +32,7 @@ const expertises: Expertise[] = [
     ],
     caseStudy:
       "Refonte d'une plateforme e-learning : migration React + Next.js, −60% sur les temps de chargement et +35% de taux de complétion.",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80",
+    image: "images/services/web.png",
   },
   {
     id: "mobile",
@@ -49,9 +49,9 @@ const expertises: Expertise[] = [
     ],
     caseStudy:
       "App e-commerce B2C : 10 000 téléchargements en 3 mois, note 4.9★ App Store, panier moyen +22% vs site web.",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+    image: "images/services/mobile.png"
   },
-  {
+  {  
     id: "cloud",
     icon: Cloud,
     label: "03 — Cloud & Architecture",
@@ -66,7 +66,7 @@ const expertises: Expertise[] = [
     ],
     caseStudy:
       "Migration monolithe → microservices AWS : −70% d'incidents, scalabilité ×10 lors des pics de charge.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+    image: "images/services/cloud.png",
   },
 ];
 

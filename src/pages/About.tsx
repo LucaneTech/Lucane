@@ -34,9 +34,10 @@ const About: React.FC = () => {
    
       <Mission/>
 
-      <MeetOurFounder member={founder}/>
+      
 
       <StatsSection/>
+      <MeetOurFounder member={founder}/>
 
       <ValuesCultureSection/>
        <FAQ/>

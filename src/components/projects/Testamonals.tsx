@@ -79,7 +79,7 @@ const Testamonals: React.FC = () => {
   const t = testimonials[index];
 
   return (
-    <section className="py-20 px-6 bg-surface-alt">
+    <section className="py-20 px-6 bg-surface-alt dark:bg-dark-surface">
       <div className="max-w-3xl mx-auto text-center">
         {/* Section header */}
         <motion.span
@@ -91,7 +91,7 @@ const Testamonals: React.FC = () => {
           Témoignages
         </motion.span>
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-ink mt-3 mb-12"
+          className="text-3xl md:text-4xl font-bold text-ink dark:text-white mt-3 mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -112,7 +112,7 @@ const Testamonals: React.FC = () => {
               animate="center"
               exit="exit"
               transition={{ duration: 0.35, ease: "easeInOut" }}
-              className="bg-white rounded-md shadow-sm border border-surface-alt p-8 md:p-10"
+              className="bg-white dark:bg-dark-elevated  rounded-md shadow-sm border border-surface-alt dark:border-gray-700/50 p-8 md:p-10"
             >
               {/* Stars */}
               <div className="flex justify-center gap-1 mb-6">
@@ -125,7 +125,7 @@ const Testamonals: React.FC = () => {
               </div>
 
               {/* Quote */}
-              <blockquote className="text-ink text-lg md:text-xl leading-relaxed italic mb-8">
+              <blockquote className="text-ink dark:text-white text-lg md:text-xl leading-relaxed italic mb-8">
                 "{t.quote}"
               </blockquote>
 
@@ -143,8 +143,8 @@ const Testamonals: React.FC = () => {
                   }}
                 />
                 <div className="text-left">
-                  <p className="font-bold text-ink">{t.name}</p>
-                  <p className="text-sm text-ink-muted">
+                  <p className="font-bold text-ink dark:text-primary">{t.name}</p>
+                  <p className="text-sm text-ink-muted dark:text-slate-300">
                     {t.role} — {t.company}
                   </p>
                 </div>

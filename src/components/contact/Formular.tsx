@@ -4,9 +4,10 @@ import { AlertCircle, Check } from "lucide-react";
 import Button from "../../ui/Button";
 
 const inputClass =
-  "w-full bg-surface border border-surface-alt rounded-lg px-4 py-3 text-ink " +
-  "placeholder:text-ink-faint focus:outline-none focus:border-primary focus:ring-2 " +
-  "focus:ring-primary/10 transition-colors";
+  "w-full bg-transparent border-0 border-b border-base-300 dark:border-slate-600/30 " +
+  "px-0 py-3 text-ink dark:text-white text-sm " +
+  "placeholder:text-ink-faint focus:outline-none focus:border-primary " +
+  "dark:focus:border-primary focus:ring-0 transition-colors";
 
 const ContactForm: React.FC = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -100,7 +101,7 @@ const ContactForm: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3 text-sm"
+          className="p-4 bg-red-50 border border-red-200 rounded-md flex items-center gap-3 text-sm"
         >
           <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
           <span className="text-red-700">Erreur lors de l'envoi. Veuillez réessayer.</span>
@@ -109,7 +110,7 @@ const ContactForm: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm font-medium text-ink mb-2">
+          <label className="block text-xs uppercase tracking-widest font-medium text-ink-muted mb-2">
             Votre nom <span className="text-primary">*</span>
           </label>
           <input
@@ -124,7 +125,7 @@ const ContactForm: React.FC = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-ink mb-2">
+          <label className="block text-xs uppercase tracking-widest font-medium text-ink-muted mb-2">
             Email <span className="text-primary">*</span>
           </label>
           <input
@@ -139,7 +140,7 @@ const ContactForm: React.FC = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-ink mb-2">
+          <label className="block text-xs uppercase tracking-widest font-medium text-ink-muted mb-2">
             Téléphone <span className="text-primary">*</span>
           </label>
           <input
@@ -154,8 +155,8 @@ const ContactForm: React.FC = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-ink mb-2">
-            Pays <span className="text-primary">*</span>
+          <label className="block text-xs uppercase tracking-widest font-medium text-ink-muted mb-2">
+            Pays <span className="text-primary ">*</span>
           </label>
           <input
             type="text"
@@ -170,14 +171,14 @@ const ContactForm: React.FC = () => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-ink mb-2">
+        {/* <label className="block text-sm font-medium text-ink mb-2">
           Service souhaité
-        </label>
+        </label> */}
         <select
           name="service"
           value={formData.service}
           onChange={handleChange}
-          className={inputClass}
+          className=" bg-primary/50 border-0  px-3 py-2 text-sm text-ink rounded-md dark:text-white focus:outline-none  focus:ring-offset-1 focus:ring-offset-accent/50 dark:focus:ring-offset-dark/50 w-full"
         >
           <option value="">Sélectionner un service</option>
           <option>Développement Web</option>
@@ -202,18 +203,18 @@ const ContactForm: React.FC = () => {
         />
       </div>
 
-      <Button
-        type="submit"
-        variant="primary"
-        size="lg"
-        label={isSubmitting ? "Envoi en cours…" : "Envoyer le message"}
-        className="w-full justify-center"
-        disabled={isSubmitting}
-      />
-
-      <p className="text-xs text-center text-ink-faint mt-1">
-        * Champs obligatoires. Nous nous engageons à répondre dans les 24h.
-      </p>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
+        <p className="text-xs text-ink-faint">
+          * Champs obligatoires. Réponse garantie sous 24h.
+        </p>
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          label={isSubmitting ? "Envoi en cours…" : "Envoyer le message"}
+          disabled={isSubmitting}
+        />
+      </div>
     </form>
   );
 };

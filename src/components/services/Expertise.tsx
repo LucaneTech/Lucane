@@ -1,5 +1,6 @@
+import { useState } from "react";
 import type React from "react";
-import { motion, type Variants } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Globe,
   Smartphone,
@@ -8,18 +9,17 @@ import {
   TrendingUp,
   Cog,
   Wrench,
+  Plus,
+  Minus,
 } from "lucide-react";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "../../ui/accordion";
+import { cn } from "../../ui/utils";
+
+type ServiceColor = "dev" | "design" | "growth" | "cloud";
 
 type ServiceProp = {
   id: string;
   title: string;
-  color: "dev" | "design" | "growth" | "cloud";
+  color: ServiceColor;
   icon: React.ElementType;
   bullets: string[];
   desc: string;
@@ -37,7 +37,7 @@ const expertises: ServiceProp[] = [
       "Architecture scalable",
       "Performance & SEO",
     ],
-    desc: "Nous créons des applications web modernes, performantes et accessibles, optimisées pour le référencement naturel et les Core Web Vitals.",
+    desc: "Applications web modernes, performantes et accessibles, optimisées pour le référencement et les Core Web Vitals.",
   },
   {
     id: "mobile",
@@ -63,7 +63,7 @@ const expertises: ServiceProp[] = [
       "Tests utilisateurs & itérations",
       "Figma & Storybook",
     ],
-    desc: "Conception de maquettes modernes et intuitives basées sur la recherche utilisateur et les meilleures pratiques UX.",
+    desc: "Maquettes modernes et intuitives fondées sur la recherche utilisateur et les meilleures pratiques UX.",
   },
   {
     id: "cloud",
@@ -119,139 +119,163 @@ const expertises: ServiceProp[] = [
   },
 ];
 
-const colorMap: Record<
-  ServiceProp["color"],
-  { header: string; icon: string; badge: string; dot: string }
-> = {
-  dev: {
-    header: "",
-    icon: "bg-dev/10 text-primary",
-    badge: "bg-dev/10 text-dev",
-    dot: "bg-dev",
-  },
-  design: {
-    header: "",
-    icon: "bg-design/10 text-design",
-    badge: "bg-design/10 text-design",
-    dot: "bg-design",
-  },
-  growth: {
-    header: "",
-    icon: "bg-growth/10 text-growth",
-    badge: "bg-growth/10 text-growth",
-    dot: "bg-growth",
-  },
-  cloud: {
-    header: "",
-    icon: "bg-cloud/10 text-cloud",
-    badge: "bg-cloud/10 text-cloud",
-    dot: "bg-cloud",
-  },
+const iconColor: Record<ServiceColor, string> = {
+  dev: "text-dev",
+  design: "text-design",
+  growth: "text-growth",
+  cloud: "text-cloud",
 };
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+const accentBorder: Record<ServiceColor, string> = {
+  dev: "bg-dev",
+  design: "bg-design",
+  growth: "bg-growth",
+  cloud: "bg-cloud",
 };
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
+const dotColor: Record<ServiceColor, string> = {
+  dev: "bg-dev",
+  design: "bg-design",
+  growth: "bg-growth",
+  cloud: "bg-cloud",
 };
 
 const Expertise: React.FC = () => {
+  const [openId, setOpenId] = useState<string | null>(null);
+
   return (
-    <motion.section
-      className="py-20 px-6 bg-surface dark:bg-dark-surface"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-    >
+    <section className="py-20 px-6 bg-surface dark:bg-dark-surface">
       <div className="max-w-5xl mx-auto">
+
         {/* Header */}
         <motion.div
-          className="text-center mb-14"
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-16"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-ink dark:text-white">
-            Nos <span className="text-primary">Expertises</span>
-          </h2>
-          <p className="mt-4 text-lg text-ink-muted  dark:text-slate-300 max-w-3xl mx-auto">
-            Nous concevons, développons et faisons évoluer des solutions
-            digitales modernes, performantes et orientées résultats.
+          <div>
+            <span className="text-xs uppercase tracking-widest text-primary font-medium">
+              Services
+            </span>
+            <h2 className="mt-3 text-4xl md:text-5xl font-bold text-ink dark:text-white leading-tight">
+              Nos <span className="text-primary">Expertises</span>
+            </h2>
+          </div>
+          <p className="text-ink-muted dark:text-ink-faint text-sm leading-relaxed max-w-[260px] sm:text-right">
+            Nous concevons, développons et faisons évoluer des solutions digitales orientées résultats.
           </p>
         </motion.div>
 
-        {/* Accordion grid */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-4"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {expertises.map((service) => {
+        {/* Service list */}
+        <div className="divide-y divide-base-300 dark:divide-slate-800">
+          {expertises.map((service, i) => {
             const Icon = service.icon;
-            const colors = colorMap[service.color];
+            const isOpen = openId === service.id;
+
             return (
-              <motion.div key={service.id} variants={itemVariants}>
-                <Accordion type="single" collapsible>
-                  <AccordionItem
-                    value={service.id}
-                    className="border border-ink-faint/30 dark:border-slate-700/50 rounded-md overflow-hidden bg-white dark:bg-dark/40 backdrop-blur-lg shadow-lg"
-                  >
-                    {/* Gradient header */}
-                    <div
-                      className={`bg-gradient-to-br ${colors.header} px-5 pt-4 pb-0`}
-                    >
-                      <AccordionTrigger className="hover:no-underline py-3 pb-4">
-                        <div className="flex items-center gap-3">
-                          <div
-                            className={`p-2.5 rounded-full ${colors.icon} flex-shrink-0`}
-                          >
-                            <Icon className="w-5 h-5" />
-                          </div>
-                          <span className="text-base font-bold text-ink dark:text-white text-left">
-                            {service.title}
-                          </span>
-                        </div>
-                      </AccordionTrigger>
+              <motion.div
+                key={service.id}
+                className="group relative cursor-pointer"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.055 }}
+                onClick={() => setOpenId(isOpen ? null : service.id)}
+              >
+                {/* Active left indicator */}
+                <span
+                  className={cn(
+                    "absolute left-0 top-0 w-0.5 transition-all duration-300 rounded-sm",
+                    isOpen ? `${accentBorder[service.color]} h-full` : "h-0"
+                  )}
+                />
+
+                <div className="flex items-start gap-5 py-5 pl-4">
+                  {/* Icon — colored, no background */}
+                  <Icon
+                    className={cn(
+                      "w-5 h-5 shrink-0 mt-0.5 transition-colors duration-200",
+                      isOpen
+                        ? iconColor[service.color]
+                        : "text-ink-faint dark:text-ink-muted group-hover:" + iconColor[service.color]
+                    )}
+                    strokeWidth={1.5}
+                  />
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-4">
+                      <h3
+                        className={cn(
+                          "text-base md:text-[17px] font-semibold leading-snug transition-colors duration-200",
+                          isOpen
+                            ? "text-primary"
+                            : "text-ink dark:text-white group-hover:text-primary"
+                        )}
+                      >
+                        {service.title}
+                      </h3>
+
+                      <div className="flex items-center gap-3 shrink-0 mt-0.5">
+                        <span className="font-mono text-[11px] text-ink-faint dark:text-ink-muted select-none hidden sm:block">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span
+                          className={cn(
+                            "w-5 h-5 rounded-md border flex items-center justify-center transition-colors duration-200",
+                            isOpen
+                              ? `border-${service.color} text-${service.color}`
+                              : "border-ink-faint dark:border-slate-700 text-ink-muted dark:text-ink-muted"
+                          )}
+                        >
+                          {isOpen ? <Minus size={10} /> : <Plus size={10} />}
+                        </span>
+                      </div>
                     </div>
 
-                    <AccordionContent className="px-5 pb-5 pt-2">
-                      <p className="text-ink-muted  dark:text-slate-300 text-sm leading-relaxed mb-4">
-                        {service.desc}
-                      </p>
-                      <ul className="space-y-1.5">
-                        {service.bullets.map((b) => (
-                          <li
-                            key={b}
-                            className="flex items-start gap-2 text-sm text-ink-muted  dark:text-slate-300"
-                          >
-                            <span
-                              className={`w-1.5 h-1.5 rounded-md ${colors.dot} flex-shrink-0 mt-1.5`}
-                            />
-                            {b}
-                          </li>
-                        ))}
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+                    {/* Description — always visible */}
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-muted dark:text-ink-faint pr-4">
+                      {service.desc}
+                    </p>
+
+                    {/* Bullets — revealed on expand */}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.24, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 pb-1">
+                            {service.bullets.map((b) => (
+                              <div key={b} className="flex items-start gap-2.5">
+                                <span
+                                  className={cn(
+                                    "w-1 h-1 rounded-full mt-2 flex-shrink-0",
+                                    dotColor[service.color]
+                                  )}
+                                />
+                                <span className="text-sm text-ink-muted dark:text-ink-faint">
+                                  {b}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
