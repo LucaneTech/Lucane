@@ -88,7 +88,7 @@ const Veille: React.FC = () => {
         >
           <div className="min-w-[640px]">
             {/* Axis */}
-            <div ref={axisRef} className="relative h-px bg-slate-200 mb-10">
+            <div ref={axisRef} className="relative h-px bg-surface-alt mb-10">
               <motion.div
                 className="absolute inset-0 bg-primary origin-left"
                 initial={{ scaleX: 0 }}
@@ -140,7 +140,7 @@ const Veille: React.FC = () => {
               key={stat.label}
               className={`flex flex-col items-center ${
                 i < STATS.length - 1
-                  ? "sm:border-r sm:border-slate-200 sm:pr-12 sm:mr-12"
+                  ? "sm:border-r sm:border-surface-alt sm:pr-12 sm:mr-12"
                   : ""
               }`}
             >
