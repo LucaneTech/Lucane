@@ -125,7 +125,7 @@ const StackTopography: React.FC = () => {
 
   useEffect(() => {
     // Wait for chips to animate in before calculating
-    const timer = setTimeout(calculateLines, 600);
+    const timer = setTimeout(calculateLines, 1100);
     const observer = new ResizeObserver(calculateLines);
     if (containerRef.current) observer.observe(containerRef.current);
     return () => {
