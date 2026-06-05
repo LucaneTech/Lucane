@@ -1,6 +1,6 @@
 // src/components/technologies/StackTopography.tsx
 import React, { useRef, useEffect, useState, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 interface ChipData {
   label: string;
@@ -123,15 +123,19 @@ const StackTopography: React.FC = () => {
     setReady(true);
   }, []);
 
+  const containerInView = useInView(containerRef, { once: true });
+
   useEffect(() => {
-    // Wait for chips to animate in before calculating
-    const timer = setTimeout(calculateLines, 1100);
+    if (!containerInView) return;
+    // Chips take up to ~900ms to finish animating; wait for settlement
+    const timer = setTimeout(calculateLines, 1000);
+    return () => clearTimeout(timer);
+  }, [containerInView, calculateLines]);
+
+  useEffect(() => {
     const observer = new ResizeObserver(calculateLines);
     if (containerRef.current) observer.observe(containerRef.current);
-    return () => {
-      clearTimeout(timer);
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, [calculateLines]);
 
   return (
@@ -166,7 +170,8 @@ const StackTopography: React.FC = () => {
                   y1={line.y1}
                   x2={line.x2}
                   y2={line.y2}
-                  stroke="rgba(0,128,128,0.25)"
+                  stroke="var(--color-primary)"
+                  strokeOpacity="0.25"
                   strokeWidth="1"
                   strokeDasharray={line.length}
                   initial={{ strokeDashoffset: line.length }}
