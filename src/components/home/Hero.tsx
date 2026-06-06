@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative pt-28 md:pt-36 pb-10 md:pb-20 px-4 md:px-8 lg:px-16 xl:px-24 overflow-hidden">
+    <section className="relative pt-28 md:pt-36 pb-10 md:pb-20 px-4 md:px-8 lg:px-16 xl:px-24 overflow-x-hidden">
       {/* Background SVG circles */}
       <svg className="absolute -z-10 inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 720" fill="none">
         <circle cx="711.819" cy="372.562" r="308.334" stroke="var(--color-primary)" strokeOpacity={0.16} strokeWidth={3} />
@@ -35,13 +35,13 @@ const HeroSection: React.FC = () => {
         >
           {/* Badge */}
           <motion.div
-            className="inline-flex items-center gap-2 rounded-pill bg-primary/10 border border-primary/20 px-4 py-1.5 text-sm text-primary font-medium mb-6"
+            className="inline-flex items-center gap-2 rounded-md bg-primary/10 border border-primary/20 px-4 py-1.5 text-sm text-primary font-medium mb-6"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            Disponible pour nouveaux projets
+            Disponible pour vos projets
           </motion.div>
 
           {/* Title */}
@@ -81,7 +81,7 @@ const HeroSection: React.FC = () => {
 
           {/* CTAs */}
           <motion.div
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap gap-4 justify-center lg:justify-start"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
@@ -93,7 +93,7 @@ const HeroSection: React.FC = () => {
 
         {/* Right visual */}
         <motion.div
-          className="relative flex-shrink-0 flex justify-center"
+          className="relative flex-shrink-0 flex justify-center py-8 px-6 md:px-10"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
@@ -139,7 +139,7 @@ const HeroSection: React.FC = () => {
                 <Users className="w-5 h-5 text-primary dark:text-white" />
               </div>
               <div>
-                <p className="text-lg font-bold text-ink dark:text-white leading-none">+50</p>
+                <p className="text-lg font-bold text-ink dark:text-white leading-none">+20</p>
                 <p className="text-xs text-ink-muted dark:text-slate-200 mt-0.5">Clients satisfaits</p>
               </div>
             </motion.div>

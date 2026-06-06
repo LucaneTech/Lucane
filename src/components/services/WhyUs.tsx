@@ -57,7 +57,7 @@ const WhyUs: React.FC = () => {
             Pourquoi nous choisir
           </h2>
           <p className="mt-5 text-lg text-ink-muted dark:text-slate-300 leading-relaxed">
-            Une équipe experte, des choices techniques réfléchis et une exigence
+            Une équipe experte, des choix techniques réfléchis et une exigence
             constante de qualité pour construire des produits durables.
           </p>
         </motion.div>

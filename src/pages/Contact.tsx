@@ -85,7 +85,7 @@ const Contact: React.FC = () => {
             {/* Offset border decoration */}
             <div className="absolute -bottom-6 -right-6 w-full h-full rounded-md border border-primary/20 -z-10" />
 
-            <div className="relative rounded-md overflow-hidden aspect-[4/5]">
+            <div className="relative rounded-md overflow-hidden aspect-[4/3] sm:aspect-[4/5]">
             <div className="flex items-center gap-1.5 px-4 py-2.5 bg-slate-100 dark:bg-dark-elevated border-b border-slate-200 dark:border-slate-700/50">
             <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
             <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
@@ -123,7 +123,7 @@ const Contact: React.FC = () => {
 
           {/* Right — text */}
           <motion.div
-            className="flex flex-col"
+            className="flex flex-col items-center lg:items-start text-center lg:text-left"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -137,13 +137,13 @@ const Contact: React.FC = () => {
               votre <span className="text-primary">projet.</span>
             </h1>
 
-            <p className="mt-6 text-base leading-relaxed text-ink-muted dark:text-slate-300 max-w-md">
+            <p className="mt-6 text-base leading-relaxed text-ink-muted dark:text-slate-300 max-w-md mx-auto lg:mx-0">
               Notre équipe est disponible pour répondre à toutes vos questions
               et transformer votre vision en réalité.
             </p>
 
             {/* Info table */}
-            <div className="mt-8 divide-y divide-base-300 dark:divide-slate-200/30">
+            <div className="mt-8 divide-y divide-base-300 dark:divide-slate-200/30 w-full max-w-md mx-auto lg:mx-0">
               {infoRows.map((item) => (
                 <div key={item.label} className="flex items-center justify-between py-3.5">
                   <span className="text-xs uppercase tracking-widest text-ink-muted dark:text-slate-300 font-medium">

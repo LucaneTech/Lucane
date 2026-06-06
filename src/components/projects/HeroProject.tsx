@@ -11,7 +11,7 @@ const categories = ["Tous", "Web", "Mobile", "Design", "SaaS"];
 
 const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-base-100 dark:bg-dark pt-24 pb-16 px-6">
+    <section className="relative min-h-[98vh] flex items-center overflow-hidden bg-base-100 dark:bg-dark pt-24 pb-16 px-6">
 
       {/* ── Blob décoratifs background ─────────────────────────────── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -81,13 +81,13 @@ const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
         <div className="grid lg:grid-cols-[55fr_45fr] gap-16 items-center">
 
           {/* Colonne gauche ── texte */}
-          <div>
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.6 }}
-              className="inline-flex items-center gap-2 rounded-md bg-primary/10 border border-primary/20 px-4 py-1.5 text-sm text-primary font-medium mb-6"
+              className="hidden lg:inline-flex items-center gap-2 rounded-md bg-primary/10 border border-primary/20 px-4 py-1.5 text-sm text-primary font-medium mb-6"
             >
               <span className="hidden md:block w-2 h-2 rounded-md bg-primary animate-pulse" />
               Nos réalisations
@@ -111,7 +111,7 @@ const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="text-base leading-relaxed text-ink-muted dark:text-slate-300 max-w-[480px] mb-10"
+              className="text-center lg:text-left text-base leading-relaxed text-ink-muted dark:text-slate-300 max-w-[480px] mb-10 mx-auto lg:mx-0"
             >
               Découvrez nos réalisations pour des clients en France, en Afrique et à
               l'international. Chaque projet, une histoire d'impact.
@@ -122,7 +122,7 @@ const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
-              className="flex flex-wrap gap-2"
+              className="flex flex-wrap gap-2 justify-center lg:justify-start"
             >
               {categories.map((cat) => (
                 <button
@@ -142,14 +142,14 @@ const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
 
           {/* Colonne droite ── visuel */}
           <motion.div
-            className="relative flex justify-center items-center"
+            className="relative flex justify-center items-center min-h-[320px] py-8"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.45, duration: 0.9, ease: "easeOut" }}
           >
             {/* Blob coloré derrière l'image */}
             <motion.div
-              className="absolute w-72 h-72 lg:w-64 -left-5 -10 lg:h-96 rounded-full bg-primary "
+              className="absolute w-64 h-64 lg:w-72 lg:h-92 -left-4 top-4 rounded-full bg-primary"
               animate={{ scale: [1, 1.04, 1] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
@@ -183,7 +183,7 @@ const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
                   <Globe className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-ink dark:text-white leading-none">50+</p>
+                  <p className="text-lg font-bold text-ink dark:text-white leading-none">20+</p>
                   <p className="text-xs text-ink-muted dark:text-slate-400 mt-0.5">Projets livrés</p>
                 </div>
               </motion.div>

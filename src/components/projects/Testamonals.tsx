@@ -15,26 +15,26 @@ const testimonials: Testimonial[] = [
   {
     name: "Jean-Pierre Kone",
     role: "CEO",
-    company: "Kone Group",
-    avatar: "/collaborators/kone.png",
+    company: "KonShop",
+    avatar: "#",
     rating: 5,
     quote:
       "Lucane Tech a transformé notre gestion commerciale. Livraison rapide, équipe professionnelle.",
   },
   {
-    name: "Marie Dubois",
+    name: "Berci K.",
     role: "Directrice Marketing",
     company: "Oralise",
-    avatar: "/images/team/ceo.jpeg",
+    avatar: "#",
     rating: 5,
     quote:
       "Excellent travail sur notre plateforme. Le design est moderne et l'UX est parfaite.",
   },
   {
-    name: "François Eemci",
+    name: "François",
     role: "DRH",
     company: "EEMCI",
-    avatar: "/collaborators/eemci.webp",
+    avatar: "#",
     rating: 5,
     quote:
       "Application mobile de qualité professionnelle. Notre équipe est ravie.",

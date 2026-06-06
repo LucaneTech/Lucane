@@ -8,11 +8,11 @@ import MemoryGrid from "../components/home/MemoryGrid";
 import Promotional from "../components/home/Promotional";
 import Button from "../ui/Button";
 
-const teamAvatars = [
-  "images/team/ceo.jpeg",
-  "images/team/product_manager.jpeg",
-  "images/team/profil.jpeg",
-];
+// const teamAvatars = [
+//   "images/team/ceo.jpeg",
+//   "images/team/product_manager.jpeg",
+//   "images/team/profil.jpeg",
+// ];
 
 const Home: React.FC = () => {
   return (
@@ -42,19 +42,27 @@ const Home: React.FC = () => {
       <section className="py-24 px-6 bg-surface dark:bg-transparent">
         <div className="max-w-4xl mx-auto text-center">
           {/* Stacked team avatars */}
-          <div className="flex items-center justify-center -space-x-3 mb-6">
-            {teamAvatars.map((src, i) => (
-              <img
-                key={i}
-                src={src}
-                alt=""
-                className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
-              />
-            ))}
-            <div className="w-10 h-10 rounded-full bg-primary/20 border-2 border-white flex items-center justify-center text-primary text-xs font-bold shadow-sm">
+          {/* <div className="flex items-center justify-center -space-x-3 mb-6">
+            {
+              teamAvatars && teamAvatars.length > 0 ? (
+                teamAvatars.map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt={`Team member ${i + 1}`}
+                    className="w-12 h-12 rounded-full border-2 border-slate-300 shadow-sm"
+                  />
+                ))
+              ) : (
+                <div className="w-12 h-12 rounded-full bg-primary/20 border-2 border-slate-300 flex items-center justify-center text-primary text-xs font-bold shadow-sm">
+                  ?
+                </div>
+              )
+            }
+            <div className="w-12 h-12 rounded-full bg-primary/20 border-2 border-slate-300 flex items-center justify-center text-primary text-xs font-bold shadow-sm">
               +
             </div>
-          </div>
+          </div> */}
 
           <p className="text-ink-muted dark:text-slate-300 text-sm mb-4">Notre équipe vous attend</p>
 

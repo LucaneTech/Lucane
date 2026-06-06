@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Globe, Users, TrendingUp } from "lucide-react";
 
 const stats = [
-  { icon: TrendingUp, value: "50+",  label: "Projets livrés" },
+  { icon: TrendingUp, value: "00+",  label: "Projets livrés" },
   { icon: Globe,      value: "3",    label: "Continents" },
   { icon: Users,      value: "98%",  label: "Satisfaction" },
 ];
@@ -38,7 +38,7 @@ const AboutHero: React.FC = () => {
         <div className="grid lg:grid-cols-[56fr_44fr] gap-12 lg:gap-20 items-center">
 
           {/* ── Colonne gauche — contenu ──────────────────────── */}
-          <div>
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
 
             {/* Badge */}
             <motion.div
@@ -77,7 +77,7 @@ const AboutHero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 0.8 }}
-              className="relative pl-5 border-l-2 border-primary/40 mb-10"
+              className="relative lg:pl-5 lg:border-l-2 lg:border-primary/40 mb-10 max-w-[520px] mx-auto lg:mx-0"
             >
               {/* Guillemet décoratif */}
               <span
@@ -87,11 +87,11 @@ const AboutHero: React.FC = () => {
               >
                 "
               </span>
-              <p className="text-base leading-relaxed text-ink-muted dark:text-slate-300 italic max-w-[480px]">
+              <p className="text-base leading-relaxed text-ink-muted dark:text-slate-300 italic max-w-[480px] mx-auto lg:mx-0">
                 La technologie est le meilleur levier pour développer l'Afrique.
                 Notre mission est de la rendre accessible à tous les entrepreneurs.
               </p>
-              <footer className="mt-4 flex items-center gap-3">
+              <footer className="mt-4 flex items-center justify-center lg:justify-start gap-3">
                 <div className="w-6 h-[2px] bg-primary/50 rounded-full" />
                 <span className="text-sm font-bold text-ink dark:text-white">
                   Francisco Mouanda
@@ -107,7 +107,7 @@ const AboutHero: React.FC = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.72, duration: 0.6 }}
-              className="flex flex-wrap gap-8"
+              className="flex flex-wrap gap-8 justify-center lg:justify-start"
             >
               {stats.map(({ icon: Icon, value, label }, i) => (
                 <motion.div
@@ -131,7 +131,7 @@ const AboutHero: React.FC = () => {
 
           {/* ── Colonne droite — composition géométrique ─────── */}
           <motion.div
-            className="relative flex justify-center items-center h-[400px] lg:h-[460px]"
+            className="relative flex justify-center items-center h-[280px] sm:h-[360px] lg:h-[460px]"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.9, ease: "easeOut" }}
@@ -225,7 +225,7 @@ const AboutHero: React.FC = () => {
                 animate={{ y: [-3, 3, -3] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
               >
-                <p className="text-xl font-bold text-ink dark:text-white leading-none">2019</p>
+                <p className="text-xl font-bold text-ink dark:text-white leading-none">2023</p>
                 <p className="text-xs text-ink-muted dark:text-slate-400 mt-0.5">Année de fondation</p>
               </motion.div>
             </motion.div>

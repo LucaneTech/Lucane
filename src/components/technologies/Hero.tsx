@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
           
           {/* ─────────────── LEFT — Content (toujours en haut sur mobile) ─────────────── */}
-          <div className="order-1 lg:order-none w-full">
+          <div className="order-1 lg:order-none w-full flex flex-col items-center lg:items-start text-center lg:text-left">
 
             <motion.div
               initial={{ opacity: 0, y: -12 }}
@@ -121,7 +121,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.7 }}
-              className="text-base lg:text-lg leading-relaxed text-gray-600 dark:text-gray-300 max-w-lg mb-8"
+              className="text-base lg:text-lg leading-relaxed text-gray-600 dark:text-gray-300 max-w-lg mb-8 mx-auto lg:mx-0"
             >
               Des outils choisis pour leur maturité, leurs performances en production
               et leur capacité à évoluer avec votre produit.
@@ -131,7 +131,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.52, duration: 0.6 }}
-              className="flex flex-wrap gap-2.5 mb-9"
+              className="flex flex-wrap gap-2.5 mb-9 justify-center lg:justify-start"
             >
               {PERF.map((p) => (
                 <div
@@ -189,12 +189,20 @@ const Hero: React.FC = () => {
                     clipPath: "polygon(18px 0%,calc(100% - 18px) 0%,100% 18px,100% calc(100% - 18px),calc(100% - 18px) 100%,18px 100%,0% calc(100% - 18px),0% 18px)",
                   }}
                 >
-                  <img
+                  {/* <img
                     src="/images/technologies/hero.png"
                     alt="Stack technologique"
                     className="w-full h-56 sm:h-64 md:h-72 lg:h-80 object-cover"
                     style={{ filter: "brightness(0.72) saturate(0.9)" }}
-                  />
+                  /> */}
+
+                  <div className="w-full flex justify-center items-center h-56 sm:h-64 md:h-72 lg:h-80 bg-gradient-to-br from-primary/20 to-secondary/20">
+                  <span  className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-primary/90">
+                    Innovation<br />&amp; <span className="text-secondary/90">fiabilité</span>
+                  </span>
+                  
+                  </div>
+                
 
                   <div
                     className="absolute inset-0 pointer-events-none"

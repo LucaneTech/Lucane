@@ -35,7 +35,7 @@ const projects: Project[] = [
     tag: "Portfolio",
     tagColor: "text-cloud bg-cloud/10",
     image: "images/home/second.avif",
-    desc: "SPortfolio professionnel de Francisco Mouanda, développeur web full-stack spécialisé dans des technologies modernes telles que Django, Laravel, Python et JavaScript. Le site met en valeur ses projets, ses compétences techniques et son parcours, à destination d'entreprises à la recherche d'un développeur web expérimenté.",
+    desc: "Portfolio professionnel, développeur web full-stack spécialisé dans des technologies modernes telles que Django, Laravel, Python et JavaScript. Le site met en valeur ses projets, ses compétences techniques et son parcours, à destination d'entreprises à la recherche d'un développeur web expérimenté.",
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Daisyui'],
     link: "/projets",
     liveUrl: "https://francisco.lucane.tech",
@@ -119,7 +119,7 @@ const FeaturedProjects: React.FC = () => {
             Projets <span className="text-primary">en vedette</span>
           </h2>
       <p className="text-ink-muted dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
-            Des solutions concrètes livrées pour des clients exigeants. Voici une sélection de nos réalisations.
+            Des solutions concrètes livrées pour des clients exigeants. Voici une sélection  de quelques unes de nos réalisations publiques récentes.
           </p>
         </motion.div>
 

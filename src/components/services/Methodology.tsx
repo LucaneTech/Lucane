@@ -4,32 +4,32 @@ import { motion, AnimatePresence } from "framer-motion";
 const tabs = [
   {
     label: "Découverte",
-    duration: "3-5 j",
-    tools: ["Notion AI", "Miro", "Figma", "ChatGPT", "Perplexity"],
+    duration: "2-5 j",
+    tools: ["Notion AI", "Miro", "Figma", "Claude", "Perplexity", "etc.."],
     desc: "Ateliers de cadrage pour définir le scope, les objectifs et les contraintes. Analyse des besoins utilisateurs et benchmark concurrentiel accélérés par IA.",
   },
   {
     label: "Design",
     duration: "1-2 sem",
-    tools: ["Figma", "Storybook", "Midjourney", "Galileo AI", "Framer AI"],
+    tools: ["Figma", "Storybook", "Midjourney", "Galileo AI", "Framer AI", "etc..."],
     desc: "Conception UX/UI avec prototypage interactif assisté par IA. Génération rapide de variantes, validation des maquettes et design system co-créé avec l'IA.",
   },
   {
     label: "Développement",
-    duration: "2-8 sem",
-    tools: ["Cursor", "GitHub Copilot", "Claude", "v0.dev", "CI/CD", "Codium AI"],
+    duration: "1-5 sem",
+    tools: ["Cursor", "GitHub Copilot", "Claude", "v0.dev", "CI/CD", "Codium AI", "etc..."],
     desc: "Sprints accélérés grâce aux assistants IA (génération de code, revues automatisées, détection de bugs). Livraisons plus fréquentes, qualité maintenue.",
   },
   {
     label: "Livraison",
-    duration: "2-4 j",
-    tools: ["Docker", "Vercel", "AWS", "Railway", "Doppler"],
+    duration: "1-4 j",
+    tools: ["Docker", "Vercel", "AWS", "Railway", "Doppler", "etc..."],
     desc: "Déploiement progressif avec tests automatisés par IA. Documentation technique générée automatiquement, formation des équipes accélérée.",
   },
   {
     label: "Support",
     duration: "Continu",
-    tools: ["Sentry", "Grafana", "Slack", "Linear", "Intercom AI"],
+    tools: ["Sentry", "Grafana", "Slack", "Linear", "Intercom AI", "etc..."],
     desc: "Monitoring 24/7 augmenté par détection d'anomalies IA. Triage automatique des incidents, corrections prédictives et évolutions suggérées par l'analyse des usages.",
   },
 ];

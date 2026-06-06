@@ -32,7 +32,7 @@ const expertises: Expertise[] = [
     ],
     caseStudy:
       "Refonte d'une plateforme e-learning : migration React + Next.js, −60% sur les temps de chargement et +35% de taux de complétion.",
-    image: "images/services/web.png",
+    image: "images/home/memory3.jpeg",
   },
   {
     id: "mobile",
@@ -66,7 +66,7 @@ const expertises: Expertise[] = [
     ],
     caseStudy:
       "Migration monolithe → microservices AWS : −70% d'incidents, scalabilité ×10 lors des pics de charge.",
-    image: "images/services/cloud.png",
+    image: "images/services/clouding.png",
   },
 ];
 

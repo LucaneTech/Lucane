@@ -27,7 +27,7 @@ const ProjectTimeline: React.FC = () => (
         className="text-center mb-16"
       >
         <span className="inline-block text-xs uppercase tracking-[0.2em] font-medium text-primary mb-3">
-          Historique
+          Historique récente
         </span>
         <h2 className="text-3xl lg:text-4xl font-bold text-ink dark:text-white">
           Notre parcours

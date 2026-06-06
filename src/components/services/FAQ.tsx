@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: "Quels sont vos délais habituels ?",
-    a: "Un MVP peut être livré en 4 à 8 semaines selon la complexité. Un site vitrine prend généralement 3 à 6 semaines. Nous établissons un planning détaillé avec des jalons clairs dès la phase de découverte.",
+    a: "Un MVP peut être livré en 2 à 8 semaines selon la complexité. Un site vitrine prend généralement 1 à 3 semaines. Nous établissons un planning détaillé avec des jalons clairs dès la phase de découverte.",
   },
   {
     q: "Travaillez-vous avec des clients à l'international ?",

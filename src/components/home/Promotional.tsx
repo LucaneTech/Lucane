@@ -36,7 +36,7 @@ const Promotional: React.FC = () => {
   const [sending, setSending] = useState(false);
 
   const { ref: counterRef, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
-  const projectCount = useCountUp(50, inView);
+  const projectCount = useCountUp(20, inView);
   const clientCount = useCountUp(98, inView);
 
   const handleSubmit = async (e: React.FormEvent) => {

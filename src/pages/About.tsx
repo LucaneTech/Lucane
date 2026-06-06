@@ -9,12 +9,10 @@ import CallAction from "../components/CallAction";
 const founder = {
   name: "Francisco Mouanda",
   role: "Fondateur & CEO",
-  image: "images/team/profil.jpeg",
+  image: "favicon.png",
   description:
     "Fondateur et visionnaire de Lucane. Je guide chaque projet avec passion, innovation et expertise technique.",
-  socials: [
-    { type: "linkedin", url: "https://linkedin.com/in/tonprofil" },
-  ],
+  socials: [],
 };
 
 
