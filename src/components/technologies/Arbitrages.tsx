@@ -87,10 +87,10 @@ function ArbitrageRow({
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.4, delay: index * 0.06 }}
-      className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 py-6 border-b border-white/8 hover:bg-white/[0.02] transition-colors duration-150 px-2 -mx-2 rounded"
+      className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 md:gap-6 py-6 border-b border-white/8 hover:bg-white/[0.02] transition-colors duration-150 px-2 -mx-2 rounded"
     >
       {/* Domain label */}
-      <span className="font-mono text-xs uppercase tracking-widest text-primary w-36 flex-shrink-0">
+      <span className="font-mono text-xs md:text-xs uppercase tracking-widest text-primary w-32 md:w-36 flex-shrink-0">
         {item.domain}
       </span>
 

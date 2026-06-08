@@ -41,7 +41,7 @@ function AnimatedCounter({
   }, [active, target]);
 
   return (
-    <span className="font-mono text-4xl lg:text-5xl font-bold text-primary tabular-nums">
+    <span className="font-mono text-3xl md:text-4xl lg:text-5xl font-bold text-primary tabular-nums">
       {prefix}
       {count.toLocaleString("fr-FR")}
       {suffix}
@@ -59,7 +59,7 @@ const ImpactStrip: React.FC = () => {
         <p className="text-center text-xs uppercase tracking-[0.25em] font-mono text-slate-500 dark:text-slate-300 mb-10">
           &gt;_ impact en chiffres
         </p>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
           {METRICS.map((m, i) => (
             <div
               key={m.label}

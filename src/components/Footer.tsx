@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Facebook, Github, Linkedin, Instagram, Mail, Phone, Send } from "lucide-react";
+import { Facebook, Github, Instagram, Mail, Phone, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { logoLight } from "./Navbar";
 import { Link } from "react-router-dom";
@@ -10,11 +10,11 @@ const socialLinks = [
     url: "https://github.com/LucaneTech",
     icon: Github,
   },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/franciscomouanda579",
-    icon: Linkedin,
-  },
+  // {
+  //   name: "LinkedIn",
+  //   url: "https://www.linkedin.com/in/franciscomouanda579",
+  //   icon: Linkedin,
+  // },
   {
     name: "Facebook",
     url: "https://www.facebook.com/profile.php?id=61583245903926",
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
 
       <div className="px-6 md:px-16 lg:px-24 xl:px-32 pt-14 pb-6">
         {/* 4-column grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
           {/* Col 1 — Logo + description */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Link to="/">

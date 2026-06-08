@@ -15,7 +15,7 @@ const row2 = [...companies, ...companies].reverse();
 
 const TrustedCompanies: React.FC = () => {
   return (
-    <section className="py-12 bg-primary/80 backdrop-blur-2xl dark:bg-dark border-y border-slate-200/60 dark:border-slate-700/50">
+    <section className="py-8 md:py-10 lg:py-12 bg-primary/80 backdrop-blur-2xl dark:bg-dark border-y border-slate-200/60 dark:border-slate-700/50">
       {/* <p className="text-md md:text-lg uppercase tracking-[0.2em] text-ink-muted dark:text-slate-200 font-medium text-center mb-8">
         Ils nous font confiance
       </p> */}
@@ -34,7 +34,7 @@ const TrustedCompanies: React.FC = () => {
                 src={company.logo}
                 alt={company.name}
                 loading="lazy"
-                className="h-12 w-auto object-contain  opacity-100 whitespace-break-spaces hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex-shrink-0"
+                className="h-8 md:h-10 lg:h-12 w-auto object-contain  opacity-100 whitespace-break-spaces hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex-shrink-0"
               />
             ))}
           </div>
@@ -42,14 +42,14 @@ const TrustedCompanies: React.FC = () => {
 
         {/* Row 2 — scroll right */}
         <div className="flex" style={{ overflow: "hidden" }}>
-          <div className="flex gap-12 items-center animate-marquee-right whitespace-nowrap">
+          <div className="flex gap-8 md:gap-12 items-center animate-marquee-right whitespace-nowrap">
             {row2.map((company, index) => (
               <img
                 key={index}
                 src={company.logo}
                 alt={company.name}
                 loading="lazy"
-                className="h-12 w-auto object-contain  opacity-100 whitespace-break-spaces hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex-shrink-0"
+                className="h-8 md:h-10 lg:h-12 w-auto object-contain  opacity-100 whitespace-break-spaces hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex-shrink-0"
               />
             ))}
           </div>

@@ -73,13 +73,13 @@ const FeaturesSection: React.FC = () => {
                 transition={{ delay: i * 0.1, duration: 0.5 }}
               >
                 {/* Numbered circle */}
-                <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary *: border border-gray-400/50 dark:border-slate-400 flex items-center justify-center text-white  font-bold text-sm">
+                <div className="flex-shrink-0 w-12 md:w-14 h-12 md:h-14 rounded-full bg-primary border border-gray-400/50 dark:border-slate-400 flex items-center justify-center text-white font-bold text-xs md:text-sm">
                   {step.num}
                 </div>
 
                 {/* Content */}
-                <div className="pt-3">
-                  <div className="flex items-center gap-3 mb-2">
+                <div className="pt-2 md:pt-3">
+                  <div className="flex items-center gap-2 md:gap-3 mb-2">
                     <Icon className="w-5 h-5 text-primary" />
                     <h3 className="text-xl font-bold text-ink dark:text-white">{step.title}</h3>
                   </div>

@@ -75,8 +75,8 @@ const ChipElement = React.forwardRef<HTMLDivElement, ChipProps>(
         className="relative"
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
-      >
-        <div className="rounded-md border border-primary/25 bg-primary/10 text-white/80 font-medium px-4 py-2 text-sm cursor-default select-none">
+      > 
+        <div className="rounded-md border border-primary/25 bg-primary/10 dark:text-white/80 font-medium px-4 py-2 text-sm cursor-default select-none">
           {chip.label}
         </div>
         {showTooltip && (
@@ -151,7 +151,7 @@ const StackTopography: React.FC = () => {
           <span className="inline-block text-xs uppercase tracking-[0.2em] font-mono text-primary mb-3">
             Architecture
           </span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-white">
+          <h2 className="text-3xl lg:text-4xl font-bold dark:text-white">
             Topographie du stack
           </h2>
         </motion.div>

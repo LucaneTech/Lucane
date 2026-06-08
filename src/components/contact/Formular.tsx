@@ -190,7 +190,7 @@ const ContactForm: React.FC = () => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-ink mb-2">
+        <label className="block text-sm font-medium text-ink-muted  mb-2">
           Message <span className="text-primary">*</span>
         </label>
         <textarea

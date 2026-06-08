@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Globe, Users, TrendingUp } from "lucide-react";
 
 const stats = [
-  { icon: TrendingUp, value: "00+",  label: "Projets livrés" },
+  { icon: TrendingUp, value: "20+",  label: "Projets livrés" },
   { icon: Globe,      value: "3",    label: "Continents" },
   { icon: Users,      value: "98%",  label: "Satisfaction" },
 ];
@@ -26,9 +26,8 @@ const AboutHero: React.FC = () => {
 
       {/* ── Ghost word behind right column ───────────────────── */}
       <div
-        className="absolute right-[-4vw] top-1/2 -translate-y-1/2 text-[22vw] font-black leading-none select-none pointer-events-none tracking-tighter"
-        aria-hidden
-        style={{ color: "rgba(0,128,128,0.04)" }}
+        className="absolute right-[-4vw] top-1/2 -translate-y-1/2 text-[22vw] font-black leading-none select-none pointer-events-none tracking-tighter text-primary opacity-[0.09] dark:opacity-[0.12] whitespace-nowrap"
+        
       >
         IMPACT
       </div>
@@ -45,7 +44,7 @@ const AboutHero: React.FC = () => {
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.6 }}
-              className="inline-flex items-center gap-2 rounded-md bg-primary/10 border border-primary/20 px-4 py-1.5 text-sm text-primary font-medium mb-6"
+              className="hidden lg:inline-flex items-center gap-2 rounded-md bg-primary/10 border border-primary/20 px-4 py-1.5 text-sm text-primary font-medium mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               À propos de Lucane

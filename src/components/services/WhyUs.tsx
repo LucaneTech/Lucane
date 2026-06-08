@@ -70,7 +70,7 @@ const WhyUs: React.FC = () => {
             return (
               <motion.div
                 key={index}
-                className={`p-8 ${isAlt ? "bg-surface-alt dark:bg-dark-surface" : "bg-white dark:bg-dark-elevated"} ${
+                className={`p-4 md:p-8 ${isAlt ? "bg-surface-alt dark:bg-dark-surface" : "bg-white dark:bg-dark-elevated"} ${
                   index < 2 ? "border-b border-ink-faint/20 dark:border-slate-700" : ""
                 } ${index % 2 === 0 ? "md:border-r border-ink-faint/20 dark:border-slate-700" : ""}`}
                 initial={{ opacity: 0, y: 20 }}

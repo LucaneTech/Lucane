@@ -98,7 +98,7 @@ const ValuesCultureSection: React.FC = () => {
                 {/* Hover indicator */}
                 <span className="absolute left-0 top-0 h-full w-[2px] bg-primary origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300 rounded-sm" />
 
-                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 py-5 pl-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 md:gap-6 py-5 pl-4">
                   {/* Index */}
                   <span className="font-mono text-[11px] text-ink-faint dark:text-ink-muted select-none shrink-0 sm:w-6">
                     {String(i + 1).padStart(2, "0")}

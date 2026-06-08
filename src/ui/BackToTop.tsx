@@ -26,7 +26,7 @@ const BackToTop: React.FC = () => {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-40 bg-main-color text-white p-3 rounded-full shadow-lg hover:bg-main-color/90 transition-colors"
+          className="fixed bottom-8 right-8 z-40 bg-main-color text-white p-3 rounded-full shadow-lg bg-primary duration-300 hover:bg-primary/90 transition-colors"
           initial={{ opacity: 0, scale: 0, rotate: -180 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           exit={{ opacity: 0, scale: 0, rotate: 180 }}

@@ -23,7 +23,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Berci K.",
-    role: "Directrice Marketing",
+    role: "CEO",
     company: "Oralise",
     avatar: "#",
     rating: 5,
@@ -79,8 +79,8 @@ const Testamonals: React.FC = () => {
   const t = testimonials[index];
 
   return (
-    <section className="py-20 px-6 bg-surface-alt dark:bg-dark-surface">
-      <div className="max-w-3xl mx-auto text-center">
+    <section className="py-20 px-4 md:px-6 bg-surface-alt dark:bg-dark-surface">
+      <div className="max-w-full md:max-w-3xl mx-auto text-center">
         {/* Section header */}
         <motion.span
           className="text-xs uppercase tracking-widest text-primary font-medium"

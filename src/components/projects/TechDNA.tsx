@@ -43,7 +43,7 @@ const TechDNA: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="flex flex-wrap gap-3 justify-center items-center">
+        <div className="flex flex-wrap gap-2 sm:gap-3 justify-center items-center">
           {techCounts.map(([tech, count], i) => (
             <motion.div
               key={tech}

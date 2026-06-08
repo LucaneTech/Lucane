@@ -68,10 +68,10 @@ const Promotional: React.FC = () => {
         {/* Counter stats band */}
         <div
           ref={counterRef}
-          className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-16 text-center"
+          className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-16 text-center"
         >
           <div>
-            <p className="text-5xl font-bold text-white mb-1">
+            <p className="text-4xl md:text-5xl font-bold text-white mb-1">
               {projectCount}<span className="text-primary">+</span>
             </p>
             <p className="text-ink-muted text-sm uppercase tracking-wide">Projets livrés</p>
@@ -83,7 +83,7 @@ const Promotional: React.FC = () => {
             <p className="text-ink-muted text-sm uppercase tracking-wide">Satisfaction client</p>
           </div>
           <div className="col-span-2 md:col-span-1">
-            <p className="text-5xl font-bold text-white mb-1">
+            <p className="text-4xl md:text-5xl font-bold text-white mb-1">
               3<span className="text-primary">+</span>
             </p>
             <p className="text-ink-muted text-sm uppercase tracking-wide">Années d'expérience</p>

@@ -37,11 +37,11 @@ const MemoryGrid: React.FC = () => {
         </motion.div>
 
         {/* Grid layout */}
-        <div ref={ref} className="grid grid-cols-3 gap-2 md:gap-3">
+        <div ref={ref} className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
   {images.map((src, idx) => (
     <motion.div
       key={idx}
-      className={`relative overflow-hidden rounded-md group ${idx === 0 ? "col-span-2 row-span-2" : "col-span-1"}`}
+      className={`relative overflow-hidden rounded-md group ${idx === 0 ? "col-span-1 md:col-span-2 row-span-1 md:row-span-2" : "col-span-1"}`}
       initial={{ opacity: 0, y: idx % 2 === 0 ? 30 : -30, x: idx % 3 === 0 ? -20 : 20 }}
       animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
       transition={{ delay: idx * 0.1, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}

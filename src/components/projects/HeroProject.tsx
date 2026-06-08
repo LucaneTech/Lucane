@@ -11,7 +11,7 @@ const categories = ["Tous", "Web", "Mobile", "Design", "SaaS"];
 
 const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
   return (
-    <section className="relative min-h-[98vh] flex items-center overflow-hidden bg-base-100 dark:bg-dark pt-24 pb-16 px-6">
+    <section className="relative min-h-[72vh] md:min-h-[98vh] flex items-center overflow-hidden bg-base-100 dark:bg-dark lg:pt-24  lg:pb-16 px-6">
 
       {/* ── Blob décoratifs background ─────────────────────────────── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -89,7 +89,7 @@ const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
               transition={{ delay: 0.15, duration: 0.6 }}
               className="hidden lg:inline-flex items-center gap-2 rounded-md bg-primary/10 border border-primary/20 px-4 py-1.5 text-sm text-primary font-medium mb-6"
             >
-              <span className="hidden md:block w-2 h-2 rounded-md bg-primary animate-pulse" />
+              <span className="hidden lg:block w-2 h-2 rounded-md bg-primary animate-pulse" />
               Nos réalisations
             </motion.div>
 
@@ -142,7 +142,7 @@ const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
 
           {/* Colonne droite ── visuel */}
           <motion.div
-            className="relative flex justify-center items-center min-h-[320px] py-8"
+            className="hidden relative lg:flex justify-center items-center min-h-[320px] py-8"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.45, duration: 0.9, ease: "easeOut" }}
@@ -155,9 +155,9 @@ const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
             />
 
             {/* Image dans clip organique */}
-            <div className="relative w-64 h-64 lg:w-80  lg:h-80 z-10">
+            <div className="relative w-64 h-64 lg:w-80  lg:h-90 -p-4 z-10">
               <img
-                src="/images/project.jpg"
+                src="/images/project_hero.png"
                 alt="Nos projets"
                 className="relative w-full h-full object-cover z-8  border-3 border-primary rounded-full"
                

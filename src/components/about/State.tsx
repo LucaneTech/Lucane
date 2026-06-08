@@ -9,7 +9,7 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { label: "Clients satisfaits", value: 50, suffix: "+" },
+  { label: "Clients satisfaits", value:20, suffix: "+" },
   { label: "Taux de satisfaction", value: 98, suffix: "%" },
   { label: "Ans d'expérience", value: 3, suffix: "+" },
   { label: "Pays couverts", value: 6, suffix: "+" },
@@ -66,7 +66,7 @@ const StatsSection: React.FC = () => {
         </motion.div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
