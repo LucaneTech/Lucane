@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Search, Palette, Rocket } from "lucide-react";
 import { useInView } from "react-intersection-observer";
+import { projects } from "../../data/projects";
 
 const steps = [
   { icon: Search, label: "Découverte" },
@@ -36,8 +37,8 @@ const Promotional: React.FC = () => {
   const [sending, setSending] = useState(false);
 
   const { ref: counterRef, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
-  const projectCount = useCountUp(20, inView);
-  const clientCount = useCountUp(98, inView);
+  const projectCount = useCountUp(projects.length, inView);
+  const responseHours = useCountUp(24, inView);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,21 +73,21 @@ const Promotional: React.FC = () => {
         >
           <div>
             <p className="text-4xl md:text-5xl font-bold text-white mb-1">
-              {projectCount}<span className="text-primary">+</span>
+              {projectCount}
             </p>
-            <p className="text-ink-muted text-sm uppercase tracking-wide">Projets livrés</p>
+            <p className="text-ink-muted text-sm uppercase tracking-wide">Projets en ligne</p>
           </div>
           <div>
             <p className="text-5xl font-bold text-white mb-1">
-              {clientCount}<span className="text-primary">%</span>
+              {responseHours}<span className="text-primary"> h</span>
             </p>
-            <p className="text-ink-muted text-sm uppercase tracking-wide">Satisfaction client</p>
+            <p className="text-ink-muted text-sm uppercase tracking-wide">Réponse garantie</p>
           </div>
           <div className="col-span-2 md:col-span-1">
             <p className="text-4xl md:text-5xl font-bold text-white mb-1">
-              3<span className="text-primary">+</span>
+              0<span className="text-primary"> €</span>
             </p>
-            <p className="text-ink-muted text-sm uppercase tracking-wide">Années d'expérience</p>
+            <p className="text-ink-muted text-sm uppercase tracking-wide">Devis et étude du besoin</p>
           </div>
         </div>
 

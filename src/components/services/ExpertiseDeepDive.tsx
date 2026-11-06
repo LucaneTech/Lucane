@@ -26,12 +26,12 @@ const expertises: Expertise[] = [
       "Nous développons des applications web performantes, accessibles et optimisées pour le référencement naturel. Nos équipes maîtrisent les derniers standards du développement frontend moderne.",
     stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vite", "GraphQL"],
     kpis: [
-      { value: "−40%", label: "Temps d'interaction" },
-      { value: ">90", label: "Lighthouse Score" },
-      { value: "100%", label: "Core Web Vitals" },
+      { value: "≥ 90", label: "Lighthouse visé" },
+      { value: "3", label: "écrans testés" },
+      { value: "SEO", label: "de base inclus" },
     ],
     caseStudy:
-      "Refonte d'une plateforme e-learning : migration React + Next.js, −60% sur les temps de chargement et +35% de taux de complétion.",
+      "Oralise et KFK Agrobusiness : sites vitrines React + TypeScript, en ligne et consultables (oralise.pro, kfkagrobusiness.com).",
     image: "images/home/memory3.jpeg",
   },
   {
@@ -43,12 +43,12 @@ const expertises: Expertise[] = [
       "Applications mobiles cross-platform pensées pour la performance et une expérience utilisateur de premier rang, disponibles sur App Store et Google Play.",
     stack: ["React Native", "Flutter", "Expo", "Firebase", "Push Notifications", "Offline-first"],
     kpis: [
-      { value: "4.8★", label: "Note App Store" },
-      { value: ">45%", label: "Rétention J7" },
-      { value: "<0.1%", label: "Crash rate" },
+      { value: "iOS", label: "+ Android" },
+      { value: "1", label: "base de code" },
+      { value: "Stores", label: "publication accompagnée" },
     ],
     caseStudy:
-      "App e-commerce B2C : 10 000 téléchargements en 3 mois, note 4.9★ App Store, panier moyen +22% vs site web.",
+      "Chaque application est livrée avec une version de test à chaque étape et un accompagnement à la publication sur l'App Store et Google Play.",
     image: "images/services/mobile.png"
   },
   {  
@@ -60,12 +60,12 @@ const expertises: Expertise[] = [
       "Conception et déploiement d'infrastructures cloud scalables, sécurisées et résilientes. Nous couvrons l'ensemble du cycle DevOps, du code à la production en continu.",
     stack: ["AWS", "GCP", "Docker", "Kubernetes", "PostgreSQL", "Redis", "CI/CD"],
     kpis: [
-      { value: "99.9%", label: "Uptime SLA" },
-      { value: "<5 min", label: "Déploiement" },
-      { value: "−30%", label: "Coûts infra" },
+      { value: "CI/CD", label: "déploiement automatisé" },
+      { value: "100 %", label: "accès au nom du client" },
+      { value: "Docs", label: "déploiement documenté" },
     ],
     caseStudy:
-      "Migration monolithe → microservices AWS : −70% d'incidents, scalabilité ×10 lors des pics de charge.",
+      "Lucane Filter : application Django conteneurisée avec Docker et tâches de fond Celery pour traiter de grandes listes de contacts.",
     image: "images/services/clouding.png",
   },
 ];

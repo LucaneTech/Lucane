@@ -1,13 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Globe, TrendingUp} from "lucide-react";
+import { projectCategories } from "../../data/projects";
 
 interface HeroProjectProps {
   filter: string;
   setFilter: (f: string) => void;
 }
 
-const categories = ["Tous", "Web", "Mobile", "Design", "SaaS"];
+const categories = projectCategories();
 
 const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
   return (
@@ -205,8 +206,8 @@ const HeroProject: React.FC<HeroProjectProps> = ({ filter, setFilter }) => {
                   <TrendingUp className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-ink dark:text-white leading-none">98%</p>
-                  <p className="text-xs text-ink-muted dark:text-slate-400 mt-0.5">Clients satisfaits</p>
+                  <p className="text-lg font-bold text-ink dark:text-white leading-none">24 h</p>
+                  <p className="text-xs text-ink-muted dark:text-slate-400 mt-0.5">Réponse garantie</p>
                 </div>
               </motion.div>
             </motion.div>

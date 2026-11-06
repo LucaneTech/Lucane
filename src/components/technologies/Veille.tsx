@@ -46,9 +46,10 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
 
 // ⚠️ Remplacer par les vraies données
 const STATS: Stat[] = [
-  { value: "15+", label: "repos GitHub" },
-  { value: "2 400+", label: "commits" },
-  { value: "4", label: "technos évaluées / trimestre" },
+  // Chiffres non prouvés retirés (15+ dépôts, 2 400+ commits) — voir src/data/site.ts
+  { value: "11", label: "projets en ligne" },
+  { value: "Mensuelle", label: "veille technique partagée" },
+  { value: "Open", label: "dépôts publics sur GitHub" },
 ];
 
 const TYPE_STYLES: Record<EventType, string> = {

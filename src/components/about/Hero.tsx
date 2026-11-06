@@ -1,11 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Globe, Users, TrendingUp } from "lucide-react";
+import { verifiedFacts } from "../../data/site";
 
+// Chiffres sourcés uniquement (src/data/site.ts) + engagements.
 const stats = [
-  { icon: TrendingUp, value: "20+",  label: "Projets livrés" },
-  { icon: Globe,      value: "3",    label: "Continents" },
-  { icon: Users,      value: "98%",  label: "Satisfaction" },
+  ...verifiedFacts().map((f) => ({ icon: TrendingUp, value: (f.prefix ?? "") + f.value + (f.suffix ?? ""), label: f.label })),
+  { icon: Users, value: "24 h", label: "Réponse garantie" },
+  { icon: Globe, value: "NDA", label: "Confidentialité" },
 ];
 
 const AboutHero: React.FC = () => {

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Users, Award } from "lucide-react";
 import Button from "../../ui/Button";
+import { projects } from "../../data/projects";
 
 const rotatingWords = ["applications", "plateformes", "produits", "expériences"];
+const projectsOnline = projects.length;
 
 const HeroSection: React.FC = () => {
   const [wordIndex, setWordIndex] = useState(0);
@@ -139,8 +141,8 @@ const HeroSection: React.FC = () => {
                 <Users className="w-5 h-5 text-primary dark:text-white" />
               </div>
               <div>
-                <p className="text-lg font-bold text-ink dark:text-white leading-none">+20</p>
-                <p className="text-xs text-ink-muted dark:text-slate-200 mt-0.5">Clients satisfaits</p>
+                <p className="text-lg font-bold text-ink dark:text-white leading-none">{projectsOnline}</p>
+                <p className="text-xs text-ink-muted dark:text-slate-200 mt-0.5">Projets en ligne</p>
               </div>
             </motion.div>
           </motion.div>
@@ -161,8 +163,8 @@ const HeroSection: React.FC = () => {
                 <Award className="w-5 h-5 text-primary dark:text-white" />
               </div>
               <div>
-                <p className="text-lg font-bold text-ink dark:text-white leading-none">98%</p>
-                <p className="text-xs text-ink-muted dark:text-slate-200 mt-0.5">Satisfaction client</p>
+                <p className="text-lg font-bold text-ink dark:text-white leading-none">24 h</p>
+                <p className="text-xs text-ink-muted dark:text-slate-200 mt-0.5">Réponse garantie</p>
               </div>
             </motion.div>
           </motion.div>

@@ -26,9 +26,10 @@ const CODE: Tok[][] = [
 
 // ── Performance chips ─────────────────────────────────────────────────────────
 const PERF = [
-  { label: "Frontend", value: "< 1.5s TTI"  },
-  { label: "Backend",  value: "50k+ req/j"  },
-  { label: "Deploy",   value: "< 3 min"     },
+  // Engagements (les anciennes valeurs n'étaient pas mesurées)
+  { label: "Frontend", value: "Lighthouse ≥ 90" },
+  { label: "Backend",  value: "API documentées" },
+  { label: "Deploy",   value: "CI/CD"           },
 ];
 
 // ── Tech badge list (doubled for seamless marquee) ────────────────────────────

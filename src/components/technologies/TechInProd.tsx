@@ -17,24 +17,24 @@ interface Domain {
   stack: string[];
 }
 
-// ⚠️ Remplacer par les vraies métriques de production
+// Engagements vérifiables à la livraison (les anciennes métriques n'étaient pas mesurées).
 const DOMAINS: Domain[] = [
   {
     name: "Frontend",
-    primary: { prefix: "< ", value: 1.5, suffix: "s", label: "TTI moyen", decimals: 1 },
-    secondary: "Lighthouse 95+",
+    primary: { prefix: "≥ ", value: 90, suffix: "", label: "score Lighthouse visé" },
+    secondary: "Mesuré à chaque livraison",
     stack: ["React", "Tailwind"],
   },
   {
     name: "Backend",
-    primary: { value: 50, suffix: "k+", label: "req/jour" },
-    secondary: "p95 < 120ms",
+    primary: { value: 11, suffix: "", label: "projets en ligne" },
+    secondary: "API documentées",
     stack: ["Node.js", "Django"],
   },
   {
     name: "Infra",
-    primary: { prefix: "< ", value: 3, suffix: "min", label: "deploy Docker" },
-    secondary: "Zero-downtime",
+    primary: { prefix: "< ", value: 24, suffix: " h", label: "réponse du support" },
+    secondary: "Sauvegardes régulières",
     stack: ["AWS", "GitHub CI"],
   },
 ];
