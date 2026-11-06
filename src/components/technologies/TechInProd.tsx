@@ -86,7 +86,7 @@ const TechInProd: React.FC = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="py-20 px-6 bg-dark">
+    <section ref={ref} className="mx-2 my-6 overflow-hidden rounded-[40px] bg-dark px-6 py-20 md:mx-4 md:rounded-[56px] md:py-28">
       <div className="max-w-6xl mx-auto">
         <motion.span
           className="inline-block text-xs uppercase tracking-[0.2em] font-mono text-primary mb-16"
