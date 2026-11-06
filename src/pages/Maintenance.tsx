@@ -13,7 +13,7 @@ export default function Maintenance() {
       <IrisOrb className="-left-20 top-[15%] h-72 w-72" tone="teal" />
       <IrisOrb className="-right-16 bottom-[10%] h-80 w-80" tone="sunset" duration={18} />
 
-      <div className="relative flex w-full max-w-md flex-col items-center rounded-[40px] border border-glass-line bg-glass p-10 text-center backdrop-blur-2xl">
+      <div className="relative flex w-full max-w-md flex-col items-center rounded-md border border-glass-line bg-glass p-10 text-center backdrop-blur-2xl">
         <motion.div
           className="flex h-20 w-20 items-center justify-center rounded-full bg-primary text-on-primary shadow-glow"
           animate={{ rotate: 360 }}

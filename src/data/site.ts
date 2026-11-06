@@ -1,3 +1,4 @@
+import { projects } from "./projects";
 /**
  * Identité, coordonnées et chiffres de Lucane Tech — source unique pour tout le site.
  *
@@ -46,7 +47,7 @@ export interface Fact {
 }
 
 export const facts: Fact[] = [
-  { value: 11, label: "projets en ligne", source: "src/data/projects.ts (liste publique)" },
+  { value: projects.length, label: "projets en ligne", source: "src/data/projects.ts (liste publique, calculé)" },
   { value: 0, suffix: "+", label: "clients accompagnés", source: "À FOURNIR" },
   { value: 0, label: "pays clients", source: "À FOURNIR" },
   { value: 0, suffix: "+", label: "années d'activité", source: "À FOURNIR" },

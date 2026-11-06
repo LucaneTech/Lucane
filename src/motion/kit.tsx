@@ -115,8 +115,8 @@ function Img({ src, alt, width, height, className, imgClassName, parallax = 0.08
         onMouseLeave={onLeave}
         data-cursor={cursor}
         className="relative h-full w-full overflow-hidden rounded-3xl will-change-transform"
-        initial={{ clipPath: "inset(100% 0% 0% 0% round 24px)" }}
-        animate={inView ? { clipPath: "inset(0% 0% 0% 0% round 24px)" } : undefined}
+        initial={{ clipPath: "inset(100% 0% 0% 0% round 10px)" }}
+        animate={inView ? { clipPath: "inset(0% 0% 0% 0% round 10px)" } : undefined}
         transition={{ duration: dur.xslow, ease: ease.out }}
       >
         <motion.div style={{ y }} className="h-full w-full scale-[1.18]">

@@ -25,10 +25,10 @@ function Step({ step, index, total, progress }: { step: (typeof process)[number]
       </motion.span>
       <motion.div
         style={{ opacity: on, x }}
-        className={`ml-14 rounded-[32px] border border-glass-line bg-panel p-7 md:ml-0 md:p-9 ${left ? "md:col-start-1 md:mr-10" : "md:col-start-2 md:ml-10"}`}
+        className={`ml-14 rounded-md border border-glass-line bg-panel p-7 md:ml-0 md:p-9 ${left ? "md:col-start-1 md:mr-10" : "md:col-start-2 md:ml-10"}`}
       >
         <p className="font-mono text-sm text-primary-ink">Étape {step.step}</p>
-        <h3 className="mt-2 font-display text-3xl font-bold tracking-[-0.03em] text-ink">{step.title}</h3>
+        <h3 className="mt-2 font-display text-2xl font-bold tracking-[-0.03em] text-ink">{step.title}</h3>
         <p className="mt-3 leading-relaxed text-ink-muted">{step.detail}</p>
         <span className="mt-5 inline-flex rounded-full border border-glass-line bg-canvas-alt px-4 py-1.5 text-sm text-ink">
           Livrable : {step.deliverable}
@@ -45,7 +45,7 @@ export default function ProcessTimeline() {
   const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 25 });
 
   return (
-    <section className="relative py-24 md:py-36" aria-labelledby="process-title">
+    <section className="relative py-20 md:py-28" aria-labelledby="process-title">
       <div className="mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
         <div className="mx-auto max-w-3xl text-center">
           <Eyebrow index="06">Notre méthode</Eyebrow>

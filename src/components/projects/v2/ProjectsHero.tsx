@@ -19,7 +19,7 @@ export default function ProjectsHero() {
 
       <div className="relative mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
         <Eyebrow>Réalisations</Eyebrow>
-        <h1 id="projects-title" className="mt-8 max-w-5xl font-display text-[clamp(3rem,8vw,8rem)] leading-[0.92] tracking-[-0.045em] text-ink">
+        <h1 id="projects-title" className="mt-8 max-w-5xl font-display text-[clamp(2.4rem,6vw,6rem)] leading-[0.92] tracking-[-0.045em] text-ink">
           <SplitText text="Des projets qui" by="char" className="block font-light" stagger={0.02} immediate />
           <SplitText text="propulsent." by="char" className="block font-extrabold" delay={0.3} stagger={0.02} immediate />
         </h1>
@@ -28,7 +28,7 @@ export default function ProjectsHero() {
             { value: projects.length, label: "projets en ligne" },
             { value: sectors, label: "secteurs d'activité" },
           ].map((s) => (
-            <div key={s.label} className="flex items-center gap-4 rounded-full border border-glass-line bg-glass py-2 pl-2 pr-6 backdrop-blur-xl">
+            <div key={s.label} className="flex items-center gap-4 rounded-md border border-glass-line bg-glass py-2 pl-2 pr-6 backdrop-blur-xl">
               <span className="flex h-14 w-14 items-center justify-center rounded-full bg-primary font-display text-xl font-bold text-on-primary">
                 <Counter value={s.value} />
               </span>

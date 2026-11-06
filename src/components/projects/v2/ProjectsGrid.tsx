@@ -16,7 +16,7 @@ function ProjectCard({ project, wide }: { project: Project; wide: boolean }) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.94 }}
       transition={{ duration: 0.7, ease: ease.out }}
-      className={`group relative rounded-[36px] border border-glass-line bg-panel p-3 transition-shadow duration-700 hover:shadow-glow ${wide ? "md:col-span-2" : ""}`}
+      className={`group relative rounded-md border border-glass-line bg-panel p-3 transition-shadow duration-700 hover:shadow-glow ${wide ? "md:col-span-2" : ""}`}
       data-cursor="Voir"
     >
       <ProjectVisual project={project} />
@@ -27,8 +27,8 @@ function ProjectCard({ project, wide }: { project: Project; wide: boolean }) {
             {project.sector && <span className="rounded-full border border-glass-line px-3 py-1 text-xs text-ink-muted">{project.sector}</span>}
             {project.year && <span className="rounded-full border border-glass-line px-3 py-1 font-mono text-xs text-ink-muted">{project.year}</span>}
           </div>
-          <h2 className="mt-3 font-display text-2xl font-bold tracking-[-0.03em] text-ink md:text-3xl">
-            <Link to={`/realisations/${project.slug}`} className="after:absolute after:inset-0 after:rounded-[36px]">
+          <h2 className="mt-3 font-display text-xl font-bold tracking-[-0.03em] text-ink md:text-2xl">
+            <Link to={`/realisations/${project.slug}`} className="after:absolute after:inset-0 after:rounded-md">
               {project.title}
             </Link>
           </h2>

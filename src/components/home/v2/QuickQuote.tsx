@@ -42,7 +42,7 @@ export default function QuickQuote() {
 
   return (
     <section className="relative px-3 py-16 md:px-6 md:py-24" aria-labelledby="quote-title">
-      <div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-[48px] bg-canvas-inverse px-6 py-16 text-on-inverse md:px-14 md:py-24">
+      <div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-md bg-canvas-inverse px-6 py-16 text-on-inverse md:px-14 md:py-24">
         <IrisOrb className="-left-24 -top-24 h-80 w-80 opacity-70" tone="sunset" />
         <IrisOrb className="-bottom-32 -right-16 h-96 w-96 opacity-60" tone="teal" duration={20} />
 
@@ -72,7 +72,7 @@ export default function QuickQuote() {
             </div>
           </div>
 
-          <div className="rounded-[32px] bg-panel p-6 text-ink md:p-10">
+          <div className="rounded-md bg-panel p-6 text-ink md:p-10">
             <AnimatePresence mode="wait">
               {sent ? (
                 <motion.div key="ok" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="flex min-h-[20rem] flex-col items-center justify-center text-center">

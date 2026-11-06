@@ -69,7 +69,7 @@ function Row({ s, i }: { s: Service; i: number }) {
       </div>
 
       <motion.div style={{ y, rotate }} className={`relative ${flip ? "lg:order-1" : ""}`}>
-        <div className="relative aspect-[5/4] overflow-hidden rounded-[40px] border border-glass-line bg-panel shadow-glow" data-cursor="pointer">
+        <div className="relative aspect-[5/4] overflow-hidden rounded-md border border-glass-line bg-panel shadow-glow" data-cursor="pointer">
           <IrisOrb className="-left-12 -top-12 h-64 w-64 opacity-80" tone={TONES[i % TONES.length]} />
           <IrisOrb className="-bottom-20 -right-10 h-56 w-56 opacity-60" tone={TONES[(i + 1) % TONES.length]} duration={18} />
           <motion.img

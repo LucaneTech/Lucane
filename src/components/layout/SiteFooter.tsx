@@ -27,7 +27,7 @@ export default function SiteFooter() {
 
   return (
     <footer ref={ref} className="relative px-2 pb-2 md:px-4 md:pb-4">
-      <div className="relative overflow-hidden rounded-[40px] bg-dark text-white md:rounded-[56px]">
+      <div className="relative overflow-hidden rounded-md bg-dark text-white md:rounded-md">
         {/* Halo irisé */}
         <div className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(0,163,163,0.35),transparent_65%)] blur-3xl" />
         <div className="pointer-events-none absolute -bottom-40 left-1/4 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(91,108,255,0.22),rgba(255,122,61,0.12)_45%,transparent_70%)] blur-3xl" />

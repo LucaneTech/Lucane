@@ -1,6 +1,7 @@
 // src/components/technologies/Veille.tsx
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { projects } from "../../data/projects";
 
 type EventType = "REPO" | "CONTRIB" | "PACKAGE" | "MIGRATION";
 
@@ -47,7 +48,7 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
 // ⚠️ Remplacer par les vraies données
 const STATS: Stat[] = [
   // Chiffres non prouvés retirés (15+ dépôts, 2 400+ commits) — voir src/data/site.ts
-  { value: "11", label: "projets en ligne" },
+  { value: String(projects.length), label: "projets en ligne" },
   { value: "Mensuelle", label: "veille technique partagée" },
   { value: "Open", label: "dépôts publics sur GitHub" },
 ];

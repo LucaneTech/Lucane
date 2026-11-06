@@ -58,19 +58,19 @@ function CaseStudyView({ project }: { project: Project }) {
             {project.sector && <span className="rounded-full border border-glass-line bg-glass px-4 py-1.5 text-sm text-ink">{project.sector}</span>}
             {project.year && <span className="rounded-full border border-glass-line bg-glass px-4 py-1.5 font-mono text-sm text-ink">{project.year}</span>}
           </div>
-          <h1 id="case-title" className="mt-6 max-w-6xl font-display text-[clamp(3rem,9vw,9rem)] font-extrabold leading-[0.9] tracking-[-0.05em] text-ink">
+          <h1 id="case-title" className="mt-6 max-w-6xl font-display text-[clamp(2.4rem,6.4vw,6.5rem)] font-extrabold leading-[0.9] tracking-[-0.05em] text-ink">
             <SplitText text={project.title} by="char" stagger={0.025} immediate />
           </h1>
         </div>
 
         <motion.div
           style={{ scale: visualScale, y: visualY }}
-          initial={{ clipPath: "inset(30% 8% 0% 8% round 48px)", opacity: 0 }}
-          animate={{ clipPath: "inset(0% 0% 0% 0% round 40px)", opacity: 1 }}
+          initial={{ clipPath: "inset(30% 8% 0% 8% round 10px)", opacity: 0 }}
+          animate={{ clipPath: "inset(0% 0% 0% 0% round 10px)", opacity: 1 }}
           transition={{ duration: 1.4, ease: ease.out, delay: 0.3 }}
           className="relative mx-auto mt-14 w-full max-w-[1440px] px-3 md:px-10 lg:px-16"
         >
-          <ProjectVisual project={project} className="rounded-[40px] shadow-glow" />
+          <ProjectVisual project={project} className="rounded-md shadow-glow" />
         </motion.div>
       </section>
 
@@ -79,7 +79,7 @@ function CaseStudyView({ project }: { project: Project }) {
         <div className="mx-auto grid w-full max-w-[1440px] gap-10 px-5 md:px-10 lg:grid-cols-[1fr_2fr] lg:gap-20 lg:px-16">
           <div className="space-y-6 lg:sticky lg:top-32 lg:self-start">
             <Eyebrow>Fiche projet</Eyebrow>
-            <dl className="space-y-4 rounded-[32px] border border-glass-line bg-panel p-7">
+            <dl className="space-y-4 rounded-md border border-glass-line bg-panel p-7">
               {[
                 ["Catégorie", project.category],
                 ["Secteur", project.sector],
@@ -110,7 +110,7 @@ function CaseStudyView({ project }: { project: Project }) {
           </div>
 
           <div>
-            <M.P className="!text-[clamp(1.35rem,2.4vw,2rem)] !leading-[1.4] text-ink">{project.description}</M.P>
+            <M.P className="!text-[clamp(1.15rem,1.8vw,1.5rem)] !leading-[1.4] text-ink">{project.description}</M.P>
 
             {caseSteps.length > 0 && (
               <div className="mt-16 space-y-6">
@@ -130,13 +130,13 @@ function CaseStudyView({ project }: { project: Project }) {
       <section className="relative px-3 pb-10 md:px-6" aria-label="Projet suivant">
         <Link
           to={`/realisations/${next.slug}`}
-          className="group relative mx-auto flex max-w-[1440px] flex-col overflow-hidden rounded-[48px] bg-canvas-inverse px-8 py-14 text-on-inverse md:flex-row md:items-center md:justify-between md:px-16 md:py-20"
+          className="group relative mx-auto flex max-w-[1440px] flex-col overflow-hidden rounded-md bg-canvas-inverse px-8 py-14 text-on-inverse md:flex-row md:items-center md:justify-between md:px-16 md:py-20"
           data-cursor="Suivant"
         >
           <IrisOrb className="-right-10 -top-16 h-72 w-72 opacity-70" tone="sunset" />
           <div className="relative">
             <p className="eyebrow opacity-60">Projet suivant</p>
-            <p className="mt-4 font-display text-[clamp(2.5rem,7vw,6rem)] font-extrabold leading-none tracking-[-0.05em] transition-transform duration-700 group-hover:translate-x-4">
+            <p className="mt-4 font-display text-[clamp(2rem,5vw,4.25rem)] font-extrabold leading-none tracking-[-0.05em] transition-transform duration-700 group-hover:translate-x-4">
               {next.title}
             </p>
           </div>

@@ -24,11 +24,11 @@ Références fournies par l'équipe :
 | Règle | Valeur |
 |---|---|
 | Thème | Blanc par défaut (version claire « futuriste » : gris très doux, conteneurs arrondis), sombre en option (noir profond, halos lumineux) |
-| Arrondis | **Généreux partout.** Pilule (`rounded-full`) dès que la forme le permet : boutons, navigation, étiquettes, puces, bouton de thème, curseur, champs d'une ligne, boutons flottants. Cartes et images : 24 à 32 px. Grands conteneurs de section : 40 px. Jamais d'angle vif, sauf bords d'écran pleine largeur |
+| Arrondis | **Révisé le 6 nov. à la demande de l'équipe :** cartes, panneaux, images, champs, cartes de projets et de secteurs = `rounded-md` (10 px), **jamais plus**. Boutons, étiquettes (pastilles), navigation et boutons flottants restent en pilule (`rounded-full`). Les jetons `--radius-lg` à `--radius-4xl` sont plafonnés à 10 px. |
 | Matières | Verre (fond translucide + flou d'arrière-plan + filet clair), halos lumineux, dégradés **irisés** (teal → cyan → indigo → orange) réservés aux objets 3D, aux halos et aux accents — jamais en aplat de fond de texte |
 | Accent | Teal Lucane `#008080` reste la couleur de marque ; palette irisée en soutien : cyan `#3CE0D0`, indigo `#5B6CFF`, orange `#FF7A3D` |
 | Objets 3D | Hero : champ de particules en 3D qui forme une figure (fusée / logo) et réagit à la souris ; ailleurs : formes irisées flottantes en parallaxe derrière les titres |
-| Typographie | Titres géants : **Inter Tight** en 300 (fin, comme l'épingle 2) mêlé à 800 pour les mots-clés, ou contour + plein (épingle 1). Texte : Sen. Chiffres et étiquettes : JetBrains Mono |
+| Typographie | (Tailles réduites le 6 nov. : titres 2,4 → 6,25 rem selon l'écran.) Titres : **Inter Tight** en 300 (fin, comme l'épingle 2) mêlé à 800 pour les mots-clés, ou contour + plein (épingle 1). Texte : Sen. Chiffres et étiquettes : JetBrains Mono |
 | Séparations | Conteneurs arrondis et espacement plutôt que filets ; filets fins conservés à l'intérieur des cartes |
 | Ombres | Pas d'ombres portées grises ; **halos colorés** doux sous les éléments mis en avant |
 

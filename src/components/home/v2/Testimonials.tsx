@@ -22,13 +22,13 @@ export default function Testimonials() {
   const t = items[i];
 
   return (
-    <section className="relative py-24 md:py-36" aria-labelledby="testimonials-title">
+    <section className="relative py-20 md:py-28" aria-labelledby="testimonials-title">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-10">
         <Eyebrow index="10">Ils en parlent</Eyebrow>
         <h2 id="testimonials-title" className="sr-only">
           Témoignages clients
         </h2>
-        <div className="relative mt-10 min-h-[22rem] rounded-[40px] border border-glass-line bg-panel p-8 md:p-14">
+        <div className="relative mt-10 min-h-[22rem] rounded-md border border-glass-line bg-panel p-8 md:p-14">
           <AnimatePresence mode="wait">
             <motion.figure
               key={t.company}
@@ -37,7 +37,7 @@ export default function Testimonials() {
               exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
               transition={{ duration: 0.8, ease: ease.out }}
             >
-              <blockquote className="font-display text-[clamp(1.75rem,3.6vw,3.25rem)] font-light leading-[1.15] tracking-[-0.03em] text-ink">
+              <blockquote className="font-display text-[clamp(1.35rem,2.6vw,2.4rem)] font-light leading-[1.15] tracking-[-0.03em] text-ink">
                 « {t.quote} »
               </blockquote>
               <figcaption className="mt-10 flex items-center gap-4">

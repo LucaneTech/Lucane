@@ -19,7 +19,7 @@ export default function NotFound() {
 
       <div className="relative">
         <motion.h1
-          className="bg-[linear-gradient(100deg,#008080_0%,#3ce0d0_35%,#5b6cff_70%,#ff7a3d_100%)] bg-clip-text font-display text-[clamp(8rem,28vw,22rem)] font-extrabold leading-[0.85] tracking-[-0.06em] text-transparent"
+          className="bg-[linear-gradient(100deg,#008080_0%,#3ce0d0_35%,#5b6cff_70%,#ff7a3d_100%)] bg-clip-text font-display text-[clamp(6rem,22vw,15rem)] font-extrabold leading-[0.85] tracking-[-0.06em] text-transparent"
           initial={{ opacity: 0, y: 60, scale: 0.9 }}
           animate={{ opacity: 1, y: [0, -14, 0], scale: 1 }}
           transition={{ opacity: { duration: 0.8 }, scale: { duration: 1, ease: ease.out }, y: { duration: 5, repeat: Infinity, ease: "easeInOut" } }}

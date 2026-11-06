@@ -1,6 +1,7 @@
 // src/components/technologies/TechInProd.tsx
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { projects } from "../../data/projects";
 
 interface DomainMetric {
   prefix?: string;
@@ -27,7 +28,7 @@ const DOMAINS: Domain[] = [
   },
   {
     name: "Backend",
-    primary: { value: 11, suffix: "", label: "projets en ligne" },
+    primary: { value: projects.length, suffix: "", label: "projets en ligne" },
     secondary: "API documentées",
     stack: ["Node.js", "Django"],
   },
@@ -86,7 +87,7 @@ const TechInProd: React.FC = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="mx-2 my-6 overflow-hidden rounded-[40px] bg-dark px-6 py-20 md:mx-4 md:rounded-[56px] md:py-28">
+    <section ref={ref} className="mx-2 my-6 overflow-hidden rounded-md bg-dark px-6 py-20 md:mx-4 md:rounded-md md:py-28">
       <div className="max-w-6xl mx-auto">
         <motion.span
           className="inline-block text-xs uppercase tracking-[0.2em] font-mono text-primary mb-16"

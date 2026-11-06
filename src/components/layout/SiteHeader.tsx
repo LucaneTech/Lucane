@@ -36,7 +36,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-2 z-[60] flex flex-col overflow-hidden rounded-[36px] bg-canvas-inverse p-6 pt-24 text-on-inverse lg:hidden"
+          className="fixed inset-2 z-[60] flex flex-col overflow-hidden rounded-md bg-canvas-inverse p-6 pt-24 text-on-inverse lg:hidden"
           initial={{ clipPath: "circle(0% at calc(100% - 44px) 44px)" }}
           animate={{ clipPath: "circle(150% at calc(100% - 44px) 44px)" }}
           exit={{ clipPath: "circle(0% at calc(100% - 44px) 44px)" }}
@@ -54,7 +54,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                   <Link
                     to={l.to}
                     onClick={onClose}
-                    className={`flex items-center justify-between font-display text-[clamp(2.25rem,11vw,4rem)] font-bold leading-[1.1] tracking-[-0.04em] ${
+                    className={`flex items-center justify-between font-display text-[clamp(1.9rem,9vw,3.25rem)] font-bold leading-[1.1] tracking-[-0.04em] ${
                       pathname === l.to ? "text-primary-ink" : ""
                     }`}
                   >

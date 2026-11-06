@@ -11,7 +11,7 @@ import { ease } from "../../../motion/presets";
 function WorkCard({ project, index }: { project: Project; index: number }) {
   return (
     <motion.article
-      className="group relative w-[82vw] shrink-0 snap-center overflow-hidden rounded-[40px] border border-glass-line bg-panel p-4 shadow-glow md:w-[64vw] lg:w-[58vw]"
+      className="group relative w-[82vw] shrink-0 snap-center overflow-hidden rounded-md border border-glass-line bg-panel p-4 shadow-glow md:w-[64vw] lg:w-[58vw]"
       data-cursor="Voir"
       initial={{ y: 60, opacity: 0, rotate: index % 2 ? 2 : -2 }}
       whileInView={{ y: 0, opacity: 1, rotate: 0 }}
@@ -27,7 +27,7 @@ function WorkCard({ project, index }: { project: Project; index: number }) {
             <span className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-on-primary">{project.category}</span>
             {project.sector && <span className="rounded-full border border-glass-line px-3 py-1 text-xs text-ink-muted">{project.sector}</span>}
           </div>
-          <h3 className="mt-3 font-display text-3xl font-bold tracking-[-0.03em] text-ink md:text-4xl">
+          <h3 className="mt-3 font-display text-xl font-bold tracking-[-0.03em] text-ink md:text-2xl">
             <Link to={`/realisations/${project.slug}`} className="after:absolute after:inset-0">
               {project.title}
             </Link>
@@ -75,7 +75,7 @@ export default function FeaturedWork() {
         ))}
         <Link
           to="/realisations"
-          className="group flex h-[50vh] w-[70vw] shrink-0 snap-center flex-col items-center justify-center gap-6 rounded-[40px] border border-dashed border-line-strong/30 md:w-[30vw]"
+          className="group flex h-[50vh] w-[70vw] shrink-0 snap-center flex-col items-center justify-center gap-6 rounded-md border border-dashed border-line-strong/30 md:w-[30vw]"
           data-cursor="Voir"
         >
           <span className="flex h-24 w-24 items-center justify-center rounded-full bg-primary text-on-primary transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-45">

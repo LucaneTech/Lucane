@@ -24,24 +24,20 @@ export default function IrisOrb({ className, duration = 14, tone = "teal" }: Iri
   return (
     <motion.div
       aria-hidden
-      className={cn("pointer-events-none absolute", className)}
+      className={cn("pointer-events-none absolute will-change-transform", className)}
       animate={{ y: [0, -24, 0], rotate: [0, 18, 0] }}
       transition={{ duration, repeat: Infinity, ease: "easeInOut" }}
     >
+      {/* Forme organique fixe ; elle tourne et « respire » par échelle (animations GPU uniquement,
+          aucune animation de border-radius qui forcerait un repeint à chaque image sur mobile). */}
       <motion.div
-        className="h-full w-full opacity-85 blur-[1px] dark:opacity-95"
-        style={{ background: TONES[tone], mixBlendMode: "normal" }}
-        animate={{
-          borderRadius: [
-            "62% 38% 55% 45% / 48% 60% 40% 52%",
-            "40% 60% 38% 62% / 60% 42% 58% 40%",
-            "62% 38% 55% 45% / 48% 60% 40% 52%",
-          ],
-          rotate: [0, 360],
-        }}
+        className="h-full w-full opacity-85 blur-[1px] will-change-transform dark:opacity-95"
+        style={{ background: TONES[tone], borderRadius: "62% 38% 55% 45% / 48% 60% 40% 52%" }}
+        animate={{ rotate: [0, 360], scaleX: [1, 1.08, 0.96, 1], scaleY: [1, 0.94, 1.06, 1] }}
         transition={{
-          borderRadius: { duration: duration * 0.8, repeat: Infinity, ease: "easeInOut" },
           rotate: { duration: duration * 3, repeat: Infinity, ease: "linear" },
+          scaleX: { duration: duration * 0.8, repeat: Infinity, ease: "easeInOut" },
+          scaleY: { duration: duration * 0.8, repeat: Infinity, ease: "easeInOut" },
         }}
       />
       {/* reflet intérieur : donne le volume « verre » */}

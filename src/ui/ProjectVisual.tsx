@@ -41,7 +41,7 @@ function LivePreview({ url, title }: { url: string; title: string }) {
 function Poster({ project }: { project: Project }) {
   return (
     <div className="relative flex aspect-[16/10] w-full items-end overflow-hidden bg-[radial-gradient(circle_at_20%_20%,#3ce0d0_0%,transparent_45%),radial-gradient(circle_at_80%_30%,#5b6cff_0%,transparent_50%),radial-gradient(circle_at_50%_100%,#ff7a3d_0%,transparent_55%),#0b0b0a] p-8">
-      <span className="font-display text-[clamp(2rem,5vw,4rem)] font-extrabold leading-none tracking-[-0.04em] text-white">{project.title}</span>
+      <span className="font-display text-[clamp(1.75rem,3.6vw,3rem)] font-extrabold leading-none tracking-[-0.04em] text-white">{project.title}</span>
     </div>
   );
 }
@@ -52,7 +52,7 @@ function Poster({ project }: { project: Project }) {
  */
 export default function ProjectVisual({ project, className, chrome = true }: { project: Project; className?: string; chrome?: boolean }) {
   return (
-    <div className={cn("overflow-hidden rounded-[28px] border border-glass-line bg-panel", className)}>
+    <div className={cn("overflow-hidden rounded-md border border-glass-line bg-panel", className)}>
       {chrome && (
         <div className="flex items-center gap-2 bg-canvas-alt px-5 py-3">
           <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />

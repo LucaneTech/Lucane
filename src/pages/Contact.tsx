@@ -110,7 +110,7 @@ export default function Contact() {
               viewport={{ once: true }}
               whileHover={{ y: -8 }}
               transition={{ duration: 0.8, ease: ease.out, delay: i * 0.08 }}
-              className={`group flex items-center justify-between gap-4 rounded-[32px] border p-6 md:p-7 ${
+              className={`group flex items-center justify-between gap-4 rounded-md border p-6 md:p-7 ${
                 c.accent ? "border-transparent bg-primary text-on-primary shadow-glow" : "border-glass-line bg-panel text-ink"
               }`}
               data-cursor="pointer"
@@ -159,7 +159,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="rounded-[40px] border border-glass-line bg-panel p-6 md:p-10">
+          <div className="rounded-md border border-glass-line bg-panel p-6 md:p-10">
             <AnimatePresence mode="wait">
               {sent ? (
                 <motion.div key="ok" initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} className="flex min-h-[28rem] flex-col items-center justify-center text-center">

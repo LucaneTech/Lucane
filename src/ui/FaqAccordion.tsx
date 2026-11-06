@@ -29,7 +29,7 @@ export default function FaqAccordion({ items, index }: { items: Faq[]; index?: s
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.7, ease: ease.out, delay: (i % 4) * 0.05 }}
-                className={`overflow-hidden rounded-[28px] border transition-colors duration-500 ${on ? "border-primary/40 bg-panel shadow-glow" : "border-glass-line bg-panel"}`}
+                className={`overflow-hidden rounded-md border transition-colors duration-500 ${on ? "border-primary/40 bg-panel shadow-glow" : "border-glass-line bg-panel"}`}
               >
                 <button
                   type="button"

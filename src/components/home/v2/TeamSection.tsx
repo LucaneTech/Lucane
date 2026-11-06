@@ -14,14 +14,14 @@ const VALUE_ICONS = [Lightbulb, HeartHandshake, ShieldCheck, Rocket, Sparkles, G
 export default function TeamSection() {
   const team = visibleTeam();
   return (
-    <section className="relative py-24 md:py-36" aria-labelledby="team-title">
+    <section className="relative py-20 md:py-28" aria-labelledby="team-title">
       <div className="mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
         <Eyebrow index="08">L'équipe</Eyebrow>
         <M.H2 className="mt-6 max-w-3xl" id="team-title">
           Une équipe, pas un freelance isolé.
         </M.H2>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_2fr]">
+        <div className="mt-14 grid gap-6 md:grid-cols-[minmax(0,300px)_1fr] lg:grid-cols-[minmax(0,360px)_1fr]">
           <div className="grid gap-6">
             {team.map((m, i) => (
               <M.Card key={m.name} index={i} className="flex flex-col p-4 md:p-4">

@@ -9,7 +9,7 @@ function SectorPill({ name, need }: { name: string; need: string }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative mx-3" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} data-cursor="pointer">
-      <div className="rounded-full border border-glass-line bg-panel px-8 py-4 font-display text-[clamp(1.75rem,4vw,3.5rem)] font-bold tracking-[-0.03em] text-ink transition-colors duration-500 hover:bg-primary hover:text-on-primary">
+      <div className="rounded-md border border-glass-line bg-panel px-5 py-3 md:px-7 md:py-4 font-display text-[clamp(1rem,2vw,1.6rem)] font-bold tracking-[-0.03em] text-ink transition-colors duration-500 hover:bg-primary hover:text-on-primary">
         {name}
       </div>
       <AnimatePresence>

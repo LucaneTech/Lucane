@@ -27,7 +27,7 @@ function FloatPill({ icon, value, label, className, delay, play }: { icon: React
         <motion.div
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 5 + delay * 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex items-center gap-3 rounded-full border border-glass-line bg-glass py-2 pl-2 pr-5 shadow-glow backdrop-blur-xl"
+          className="flex items-center gap-3 rounded-md border border-glass-line bg-glass py-2 pl-2 pr-5 shadow-glow backdrop-blur-xl"
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-on-primary">{icon}</span>
           <span className="leading-tight">
@@ -64,7 +64,7 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative min-h-[100svh] overflow-hidden pt-28 md:pt-32" aria-labelledby="hero-title">
       {/* Scène 3D (ou repli irisé en mouvement réduit) */}
-      <motion.div style={{ scale: sceneScale }} className="pointer-events-none absolute inset-0 opacity-40 lg:left-[44%] lg:opacity-100 xl:left-[38%]">
+      <motion.div style={{ scale: sceneScale }} className="pointer-events-none absolute inset-0 opacity-25 lg:left-[44%] lg:opacity-100 xl:left-[38%]">
         {use3d ? (
           <Suspense fallback={null}>
             <HeroScene scrollProgress={scrollYProgress} dark={theme === "dark"} className="pointer-events-auto absolute inset-0" />
@@ -94,13 +94,13 @@ export default function Hero() {
           Équipe de développement · Web · Mobile · Logiciels
         </motion.div>
 
-        <h1 id="hero-title" className="max-w-[14ch] font-display text-[clamp(3rem,8.4vw,8.5rem)] leading-[0.95] tracking-[-0.045em] text-ink">
+        <h1 id="hero-title" className="max-w-[14ch] font-display text-[clamp(2.4rem,6.2vw,6.25rem)] leading-[1.02] tracking-[-0.045em] text-ink">
           <SplitText text="Nous construisons des" by="char" play={ready} className="block font-light" stagger={0.025} />
-          <span className="relative block h-[1.02em] overflow-hidden">
+          <span className="relative block h-[1.18em] overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.span
                 key={ROTATING[word]}
-                className="block bg-[linear-gradient(100deg,#008080_0%,#3ce0d0_30%,#5b6cff_65%,#ff7a3d_100%)] bg-clip-text pb-[0.08em] font-extrabold text-transparent"
+                className="block bg-[linear-gradient(100deg,#008080_0%,#3ce0d0_30%,#5b6cff_65%,#ff7a3d_100%)] bg-clip-text pb-[0.14em] pt-[0.04em] font-extrabold leading-[1.02] text-transparent"
                 initial={{ y: "105%", rotate: 3 }}
                 animate={ready ? { y: "0%", rotate: 0 } : undefined}
                 exit={{ y: "-105%", rotate: -3 }}

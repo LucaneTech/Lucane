@@ -95,17 +95,19 @@
   --color-iris-indigo: #5b6cff;
   --color-iris-orange: #ff7a3d;
 
-  /* Rayons généreux (direction v2) : pilule dès que possible, 24–40 px sinon */
-  --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 24px;
-  --radius-2xl: 28px;
-  --radius-3xl: 32px;
-  --radius-4xl: 40px;
+  /* Rayons (révision du 6 nov.) : cartes, panneaux, images et champs = « md » (10 px) au plus.
+     Les classes plus grandes sont plafonnées à md ; seuls boutons, étiquettes et
+     navigation restent en pilule (rounded-full). */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 10px;
+  --radius-xl: 10px;
+  --radius-2xl: 10px;
+  --radius-3xl: 10px;
+  --radius-4xl: 10px;
   --radius-pill: 9999px;
-  --radius-field: 16px;
+  --radius-field: 10px;
 }
 
 /* Sections inversées : l'accent texte et les filets s'adaptent au fond inversé */

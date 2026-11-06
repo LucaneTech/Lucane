@@ -58,7 +58,7 @@ export default function ServicesSticky() {
                       <motion.span
                         animate={{ x: i === active ? 12 : 0, opacity: i === active ? 1 : 0.32 }}
                         transition={{ duration: 0.6, ease: ease.out }}
-                        className="font-display text-[clamp(1.5rem,2.6vw,2.5rem)] font-bold tracking-[-0.03em] text-ink"
+                        className="font-display text-[clamp(1.15rem,1.9vw,1.85rem)] font-bold tracking-[-0.03em] text-ink"
                       >
                         {s.title}
                       </motion.span>
@@ -73,13 +73,13 @@ export default function ServicesSticky() {
             </div>
 
             {/* Panneau visuel */}
-            <div className="relative h-[72vh] overflow-hidden rounded-[40px] border border-glass-line bg-panel shadow-glow">
+            <div className="relative h-[72vh] overflow-hidden rounded-md border border-glass-line bg-panel shadow-glow">
               <AnimatePresence mode="popLayout">
                 <motion.div
                   key={current.slug}
                   className="absolute inset-0 flex flex-col justify-between p-10"
-                  initial={{ clipPath: "inset(100% 0% 0% 0% round 40px)" }}
-                  animate={{ clipPath: "inset(0% 0% 0% 0% round 40px)" }}
+                  initial={{ clipPath: "inset(100% 0% 0% 0% round 10px)" }}
+                  animate={{ clipPath: "inset(0% 0% 0% 0% round 10px)" }}
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.9, ease: ease.out }}
                 >

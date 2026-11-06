@@ -30,7 +30,7 @@ export default function Offers() {
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.9, ease: ease.out, delay: i * 0.08 }}
                 whileHover={{ y: -10 }}
-                className={`group relative flex flex-col overflow-hidden rounded-[36px] border p-7 ${
+                className={`group relative flex flex-col overflow-hidden rounded-md border p-7 ${
                   hi ? "border-transparent bg-canvas-inverse text-on-inverse shadow-glow xl:-mt-6 xl:mb-6" : "border-glass-line bg-panel text-ink"
                 }`}
               >

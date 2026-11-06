@@ -22,7 +22,7 @@ export default function LegalPage({ eyebrow, light, bold, updated, blocks }: { e
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.8, ease: ease.out }}
-              className="rounded-[32px] border border-glass-line bg-panel p-7 md:p-10"
+              className="rounded-md border border-glass-line bg-panel p-7 md:p-10"
             >
               <p className="font-mono text-sm text-primary-ink">0{i + 1}</p>
               <h2 className="mt-2 font-display text-2xl font-bold tracking-[-0.02em] text-ink md:text-3xl">{b.title}</h2>

@@ -26,6 +26,9 @@ import {
 const LOGO_SRC = "/favicon.png";
 const SAMPLE = 180; // résolution d'échantillonnage du logo
 const MAX_POINTS = 14000;
+/** Téléphones et tablettes : moins de particules et une résolution plafonnée, pour rester à 60 i/s. */
+const isSmallDevice = () =>
+  typeof window !== "undefined" && (window.matchMedia("(max-width: 1023px)").matches || window.matchMedia("(pointer: coarse)").matches);
 
 const vertexShader = /* glsl */ `
   uniform float uTime;
@@ -121,7 +124,8 @@ export default function HeroScene({ scrollProgress, dark, className }: HeroScene
     if (!mount) return;
 
     const renderer = new WebGLRenderer({ antialias: false, alpha: true, powerPreference: "high-performance" });
-    const pixelRatio = Math.min(window.devicePixelRatio, 1.75);
+    const small = isSmallDevice();
+    const pixelRatio = Math.min(window.devicePixelRatio, small ? 1.25 : 1.75);
     renderer.setPixelRatio(pixelRatio);
     renderer.setSize(mount.clientWidth, mount.clientHeight);
     mount.appendChild(renderer.domElement);
@@ -135,7 +139,7 @@ export default function HeroScene({ scrollProgress, dark, className }: HeroScene
       uMorph: { value: 0 },
       uScatter: { value: 0 },
       uMouse: { value: new Vector3(10, 10, 0) },
-      uSize: { value: 22 },
+      uSize: { value: small ? 26 : 22 },
       uPixelRatio: { value: pixelRatio },
     };
 
@@ -180,7 +184,7 @@ export default function HeroScene({ scrollProgress, dark, className }: HeroScene
       if (disposed) return;
       const flat = sampleLogo(img);
       const available = flat.length / 2;
-      const count = Math.min(MAX_POINTS, available * 2);
+      const count = Math.min(small ? 5000 : MAX_POINTS, available * 2);
       const start = new Float32Array(count * 3);
       const target = new Float32Array(count * 3);
       const random = new Float32Array(count);
