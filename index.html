@@ -1,8 +1,21 @@
-<!doctype html >
+<!doctype html>
 <html lang="fr">
 
 <head>
   <meta charset="UTF-8" />
+  <!-- Thème : appliqué avant tout affichage pour éviter le flash. Clair par défaut. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("lucane-theme");
+        var dark = t === "dark";
+        document.documentElement.classList.toggle("dark", dark);
+        document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,7 +40,8 @@
   <meta name="author" content="Lucane" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://lucane.tech/" />
-  <meta name="theme-color" content="#008080">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0b0a" media="(prefers-color-scheme: dark)">
 
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:type" content="website" />
@@ -56,16 +70,7 @@
   <!-- ====== PERFORMANCE & STYLE ====== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sen:wght@400;500;700;800&display=swap">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Sen', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Sen:wght@400;500;700;800&display=swap">
 
   <script type="application/ld+json">
   {
@@ -81,7 +86,7 @@
   </script>
 </head>
 
-<body class="transition-colors duration-300">
+<body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

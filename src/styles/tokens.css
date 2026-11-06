@@ -1,33 +1,94 @@
-@theme {
-  /* Couleurs brand */
-  --color-primary: #008080;
-  --color-primary-dim: rgba(0,128,128,0.08);
-  --color-primary-hover: #006666;
-  --color-surface: #FAFAFA;
-  --color-surface-alt: #F3F4F6;
-  --color-ink: #2C2C2A;
-  --color-ink-muted: #888780;
-  --color-ink-faint: #C5C4BF;
-  --color-dark: #111110;
-  --color-dark-surface: #1C1C1A;
-  --color-dark-elevated: #242422;
+/* ─────────────────────────────────────────────────────────────────────────────
+   Lucane — couleurs sémantiques
+   Les composants utilisent des rôles (canvas, ink, line, primary…), jamais des
+   couleurs en dur. Le thème clair est le défaut ; la classe `.dark` sur <html>
+   bascule toutes les valeurs.
+   ───────────────────────────────────────────────────────────────────────────── */
 
-  /* Couleurs service */
-  --color-dev: #185FA5;
-  --color-design: #D85A30;
-  --color-growth: #3B6D11;
-  --color-cloud: #BA7517;
+:root {
+  --canvas: #ffffff;
+  --canvas-alt: #f6f6f4;
+  --canvas-inverse: #0b0b0a;
+  --ink: #0f0f0e;
+  --ink-muted: #5f5e5a;
+  --ink-faint: #a3a29c;
+  --line: #e6e5e1;
+  --line-strong: #0f0f0e;
+  --primary: #008080;
+  --primary-ink: #006b6b; /* accent utilisé comme couleur de texte */
+  --on-primary: #ffffff;
+  --on-inverse: #f4f4f1; /* texte posé sur canvas-inverse */
+  color-scheme: light;
+}
+
+.dark {
+  --canvas: #0b0b0a;
+  --canvas-alt: #141413;
+  --canvas-inverse: #f4f4f1;
+  --ink: #f4f4f1;
+  --ink-muted: #a3a29c;
+  --ink-faint: #5f5e5a;
+  --line: #262624;
+  --line-strong: #f4f4f1;
+  --primary: #008080;
+  --primary-ink: #1fa3a3;
+  --on-primary: #ffffff;
+  --on-inverse: #0b0b0a;
+  color-scheme: dark;
+}
+
+@theme inline {
+  /* Rôles sémantiques */
+  --color-canvas: var(--canvas);
+  --color-canvas-alt: var(--canvas-alt);
+  --color-canvas-inverse: var(--canvas-inverse);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
+  --color-on-primary: var(--on-primary);
+  --color-on-inverse: var(--on-inverse);
+
+  /* Alias temporaires (migration) — supprimés à la tâche 8.3 */
+  --color-surface: var(--canvas);
+  --color-surface-alt: var(--canvas-alt);
+  --color-primary-hover: #006666;
+  --color-primary-dim: rgba(0, 128, 128, 0.08);
+}
+
+@theme {
+  /* Sections toujours sombres (pied de page, bandeaux) — indépendantes du thème */
+  --color-dark: #0b0b0a;
+  --color-dark-surface: #141413;
+  --color-dark-elevated: #1c1c1a;
+
+  /* Couleurs de service — repères ponctuels seulement */
+  --color-dev: #185fa5;
+  --color-design: #d85a30;
+  --color-growth: #3b6d11;
+  --color-cloud: #ba7517;
 
   /* Typographie */
-  --font-family-sans: "Sen", system-ui, sans-serif;
+  --font-display: "Inter Tight", system-ui, sans-serif;
+  --font-sans: "Sen", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-pill: 9999px;
+  /* Rayons : la direction artistique est sans arrondi.
+     Les classes rounded-xs … rounded-4xl valent 0 ; rounded-full reste rond
+     (pastilles d'état uniquement). */
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+  --radius-4xl: 0;
+  --radius-pill: 0;
+  --radius-field: 2px;
 
-  /* Shadows */
-  --shadow-glow: 0 0 24px rgba(0,128,128,0.2);
+  --shadow-glow: none;
 }

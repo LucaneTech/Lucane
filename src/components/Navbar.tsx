@@ -4,6 +4,8 @@ import { X, Menu, Phone, Home, Settings2, Briefcase, Cpu, Info } from "lucide-re
 import Button from "../ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Footer } from "./Footer";
+import ThemeToggle from "../ui/ThemeToggle";
+import { useTheme } from "../theme/ThemeProvider";
 
 export const logo = "logo_color.png";
 export const logoLight = "logoLight.png";
@@ -31,24 +33,13 @@ const navLinks = [
 const Navbar: React.FC<NavbarProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const { theme } = useTheme();
   const { pathname } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const initialTheme = darkMediaQuery.matches ? "dark" : "light";
-    setTheme(initialTheme);
-    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
-      setTheme(e.matches ? "dark" : "light");
-    };
-    darkMediaQuery.addEventListener("change", handleChange);
-    return () => darkMediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   // Close mobile menu on route change
@@ -128,7 +119,8 @@ const Navbar: React.FC<NavbarProps> = () => {
           </motion.div>
 
           {/* CTA Desktop */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-3">
+            <ThemeToggle />
             <Button
               to="/contact"
               label="Contactez-nous"
@@ -139,7 +131,8 @@ const Navbar: React.FC<NavbarProps> = () => {
           </div>
 
           {/* Hamburger button — visible uniquement mobile */}
-          <div className="lg:hidden">
+          <div className="lg:hidden flex items-center gap-2">
+            <ThemeToggle />
             <motion.button
               onClick={toggleMenu}
               className="p-2 rounded-md hover:bg-base-200 transition-colors"

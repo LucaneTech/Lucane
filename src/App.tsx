@@ -14,6 +14,7 @@ import Layout from "./components/Layout";
 import { ScrollToTop } from "./components/ScrollToTop";
 import CursorEffect from "./ui/CursorEffect";
 import PageLoader from "./ui/PageLoader";
+import { ThemeProvider } from "./theme/ThemeProvider";
 // import Maintenance from "./pages/Maintenance";
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <ThemeProvider>
       <PageLoader isLoading={isLoading} />
       <CursorEffect />
       <Layout>
@@ -52,7 +53,7 @@ function App() {
 
         </Router>
         </Layout>
-    </>
+    </ThemeProvider>
       );
 }
 
