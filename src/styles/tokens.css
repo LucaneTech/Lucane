@@ -90,5 +90,13 @@
   --radius-pill: 0;
   --radius-field: 2px;
 
+  /* Ombres décoratives supprimées : la profondeur vient des filets et du mouvement */
+  --shadow-2xs: none;
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-2xl: none;
   --shadow-glow: none;
 }

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import type { Variants } from "framer-motion";
 import type { ReactNode } from "react";
 import { cn } from "./utils";
+import Magnetic from "../motion/Magnetic";
 
 export interface ButtonProps {
-  variant?: "primary" | "secondary" | "ghost" | "dark";
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "dark";
   size?: "sm" | "md" | "lg";
   label?: string | ReactNode;
   className?: string;
@@ -16,66 +16,51 @@ export interface ButtonProps {
   iconRight?: ReactNode;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
-  // Deprecated aliases — kept for backward compatibility
-  /** @deprecated Use `variant` instead */
+  /** Attire le bouton vers le curseur (actif par défaut en taille lg). */
+  magnetic?: boolean;
+  // Alias dépréciés — conservés pour ne casser aucun appel existant
+  /** @deprecated Utiliser `variant` */
   changeColor?: "primary" | "secondary" | "ghost" | "dark" | "white";
-  /** @deprecated Use `iconLeft` instead */
+  /** @deprecated Utiliser `iconLeft` */
   icon?: ReactNode;
 }
 
-// ─── Base classes shared across all variants ───────────────────────────────────
+const ease = "ease-[cubic-bezier(0.16,1,0.3,1)]";
+
 const BASE =
-  "inline-flex items-center justify-center gap-2 font-semibold select-none whitespace-nowrap " +
-  "transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 " +
-  "focus-visible:ring-primary/50 focus-visible:ring-offset-2";
+  "group relative inline-flex items-center justify-center gap-2 overflow-hidden font-semibold select-none whitespace-nowrap " +
+  "transition-colors duration-500 " + ease;
 
-// ─── Variant class maps ────────────────────────────────────────────────────────
-const VARIANT_CLASSES: Record<string, string> = {
-  primary:
-    "relative overflow-hidden bg-primary text-white rounded-sm " +
-    "shadow-[0_4px_14px_rgba(0,128,128,0.35)] hover:shadow-[0_6px_20px_rgba(0,128,128,0.5)]",
-  secondary:
-    "border-1 shadow-xl border-primary text-primary bg-transparent rounded-sm " +
-    "hover:bg-primary hover:text-white hover:border-primary",
-  ghost:
-    "text-primary bg-transparent relative " +
-    "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 " +
-    "after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
-  dark:
-    "relative overflow-hidden bg-ink text-white rounded-sm " +
-    "hover:bg-ink-muted",
-  // Legacy variant — kept for backward compat with changeColor="white"
-  white:
-    "relative overflow-hidden bg-white text-primary rounded-sm " +
-    "shadow-md hover:bg-slate-50",
+/** Couleurs du bouton au repos et de l'aplat qui monte au survol. */
+const VARIANTS: Record<string, { base: string; fill: string; hoverText: string }> = {
+  primary: { base: "bg-primary text-on-primary", fill: "bg-ink", hoverText: "group-hover:text-canvas" },
+  outline: { base: "border border-line-strong text-ink", fill: "bg-ink", hoverText: "group-hover:text-canvas" },
+  dark: { base: "bg-ink text-canvas", fill: "bg-primary", hoverText: "group-hover:text-on-primary" },
+  white: { base: "bg-white text-[#006b6b]", fill: "bg-ink", hoverText: "group-hover:text-canvas" },
+  ghost: { base: "text-primary-ink", fill: "", hoverText: "" },
 };
 
-// ─── Size class maps ───────────────────────────────────────────────────────────
-const SIZE_CLASSES: Record<string, string> = {
-  sm: "px-4 py-1 text-sm",
-  md: "px-6 py-3 text-base",
-  lg: "px-7 py-3 text-md",
+const SIZES: Record<string, string> = {
+  sm: "h-9 px-4 text-sm",
+  md: "h-11 px-6 text-[0.9375rem]",
+  lg: "h-14 px-8 text-base",
 };
 
-// ─── Shimmer variants (C1 fix) ────────────────────────────────────────────────
-const shimmerVariants: Variants = {
-  rest: { x: "-110%", skewX: "-20deg" },
-  hover: { x: "110%", skewX: "-20deg" },
-};
-
-// ─── Shimmer overlay (used for primary, dark, white) ──────────────────────────
-function Shimmer() {
+/** Libellé qui « roule » : la copie du dessous remplace celle du dessus au survol. */
+function RollingLabel({ children }: { children: ReactNode }) {
   return (
-    <motion.span
-      className="absolute inset-0 bg-white/20 rounded-[inherit] pointer-events-none"
-      variants={shimmerVariants}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
-      aria-hidden
-    />
+    <span className="relative block overflow-hidden">
+      <span className={cn("block transition-transform duration-500 group-hover:-translate-y-full", ease)}>{children}</span>
+      <span
+        aria-hidden
+        className={cn("absolute inset-0 block translate-y-full transition-transform duration-500 group-hover:translate-y-0", ease)}
+      >
+        {children}
+      </span>
+    </span>
   );
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
 const Button = ({
   variant,
   size = "md",
@@ -88,127 +73,88 @@ const Button = ({
   iconRight,
   type = "button",
   disabled = false,
-  // Deprecated aliases
+  magnetic,
   changeColor,
   icon,
 }: ButtonProps) => {
-  // Resolve variant: explicit `variant` prop wins, then fall back to `changeColor` (M1 fix)
-  const resolvedVariant = (variant ?? changeColor ?? "primary") as keyof typeof VARIANT_CLASSES;
+  const raw = variant ?? changeColor ?? "primary";
+  const resolved = raw === "secondary" ? "outline" : raw;
+  const v = VARIANTS[resolved] ?? VARIANTS.primary;
+  const isGhost = resolved === "ghost";
+  const leftIcon = iconLeft ?? icon;
 
-  // Resolve icon: explicit `iconLeft` wins, then fall back to deprecated `icon`
-  const resolvedIconLeft = iconLeft ?? icon;
+  const classes = cn(
+    BASE,
+    v.base,
+    v.hoverText,
+    isGhost ? "h-auto px-0 text-[0.9375rem]" : SIZES[size] ?? SIZES.md,
+    disabled && "pointer-events-none opacity-50",
+    className
+  );
 
-  const hasShimmer =
-    resolvedVariant === "primary" ||
-    resolvedVariant === "dark" ||
-    resolvedVariant === "white";
-
-  const hasTap = resolvedVariant !== "ghost";
-
-  const variantClasses = VARIANT_CLASSES[resolvedVariant] ?? VARIANT_CLASSES.primary;
-  const sizeClasses = SIZE_CLASSES[size] ?? SIZE_CLASSES.md;
-
-  // I2 fix: use cn() instead of string concatenation
-  // C2 + I1 fix: apply disabled classes conditionally (not via CSS :disabled pseudo-class)
-  const disabledClasses = disabled ? "opacity-50 cursor-not-allowed pointer-events-none" : "";
-  const composedClass = cn(BASE, variantClasses, sizeClasses, className, disabledClasses);
-
-  // ── Inner content (icons + label + shimmer) ──
   const inner = (
     <>
-      {hasShimmer && <Shimmer />}
-      {resolvedIconLeft && (
-        <span className="relative flex-shrink-0">{resolvedIconLeft}</span>
+      {!isGhost && (
+        <span
+          aria-hidden
+          className={cn("absolute inset-0 origin-bottom scale-y-0 transition-transform duration-500 group-hover:scale-y-100", ease, v.fill)}
+        />
       )}
-      {label && <span className="relative truncate">{label}</span>}
+      {leftIcon && (
+        <span className="relative flex-shrink-0 transition-transform duration-500 group-hover:-rotate-12">{leftIcon}</span>
+      )}
+      {label && (
+        <span className="relative">
+          <RollingLabel>{label}</RollingLabel>
+          {isGhost && (
+            <span
+              aria-hidden
+              className={cn(
+                "absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-500 group-hover:origin-left group-hover:scale-x-100",
+                ease
+              )}
+            />
+          )}
+        </span>
+      )}
       {iconRight && (
-        <span className="relative flex-shrink-0">{iconRight}</span>
+        <span className={cn("relative flex-shrink-0 transition-transform duration-500 group-hover:translate-x-1", ease)}>
+          {iconRight}
+        </span>
       )}
     </>
   );
 
-  // ── Render as React Router Link (or span if disabled) ──
-  if (to) {
-    // C2 fix: disabled → render a span to block navigation
-    if (disabled) {
-      return (
-        <motion.div
-          initial="rest"
-          whileHover="hover"
-          whileTap={hasTap ? { scale: 0.97 } : undefined}
-          className="inline-flex"
-        >
-          <span role="button" aria-disabled className={composedClass}>
-            {inner}
-          </span>
-        </motion.div>
-      );
-    }
-    return (
-      <motion.div
-        initial="rest"
-        whileHover="hover"
-        whileTap={hasTap ? { scale: 0.97 } : undefined}
-        className="inline-flex"
-      >
-        <Link to={to} onClick={onClick} className={composedClass}>
-          {inner}
-        </Link>
-      </motion.div>
+  let element: ReactNode;
+  if (to && !disabled) {
+    element = (
+      <Link to={to} onClick={onClick} className={classes} data-cursor="pointer">
+        {inner}
+      </Link>
+    );
+  } else if (href && !disabled) {
+    element = (
+      <a href={href} target="_blank" rel="noopener noreferrer" onClick={onClick} className={classes} data-cursor="pointer">
+        {inner}
+      </a>
+    );
+  } else if (to || href) {
+    element = (
+      <span role="button" aria-disabled className={classes}>
+        {inner}
+      </span>
+    );
+  } else {
+    element = (
+      <button type={type} onClick={onClick} disabled={disabled} className={classes} data-cursor="pointer">
+        {inner}
+      </button>
     );
   }
 
-  // ── Render as external anchor (or span if disabled) ──
-  if (href) {
-    // C2 fix: disabled → render a span to block navigation
-    if (disabled) {
-      return (
-        <motion.div
-          initial="rest"
-          whileHover="hover"
-          whileTap={hasTap ? { scale: 0.97 } : undefined}
-          className="inline-flex"
-        >
-          <span role="button" aria-disabled className={composedClass}>
-            {inner}
-          </span>
-        </motion.div>
-      );
-    }
-    return (
-      <motion.div
-        initial="rest"
-        whileHover="hover"
-        whileTap={hasTap ? { scale: 0.97 } : undefined}
-        className="inline-flex"
-      >
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={onClick}
-          className={composedClass}
-        >
-          {inner}
-        </a>
-      </motion.div>
-    );
-  }
-
-  // ── Render as button ──
-  return (
-    <motion.button
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      className={composedClass}
-      initial="rest"
-      whileHover="hover"
-      whileTap={hasTap ? { scale: 0.97 } : undefined}
-    >
-      {inner}
-    </motion.button>
-  );
+  const tappable = <motion.span className="inline-flex" whileTap={{ scale: 0.96 }}>{element}</motion.span>;
+  const useMagnet = (magnetic ?? size === "lg") && !isGhost && !disabled;
+  return useMagnet ? <Magnetic strength={0.25}>{tappable}</Magnetic> : tappable;
 };
 
 export default Button;
