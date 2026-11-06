@@ -44,7 +44,7 @@ export default function MotionLab() {
         </div>
         <div className="mt-10 flex flex-wrap items-center gap-6">
           <Button label="Démarrer un projet" size="lg" to="/contact" />
-          <Button label="Voir les réalisations" variant="outline" size="lg" to="/projets" />
+          <Button label="Voir les réalisations" variant="outline" size="lg" to="/realisations" />
           <Button label="Lien discret" variant="ghost" to="/services" />
           <M.Link to="/a-propos">Lien du kit</M.Link>
           <M.Link to="/a-propos" underlined>

@@ -31,6 +31,8 @@ export interface Project {
   bgColor?: string;
   category: ProjectCategory;
   caseStudy?: CaseStudy;
+  /** false si le site refuse d'être affiché dans une iframe (aperçu remplacé par une affiche). */
+  frameable?: boolean;
 }
 
 const TODO_CASE: CaseStudy = {
@@ -154,6 +156,7 @@ export const projects: Project[] = [
     technologies: ["React", "TypeScript", "Softphone", "API"],
     githubUrl: "",
     liveUrl: "https://lucane-crm.vercel.app",
+    frameable: false, // l'application interdit l'affichage en iframe (CSP frame-ancestors)
     category: "Application",
     sector: "Centres d'appels",
     year: 2026,

@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import { MotionConfig } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Layout from "./components/Layout";
@@ -19,6 +19,7 @@ const Projects = lazy(() => import("./pages/Projects"));
 const Technologies = lazy(() => import("./pages/Technologies"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
+const CaseStudy = lazy(() => import("./pages/CaseStudy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 // Banc d'essai des animations — développement uniquement
 const MotionLab = import.meta.env.DEV ? lazy(() => import("./pages/MotionLab")) : null;
@@ -41,7 +42,9 @@ function App() {
                   <Route path="/" element={<Navbar />}>
                     <Route index element={<Home />} />
                     <Route path="/services" element={<Services />} />
-                    <Route path="/projets" element={<Projects />} />
+                    <Route path="/realisations" element={<Projects />} />
+                    <Route path="/realisations/:slug" element={<CaseStudy />} />
+                    <Route path="/projets" element={<Navigate to="/realisations" replace />} />
                     <Route path="/technologies" element={<Technologies />} />
                     <Route path="/a-propos" element={<About />} />
                     <Route path="/contact" element={<Contact />} />

@@ -5,6 +5,7 @@ const LOCATIONS = [
   { name: "France", cx: 506, cy: 114 },
   { name: "Congo BZ", cx: 542, cy: 262 },
   { name: "Sénégal", cx: 451, cy: 209 },
+  { name: "Maroc", cx: 466, cy: 184 },
   { name: "International", cx: 294, cy: 137 },
 ] as const;
 
@@ -86,7 +87,8 @@ const GeographicReach: React.FC = () => (
                 r={10}
                 fill="#008080"
                 fillOpacity={0.15}
-                animate={{ r: [8, 16, 8], fillOpacity: [0.2, 0, 0.2] }}
+                style={{ transformBox: "fill-box", transformOrigin: "center" }}
+                animate={{ scale: [0.8, 1.6, 0.8], opacity: [1, 0, 1] }}
                 transition={{
                   duration: 2.5,
                   repeat: Infinity,
