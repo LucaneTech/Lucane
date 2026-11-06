@@ -11,7 +11,8 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
-import { ScrollToTop } from "./components/ScrollToTop";
+import SmoothScroll from "./motion/SmoothScroll";
+import { MotionConfig } from "framer-motion";
 import CursorEffect from "./ui/CursorEffect";
 import PageLoader from "./ui/PageLoader";
 import { ThemeProvider } from "./theme/ThemeProvider";
@@ -31,7 +32,8 @@ function App() {
       <CursorEffect />
       <Layout>
         <Router>
-          <ScrollToTop />
+         <MotionConfig reducedMotion="user">
+          <SmoothScroll>
             <ScrollProgress />
             <BackToTop />
 
@@ -50,7 +52,8 @@ function App() {
               
              <Route path="*" element={<Maintenance />} /> 
             </Routes> */}
-
+          </SmoothScroll>
+         </MotionConfig>
         </Router>
         </Layout>
     </ThemeProvider>
