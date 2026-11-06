@@ -20,6 +20,8 @@ const Technologies = lazy(() => import("./pages/Technologies"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+// Banc d'essai des animations — développement uniquement
+const MotionLab = import.meta.env.DEV ? lazy(() => import("./pages/MotionLab")) : null;
 
 function App() {
   return (
@@ -43,6 +45,7 @@ function App() {
                     <Route path="/technologies" element={<Technologies />} />
                     <Route path="/a-propos" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
+                    {MotionLab && <Route path="/__motion" element={<MotionLab />} />}
                   </Route>
                   <Route path="*" element={<NotFound />} />
                 </Routes>

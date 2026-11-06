@@ -139,7 +139,7 @@ const ExpertiseRow: React.FC<{ exp: Expertise; index: number }> = ({ exp, index 
           {exp.stack.map((tech) => (
             <span
               key={tech}
-              className="px-2.5 py-1 bg-surface text-ink-muted text-xs font-medium rounded-sm dark:text-slate-900 dark:border-slate-600"
+              className="px-2.5 py-1 bg-canvas-alt text-ink-muted text-xs font-medium border border-line"
             >
               {tech}
             </span>
@@ -185,7 +185,7 @@ const ExpertiseRow: React.FC<{ exp: Expertise; index: number }> = ({ exp, index 
           />
 
           {/* Badge flottant */}
-          <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-pill px-3 py-1.5 shadow-sm">
+          <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-canvas/90 backdrop-blur-sm px-3 py-1.5">
             <Icon className="w-3.5 h-3.5 text-primary" />
             <span className="text-xs font-semibold text-ink">{exp.title}</span>
             <ArrowUpRight className="w-3 h-3 text-ink-muted" />

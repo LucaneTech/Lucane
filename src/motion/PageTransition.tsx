@@ -11,6 +11,7 @@ const TITLES: Record<string, string> = {
   "/technologies": "Technologies",
   "/a-propos": "À propos",
   "/contact": "Contact",
+  "/__motion": "Banc d'essai",
 };
 
 function titleFor(pathname: string) {
@@ -25,14 +26,13 @@ function titleFor(pathname: string) {
  */
 export default function PageTransition() {
   const { pathname } = useLocation();
-  const first = useRef(true);
+  // Adresse déjà affichée : évite un rideau au premier rendu (y compris le double rendu de StrictMode).
+  const shown = useRef(pathname);
   const [run, setRun] = useState<{ key: number; title: string } | null>(null);
 
   useEffect(() => {
-    if (first.current) {
-      first.current = false;
-      return;
-    }
+    if (shown.current === pathname) return;
+    shown.current = pathname;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setRun({ key: Date.now(), title: titleFor(pathname) });
     const t = setTimeout(() => setRun(null), 650);

@@ -83,6 +83,8 @@ interface ImgProps {
 
 /** Image : rideau + zoom arrière à l'entrée, parallaxe interne, zoom et inclinaison 3D au survol. */
 function Img({ src, alt, width, height, className, imgClassName, parallax = 0.08, tilt = true, priority, cursor }: ImgProps) {
+  // L'observateur est posé sur le cadre extérieur : l'élément masqué par clip-path
+  // ne serait jamais considéré comme visible.
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.15 });
   const [hovered, setHovered] = useState(false);
@@ -106,9 +108,8 @@ function Img({ src, alt, width, height, className, imgClassName, parallax = 0.08
   };
 
   return (
-    <div className={cn("[perspective:1200px]", className)}>
+    <div ref={ref} className={cn("[perspective:1200px]", className)}>
       <motion.div
-        ref={ref}
         style={{ rotateX: rx, rotateY: ry }}
         onMouseMove={onMove}
         onMouseEnter={() => setHovered(true)}

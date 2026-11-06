@@ -25,10 +25,10 @@ const Technologies: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-ink mb-4">
             Prêt à construire quelque chose d'extraordinaire ?
           </h2>
-          <p className="text-white/60 max-w-xl mx-auto mb-8">
+          <p className="text-ink-muted max-w-xl mx-auto mb-8">
             Nous combinons ces technologies pour livrer des solutions robustes,
             évolutives et adaptées à votre vision.
           </p>

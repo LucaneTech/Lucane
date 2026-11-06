@@ -100,3 +100,13 @@
   --shadow-2xl: none;
   --shadow-glow: none;
 }
+
+/* Sections inversées : l'accent texte et les filets s'adaptent au fond inversé */
+.bg-canvas-inverse {
+  --primary-ink: #1fa3a3;
+  --line: rgba(244, 244, 241, 0.16);
+}
+.dark .bg-canvas-inverse {
+  --primary-ink: #006b6b;
+  --line: rgba(11, 11, 10, 0.14);
+}
