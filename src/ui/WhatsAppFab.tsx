@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { ease } from "../motion/presets";
 
 const WHATSAPP_NUMBER = "212781343642";
 const MESSAGE = "Bonjour Lucane Tech, je souhaite parler d'un projet.";
@@ -28,16 +27,16 @@ export default function WhatsAppFab() {
           rel="noopener noreferrer"
           aria-label="Écrire à Lucane Tech sur WhatsApp"
           data-cursor="Écrire"
-          className="group fixed bottom-6 right-6 z-[800] flex h-[52px] w-[52px] items-center justify-center overflow-hidden bg-primary text-on-primary"
-          initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
-          animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
-          exit={{ clipPath: "inset(0% 0% 100% 0%)" }}
-          transition={{ duration: 0.6, ease: ease.out }}
+          className="group fixed bottom-6 right-6 z-[800] flex h-[52px] w-[52px] items-center justify-center overflow-hidden rounded-full bg-primary text-on-primary shadow-glow"
+          initial={{ scale: 0, opacity: 0, rotate: -90 }}
+          animate={{ scale: 1, opacity: 1, rotate: 0 }}
+          exit={{ scale: 0, opacity: 0, rotate: 90 }}
+          transition={{ type: "spring", stiffness: 260, damping: 20 }}
           whileTap={{ scale: 0.92 }}
         >
           <span
             aria-hidden
-            className="absolute inset-0 origin-bottom scale-y-0 bg-ink transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100"
+            className="absolute inset-0 origin-bottom scale-y-0 rounded-full bg-ink transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100"
           />
           <motion.svg
             viewBox="0 0 24 24"

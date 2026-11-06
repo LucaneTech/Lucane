@@ -115,9 +115,9 @@ function Img({ src, alt, width, height, className, imgClassName, parallax = 0.08
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={onLeave}
         data-cursor={cursor}
-        className="relative h-full w-full overflow-hidden will-change-transform"
-        initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
-        animate={inView ? { clipPath: "inset(0% 0% 0% 0%)" } : undefined}
+        className="relative h-full w-full overflow-hidden rounded-3xl will-change-transform"
+        initial={{ clipPath: "inset(100% 0% 0% 0% round 24px)" }}
+        animate={inView ? { clipPath: "inset(0% 0% 0% 0% round 24px)" } : undefined}
         transition={{ duration: dur.xslow, ease: ease.out }}
       >
         <motion.div style={{ y }} className="h-full w-full scale-[1.18]">
@@ -226,16 +226,16 @@ function Card({ children, className, index = 0, cursor, as = "div" }: CardProps)
     <Tag
       ref={ref}
       data-cursor={cursor}
-      className={cn("group relative border-t border-line", className)}
+      className={cn("group relative overflow-hidden rounded-3xl border border-glass-line bg-panel p-7 transition-shadow duration-700 hover:shadow-glow md:p-8", className)}
       initial={{ y: 60, opacity: 0 }}
       animate={inView ? { y: 0, opacity: 1 } : undefined}
       transition={{ duration: dur.slow, ease: ease.out, delay: index * 0.08 }}
     >
       <span
         aria-hidden
-        className="absolute -top-px left-0 h-[2px] w-full origin-left scale-x-0 bg-primary transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+        className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[radial-gradient(circle,var(--color-iris-cyan),transparent_65%)] opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-40"
       />
-      <div className="transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-2">{children}</div>
+      <div className="relative transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">{children}</div>
     </Tag>
   );
 }
@@ -298,7 +298,7 @@ function Field({ label, name, type = "text", multiline, required, value, onChang
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
   const inputClass =
-    "peer block w-full border-0 border-b border-line bg-transparent px-0 pb-3 pt-7 text-lg text-ink outline-none placeholder-transparent focus:outline-none focus-visible:outline-none";
+    "peer block w-full rounded-2xl border border-glass-line bg-panel px-5 pb-3 pt-7 text-lg text-ink outline-none placeholder-transparent transition-shadow duration-500 focus:shadow-glow focus:outline-none focus-visible:outline-none";
 
   return (
     <motion.div
@@ -315,14 +315,14 @@ function Field({ label, name, type = "text", multiline, required, value, onChang
       )}
       <label
         htmlFor={name}
-        className="eyebrow pointer-events-none absolute left-0 top-1 text-ink-muted transition-all duration-300 peer-placeholder-shown:top-7 peer-placeholder-shown:text-base peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-placeholder-shown:font-sans peer-focus:top-1 peer-focus:text-xs peer-focus:uppercase peer-focus:tracking-[0.18em] peer-focus:text-primary-ink"
+        className="eyebrow pointer-events-none absolute left-5 top-2.5 text-ink-muted transition-all duration-300 peer-placeholder-shown:top-[1.35rem] peer-placeholder-shown:text-base peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-placeholder-shown:font-sans peer-focus:top-2.5 peer-focus:text-xs peer-focus:uppercase peer-focus:tracking-[0.18em] peer-focus:text-primary-ink"
       >
         {label}
         {required && " *"}
       </label>
       <span
         aria-hidden
-        className="absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 bg-primary transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] peer-focus:scale-x-100"
+        className="absolute bottom-0 left-5 right-5 h-[2px] origin-left scale-x-0 rounded-full bg-primary transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] peer-focus:scale-x-100"
       />
     </motion.div>
   );

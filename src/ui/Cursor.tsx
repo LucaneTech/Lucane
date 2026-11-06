@@ -72,11 +72,11 @@ export default function Cursor() {
         aria-hidden
         className="pointer-events-none fixed left-0 top-0 z-[10000] flex items-center justify-center"
         style={{ x: rx, y: ry, translateX: "-50%", translateY: "-50%" }}
-        animate={{ width: size, height: size, opacity: visible ? 1 : 0, scale: pressed ? 0.85 : 1, rotate: hovering && !label ? 45 : 0 }}
+        animate={{ width: size, height: size, opacity: visible ? 1 : 0, scale: pressed ? 0.85 : 1, rotate: 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 26 }}
       >
         <motion.span
-          className="absolute inset-0 border"
+          className="absolute inset-0 rounded-full border"
           animate={{
             backgroundColor: label ? "var(--primary)" : "rgba(0,0,0,0)",
             borderColor: label ? "var(--primary)" : "var(--ink)",

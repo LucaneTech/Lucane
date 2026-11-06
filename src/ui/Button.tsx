@@ -28,13 +28,13 @@ export interface ButtonProps {
 const ease = "ease-[cubic-bezier(0.16,1,0.3,1)]";
 
 const BASE =
-  "group relative inline-flex items-center justify-center gap-2 overflow-hidden font-semibold select-none whitespace-nowrap " +
+  "group relative isolate inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-semibold select-none whitespace-nowrap " +
   "transition-colors duration-500 " + ease;
 
 /** Couleurs du bouton au repos et de l'aplat qui monte au survol. */
 const VARIANTS: Record<string, { base: string; fill: string; hoverText: string }> = {
-  primary: { base: "bg-primary text-on-primary", fill: "bg-ink", hoverText: "group-hover:text-canvas" },
-  outline: { base: "border border-line-strong text-ink", fill: "bg-ink", hoverText: "group-hover:text-canvas" },
+  primary: { base: "bg-primary text-on-primary shadow-glow", fill: "bg-ink", hoverText: "group-hover:text-canvas" },
+  outline: { base: "border border-glass-line bg-glass text-ink backdrop-blur-xl", fill: "bg-ink", hoverText: "group-hover:text-canvas" },
   dark: { base: "bg-ink text-canvas", fill: "bg-primary", hoverText: "group-hover:text-on-primary" },
   white: { base: "bg-white text-[#006b6b]", fill: "bg-ink", hoverText: "group-hover:text-canvas" },
   ghost: { base: "text-primary-ink", fill: "", hoverText: "" },
@@ -87,7 +87,7 @@ const Button = ({
     BASE,
     v.base,
     v.hoverText,
-    isGhost ? "h-auto px-0 text-[0.9375rem]" : SIZES[size] ?? SIZES.md,
+    isGhost ? "h-auto rounded-none px-0 text-[0.9375rem] overflow-visible" : SIZES[size] ?? SIZES.md,
     disabled && "pointer-events-none opacity-50",
     className
   );
@@ -97,7 +97,7 @@ const Button = ({
       {!isGhost && (
         <span
           aria-hidden
-          className={cn("absolute inset-0 origin-bottom scale-y-0 transition-transform duration-500 group-hover:scale-y-100", ease, v.fill)}
+          className={cn("absolute inset-0 -z-10 origin-bottom scale-y-0 rounded-full transition-transform duration-500 group-hover:scale-y-100", ease, v.fill)}
         />
       )}
       {leftIcon && (

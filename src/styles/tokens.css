@@ -5,35 +5,44 @@
    bascule toutes les valeurs.
    ───────────────────────────────────────────────────────────────────────────── */
 
+/* Direction artistique v2 : futuriste, verre, arrondis généreux, halos irisés. */
 :root {
-  --canvas: #ffffff;
-  --canvas-alt: #f6f6f4;
+  --canvas: #f4f5f7;
+  --canvas-alt: #eceef1;
+  --panel: #ffffff; /* cartes et conteneurs posés sur le fond */
+  --glass: rgba(255, 255, 255, 0.62);
+  --glass-line: rgba(15, 15, 14, 0.08);
   --canvas-inverse: #0b0b0a;
   --ink: #0f0f0e;
   --ink-muted: #5f5e5a;
   --ink-faint: #a3a29c;
-  --line: #e6e5e1;
+  --line: #e3e5e9;
   --line-strong: #0f0f0e;
   --primary: #008080;
   --primary-ink: #006b6b; /* accent utilisé comme couleur de texte */
   --on-primary: #ffffff;
   --on-inverse: #f4f4f1; /* texte posé sur canvas-inverse */
+  --glow: 0 30px 80px -30px rgba(0, 128, 128, 0.45);
   color-scheme: light;
 }
 
 .dark {
-  --canvas: #0b0b0a;
-  --canvas-alt: #141413;
+  --canvas: #050506;
+  --canvas-alt: #0d0e11;
+  --panel: #101115;
+  --glass: rgba(20, 21, 26, 0.55);
+  --glass-line: rgba(255, 255, 255, 0.09);
   --canvas-inverse: #f4f4f1;
   --ink: #f4f4f1;
   --ink-muted: #a3a29c;
   --ink-faint: #5f5e5a;
-  --line: #262624;
+  --line: #22242a;
   --line-strong: #f4f4f1;
-  --primary: #008080;
-  --primary-ink: #1fa3a3;
+  --primary: #00a3a3;
+  --primary-ink: #3ce0d0;
   --on-primary: #ffffff;
   --on-inverse: #0b0b0a;
+  --glow: 0 30px 90px -25px rgba(60, 224, 208, 0.35);
   color-scheme: dark;
 }
 
@@ -42,6 +51,9 @@
   --color-canvas: var(--canvas);
   --color-canvas-alt: var(--canvas-alt);
   --color-canvas-inverse: var(--canvas-inverse);
+  --color-panel: var(--panel);
+  --color-glass: var(--glass);
+  --color-glass-line: var(--glass-line);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
   --color-ink-faint: var(--ink-faint);
@@ -51,6 +63,8 @@
   --color-primary-ink: var(--primary-ink);
   --color-on-primary: var(--on-primary);
   --color-on-inverse: var(--on-inverse);
+
+  --shadow-glow: var(--glow);
 
   /* Alias temporaires (migration) — supprimés à la tâche 8.3 */
   --color-surface: var(--canvas);
@@ -76,34 +90,27 @@
   --font-sans: "Sen", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  /* Rayons : la direction artistique est sans arrondi.
-     Les classes rounded-xs … rounded-4xl valent 0 ; rounded-full reste rond
-     (pastilles d'état uniquement). */
-  --radius-xs: 0;
-  --radius-sm: 0;
-  --radius-md: 0;
-  --radius-lg: 0;
-  --radius-xl: 0;
-  --radius-2xl: 0;
-  --radius-3xl: 0;
-  --radius-4xl: 0;
-  --radius-pill: 0;
-  --radius-field: 2px;
+  /* Palette irisée : objets 3D, halos et accents (jamais en fond de texte) */
+  --color-iris-cyan: #3ce0d0;
+  --color-iris-indigo: #5b6cff;
+  --color-iris-orange: #ff7a3d;
 
-  /* Ombres décoratives supprimées : la profondeur vient des filets et du mouvement */
-  --shadow-2xs: none;
-  --shadow-xs: none;
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
-  --shadow-xl: none;
-  --shadow-2xl: none;
-  --shadow-glow: none;
+  /* Rayons généreux (direction v2) : pilule dès que possible, 24–40 px sinon */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-2xl: 28px;
+  --radius-3xl: 32px;
+  --radius-4xl: 40px;
+  --radius-pill: 9999px;
+  --radius-field: 16px;
 }
 
 /* Sections inversées : l'accent texte et les filets s'adaptent au fond inversé */
 .bg-canvas-inverse {
-  --primary-ink: #1fa3a3;
+  --primary-ink: #3ce0d0;
   --line: rgba(244, 244, 241, 0.16);
 }
 .dark .bg-canvas-inverse {

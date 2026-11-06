@@ -2,7 +2,6 @@ import { useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { useLenis } from "lenis/react";
-import { ease } from "../motion/presets";
 
 /** Retour en haut : carré à filet, à gauche du bouton WhatsApp ; la flèche file vers le haut au survol. */
 export default function BackToTop() {
@@ -23,11 +22,11 @@ export default function BackToTop() {
           type="button"
           onClick={toTop}
           aria-label="Retour en haut"
-          className="group fixed bottom-6 right-[5.25rem] z-[800] flex h-[52px] w-[52px] items-center justify-center overflow-hidden border border-line bg-canvas text-ink"
-          initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
-          animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
-          exit={{ clipPath: "inset(0% 0% 100% 0%)" }}
-          transition={{ duration: 0.6, ease: ease.out }}
+          className="group fixed bottom-6 right-[5.25rem] z-[800] flex h-[52px] w-[52px] items-center justify-center overflow-hidden rounded-full border border-glass-line bg-glass text-ink backdrop-blur-xl"
+          initial={{ scale: 0, opacity: 0, rotate: -90 }}
+          animate={{ scale: 1, opacity: 1, rotate: 0 }}
+          exit={{ scale: 0, opacity: 0, rotate: 90 }}
+          transition={{ type: "spring", stiffness: 260, damping: 20 }}
           whileTap={{ scale: 0.92 }}
         >
           <span className="relative block h-5 w-5 overflow-hidden">

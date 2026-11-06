@@ -2,7 +2,7 @@
 
 > **Pour les agents :** exécuter ce plan tâche par tâche, dans l'ordre, une tâche = un commit. Cocher chaque étape (`- [ ]` → `- [x]`) au fil de l'eau. Ne jamais passer à la phase suivante tant que les critères d'acceptation de la phase en cours ne sont pas vérifiés dans le navigateur (thème clair ET sombre, ordinateur ET mobile).
 
-**Objectif :** transformer lucane.tech en vitrine qui laisse le prospect ébahi dès la première seconde — immersion totale, animations d'une fluidité parfaite, design éditorial sans arrondis ni dégradés inutiles — tout en inspirant confiance par des preuves vérifiables. Thème blanc par défaut, bascule sombre par bouton. Tout le contenu actuel est conservé.
+**Objectif :** transformer lucane.tech en vitrine qui laisse le prospect ébahi dès la première seconde — immersion totale, animations d'une fluidité parfaite, design futuriste très arrondi (pilules, verre, objets 3D lumineux, voir 0.1) — tout en inspirant confiance par des preuves vérifiables. Thème blanc par défaut, bascule sombre par bouton. Tout le contenu actuel est conservé.
 
 **Priorité absolue : le visuel et la fluidité.** Chaque section a un « moment signature ». La confiance vient en second rideau, mais elle est partout.
 
@@ -14,17 +14,25 @@
 
 ## 0. Principes non négociables
 
-### 0.1 Direction artistique
+### 0.1 Direction artistique (v2 — 6 novembre 2026, d'après les références de l'équipe)
+
+Références fournies par l'équipe :
+- [Épingle 1](https://www.pinterest.com/pin/61994932366820775/) — vidéo d'un site sombre : une **fusée en particules 3D** (orange et bleu) sur un champ d'étoiles, titre géant « BOOST YOUR BRAND » mêlant contour et plein, navigation minimale « Let's talk / Join ».
+- [Épingle 2](https://www.pinterest.com/pin/891009107542280118/) — page « protect your data » : fond noir, **formes 3D irisées** (orange, violet, bleu) qui flottent derrière une typographie géante et fine, **navigation et boutons en pilule**, chiffres flottants (+65k, +300k), logos clients dans des **cartes vitrées arrondies**, cartes « Our Benefits » très arrondies avec halo coloré.
+- [Idées « futuristic website »](https://www.pinterest.com/ideas/futuristic-website/951081177372/) — mêmes codes en clair et en sombre : grands conteneurs arrondis façon « bento », panneaux vitrés, robots / objets 3D, typographie très grande.
+
 | Règle | Valeur |
 |---|---|
-| Fond par défaut | Blanc pur `#FFFFFF`, sections alternées `#F6F6F4` |
-| Accent | Teal `#008080` seul (texte en sombre : `#1FA3A3` pour garder un contraste ≥ 4,5:1) |
-| Arrondis | `0`. Exception : 2 px sur les champs de formulaire et le focus clavier |
-| Dégradés, flous, ombres décoratives | Interdits. Seule exception : voile sombre sous un texte posé sur une photo, si la lisibilité l'exige |
-| Séparations | Filets 1 px (`--line`), grille 12 colonnes visible par endroits (lignes verticales fines) |
-| Typographie | Titres : **Inter Tight** 700–800, interlignage 0,95, approche négative. Texte : **Sen** (continuité de marque). Chiffres, numéros, étiquettes : **JetBrains Mono** |
-| Échelle | Titres jusqu'à `clamp(3.5rem, 9vw, 9rem)` — la typographie EST le visuel |
-| Couleurs de service (dev, design, growth, cloud) | Supprimées comme couleurs de fond ; tolérées comme petit repère (puce 6 px) seulement |
+| Thème | Blanc par défaut (version claire « futuriste » : gris très doux, conteneurs arrondis), sombre en option (noir profond, halos lumineux) |
+| Arrondis | **Généreux partout.** Pilule (`rounded-full`) dès que la forme le permet : boutons, navigation, étiquettes, puces, bouton de thème, curseur, champs d'une ligne, boutons flottants. Cartes et images : 24 à 32 px. Grands conteneurs de section : 40 px. Jamais d'angle vif, sauf bords d'écran pleine largeur |
+| Matières | Verre (fond translucide + flou d'arrière-plan + filet clair), halos lumineux, dégradés **irisés** (teal → cyan → indigo → orange) réservés aux objets 3D, aux halos et aux accents — jamais en aplat de fond de texte |
+| Accent | Teal Lucane `#008080` reste la couleur de marque ; palette irisée en soutien : cyan `#3CE0D0`, indigo `#5B6CFF`, orange `#FF7A3D` |
+| Objets 3D | Hero : champ de particules en 3D qui forme une figure (fusée / logo) et réagit à la souris ; ailleurs : formes irisées flottantes en parallaxe derrière les titres |
+| Typographie | Titres géants : **Inter Tight** en 300 (fin, comme l'épingle 2) mêlé à 800 pour les mots-clés, ou contour + plein (épingle 1). Texte : Sen. Chiffres et étiquettes : JetBrains Mono |
+| Séparations | Conteneurs arrondis et espacement plutôt que filets ; filets fins conservés à l'intérieur des cartes |
+| Ombres | Pas d'ombres portées grises ; **halos colorés** doux sous les éléments mis en avant |
+
+La règle « tout bouge » (0.4) et le budget de fluidité (0.2) restent inchangés.
 
 ### 0.2 Fluidité (budget de performance)
 - **Tout bouge** (voir 0.4), mais par les propriétés que le navigateur anime sans effort : `transform` (déplacement, échelle, rotation, inclinaison, 3D), `opacity`, `clip-path`, et la couleur sur les petits éléments (texte, filets, icônes). Jamais `width`, `height`, `top`, `box-shadow`, `filter` animés : ce sont eux qui provoquent les saccades. Une barre qui « grandit » se fait par `scaleX`, un bloc qui « s'ouvre » par `clip-path`.

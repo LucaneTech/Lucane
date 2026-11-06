@@ -16,8 +16,8 @@ export default function ThemeToggle({ className }: { className?: string }) {
       title={isDark ? "Thème clair" : "Thème sombre"}
       data-cursor="pointer"
       className={cn(
-        "group relative inline-flex h-10 w-10 items-center justify-center overflow-hidden",
-        "border border-line text-ink transition-colors duration-300 hover:border-line-strong",
+        "group relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full",
+        "border border-glass-line bg-glass text-ink backdrop-blur-xl transition-colors duration-300",
         className
       )}
       whileTap={{ scale: 0.9 }}
@@ -25,7 +25,7 @@ export default function ThemeToggle({ className }: { className?: string }) {
       {/* Aplat qui monte au survol */}
       <span
         aria-hidden
-        className="absolute inset-0 origin-bottom scale-y-0 bg-ink transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100"
+        className="absolute inset-0 origin-bottom scale-y-0 rounded-full bg-ink transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100"
       />
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
