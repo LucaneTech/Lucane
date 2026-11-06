@@ -178,3 +178,19 @@ html.has-custom-cursor textarea,
 html.has-custom-cursor [contenteditable="true"] {
   cursor: text !important;
 }
+
+/* ── Icônes qui se dessinent (M.Icon) ────────────────────────────────────── */
+.draw-icon :is(path, line, circle, rect, polyline, polygon, ellipse) {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--draw-delay, 0s);
+}
+.draw-icon.is-drawn :is(path, line, circle, rect, polyline, polygon, ellipse) {
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .draw-icon :is(path, line, circle, rect, polyline, polygon, ellipse) {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+}
