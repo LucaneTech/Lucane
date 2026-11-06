@@ -38,7 +38,7 @@ function makeHeading(tag: ElementType, defaultClass: string) {
   return function Heading({ children, className, id, by = "word", delay = 0, immediate }: HeadingProps) {
     const skewY = useScrollSkew(2.5);
     return (
-      <motion.div style={{ skewY }} className="will-change-transform">
+      <motion.div style={{ skewY }} className="will-change-transform" id={id}>
         <SplitText
           as={tag}
           text={children}
@@ -46,7 +46,6 @@ function makeHeading(tag: ElementType, defaultClass: string) {
           delay={delay}
           immediate={immediate}
           className={cn(defaultClass, className)}
-          {...(id ? { id } : {})}
         />
       </motion.div>
     );

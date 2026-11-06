@@ -15,6 +15,8 @@ interface SplitTextProps {
   repeat?: boolean;
   /** Déclenchement immédiat (hero) au lieu de l'entrée dans l'écran. */
   immediate?: boolean;
+  /** Contrôle explicite : si défini, l'animation suit cette valeur (ex. fin de l'ouverture). */
+  play?: boolean;
 }
 
 /** Texte qui apparaît mot par mot ou lettre par lettre, chaque morceau montant dans son masque. */
@@ -27,10 +29,11 @@ export default function SplitText({
   stagger,
   repeat = false,
   immediate = false,
+  play,
 }: SplitTextProps) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: !repeat, amount: 0.3 });
-  const show = immediate || inView;
+  const show = play ?? (immediate || inView);
   const step = stagger ?? (by === "char" ? staggers.tight : staggers.base);
 
   const words = text.split(" ");

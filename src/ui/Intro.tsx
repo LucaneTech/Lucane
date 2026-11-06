@@ -8,6 +8,12 @@ const LETTERS = Array.from("LUCANE");
 /** Signale la fin de l'ouverture aux sections qui attendent pour démarrer (hero). */
 export const INTRO_DONE_EVENT = "lucane:intro-done";
 
+/** Marque la fin de l'ouverture (drapeau global + événement) pour les composants montés plus tard. */
+function signalDone() {
+  (window as unknown as { __lucaneIntroDone?: boolean }).__lucaneIntroDone = true;
+  window.dispatchEvent(new Event(INTRO_DONE_EVENT));
+}
+
 function shouldPlay() {
   try {
     if (sessionStorage.getItem(SESSION_KEY)) return false;
@@ -26,7 +32,7 @@ export default function Intro() {
 
   useEffect(() => {
     if (!playing) {
-      window.dispatchEvent(new Event(INTRO_DONE_EVENT));
+      signalDone();
       return;
     }
     try {
@@ -39,7 +45,7 @@ export default function Intro() {
   }, [playing]);
 
   return (
-    <AnimatePresence onExitComplete={() => window.dispatchEvent(new Event(INTRO_DONE_EVENT))}>
+    <AnimatePresence onExitComplete={signalDone}>
       {playing && (
         <motion.div
           key="intro"
