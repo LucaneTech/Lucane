@@ -30,7 +30,7 @@ const TechItem: React.FC<{ icon: string; label: string }> = ({ icon, label }) =>
 const AutoScrollElement: React.FC = () => {
   return (
     <div
-      className="w-full bg-surface-alt dark:bg-dark py-4 md:py-6 overflow-hidden group border-b  border-slate-200 dark:border-slate-700/50"
+      className="w-full bg-canvas-alt dark:bg-dark py-4 md:py-6 overflow-hidden group border-b  border-slate-200 dark:border-slate-700/50"
       role="marquee"
       aria-label="Technologies maîtrisées"
     >

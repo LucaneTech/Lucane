@@ -5,8 +5,10 @@
  */
 import LegalPage from "../ui/LegalPage";
 import { site } from "../data/site";
+import { useSeo } from "../ui/useSeo";
 
 export default function Privacy() {
+  useSeo("Confidentialité", "Quelles données le site Lucane Tech collecte, pourquoi, et comment exercer vos droits.");
   return (
     <LegalPage
       eyebrow="Confidentialité"

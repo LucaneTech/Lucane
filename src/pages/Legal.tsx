@@ -4,10 +4,12 @@
  */
 import LegalPage from "../ui/LegalPage";
 import { site } from "../data/site";
+import { useSeo } from "../ui/useSeo";
 
 const todo = (v: string) => (v === "À FOURNIR" ? <em className="text-[#ff7a3d]">à compléter</em> : v);
 
 export default function Legal() {
+  useSeo("Mentions légales", "Mentions légales du site Lucane Tech : éditeur, hébergement, propriété intellectuelle.");
   return (
     <LegalPage
       eyebrow="Mentions légales"

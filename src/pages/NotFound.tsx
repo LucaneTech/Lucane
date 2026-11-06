@@ -5,9 +5,11 @@ import IrisOrb from "../ui/IrisOrb";
 import { MouseParallax } from "../motion/Parallax";
 import { whatsappHref } from "../data/site";
 import { ease } from "../motion/presets";
+import { useSeo } from "../ui/useSeo";
 
 /** 404 : « 404 » géant irisé qui flotte entre deux formes, retour à l'accueil ou WhatsApp. */
 export default function NotFound() {
+  useSeo("Page introuvable", "Cette page n'existe pas ou a été déplacée.", { noindex: true });
   return (
     <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-canvas px-6 pt-24 text-center">
       <MouseParallax depth={30} className="pointer-events-none absolute left-[10%] top-[18%]">

@@ -24,7 +24,7 @@ const icons = [
   { Icon: ShieldCheck, label: "Fiabilité" },
 ];
 
-const designs = ["design1.jpg", "design2.jpg", "design3.jpg", "design4.jpg"];
+const designs = ["design1.webp", "design2.webp", "design3.webp", "design4.webp"];
 
 export default function MotionLab() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });

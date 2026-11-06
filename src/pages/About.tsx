@@ -12,8 +12,10 @@ import TeamSection from "../components/home/v2/TeamSection";
 import WhereWeAre from "../components/about/v2/WhereWeAre";
 import FinalCta from "../components/home/v2/FinalCta";
 import { faqFor } from "../data/faq";
+import { useSeo } from "../ui/useSeo";
 
 export default function About() {
+  useSeo("À propos", "Lucane Tech, une équipe de développeurs basée au Maroc avec un relais à Brazzaville : mission, valeurs et équipe.");
   return (
     <>
       <PageHero

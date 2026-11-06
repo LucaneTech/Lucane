@@ -15,22 +15,22 @@ import { projects } from "../../../data/projects";
 const LIVE = projects.filter((p) => p.liveUrl && p.frameable !== false && !p.featured && p.category !== "Interne");
 
 const DESIGNS = [
-  "design1.jpg",
-  "design/1786719789931.jpg",
-  "design3.jpg",
-  "design/1786923689800.jpg",
-  "design/1786924528520.jpg",
-  "design2.jpg",
-  "design/1786924574729.jpg",
-  "design/1786924715198.jpg",
-  "design4.jpg",
-  "design/1787080776144.jpg",
-  "design/1787182220219.jpg",
-  "design/1787185679563.jpg",
-  "design/1787185866221.jpg",
-  "design/1787431233552.jpg",
-  "design/1787678834840.jpg",
-  "design/1791323853065.jpg",
+  "design1.webp",
+  "design/1786719789931.webp",
+  "design3.webp",
+  "design/1786923689800.webp",
+  "design/1786924528520.webp",
+  "design2.webp",
+  "design/1786924574729.webp",
+  "design/1786924715198.webp",
+  "design4.webp",
+  "design/1787080776144.webp",
+  "design/1787182220219.webp",
+  "design/1787185679563.webp",
+  "design/1787185866221.webp",
+  "design/1787431233552.webp",
+  "design/1787678834840.webp",
+  "design/1791323853065.webp",
 ].map((f) => `/images/home/${f}`);
 
 /** Studio design (plan 3.8) : 16 maquettes + 4 sites réels en ligne, en 3 colonnes qui défilent à vitesses différentes. */

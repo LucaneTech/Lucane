@@ -18,6 +18,7 @@ import { M } from "../motion/kit";
 import { ease } from "../motion/presets";
 import NotFound from "./NotFound";
 import FinalCta from "../components/home/v2/FinalCta";
+import { useSeo } from "../ui/useSeo";
 
 const STEPS = [
   { key: "context", label: "Contexte" },
@@ -35,6 +36,7 @@ export default function CaseStudy() {
 }
 
 function CaseStudyView({ project }: { project: Project }) {
+  useSeo(project.title, project.description);
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const visualScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);

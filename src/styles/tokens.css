@@ -65,12 +65,6 @@
   --color-on-inverse: var(--on-inverse);
 
   --shadow-glow: var(--glow);
-
-  /* Alias temporaires (migration) — supprimés à la tâche 8.3 */
-  --color-surface: var(--canvas);
-  --color-surface-alt: var(--canvas-alt);
-  --color-primary-hover: #006666;
-  --color-primary-dim: rgba(0, 128, 128, 0.08);
 }
 
 @theme {

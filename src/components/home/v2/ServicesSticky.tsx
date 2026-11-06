@@ -9,13 +9,13 @@ import { services } from "../../../data/services";
 import { ease } from "../../../motion/presets";
 
 const VISUALS: Record<string, string> = {
-  web: "/images/services/web.png",
-  mobile: "/images/services/mobile.png",
-  design: "/images/services/frontend.png",
-  cloud: "/images/services/cloud.png",
-  marketing: "/images/services/service_developpement.png",
-  automatisation: "/images/services/clouding.png",
-  maintenance: "/images/services/service_developpement.png",
+  web: "/images/services/web.webp",
+  mobile: "/images/services/mobile.webp",
+  design: "/images/services/frontend.webp",
+  cloud: "/images/services/cloud.webp",
+  marketing: "/images/services/service_developpement.webp",
+  automatisation: "/images/services/clouding.webp",
+  maintenance: "/images/services/service_developpement.webp",
 };
 const TONES = ["teal", "indigo", "sunset"] as const;
 

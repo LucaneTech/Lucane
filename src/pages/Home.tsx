@@ -15,8 +15,10 @@ import Guarantees from "../components/home/v2/Guarantees";
 import Testimonials from "../components/home/v2/Testimonials";
 import QuickQuote from "../components/home/v2/QuickQuote";
 import FinalCta from "../components/home/v2/FinalCta";
+import { useSeo } from "../ui/useSeo";
 
 export default function Home() {
+  useSeo("Lucane Tech | Sites, applications web et mobiles sur mesure", "Équipe de développeurs : sites vitrines, boutiques en ligne, applications web et mobiles et logiciels sur mesure pour les entreprises du Maroc, du Congo et d'ailleurs. Devis gratuit, réponse sous 24 h.");
   return (
     <>
       <Hero />

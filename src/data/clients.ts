@@ -8,7 +8,7 @@ export interface Client {
 export const clients: Client[] = [
   { name: "Oralise", logo: "/collaborators/oralise.png", confirmed: true },
   { name: "EEMCI", logo: "/collaborators/eemci.png", confirmed: true },
-  { name: "KFK Agrobusiness", logo: "/collaborators/kfk.png", confirmed: true },
+  { name: "KFK Agrobusiness", logo: "/collaborators/kfk.webp", confirmed: true },
   { name: "Active Rise", logo: "/collaborators/active_rise.png", confirmed: true },
   { name: "EEMSI", logo: "/collaborators/eemsi.png", confirmed: true },
   { name: "Kone Shop", logo: "/collaborators/kone.png", confirmed: false }, // À CONFIRMER

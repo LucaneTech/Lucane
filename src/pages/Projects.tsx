@@ -11,8 +11,10 @@ import ImpactStrip from "../components/projects/ImpactStrip";
 import GeographicReach from "../components/projects/GeographicReach";
 import Testimonials from "../components/home/v2/Testimonials";
 import FinalCta from "../components/home/v2/FinalCta";
+import { useSeo } from "../ui/useSeo";
 
 export default function Projects() {
+  useSeo("Réalisations", "Les projets en ligne réalisés par Lucane Tech : sites vitrines, applications métier et boutique en ligne pour l'éducation, l'agriculture, le conseil, le tourisme…");
   return (
     <>
       <ProjectsHero />

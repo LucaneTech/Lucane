@@ -78,12 +78,12 @@ const Hero: React.FC = () => {
       {/* ── Decorative dot grids ─────────────────────────────────────────── */}
       <svg className="absolute top-24 left-6 w-20 h-20 opacity-[0.15] pointer-events-none hidden xl:block" viewBox="0 0 80 80" fill="none">
         {[0,1,2,3].map(r => [0,1,2,3].map(c => (
-          <circle key={`tl-${r}-${c}`} cx={c*20+10} cy={r*20+10} r="1.6" fill="var(--color-primary)" />
+          <circle key={`tl-${r}-${c}`} cx={c*20+10} cy={r*20+10} r="1.6" fill="var(--primary)" />
         )))}
       </svg>
       <svg className="absolute bottom-14 right-6 w-20 h-20 opacity-[0.15] pointer-events-none hidden xl:block" viewBox="0 0 80 80" fill="none">
         {[0,1,2,3].map(r => [0,1,2,3].map(c => (
-          <circle key={`br-${r}-${c}`} cx={c*20+10} cy={r*20+10} r="1.6" fill="var(--color-primary)" />
+          <circle key={`br-${r}-${c}`} cx={c*20+10} cy={r*20+10} r="1.6" fill="var(--primary)" />
         )))}
       </svg>
 
@@ -191,7 +191,7 @@ const Hero: React.FC = () => {
                   }}
                 >
                   {/* <img
-                    src="/images/technologies/hero.png"
+                    src="/images/technologies/hero.webp"
                     alt="Stack technologique"
                     className="w-full h-56 sm:h-64 md:h-72 lg:h-80 object-cover"
                     style={{ filter: "brightness(0.72) saturate(0.9)" }}

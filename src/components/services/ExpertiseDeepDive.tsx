@@ -32,7 +32,7 @@ const expertises: Expertise[] = [
     ],
     caseStudy:
       "Oralise et KFK Agrobusiness : sites vitrines React + TypeScript, en ligne et consultables (oralise.pro, kfkagrobusiness.com).",
-    image: "images/home/memory3.jpeg",
+    image: "images/home/memory3.webp",
   },
   {
     id: "mobile",
@@ -49,7 +49,7 @@ const expertises: Expertise[] = [
     ],
     caseStudy:
       "Chaque application est livrée avec une version de test à chaque étape et un accompagnement à la publication sur l'App Store et Google Play.",
-    image: "images/services/mobile.png"
+    image: "images/services/mobile.webp"
   },
   {  
     id: "cloud",
@@ -66,7 +66,7 @@ const expertises: Expertise[] = [
     ],
     caseStudy:
       "Lucane Filter : application Django conteneurisée avec Docker et tâches de fond Celery pour traiter de grandes listes de contacts.",
-    image: "images/services/clouding.png",
+    image: "images/services/clouding.webp",
   },
 ];
 
@@ -77,7 +77,7 @@ const KpiCard: React.FC<{ value: string; label: string; delay: number }> = ({
   delay,
 }) => (
   <motion.div
-    className="flex flex-col gap-0.5 px-4 py-3 rounded-md bg-surface dark:bg-dark/50 border border-slate-100 dark:border-slate-700/50"
+    className="flex flex-col gap-0.5 px-4 py-3 rounded-md bg-canvas dark:bg-dark/50 border border-slate-100 dark:border-slate-700/50"
     initial={{ opacity: 0, y: 10 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
