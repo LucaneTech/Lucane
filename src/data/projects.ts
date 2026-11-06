@@ -43,8 +43,26 @@ const TODO_CASE: CaseStudy = {
 };
 
 export const projects: Project[] = [
-  {
+  
+   {
     id: 1,
+    slug: "folio-francisco",
+    title: "Folio Francisco",
+    description:
+      "Portfolio professionnel de Francisco Mouanda, fondateur de Lucane, développeur web full-stack spécialisé dans des technologies modernes telles que Django, Python et JavaScript. Le site met en valeur ses projets, ses compétences techniques et son parcours.",
+    image: "",
+    featured: true,
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Daisyui"],
+    githubUrl: "https://github.com/LucaneTech/Portofolio",
+    liveUrl: "https://franciscomouanda.netlify.app",
+    category: "Interne",
+    date: "Avril 2026",
+    year: 2026,
+    bgColor: "",
+  },
+  
+  {
+    id: 3,
     slug: "kfk-agrobusiness",
     title: "KFK Agrobusiness",
     description:
@@ -53,45 +71,13 @@ export const projects: Project[] = [
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     githubUrl: "https://github.com/LucaneTech/agrobusiness",
     liveUrl: "https://www.kfkagrobusiness.com/",
-    featured: true,
+   
     category: "Web",
     sector: "Agriculture",
     date: "Mai 2026",
     year: 2026,
     bgColor: "",
     caseStudy: TODO_CASE,
-  },
-  {
-    id: 2,
-    slug: "active-rise",
-    title: "Active Rise",
-    description:
-      "Site vitrine d'Active Rise, une agence de marketing stratégique accompagnant les entreprises dans leur développement et leur visibilité digitale. Le site met en avant les expertises, les offres de services et les réalisations de l'agence pour aider ses clients à accroître leur croissance commerciale.",
-    image: "",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-    githubUrl: "https://github.com/LucaneTech/Active_rise",
-    liveUrl: "https://activerise.netlify.app",
-    category: "Web",
-    sector: "Marketing",
-    date: "Mai 2026",
-    year: 2026,
-    bgColor: "",
-    caseStudy: TODO_CASE,
-  },
-  {
-    id: 3,
-    slug: "folio-francisco",
-    title: "Folio Francisco",
-    description:
-      "Portfolio professionnel de Francisco Mouanda, fondateur de Lucane, développeur web full-stack spécialisé dans des technologies modernes telles que Django, Python et JavaScript. Le site met en valeur ses projets, ses compétences techniques et son parcours.",
-    image: "",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Daisyui"],
-    githubUrl: "https://github.com/LucaneTech/Portofolio",
-    liveUrl: "https://francisco.lucane.tech/",
-    category: "Interne",
-    date: "Avril 2026",
-    year: 2026,
-    bgColor: "",
   },
   {
     id: 4,
@@ -120,7 +106,7 @@ export const projects: Project[] = [
     image: "",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     githubUrl: "https://github.com/LucaneTech/Oralise",
-    liveUrl: "https://oralise.pro/",
+    liveUrl: "https://oralise.netlify.app",
     featured: true,
     category: "Web",
     sector: "Éducation",
@@ -156,46 +142,16 @@ export const projects: Project[] = [
     technologies: ["React", "TypeScript", "Softphone", "API"],
     githubUrl: "",
     liveUrl: "https://lucane-crm.vercel.app",
-    frameable: false, // l'application interdit l'affichage en iframe (CSP frame-ancestors)
+    frameable: true, // l'application interdit l'affichage en iframe (CSP frame-ancestors)
     category: "Application",
     sector: "Centres d'appels",
     year: 2026,
     caseStudy: TODO_CASE,
   },
+  
+  
   {
     id: 8,
-    slug: "hermon-eximia",
-    title: "Hermon Eximia",
-    description:
-      "Site web de Hermon Eximia, une plateforme de conciergerie haut de gamme proposant une gamme complète de services premium sur mesure, pour une clientèle exigeante en quête d'accompagnement personnalisé, alliant excellence, discrétion et qualité de service.",
-    image: "",
-    technologies: ["React", "TypeScript", "React-i18next", "Tailwind CSS", "Vite", "EmailJS"],
-    githubUrl: "https://github.com/LucaneTech/hermon",
-    liveUrl: "https://hermon-eximia.com/",
-    category: "Web",
-    sector: "Conciergerie",
-    date: "Avril 2026",
-    year: 2026,
-    caseStudy: TODO_CASE,
-  },
-  {
-    id: 9,
-    slug: "panval-consilium",
-    title: "Panval Consilium International",
-    description:
-      "Site web de Panval Consilium International, un cabinet de conseil stratégique basé au Congo. La plateforme présente ses services de conseil en stratégie d'entreprise, de formation professionnelle et d'accompagnement personnalisé, destinés aux organisations souhaitant renforcer leurs capacités.",
-    image: "",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-    githubUrl: "",
-    liveUrl: "https://panvalconsiliuminter.com/",
-    category: "Web",
-    sector: "Conseil",
-    date: "Avril 2026",
-    year: 2026,
-    caseStudy: TODO_CASE,
-  },
-  {
-    id: 10,
     slug: "kone-shop",
     title: "Kone Shop",
     description:
@@ -210,8 +166,9 @@ export const projects: Project[] = [
     year: 2025,
     caseStudy: TODO_CASE,
   },
+
   {
-    id: 11,
+    id: 9,
     slug: "lucane-tech",
     title: "Lucane Tech",
     description:

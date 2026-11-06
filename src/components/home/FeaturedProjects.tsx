@@ -20,6 +20,16 @@ interface Project {
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const projects: Project[] = [
+   {
+    title: "Folio Francisco",
+    tag: "Site vitrine",
+    tagColor: "text-dev bg-dev/10",
+    desc:"Portfolio professionnel de Francisco Mouanda, fondateur de Lucane, développeur web full-stack spécialisé dans des technologies modernes telles que Django, Python et JavaScript. Le site met en valeur ses projets, ses compétences techniques et son parcours.",
+    image: "#",
+    stack: ["React", "TypeScript", "Tailwind CSS", "Vite", "Daisyui"],
+    liveUrl: "https://franciscomouanda.netlify.app",
+    link: "/projets"
+  },
   {
     title: "KFK Agrobusiness",
     tag: "Site vitrine",
@@ -38,7 +48,7 @@ const projects: Project[] = [
     desc: "Portfolio professionnel, développeur web full-stack spécialisé dans des technologies modernes telles que Django, Laravel, Python et JavaScript. Le site met en valeur ses projets, ses compétences techniques et son parcours, à destination d'entreprises à la recherche d'un développeur web expérimenté.",
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Daisyui'],
     link: "/projets",
-    liveUrl: "https://francisco.lucane.tech",
+    liveUrl: "#",
   },
   {
     title: "Oralise",
@@ -48,7 +58,7 @@ const projects: Project[] = [
     desc: "Site web moderne de l'établissement scolaire Oralise, conçu pour présenter l'institution, ses programmes pédagogiques, son corps enseignant et ses actualités. La plateforme offre une interface claire et professionnelle facilitant la communication entre l'école, les élèves et les familles..",
     stack:['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     link: "/projets",
-    liveUrl: "https://oralise.pro",
+    liveUrl: "https://oralise.netlify.app",
   },
 ];
 
