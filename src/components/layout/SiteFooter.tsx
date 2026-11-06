@@ -116,6 +116,14 @@ export default function SiteFooter() {
                 © {new Date().getFullYear()} {site.name}. Tous droits réservés.
               </p>
               <p className="mt-1 italic">« {site.signature} »</p>
+              <p className="mt-3 flex justify-center gap-4 md:justify-start">
+                <M.Link to="/mentions-legales" className="text-white/60 hover:text-white">
+                  Mentions légales
+                </M.Link>
+                <M.Link to="/confidentialite" className="text-white/60 hover:text-white">
+                  Confidentialité
+                </M.Link>
+              </p>
             </div>
             <div className="flex items-center gap-2">
               {SOCIALS.map((s) => (

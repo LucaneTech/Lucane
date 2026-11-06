@@ -12,6 +12,8 @@ const TITLES: Record<string, string> = {
   "/a-propos": "À propos",
   "/contact": "Contact",
   "/__motion": "Banc d'essai",
+  "/mentions-legales": "Mentions légales",
+  "/confidentialite": "Confidentialité",
 };
 
 function titleFor(pathname: string) {

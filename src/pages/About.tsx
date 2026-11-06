@@ -1,49 +1,36 @@
-import { FAQ } from "../components/about/FAQ";
-import AboutHero from "../components/about/Hero";
+/**
+ * À propos (phase 6.2) : en-tête, mission et vision (conservées), chiffres sourcés, équipe et valeurs,
+ * où nous sommes (Maroc + relais à Brazzaville), FAQ, appel final.
+ */
+import { ArrowUpRight } from "lucide-react";
+import PageHero from "../ui/PageHero";
+import Button from "../ui/Button";
+import FaqAccordion from "../ui/FaqAccordion";
 import Mission from "../components/about/Mission";
 import StatsSection from "../components/about/State";
-import MeetOurFounder from "../components/about/Team";
-import ValuesCultureSection from "../components/about/ValueCultures";
-import CallAction from "../components/CallAction";
+import TeamSection from "../components/home/v2/TeamSection";
+import WhereWeAre from "../components/about/v2/WhereWeAre";
+import FinalCta from "../components/home/v2/FinalCta";
+import { faqFor } from "../data/faq";
 
-const founder = {
-  name: "Francisco Mouanda",
-  role: "Fondateur & CEO",
-  image: "favicon.png",
-  description:
-    "Fondateur et visionnaire de Lucane. Je guide chaque projet avec passion, innovation et expertise technique.",
-  socials: [],
-};
-
-
-
-
-
-
-
-
-const About: React.FC = () => {
+export default function About() {
   return (
     <>
-      <AboutHero />
-
-      {/**Our vision and mission section*/}
-
-   
-      <Mission/>
-
-      
-
-      <StatsSection/>
-      <MeetOurFounder member={founder}/>
-
-      <ValuesCultureSection/>
-       <FAQ/>
-      <CallAction title={"Prêt à construire quelque chose de génial ?"} description={"Que vous ayez une idée révolutionnaire ou que vous souhaitiez rejoindre notre équipe innovante, nous aimerions avoir de vos nouvelles."} label={"Contactez-nous"} to={"#"}/>
-    
-
+      <PageHero
+        eyebrow="À propos de Lucane"
+        light="Une équipe passionnée,"
+        bold="un impact réel."
+        lead="La technologie est le meilleur levier pour développer l'Afrique. Notre mission est de la rendre accessible à tous les entrepreneurs."
+        tone="indigo"
+      >
+        <Button to="/contact" label="Travaillons ensemble" size="lg" iconRight={<ArrowUpRight className="h-5 w-5" />} />
+      </PageHero>
+      <Mission />
+      <StatsSection />
+      <TeamSection />
+      <WhereWeAre />
+      <FaqAccordion items={faqFor("about")} />
+      <FinalCta />
     </>
-  )
+  );
 }
-
-export default About;
