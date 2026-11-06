@@ -170,7 +170,7 @@ const StackTopography: React.FC = () => {
                   y1={line.y1}
                   x2={line.x2}
                   y2={line.y2}
-                  stroke="var(--color-primary)"
+                  stroke="var(--primary)"
                   strokeOpacity="0.25"
                   strokeWidth="1"
                   strokeDasharray={line.length}

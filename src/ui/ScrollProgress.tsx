@@ -1,33 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring } from "framer-motion";
 
-const ScrollProgress: React.FC = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const updateScrollProgress = () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollTop = window.scrollY;
-      const progress = (scrollTop / scrollHeight) * 100;
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener('scroll', updateScrollProgress);
-    return () => window.removeEventListener('scroll', updateScrollProgress);
-  }, []);
-
+/** Filet teal de 2 px en haut de l'écran qui suit la progression de lecture (sans re-rendu). */
+export default function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 30, mass: 0.3 });
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-0.5 bg-primary z-[300]"
-      style={{
-        scaleX: scrollProgress / 100,
-        transformOrigin: 'left',
-      }}
-      initial={{ scaleX: 0 }}
-      animate={{ scaleX: scrollProgress / 100 }}
-      transition={{ duration: 0.1, ease: 'easeOut' }}
+      aria-hidden
+      className="fixed left-0 right-0 top-0 z-[9500] h-0.5 origin-left bg-primary"
+      style={{ scaleX }}
     />
   );
-};
-
-export default ScrollProgress;
+}

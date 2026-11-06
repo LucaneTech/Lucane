@@ -1,16 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://lucane.tech/</loc>
-  <lastmod>2025-10-31T14:07:26+00:00</lastmod>
-</url>
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://lucane.tech/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/services</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/realisations</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/technologies</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/a-propos</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/contact</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/mentions-legales</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/confidentialite</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/realisations/folio-francisco</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/realisations/kfk-agrobusiness</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/realisations/trip-manager</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/realisations/oralise</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/realisations/lucane-filter</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/realisations/lucane-crm</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/realisations/kone-shop</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lucane.tech/realisations/lucane-tech</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.6</priority>
+  </url>
 </urlset>

@@ -1,33 +1,44 @@
-import React from "react";
-import HeroSection from "../components/services/HeroSection";
+/**
+ * Services (phase 6.1) : en-tête, défilé des technologies, 7 expertises ancrées, formules,
+ * méthode, détail par domaine (conservé), pourquoi nous (conservé), FAQ, appel final.
+ */
+import { ArrowUpRight } from "lucide-react";
+import PageHero from "../ui/PageHero";
+import Button from "../ui/Button";
+import FaqAccordion from "../ui/FaqAccordion";
 import AutoScrollElement from "../components/services/AutoScrollElement";
-import FeaturesSection from "../components/services/Process";
-import Expertise from "../components/services/Expertise";
-import Methodology from "../components/services/Methodology";
+import ExpertiseRows from "../components/services/v2/ExpertiseRows";
+import Offers from "../components/services/v2/Offers";
+import ProcessTimeline from "../components/home/v2/ProcessTimeline";
 import ExpertiseDeepDive from "../components/services/ExpertiseDeepDive";
-import FAQ from "../components/services/FAQ";
 import WhyUs from "../components/services/WhyUs";
-import CallAction from "../components/CallAction";
+import FinalCta from "../components/home/v2/FinalCta";
+import { faqFor } from "../data/faq";
+import { useSeo } from "../ui/useSeo";
 
-const Services: React.FC = () => {
+export default function Services() {
+  useSeo("Services", "Développement web et mobile, UX/UI design, cloud, marketing digital, automatisation et maintenance : nos expertises et nos formules, avec engagements écrits.");
   return (
-    <div className="pt-24">
-      <HeroSection />
+    <>
+      <PageHero
+        eyebrow="Services"
+        light="Des solutions"
+        bold="sur mesure."
+        lead="De la conception au déploiement, nous couvrons tous les aspects de votre transformation digitale avec une approche 100 % sur mesure."
+      >
+        <div className="flex flex-wrap gap-4">
+          <Button to="/contact" label="Demander un devis gratuit" size="lg" iconRight={<ArrowUpRight className="h-5 w-5" />} />
+          <Button to="/services#formules" label="Voir les formules" size="lg" variant="outline" />
+        </div>
+      </PageHero>
       <AutoScrollElement />
-      <FeaturesSection />
-      <Expertise />
-      <Methodology />
+      <ExpertiseRows />
+      <Offers />
+      <ProcessTimeline />
       <ExpertiseDeepDive />
       <WhyUs />
-      <FAQ />
-      <CallAction
-        title="Lancez votre projet dès aujourd'hui"
-        label="Démarrons ensemble"
-        description="Notre équipe transforme vos idées en solutions digitales performantes, fiables et sur mesure."
-        to="/contact"
-      />
-    </div>
+      <FaqAccordion items={faqFor("services")} />
+      <FinalCta />
+    </>
   );
-};
-
-export default Services;
+}

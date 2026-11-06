@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { verifiedFacts } from "../../data/site";
 
 interface Stat {
   label: string;
@@ -8,11 +9,10 @@ interface Stat {
   suffix: string;
 }
 
+// Chiffres sourcés uniquement (src/data/site.ts) + engagement de réponse.
 const stats: Stat[] = [
-  { label: "Clients satisfaits", value:20, suffix: "+" },
-  { label: "Taux de satisfaction", value: 98, suffix: "%" },
-  { label: "Ans d'expérience", value: 3, suffix: "+" },
-  { label: "Pays couverts", value: 6, suffix: "+" },
+  ...verifiedFacts().map((f) => ({ label: f.label, value: f.value, suffix: f.suffix ?? "" })),
+  { label: "Heures max. pour vous répondre", value: 24, suffix: " h" },
 ];
 
 interface CounterProps {

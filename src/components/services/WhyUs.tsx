@@ -15,7 +15,7 @@ const reasons = [
   {
     icon: Shield,
     title: "Code de qualité",
-    stat: "99.9% uptime",
+    stat: "Tests + revues",
     desc: "Tests automatisés et revues de code systématiques pour une fiabilité maximale.",
     color: "text-design",
     bg: "bg-design/10",
@@ -24,7 +24,7 @@ const reasons = [
   {
     icon: Globe,
     title: "Expertise internationale",
-    stat: "6 pays",
+    stat: "Maroc · Congo",
     desc: "Présence au Congo et dans la diaspora africaine pour une perspective globale.",
     color: "text-growth",
     bg: "bg-growth/10",
@@ -33,7 +33,7 @@ const reasons = [
   {
     icon: Users,
     title: "Equipe dédiée",
-    stat: "+3 ans",
+    stat: "1 interlocuteur",
     desc: "Une équipe senior à votre service. Un interlocuteur unique et engagé.",
     color: "text-cloud",
     bg: "bg-cloud/10",
@@ -70,7 +70,7 @@ const WhyUs: React.FC = () => {
             return (
               <motion.div
                 key={index}
-                className={`p-4 md:p-8 ${isAlt ? "bg-surface-alt dark:bg-dark-surface" : "bg-white dark:bg-dark-elevated"} ${
+                className={`p-4 md:p-8 ${isAlt ? "bg-canvas-alt dark:bg-dark-surface" : "bg-white dark:bg-dark-elevated"} ${
                   index < 2 ? "border-b border-ink-faint/20 dark:border-slate-700" : ""
                 } ${index % 2 === 0 ? "md:border-r border-ink-faint/20 dark:border-slate-700" : ""}`}
                 initial={{ opacity: 0, y: 20 }}

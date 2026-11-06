@@ -1,35 +1,30 @@
-import React, { useState } from "react";
-import HeroProject from "../components/projects/HeroProject";
-import Testamonals from "../components/projects/Testamonals";
-import CallAction from "../components/CallAction";
-import AllProjects from "../components/projects/AllProjects";
+/**
+ * Réalisations (phase 5) : en-tête, grille filtrable de tous les projets (chaque carte mène à son
+ * étude de cas), puis les sections conservées de l'ancienne page (technologies, frise, chiffres, carte).
+ * Les témoignages passent par le filtre d'accord client (src/data/testimonials.ts).
+ */
+import ProjectsHero from "../components/projects/v2/ProjectsHero";
+import ProjectsGrid from "../components/projects/v2/ProjectsGrid";
 import TechDNA from "../components/projects/TechDNA";
 import ProjectTimeline from "../components/projects/ProjectTimeline";
 import ImpactStrip from "../components/projects/ImpactStrip";
 import GeographicReach from "../components/projects/GeographicReach";
+import Testimonials from "../components/home/v2/Testimonials";
+import FinalCta from "../components/home/v2/FinalCta";
+import { useSeo } from "../ui/useSeo";
 
-const Projects: React.FC = () => {
-  const [filter, setFilter] = useState<string>("Tous");
-
+export default function Projects() {
+  useSeo("Réalisations", "Les projets en ligne réalisés par Lucane Tech : sites vitrines, applications métier et boutique en ligne pour l'éducation, l'agriculture, le conseil, le tourisme…");
   return (
-    <div>
-      <HeroProject filter={filter} setFilter={setFilter} />
-      <AllProjects filter={filter} />
+    <>
+      <ProjectsHero />
+      <ProjectsGrid />
       <TechDNA />
       <ProjectTimeline />
       <ImpactStrip />
-      <Testamonals />
+      <Testimonials />
       <GeographicReach />
-      <CallAction
-        title={"Prêt à construire quelque chose d'extraordinaire ?"}
-        description={
-          "We are a software development agency passionate about crafting innovative digital solutions that drive growth and transform businesses."
-        }
-        label={"Commençons aujourd'hui!"}
-        to={"/contact"}
-      />
-    </div>
+      <FinalCta />
+    </>
   );
-};
-
-export default Projects;
+}

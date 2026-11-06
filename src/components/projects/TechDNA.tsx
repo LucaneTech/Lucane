@@ -23,7 +23,7 @@ const TechDNA: React.FC = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-surface dark:bg-transparent overflow-hidden">
+    <section className="py-20 px-6 bg-canvas dark:bg-transparent overflow-hidden">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -55,7 +55,7 @@ const TechDNA: React.FC = () => {
               className={`relative group cursor-default rounded-md border border-primary/25 bg-primary/5 dark:bg-primary/10 text-primary font-medium transition-colors duration-150 hover:bg-primary/15 hover:border-primary/50 ${getBubbleSize(count)}`}
             >
               {tech}
-              <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-ink dark:bg-white text-white dark:text-ink text-[10px] px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10 shadow-sm">
+              <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-ink text-canvas text-[10px] px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10 shadow-sm">
                 {count} projet{count > 1 ? "s" : ""}
               </span>
             </motion.div>

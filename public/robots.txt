@@ -1,36 +1,15 @@
-# robots.txt pour Lucane Tech
+# robots.txt — Lucane Tech
+# Le site est une application React : Google doit pouvoir lire /assets/ (scripts et styles)
+# pour afficher les pages. L'ancien fichier bloquait ce dossier.
 
 User-agent: *
-Disallow:
-
-# Autorise tous les robots à explorer le site
 Allow: /
+Disallow: /__motion
 
-# Indique l’emplacement du sitemap
-Sitemap: https://lucane.tech/sitemap.xml
-
-# Empêche l'indexation de fichiers inutiles
-Disallow: /assets/
-Disallow: /static/
-Disallow: /node_modules/
-Disallow: /private/
-Disallow: /temp/
-
-# Quelques conseils pour Google
-User-agent: Googlebot
-Allow: /
-
-# Pour les images (Google Images)
-User-agent: Googlebot-Image
-Allow: /
-
-# Pour les publicités (Google AdsBot)
-User-agent: AdsBot-Google
-Allow: /
-
-# Bloquer certains bots indésirables (exemples)
 User-agent: AhrefsBot
 Disallow: /
 
 User-agent: SemrushBot
 Disallow: /
+
+Sitemap: https://lucane.tech/sitemap.xml

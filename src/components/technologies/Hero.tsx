@@ -26,9 +26,10 @@ const CODE: Tok[][] = [
 
 // ── Performance chips ─────────────────────────────────────────────────────────
 const PERF = [
-  { label: "Frontend", value: "< 1.5s TTI"  },
-  { label: "Backend",  value: "50k+ req/j"  },
-  { label: "Deploy",   value: "< 3 min"     },
+  // Engagements (les anciennes valeurs n'étaient pas mesurées)
+  { label: "Frontend", value: "Lighthouse ≥ 90" },
+  { label: "Backend",  value: "API documentées" },
+  { label: "Deploy",   value: "CI/CD"           },
 ];
 
 // ── Tech badge list (doubled for seamless marquee) ────────────────────────────
@@ -57,7 +58,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="mt-15  px-3 relative min-h-screen lg:min-h-[92vh] flex items-center overflow-hidden dark:bg-dark">
+    <section className="mt-15  px-3 relative min-h-screen lg:min-h-[92vh] flex items-center overflow-hidden">
 
       {/* ── Teal radial atmospheric glow ─────────────────────────────────── */}
       <div
@@ -77,12 +78,12 @@ const Hero: React.FC = () => {
       {/* ── Decorative dot grids ─────────────────────────────────────────── */}
       <svg className="absolute top-24 left-6 w-20 h-20 opacity-[0.15] pointer-events-none hidden xl:block" viewBox="0 0 80 80" fill="none">
         {[0,1,2,3].map(r => [0,1,2,3].map(c => (
-          <circle key={`tl-${r}-${c}`} cx={c*20+10} cy={r*20+10} r="1.6" fill="var(--color-primary)" />
+          <circle key={`tl-${r}-${c}`} cx={c*20+10} cy={r*20+10} r="1.6" fill="var(--primary)" />
         )))}
       </svg>
       <svg className="absolute bottom-14 right-6 w-20 h-20 opacity-[0.15] pointer-events-none hidden xl:block" viewBox="0 0 80 80" fill="none">
         {[0,1,2,3].map(r => [0,1,2,3].map(c => (
-          <circle key={`br-${r}-${c}`} cx={c*20+10} cy={r*20+10} r="1.6" fill="var(--color-primary)" />
+          <circle key={`br-${r}-${c}`} cx={c*20+10} cy={r*20+10} r="1.6" fill="var(--primary)" />
         )))}
       </svg>
 
@@ -108,7 +109,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.8, ease: "easeOut" }}
-              className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold text-gray-700 dark:text-white leading-[1.1] mb-5"
+              className="font-display text-5xl sm:text-6xl xl:text-7xl font-extrabold tracking-[-0.045em] text-ink leading-[0.98] mb-6"
             >
               Notre stack{" "}
               <br className="hidden sm:block" />
@@ -121,7 +122,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.7 }}
-              className="text-base lg:text-lg leading-relaxed text-gray-600 dark:text-gray-300 max-w-lg mb-8 mx-auto lg:mx-0"
+              className="text-base lg:text-lg leading-relaxed text-ink-muted max-w-lg mb-8 mx-auto lg:mx-0"
             >
               Des outils choisis pour leur maturité, leurs performances en production
               et leur capacité à évoluer avec votre produit.
@@ -136,7 +137,7 @@ const Hero: React.FC = () => {
               {PERF.map((p) => (
                 <div
                   key={p.label}
-                  className="flex items-center gap-2 rounded-md bg-primary/5 dark:bg-dark-surface border border-gray-300/50 dark:border-slate-700/50 px-3.5 py-2"
+                  className="flex items-center gap-2 rounded-full bg-panel border border-glass-line px-4 py-2"
                 >
                   <span className="text-[11px] dark:text-white/30 uppercase tracking-wider font-medium">{p.label}</span>
                   <span className="w-px h-3 bg-slate-700/80" />
@@ -151,8 +152,8 @@ const Hero: React.FC = () => {
               transition={{ delay: 0.68, duration: 0.8 }}
               className="relative overflow-hidden"
             >
-              <div className="absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-base-100 dark:from-dark to-transparent z-10 pointer-events-none" />
-              <div className="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-base-100 dark:from-dark to-transparent z-10 pointer-events-none" />
+              <div className="absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-canvas to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-canvas to-transparent z-10 pointer-events-none" />
               <div className="flex gap-2 animate-marquee-left w-max">
                 {[...BADGES, ...BADGES].map((badge, i) => (
                   <span
@@ -190,7 +191,7 @@ const Hero: React.FC = () => {
                   }}
                 >
                   {/* <img
-                    src="/images/technologies/hero.png"
+                    src="/images/technologies/hero.webp"
                     alt="Stack technologique"
                     className="w-full h-56 sm:h-64 md:h-72 lg:h-80 object-cover"
                     style={{ filter: "brightness(0.72) saturate(0.9)" }}
@@ -355,11 +356,11 @@ const Hero: React.FC = () => {
                 <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-1.5 bg-primary border-t border-primary/60">
                   <div className="flex flex-wrap items-center gap-4">
                     <span className="text-[11px] font-mono text-white/90 font-medium">⎇ main</span>
-                    <span className="text-[11px] font-mono text-white/65">✓ 0 problems</span>
+                    <span className="text-[11px] font-mono text-white/90">✓ 0 problems</span>
                   </div>
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="text-[11px] font-mono text-white/65">TypeScript</span>
-                    <span className="text-[11px] font-mono text-white/40">UTF-8</span>
+                    <span className="text-[11px] font-mono text-white/90">TypeScript</span>
+                    <span className="text-[11px] font-mono text-white/75">UTF-8</span>
                   </div>
                 </div>
               </div>

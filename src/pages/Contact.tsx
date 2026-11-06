@@ -1,265 +1,214 @@
-import { Clock, FileText, Gift, Mail, MessageCircle, Phone } from "lucide-react";
-import React from "react";
-import ContactForm from "../components/contact/Formular";
-import { motion } from "framer-motion";
+/**
+ * Contact (phase 6.3) : canaux (WhatsApp en avant), engagements, formulaire enrichi
+ * (type de projet, secteur, budget indicatif, délai) envoyé par FormSubmit vers contact@.
+ * Une formule choisie sur la page Services arrive pré-sélectionnée (?formule=…).
+ */
+import { useState } from "react";
+import type { FormEvent } from "react";
+import { useSearchParams } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, Check, Clock, FileText, Gift, Mail, MessageCircle, Phone } from "lucide-react";
+import PageHero from "../ui/PageHero";
 import Button from "../ui/Button";
+import Eyebrow from "../ui/Eyebrow";
+import { M } from "../motion/kit";
+import { site, whatsappHref } from "../data/site";
+import { offers } from "../data/offers";
+import { sectors } from "../data/sectors";
+import { ease } from "../motion/presets";
+import { useSeo } from "../ui/useSeo";
 
-const channels = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "contact@lucane.tech",
-    href: "mailto:contact@lucane.tech",
-    desc: "Réponse sous 24h",
-  },
-  {
-    icon: Phone,
-    label: "Téléphone",
-    value: "(+212) 781 343 642",
-    href: "tel:+212781343642",
-    desc: "Lun–Ven, 9h–18h",
-  },
-  {
-    icon: MessageCircle,
-    label: "Chat",
-    value: "Chat en direct sur Whatsapp",
-    href: "https://wa.me/212781343642",
-    desc: "Disponible maintenant",
-  },
+const BUDGETS = ["À définir ensemble", "< 500 €", "500 – 2 000 €", "2 000 – 5 000 €", "> 5 000 €"];
+const DELAYS = ["Urgent (< 2 semaines)", "Dans le mois", "2 à 3 mois", "Pas pressé"];
+
+const COMMITMENTS = [
+  { icon: Clock, title: "Réponse sous 24 h", desc: "Chaque demande reçoit une réponse personnalisée dans la journée." },
+  { icon: FileText, title: "NDA disponible", desc: "Accord de confidentialité signable avant tout échange sensible." },
+  { icon: Gift, title: "Devis 100 % gratuit", desc: "Estimation détaillée sans engagement, après session de découverte." },
 ];
 
-const commitments = [
-  {
-    icon: Clock,
-    title: "Réponse sous 24h",
-    desc: "Chaque demande reçoit une réponse personnalisée dans la journée.",
-  },
-  {
-    icon: FileText,
-    title: "NDA disponible",
-    desc: "Accord de confidentialité signable avant tout échange sensible.",
-  },
-  {
-    icon: Gift,
-    title: "Devis 100% gratuit",
-    desc: "Estimation détaillée sans engagement, après session de découverte.",
-  },
-];
+/** Groupe de pilules à choix unique. */
+function Pills({ legend, options, value, onChange }: { legend: string; options: string[]; value: string; onChange: (v: string) => void }) {
+  return (
+    <fieldset>
+      <legend className="eyebrow mb-3 text-ink-muted">{legend}</legend>
+      <div className="flex flex-wrap gap-2">
+        {options.map((o) => {
+          const on = value === o;
+          return (
+            <motion.button
+              key={o}
+              type="button"
+              whileTap={{ scale: 0.94 }}
+              onClick={() => onChange(on ? "" : o)}
+              aria-pressed={on}
+              className={`rounded-full border px-4 py-2 text-sm transition-colors duration-300 ${
+                on ? "border-primary bg-primary text-on-primary" : "border-glass-line bg-canvas-alt text-ink hover:border-primary"
+              }`}
+            >
+              {o}
+            </motion.button>
+          );
+        })}
+      </div>
+    </fieldset>
+  );
+}
 
-const infoRows = [
-  { label: "Email", value: "contact@lucane.tech", href: "mailto:contact@lucane.tech" },
-  { label: "Téléphone", value: "(+212) 781 343 642", href: "tel:+212781343642" },
-  { label: "Réponse sous", value: "24 heures" },
-];
+export default function Contact() {
+  useSeo("Contact", "Parlez-nous de votre projet : WhatsApp, téléphone, e-mail ou formulaire. Devis gratuit et réponse sous 24 heures.");
+  const [params] = useSearchParams();
+  const preset = offers.find((o) => o.slug === params.get("formule"))?.name ?? "";
+  const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", message: "" });
+  const [choice, setChoice] = useState({ type: preset, sector: "", budget: "", delay: "" });
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
 
-const Contact: React.FC = () => {
-  const scrollToForm = () => {
-    document.getElementById("formulaire")?.scrollIntoView({ behavior: "smooth" });
+  const submit = async (e: FormEvent) => {
+    e.preventDefault();
+    setSending(true);
+    setError(false);
+    const data = new FormData();
+    Object.entries({ ...form, ...choice }).forEach(([k, v]) => data.append(k, v || "Non précisé"));
+    data.append("_subject", `Nouveau projet — ${form.name || "site Lucane"}`);
+    data.append("_captcha", "false");
+    data.append("_template", "table");
+    try {
+      const res = await fetch(`https://formsubmit.co/${site.email}`, { method: "POST", headers: { Accept: "application/json" }, body: data });
+      if (!res.ok) throw new Error(String(res.status));
+      setSent(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
     <>
-      {/* ── Hero ────────────────────────────────────────────── */}
-      <section className="relative pt-28 md:pt-36 pb-16 px-4 md:px-8 lg:px-16 xl:px-24 overflow-hidden">
-        {/* Background SVG circles — mirrors home */}
-        <svg
-          className="absolute -z-10 inset-0 w-full h-full pointer-events-none"
-          viewBox="0 0 1440 720"
-          fill="none"
-        >
-          <circle cx="711.819" cy="372.562" r="308.334" stroke="var(--color-primary)" strokeOpacity={0.12} strokeWidth={3} />
-          <circle cx="16.942" cy="20.834" r="308.334" stroke="var(--color-primary)" strokeOpacity={0.12} strokeWidth={2} />
-          <circle cx="782.595" cy="411.166" r="308.334" stroke="var(--color-primary)" strokeOpacity={0.12} strokeWidth={3} />
-          <circle cx="1300" cy="600" r="280" stroke="var(--color-primary)" strokeOpacity={0.08} strokeWidth={2} />
-        </svg>
+      <PageHero eyebrow="Contact" light="Parlons de" bold="votre projet." lead="Chaque projet commence par une conversation. Choisissez le canal qui vous convient : nous répondons sous 24 heures." tone="sunset">
+        <div className="flex flex-wrap gap-4">
+          <Button href={whatsappHref()} label="Écrire sur WhatsApp" size="lg" iconLeft={<MessageCircle className="h-5 w-5" />} />
+          <Button to="/contact#formulaire" label="Remplir le formulaire" size="lg" variant="outline" />
+        </div>
+      </PageHero>
 
-        <div className="grid lg:grid-cols-[45fr_55fr] gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
-
-          {/* Left — image */}
-          <motion.div
-            className="relative block"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {/* Offset border decoration */}
-            <div className="absolute -bottom-6 -right-6 w-full h-full rounded-md border border-primary/20 -z-10" />
-
-            <div className="relative rounded-md overflow-hidden aspect-[4/3] sm:aspect-[4/5]">
-            <div className="flex items-center gap-1.5 px-4 py-2.5 bg-slate-100 dark:bg-dark-elevated border-b border-slate-200 dark:border-slate-700/50">
-            <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
-            <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-            <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
-            <div className="flex-1 mx-3 bg-surface-alt dark:bg-dark-elevated rounded-sm h-5 py-2 border border-slate-200 dark:border-slate-700/50 px-3 flex items-center">
-              <span className="text-[10px] text-slate-500 dark:text-slate-300">
-                https://lucane.tech/contact
+      {/* Canaux */}
+      <section className="relative pb-10" aria-label="Nous joindre">
+        <div className="mx-auto grid w-full max-w-[1440px] gap-5 px-5 md:grid-cols-3 md:px-10 lg:px-16">
+          {[
+            { icon: MessageCircle, label: "WhatsApp", value: "Discuter maintenant", href: whatsappHref(), desc: "Le plus rapide", accent: true },
+            { icon: Phone, label: "Téléphone", value: site.phone.display, href: site.phone.href, desc: site.hours },
+            { icon: Mail, label: "E-mail", value: site.email, href: `mailto:${site.email}`, desc: `Réponse sous ${site.responseTime}` },
+          ].map((c, i) => (
+            <motion.a
+              key={c.label}
+              href={c.href}
+              target={c.href.startsWith("http") ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.8, ease: ease.out, delay: i * 0.08 }}
+              className={`group flex items-center justify-between gap-4 rounded-md border p-6 md:p-7 ${
+                c.accent ? "border-transparent bg-primary text-on-primary shadow-glow" : "border-glass-line bg-panel text-ink"
+              }`}
+              data-cursor="pointer"
+            >
+              <span className="flex items-center gap-4">
+                <span className={`flex h-14 w-14 items-center justify-center rounded-full ${c.accent ? "bg-white/20" : "bg-canvas-alt text-primary-ink"}`}>
+                  <c.icon className="h-6 w-6" />
+                </span>
+                <span>
+                  <span className={`eyebrow block ${c.accent ? "opacity-80" : "text-ink-muted"}`}>{c.label}</span>
+                  <span className="mt-1 block font-display text-lg font-bold">{c.value}</span>
+                  <span className={`block text-sm ${c.accent ? "opacity-80" : "text-ink-muted"}`}>{c.desc}</span>
+                </span>
               </span>
+              <ArrowUpRight className="h-5 w-5 shrink-0 transition-transform duration-500 group-hover:rotate-45" />
+            </motion.a>
+          ))}
+        </div>
+      </section>
+
+      {/* Formulaire */}
+      <section id="formulaire" className="relative scroll-mt-28 py-20 md:py-28" aria-labelledby="form-title">
+        <div className="mx-auto grid w-full max-w-[1440px] gap-12 px-5 md:px-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16 lg:px-16">
+          <div className="space-y-8 lg:sticky lg:top-32 lg:self-start">
+            <div>
+              <Eyebrow>Formulaire</Eyebrow>
+              <M.H2 className="mt-6" id="form-title">
+                Décrivez votre projet.
+              </M.H2>
+              <M.P className="mt-5 max-w-md">Plus vous nous en dites, plus notre première réponse sera précise. Seuls le nom et l'e-mail sont obligatoires.</M.P>
             </div>
-          </div>
-              <img
-                src="/images/bg.jpg"
-                alt="Contactez Lucane Tech"
-                className="w-full h-full object-cover duration-300 hover:scale-105 transition-transform"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/15 to-transparent" />
-
-              {/* Floating availability chip */}
-              <motion.div
-                className="absolute bottom-6 left-6 bg-white/90 dark:bg-dark-elevated backdrop-blur-sm rounded-md px-4 py-3"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.0, duration: 0.5 }}
-              >
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
-                  <p className="text-xs font-medium text-ink dark:text-white">
-                    Disponible · Lun–Ven, 9h–18h
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-
-          </motion.div>
-
-          {/* Right — text */}
-          <motion.div
-            className="flex flex-col items-center lg:items-start text-center lg:text-left"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          >
-            <span className="text-xs uppercase tracking-[0.2em] font-medium text-primary">
-              Contact
-            </span>
-
-            <h1 className="mt-4 text-4xl lg:text-5xl font-bold text-ink dark:text-white leading-tight">
-              Parlons de<br />
-              votre <span className="text-primary">projet.</span>
-            </h1>
-
-            <p className="mt-6 text-base leading-relaxed text-ink-muted dark:text-slate-300 max-w-md mx-auto lg:mx-0">
-              Notre équipe est disponible pour répondre à toutes vos questions
-              et transformer votre vision en réalité.
-            </p>
-
-            {/* Info table */}
-            <div className="mt-8 divide-y divide-base-300 dark:divide-slate-200/30 w-full max-w-md mx-auto lg:mx-0">
-              {infoRows.map((item) => (
-                <div key={item.label} className="flex items-center justify-between py-3.5">
-                  <span className="text-xs uppercase tracking-widest text-ink-muted dark:text-slate-300 font-medium">
-                    {item.label}
+            <div className="space-y-3">
+              {COMMITMENTS.map(({ icon: Icon, title, desc }, i) => (
+                <M.Card key={title} index={i} className="flex items-start gap-4 p-5 md:p-5">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-canvas-alt text-primary-ink">
+                    <M.Icon>
+                      <Icon className="h-5 w-5" />
+                    </M.Icon>
                   </span>
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      className="text-sm font-semibold text-ink dark:text-white hover:text-primary transition-colors"
-                    >
-                      {item.value}
-                    </a>
-                  ) : (
-                    <span className="text-sm font-semibold text-ink dark:text-primary">
-                      {item.value}
-                    </span>
-                  )}
-                </div>
+                  <span>
+                    <span className="block font-semibold text-ink">{title}</span>
+                    <span className="block text-sm text-ink-muted">{desc}</span>
+                  </span>
+                </M.Card>
               ))}
             </div>
-
-            <div className="mt-8">
-              <Button
-                variant="primary"
-                size="lg"
-                label="Envoyer un message"
-                onClick={scrollToForm}
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Channels ────────────────────────────────────────── */}
-      <section className="px-4 md:px-8 lg:px-16 xl:px-24 py-14 border-y border-base-300 dark:border-slate-500/10 bg-surface-alt dark:bg-dark-surface">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-base-300 dark:divide-slate-200/10">
-            {channels.map(({ icon: Icon, label, value, href, desc }, i) => (
-              <motion.div
-                key={label}
-                className="flex flex-col gap-3 px-0 sm:px-10 first:pl-0 last:pr-0 py-8 sm:py-0"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-              >
-                <Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-ink-muted font-medium mb-1">
-                    {label}
-                  </p>
-                  <a
-                    href={href}
-                    className="text-base font-semibold text-ink dark:text-white hover:text-primary transition-colors block"
-                  >
-                    {value}
-                  </a>
-                  <p className="text-sm text-ink-muted dark:text-slate-400 mt-0.5">{desc}</p>
-                </div>
-              </motion.div>
-            ))}
           </div>
-        </div>
-      </section>
 
-      {/* ── Form section ────────────────────────────────────── */}
-      <section id="formulaire" className="px-4 md:px-8 lg:px-16 xl:px-24 py-24">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-[2fr_3fr] gap-16 lg:gap-24 items-start">
-
-          {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:sticky lg:top-28"
-          >
-            <span className="text-xs uppercase tracking-widest text-primary font-medium">
-              Formulaire
-            </span>
-            <h2 className="mt-3 text-3xl md:text-4xl font-bold text-ink dark:text-white leading-tight">
-              Envoyez votre<br />message
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-ink-muted dark:text-slate-300 max-w-xs">
-              Chaque projet commence par une conversation. Nous prenons le temps
-              de comprendre vos objectifs et votre vision.
-            </p>
-
-            <div className="mt-10 divide-y divide-base-300 dark:divide-slate-600/30">
-              {commitments.map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="flex items-start gap-4 py-4">
-                  <Icon className="w-4 h-4 text-primary mt-0.5 shrink-0" strokeWidth={1.5} />
-                  <div>
-                    <p className="text-sm font-semibold text-ink dark:text-white">{title}</p>
-                    <p className="text-xs text-ink-muted dark:text-slate-400 mt-0.5 leading-relaxed">
-                      {desc}
-                    </p>
+          <div className="rounded-md border border-glass-line bg-panel p-6 md:p-10">
+            <AnimatePresence mode="wait">
+              {sent ? (
+                <motion.div key="ok" initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} className="flex min-h-[28rem] flex-col items-center justify-center text-center">
+                  <motion.span
+                    initial={{ scale: 0, rotate: -90 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 14 }}
+                    className="flex h-20 w-20 items-center justify-center rounded-full bg-primary text-on-primary shadow-glow"
+                  >
+                    <Check className="h-9 w-9" />
+                  </motion.span>
+                  <p className="mt-8 font-display text-3xl font-bold text-ink">Message bien reçu !</p>
+                  <p className="mt-3 max-w-sm text-ink-muted">Nous revenons vers vous sous {site.responseTime}. Pour aller plus vite, écrivez-nous aussi sur WhatsApp.</p>
+                  <div className="mt-8">
+                    <Button href={whatsappHref()} label="Continuer sur WhatsApp" variant="outline" iconLeft={<MessageCircle className="h-4 w-4" />} />
                   </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Right — bare form, no card */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <ContactForm />
-          </motion.div>
+                </motion.div>
+              ) : (
+                <motion.form key="form" onSubmit={submit} className="space-y-8" exit={{ opacity: 0, y: -10 }}>
+                  <div className="grid gap-5 md:grid-cols-2">
+                    <M.Field label="Votre nom" name="c-name" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                    <M.Field label="Votre e-mail" name="c-email" type="email" required index={1} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                    <M.Field label="Téléphone / WhatsApp" name="c-phone" type="tel" index={2} value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+                    <M.Field label="Entreprise" name="c-company" index={3} value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} />
+                  </div>
+                  <Pills legend="Type de projet" options={offers.map((o) => o.name)} value={choice.type} onChange={(v) => setChoice({ ...choice, type: v })} />
+                  <Pills legend="Votre secteur" options={sectors.map((s) => s.name)} value={choice.sector} onChange={(v) => setChoice({ ...choice, sector: v })} />
+                  <div className="grid gap-8 md:grid-cols-2">
+                    <Pills legend="Budget indicatif" options={BUDGETS} value={choice.budget} onChange={(v) => setChoice({ ...choice, budget: v })} />
+                    <Pills legend="Délai souhaité" options={DELAYS} value={choice.delay} onChange={(v) => setChoice({ ...choice, delay: v })} />
+                  </div>
+                  <M.Field label="Votre projet en quelques mots" name="c-message" multiline value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
+                  {error && (
+                    <p className="rounded-2xl bg-[#ff7a3d]/10 px-5 py-3 text-sm text-ink">
+                      L'envoi n'a pas abouti. Réessayez, ou écrivez-nous directement sur WhatsApp ou à {site.email}.
+                    </p>
+                  )}
+                  <div className="flex flex-wrap items-center gap-4">
+                    <Button type="submit" size="lg" label={sending ? "Envoi en cours…" : "Envoyer ma demande"} disabled={sending} iconRight={<ArrowUpRight className="h-5 w-5" />} />
+                    <p className="text-sm text-ink-muted">Sans engagement · {site.hours}</p>
+                  </div>
+                </motion.form>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </section>
     </>
   );
-};
-
-export default Contact;
+}

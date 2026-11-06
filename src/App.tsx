@@ -1,59 +1,68 @@
-import { useState, useEffect } from "react";
+import { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import Layout from "./components/Layout";
+import { ThemeProvider } from "./theme/ThemeProvider";
+import SmoothScroll from "./motion/SmoothScroll";
+import PageTransition from "./motion/PageTransition";
 import ScrollProgress from "./ui/ScrollProgress";
 import BackToTop from "./ui/BackToTop";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import Technologies from "./pages/Technologies";
-import Services from "./pages/Services";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
-import Layout from "./components/Layout";
-import { ScrollToTop } from "./components/ScrollToTop";
-import CursorEffect from "./ui/CursorEffect";
-import PageLoader from "./ui/PageLoader";
-// import Maintenance from "./pages/Maintenance";
+import Cursor from "./ui/Cursor";
+import Intro from "./ui/Intro";
+import WhatsAppFab from "./ui/WhatsAppFab";
+
+// Pages chargées à la demande : le premier affichage ne télécharge que l'accueil.
+const Home = lazy(() => import("./pages/Home"));
+const Services = lazy(() => import("./pages/Services"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Technologies = lazy(() => import("./pages/Technologies"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const CaseStudy = lazy(() => import("./pages/CaseStudy"));
+const Legal = lazy(() => import("./pages/Legal"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+// Banc d'essai des animations — développement uniquement
+const MotionLab = import.meta.env.DEV ? lazy(() => import("./pages/MotionLab")) : null;
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 3500);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <>
-      <PageLoader isLoading={isLoading} />
-      <CursorEffect />
-      <Layout>
-        <Router>
-          <ScrollToTop />
-            <ScrollProgress />
-            <BackToTop />
-
-            <Routes>
-              <Route path="/" element={<Navbar className="bg-white "/>}>
-                <Route index element={<Home />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/projets" element={<Projects />} />
-                <Route path="/technologies" element={<Technologies />} />
-                <Route path="/a-propos" element={<About />} />
-                <Route path="/contact" element={<Contact/>} />
-              </Route>
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            {/* <Routes>
-              
-             <Route path="*" element={<Maintenance />} /> 
-            </Routes> */}
-
-        </Router>
+    <ThemeProvider>
+      <MotionConfig reducedMotion="user">
+        <Intro />
+        <Cursor />
+        <Layout>
+          <Router>
+            <SmoothScroll>
+              <ScrollProgress />
+              <PageTransition />
+              <BackToTop />
+              <WhatsAppFab />
+              <Suspense fallback={<div className="min-h-screen bg-canvas" />}>
+                <Routes>
+                  <Route path="/" element={<Navbar />}>
+                    <Route index element={<Home />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/realisations" element={<Projects />} />
+                    <Route path="/realisations/:slug" element={<CaseStudy />} />
+                    <Route path="/projets" element={<Navigate to="/realisations" replace />} />
+                    <Route path="/technologies" element={<Technologies />} />
+                    <Route path="/a-propos" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/mentions-legales" element={<Legal />} />
+                    <Route path="/confidentialite" element={<Privacy />} />
+                    {MotionLab && <Route path="/__motion" element={<MotionLab />} />}
+                  </Route>
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+            </SmoothScroll>
+          </Router>
         </Layout>
-    </>
-      );
+      </MotionConfig>
+    </ThemeProvider>
+  );
 }
 
 export default App;

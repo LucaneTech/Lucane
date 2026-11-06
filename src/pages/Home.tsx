@@ -1,86 +1,39 @@
-import React from "react";
-import HeroSectionHome from "../components/home/Hero";
-import TrustedCompanies from "../components/home/TrustedCompanies";
-import ServicesSection from "../components/home/ServicesSection";
-import FeaturedProjects from "../components/home/FeaturedProjects";
-import Ourdesign from "../components/home/Ourdesign";
-import MemoryGrid from "../components/home/MemoryGrid";
-import Promotional from "../components/home/Promotional";
-import Button from "../ui/Button";
+/**
+ * Accueil (phase 3 de la refonte) — un parcours en sections, chacune avec son « moment signature ».
+ * Contenus : src/data/*. Mouvements : src/motion/*. Direction artistique : plan, section 0.1.
+ */
+import Hero from "../components/home/v2/Hero";
+import TrustBand from "../components/home/v2/TrustBand";
+import Manifesto from "../components/home/v2/Manifesto";
+import ServicesSticky from "../components/home/v2/ServicesSticky";
+import Sectors from "../components/home/v2/Sectors";
+import FeaturedWork from "../components/home/v2/FeaturedWork";
+import ProcessTimeline from "../components/home/v2/ProcessTimeline";
+import DesignStudio from "../components/home/v2/DesignStudio";
+import TeamSection from "../components/home/v2/TeamSection";
+import Guarantees from "../components/home/v2/Guarantees";
+import Testimonials from "../components/home/v2/Testimonials";
+import QuickQuote from "../components/home/v2/QuickQuote";
+import FinalCta from "../components/home/v2/FinalCta";
+import { useSeo } from "../ui/useSeo";
 
-// const teamAvatars = [
-//   "images/team/ceo.jpeg",
-//   "images/team/product_manager.jpeg",
-//   "images/team/profil.jpeg",
-// ];
-
-const Home: React.FC = () => {
+export default function Home() {
+  useSeo("Lucane Tech | Sites, applications web et mobiles sur mesure", "Équipe de développeurs : sites vitrines, boutiques en ligne, applications web et mobiles et logiciels sur mesure pour les entreprises du Maroc, du Congo et d'ailleurs. Devis gratuit, réponse sous 24 h.");
   return (
-    <div>
-      {/* Hero */}
-      <HeroSectionHome />
-
-      {/* Social proof */}
-      <TrustedCompanies />
-
-      {/* Services */}
-      <ServicesSection />
-
-      {/* Projets en vedette */}
-      <FeaturedProjects />
-
-      {/* Nos designs */}
-      <Ourdesign />
-
-      {/* Galerie mémoire */}
-      <MemoryGrid />
-
-      {/* Bandeau devis + compteurs */}
-      <Promotional />
-
-      {/* CTA final */}
-      <section className="py-24 px-6 bg-surface dark:bg-transparent">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Stacked team avatars */}
-          {/* <div className="flex items-center justify-center -space-x-3 mb-6">
-            {
-              teamAvatars && teamAvatars.length > 0 ? (
-                teamAvatars.map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`Team member ${i + 1}`}
-                    className="w-12 h-12 rounded-full border-2 border-slate-300 shadow-sm"
-                  />
-                ))
-              ) : (
-                <div className="w-12 h-12 rounded-full bg-primary/20 border-2 border-slate-300 flex items-center justify-center text-primary text-xs font-bold shadow-sm">
-                  ?
-                </div>
-              )
-            }
-            <div className="w-12 h-12 rounded-full bg-primary/20 border-2 border-slate-300 flex items-center justify-center text-primary text-xs font-bold shadow-sm">
-              +
-            </div>
-          </div> */}
-
-          <p className="text-ink-muted dark:text-slate-300 text-sm mb-4">Notre équipe vous attend</p>
-
-          <h2 className="text-4xl lg:text-5xl font-bold text-ink dark:text-primary mb-4">
-            Prêt à lancer votre projet ?
-          </h2>
-
-          <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-6" />
-
-          <p className="text-ink-muted dark:text-slate-300 max-w-xl mx-auto mb-8 leading-relaxed">
-            Discutons de votre vision. Nous transformons vos idées en produits digitaux qui ont un impact réel.
-          </p>
-
-          <Button variant="primary" size="lg" label="Démarrer un projet" to="/contact" />
-        </div>
-      </section>
-    </div>
+    <>
+      <Hero />
+      <TrustBand />
+      <Manifesto />
+      <ServicesSticky />
+      <Sectors />
+      <FeaturedWork />
+      <ProcessTimeline />
+      <DesignStudio />
+      <TeamSection />
+      <Guarantees />
+      <Testimonials />
+      <QuickQuote />
+      <FinalCta />
+    </>
   );
-};
-
-export default Home;
+}

@@ -1,38 +1,113 @@
 @import "./styles/tokens.css";
 @import "tailwindcss";
-@plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
+
+/* Le mode sombre est piloté par la classe `.dark` sur <html> (bouton de thème),
+   et non plus par le réglage de l'ordinateur. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    background: var(--canvas);
+    color: var(--ink);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--canvas);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--on-primary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-field);
+  }
+
+  input,
+  textarea,
+  select {
+    border-radius: var(--radius-field);
+  }
+
+  img,
+  video {
+    max-width: 100%;
+  }
 }
 
-/* Thème Light — override palette Lucane */
-:root,
-[data-theme="light"] {
-  --color-primary: #008080;
-  --color-primary-content: #ffffff;
-  --color-secondary: #2C2C2A;
-  --color-secondary-content: #ffffff;
-  --color-accent: #006666;
-  --color-neutral: #888780;
-  --color-base-100: #FAFAFA;
-  --color-base-200: #F3F4F6;
-  --color-base-300: #E5E7EB;
-  --color-base-content: #2C2C2A;
+/* ── Typographie ─────────────────────────────────────────────────────────── */
+@utility display-1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6.4vw, 6.25rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
 }
 
-/* Thème Dark — override palette Lucane */
-[data-theme="dark"] {
-  --color-primary: #008080;
-  --color-primary-content: #ffffff;
-  --color-secondary: #FAFAFA;
-  --color-secondary-content: #111110;
-  --color-accent: #00A0A0;
-  --color-neutral: #888780;
-  --color-base-100: #111110;
-  --color-base-200: #1C1C1A;
-  --color-base-300: #242422;
-  --color-base-content: #FAFAFA;
+@utility display-2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.4vw, 4rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
 }
 
+@utility display-3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@utility lead {
+  font-size: clamp(1rem, 1.25vw, 1.175rem);
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+
+/* ── Transition de thème (View Transitions API) ──────────────────────────── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* ── Défilement fluide (Lenis) ───────────────────────────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* ── Bandeaux défilants (existants) ──────────────────────────────────────── */
 @layer utilities {
   .animate-marquee-left {
     animation: marquee-left 28s linear infinite;
@@ -58,5 +133,40 @@
   }
   100% {
     transform: translateX(0%);
+  }
+}
+
+/* ── Mouvement réduit ────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation-duration: 120s;
+  }
+}
+
+/* ── Curseur personnalisé (souris uniquement) ────────────────────────────── */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+html.has-custom-cursor input,
+html.has-custom-cursor textarea,
+html.has-custom-cursor [contenteditable="true"] {
+  cursor: text !important;
+}
+
+/* ── Icônes qui se dessinent (M.Icon) ────────────────────────────────────── */
+.draw-icon :is(path, line, circle, rect, polyline, polygon, ellipse) {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--draw-delay, 0s);
+}
+.draw-icon.is-drawn :is(path, line, circle, rect, polyline, polygon, ellipse) {
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .draw-icon :is(path, line, circle, rect, polyline, polygon, ellipse) {
+    stroke-dashoffset: 0;
+    transition: none;
   }
 }

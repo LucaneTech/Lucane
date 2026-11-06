@@ -1,6 +1,7 @@
 // src/components/technologies/TechInProd.tsx
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { projects } from "../../data/projects";
 
 interface DomainMetric {
   prefix?: string;
@@ -17,24 +18,24 @@ interface Domain {
   stack: string[];
 }
 
-// ⚠️ Remplacer par les vraies métriques de production
+// Engagements vérifiables à la livraison (les anciennes métriques n'étaient pas mesurées).
 const DOMAINS: Domain[] = [
   {
     name: "Frontend",
-    primary: { prefix: "< ", value: 1.5, suffix: "s", label: "TTI moyen", decimals: 1 },
-    secondary: "Lighthouse 95+",
+    primary: { prefix: "≥ ", value: 90, suffix: "", label: "score Lighthouse visé" },
+    secondary: "Mesuré à chaque livraison",
     stack: ["React", "Tailwind"],
   },
   {
     name: "Backend",
-    primary: { value: 50, suffix: "k+", label: "req/jour" },
-    secondary: "p95 < 120ms",
+    primary: { value: projects.length, suffix: "", label: "projets en ligne" },
+    secondary: "API documentées",
     stack: ["Node.js", "Django"],
   },
   {
     name: "Infra",
-    primary: { prefix: "< ", value: 3, suffix: "min", label: "deploy Docker" },
-    secondary: "Zero-downtime",
+    primary: { prefix: "< ", value: 24, suffix: " h", label: "réponse du support" },
+    secondary: "Sauvegardes régulières",
     stack: ["AWS", "GitHub CI"],
   },
 ];
@@ -86,7 +87,7 @@ const TechInProd: React.FC = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="py-20 px-6 bg-dark">
+    <section ref={ref} className="mx-2 my-6 overflow-hidden rounded-md bg-dark px-6 py-20 md:mx-4 md:rounded-md md:py-28">
       <div className="max-w-6xl mx-auto">
         <motion.span
           className="inline-block text-xs uppercase tracking-[0.2em] font-mono text-primary mb-16"

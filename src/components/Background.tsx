@@ -1,29 +1,29 @@
-// src/components/Background.tsx
-import React from "react";
+// Fond global : deux halos irisés qui dérivent lentement (mouvement « au repos »)
+// et une grille très discrète. Les halos sont des dégradés radiaux déjà doux : pas de filtre de flou
+// (coûteux sur mobile), seulement des déplacements GPU.
+import { motion } from "framer-motion";
+import GridLines from "../ui/GridLines";
 
 interface BackgroundProps {
-  accentColorClass?: string; 
+  /** @deprecated conservé pour compatibilité, sans effet */
+  accentColorClass?: string;
   className?: string;
 }
 
-const Background: React.FC<BackgroundProps> = ({
-  accentColorClass = "from-emerald-500 to-teal-500",
-  className = "",
-}) => {
+export default function Background({ className = "" }: BackgroundProps) {
   return (
-    <div
-      aria-hidden
-      className={`absolute inset-0 -z-10 overflow-hidden ${className}`}
-    >
-      {/* Halo dégradé */}
-      <div
-        className={`pointer-events-none absolute -top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-br ${accentColorClass} opacity-10 blur-3xl`}
+    <div aria-hidden className={`pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-canvas ${className}`}>
+      <motion.div
+        className="absolute -left-[15vw] -top-[20vh] h-[70vh] w-[70vh] rounded-full bg-[radial-gradient(circle,rgba(0,163,163,0.35),transparent_65%)] will-change-transform dark:bg-[radial-gradient(circle,rgba(60,224,208,0.22),transparent_65%)]"
+        animate={{ x: [0, 120, -40, 0], y: [0, 80, 160, 0], scale: [1, 1.15, 0.95, 1] }}
+        transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
       />
- 
-      {/* Motif en grille (radial dots) */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.06)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:16px_16px]" />
+      <motion.div
+        className="absolute -bottom-[25vh] -right-[10vw] h-[75vh] w-[75vh] rounded-full bg-[radial-gradient(circle,rgba(91,108,255,0.22),rgba(255,122,61,0.12)_45%,transparent_70%)] will-change-transform dark:bg-[radial-gradient(circle,rgba(91,108,255,0.25),rgba(255,122,61,0.15)_45%,transparent_70%)]"
+        animate={{ x: [0, -140, 30, 0], y: [0, -90, -30, 0], scale: [1, 0.9, 1.1, 1] }}
+        transition={{ duration: 34, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <GridLines columns={4} className="opacity-40" />
     </div>
   );
-};
-
-export default Background;
+}

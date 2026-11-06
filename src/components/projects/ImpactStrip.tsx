@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
+import { verifiedFacts } from "../../data/site";
 
 interface Metric {
   value: number;
@@ -8,11 +9,10 @@ interface Metric {
   label: string;
 }
 
+// Uniquement des chiffres sourcés (src/data/site.ts) + l'engagement de réponse.
 const METRICS: Metric[] = [
-  { value: 2400, suffix: "+", label: "commits GitHub" },
-  { value: 5, suffix: "+", label: "pays couverts" },
-  { prefix: "< ", value: 10, suffix: "j", label: "délai moy. livraison" },
-  { value: 15, suffix: "+", label: "repos open source" },
+  ...verifiedFacts().map((f) => ({ value: f.value, prefix: f.prefix, suffix: f.suffix ?? "", label: f.label })),
+  { prefix: "< ", value: 24, suffix: " h", label: "délai de réponse" },
 ];
 
 function AnimatedCounter({

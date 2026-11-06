@@ -1,0 +1,81 @@
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
+import Eyebrow from "../../../ui/Eyebrow";
+import ProjectVisual from "../../../ui/ProjectVisual";
+import { M } from "../../../motion/kit";
+import { projects } from "../../../data/projects";
+
+/**
+ * Sites réels de l'équipe glissés dans la mosaïque (aperçus vivants, ordinateur et tablette).
+ * Choix volontaire : on ne montre que des créations Lucane — des maquettes trouvées sur
+ * internet présenteraient le travail d'autres studios comme le nôtre.
+ */
+// Calculé depuis la liste des projets : sites en ligne affichables, hors projets déjà en vedette.
+const LIVE = projects.filter((p) => p.liveUrl && p.frameable !== false && !p.featured && p.category !== "Interne");
+
+const DESIGNS = [
+  "design1.webp",
+  "design/1786719789931.webp",
+  "design3.webp",
+  "design/1786923689800.webp",
+  "design/1786924528520.webp",
+  "design2.webp",
+  "design/1786924574729.webp",
+  "design/1786924715198.webp",
+  "design4.webp",
+  "design/1787080776144.webp",
+  "design/1787182220219.webp",
+  "design/1787185679563.webp",
+  "design/1787185866221.webp",
+  "design/1787431233552.webp",
+  "design/1787678834840.webp",
+  "design/1791323853065.webp",
+].map((f) => `/images/home/${f}`);
+
+/** Studio design (plan 3.8) : 16 maquettes + 4 sites réels en ligne, en 3 colonnes qui défilent à vitesses différentes. */
+export default function DesignStudio() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const c1 = useTransform(scrollYProgress, [0, 1], [80, -220]);
+  const c2 = useTransform(scrollYProgress, [0, 1], [-140, 140]);
+  const c3 = useTransform(scrollYProgress, [0, 1], [120, -320]);
+  const cols = [c1, c2, c3];
+
+  return (
+    <section ref={ref} className="relative overflow-hidden py-20 md:py-28" aria-labelledby="studio-title">
+      <div className="mx-auto mb-16 w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
+        <Eyebrow index="07">Studio design</Eyebrow>
+        <M.H2 className="mt-6 max-w-3xl" id="studio-title">
+          Des interfaces pensées pour séduire.
+        </M.H2>
+      </div>
+      {/* Emplacements : un site réel après chaque 2e maquette d'une colonne, chacun utilisé une seule fois */}
+      <div className="mx-auto grid h-[120vh] w-full max-w-[1440px] grid-cols-2 gap-4 overflow-hidden px-5 md:grid-cols-3 md:gap-6 md:px-10 lg:px-16 [mask-image:linear-gradient(180deg,transparent,black_12%,black_88%,transparent)]">
+        {cols.map((y, ci) => (
+          <motion.div key={ci} style={{ y }} className={`flex flex-col gap-4 md:gap-6 ${ci === 2 ? "hidden md:flex" : ""}`}>
+            {DESIGNS.filter((_, i) => i % 3 === ci).map((src, i) => {
+              // numéro d'emplacement unique par colonne (jusqu'à 3 par colonne), dans l'ordre de lecture
+              const slot = i % 2 === 1 ? (i - 1) / 2 * 3 + ci : -1;
+              const live = slot >= 0 ? LIVE[slot] : undefined;
+              return (
+                <div key={src} className="contents">
+                  <M.Img src={src} alt={`Maquette d'interface ${ci * 6 + i + 1}`} width={1200} height={900} className="aspect-[4/3]" parallax={0.04} cursor="Voir" />
+                  {/* site réel (masqué sur téléphone : aperçus lourds) */}
+                  {live && (
+                    <Link to={`/realisations/${live.slug}`} className="group relative hidden md:block" data-cursor="Voir">
+                      <ProjectVisual project={live} chrome={false} />
+                      <span className="absolute bottom-3 left-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-semibold text-canvas backdrop-blur-md">
+                        En ligne · {live.title}
+                      </span>
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}

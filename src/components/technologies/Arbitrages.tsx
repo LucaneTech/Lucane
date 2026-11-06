@@ -128,7 +128,7 @@ function ArbitrageRow({
 
 const Arbitrages: React.FC = () => {
   return (
-    <section className="py-20 px-6 bg-dark-surface">
+    <section className="mx-2 my-6 overflow-hidden rounded-md bg-dark-surface px-6 py-20 md:mx-4 md:rounded-md md:py-28">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="mb-14"
