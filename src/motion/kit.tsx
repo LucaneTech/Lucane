@@ -297,7 +297,7 @@ function Field({ label, name, type = "text", multiline, required, value, onChang
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
   const inputClass =
-    "peer block w-full rounded-2xl border-[1.5px] border-field-line bg-panel px-5 pb-3 pt-7 text-lg text-ink outline-none placeholder-transparent transition-[border-color,box-shadow] duration-500 hover:border-ink-muted focus:border-primary focus:shadow-glow focus:outline-none focus-visible:outline-none";
+    "peer block w-full rounded-2xl border-[1.5px] border-field-line bg-transparent px-5 pb-3 pt-7 text-lg text-white border border-primary  transition-[border-color,box-shadow] duration-500  focus:border-primary focus:shadow-glow focus:outline-none focus-visible:outline-none";
 
   return (
     <motion.div
@@ -314,7 +314,7 @@ function Field({ label, name, type = "text", multiline, required, value, onChang
       )}
       <label
         htmlFor={name}
-        className="eyebrow pointer-events-none absolute left-5 top-2.5 text-ink-muted transition-all duration-300 peer-placeholder-shown:top-[1.35rem] peer-placeholder-shown:text-base peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-placeholder-shown:font-sans peer-focus:top-2.5 peer-focus:text-xs peer-focus:uppercase peer-focus:tracking-[0.18em] peer-focus:text-primary-ink"
+        className="eyebrow pointer-events-none absolute left-5 top-2.5 text-slate-400/60 transition-all duration-300 peer-placeholder-shown:top-[1.35rem] peer-placeholder-shown:text-base peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-placeholder-shown:font-sans peer-focus:top-2.5 peer-focus:text-xs peer-focus:uppercase peer-focus:tracking-[0.18em] peer-focus:text-primary-ink"
       >
         {label}
         {required && " *"}

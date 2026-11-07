@@ -93,7 +93,7 @@ export default function QuickQuote() {
                   <M.Field label="Votre nom" name="q-name" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
                   <M.Field label="Votre e-mail professionnel" name="q-email" type="email" required index={1} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
                   <fieldset>
-                    <legend className="eyebrow mb-3 text-ink-muted">Votre besoin principal</legend>
+                    <legend className="eyebrow mb-3 text-primary">Votre besoin principal</legend>
                     <div className="flex flex-wrap gap-2">
                       {NEEDS.map((n) => {
                         const on = form.besoin === n;

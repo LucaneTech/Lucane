@@ -15,7 +15,7 @@ export const site = {
   positioning:
     "Équipe de développeurs : sites, applications web et mobiles, logiciels sur mesure pour les entreprises qui veulent grandir.",
   domain: "https://lucane.tech", // À VÉRIFIER : le domaine ne répondait pas le 2026-11-06 (site actuel : lucanetech.netlify.app)
-  email: "lucanetech@gmail.com",
+  email: "lucanetech@gmail",
   phone: { display: "(+212) 781 343 642", href: "tel:+212781343642" },
   whatsapp: {
     number: "212781343642",
