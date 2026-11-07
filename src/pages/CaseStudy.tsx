@@ -51,7 +51,7 @@ function CaseStudyView({ project }: { project: Project }) {
   return (
     <>
       {/* Hero */}
-      <section ref={heroRef} className="relative overflow-hidden pb-16 pt-36 md:pt-44" aria-labelledby="case-title">
+      <section ref={heroRef} className="relative overflow-hidden pb-10 md:pb-16 pt-28 md:pt-44" aria-labelledby="case-title">
         <IrisOrb className="-right-20 top-20 h-64 w-64 md:h-96 md:w-96" tone="indigo" />
         <div className="relative mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
           <Link to="/realisations" className="mb-8 inline-flex items-center gap-2 rounded-full border border-glass-line bg-glass px-4 py-2 text-sm text-ink-muted backdrop-blur-xl transition-colors hover:text-ink">
@@ -79,7 +79,7 @@ function CaseStudyView({ project }: { project: Project }) {
       </section>
 
       {/* Fiche + description */}
-      <section className="relative py-16 md:py-24" aria-label="Présentation du projet">
+      <section className="relative py-10 md:py-24" aria-label="Présentation du projet">
         <div className="mx-auto grid w-full max-w-[1440px] gap-10 px-5 md:px-10 lg:grid-cols-[1fr_2fr] lg:gap-20 lg:px-16">
           <div className="space-y-6 lg:sticky lg:top-32 lg:self-start">
             <Eyebrow>Fiche projet</Eyebrow>
@@ -117,7 +117,7 @@ function CaseStudyView({ project }: { project: Project }) {
             <M.P className="!text-[clamp(1.15rem,1.8vw,1.5rem)] !leading-[1.4] text-ink">{project.description}</M.P>
 
             {caseSteps.length > 0 && (
-              <div className="mt-16 space-y-6">
+              <div className="mt-10 space-y-6 md:mt-16">
                 {caseSteps.map((s, i) => (
                   <M.Card key={s.key} index={i}>
                     <p className="font-sans text-sm text-primary-ink">0{i + 1} — {s.label}</p>

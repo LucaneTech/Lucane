@@ -65,7 +65,7 @@ const Veille: React.FC = () => {
   const isInView = useInView(axisRef, { once: true, margin: "-60px" });
 
   return (
-    <section className="py-20 px-6 bg-transparent overflow-hidden">
+    <section className="py-12 md:py-20 px-6 bg-transparent overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div

@@ -11,7 +11,7 @@ export default function FaqAccordion({ items, index }: { items: Faq[]; index?: s
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="relative py-24 md:py-32" aria-labelledby="faq-title">
+    <section className="relative py-14 md:py-32" aria-labelledby="faq-title">
       <div className="mx-auto grid w-full max-w-[1440px] gap-12 px-5 md:px-10 lg:grid-cols-[1fr_1.7fr] lg:px-16">
         <div className="lg:sticky lg:top-32 lg:self-start">
           <Eyebrow index={index}>Questions fréquentes</Eyebrow>

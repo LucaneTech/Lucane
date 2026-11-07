@@ -234,7 +234,7 @@ export default function ServicesSticky() {
       </section>
 
       {/* Mobile et tablette : la même carte, empilée */}
-      <section className="px-5 py-20 md:px-10 lg:hidden" aria-labelledby="services-title-m">
+      <section className="px-5 py-12 md:py-20 md:px-10 lg:hidden" aria-labelledby="services-title-m">
         <Eyebrow index="03">Ce que nous faisons</Eyebrow>
         <h2 id="services-title-m" className="display-3 mt-6 text-ink">
           Sept expertises, une seule équipe.

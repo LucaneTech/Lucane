@@ -8,7 +8,7 @@ import { projects } from "../../../data/projects";
 export default function ProjectsHero() {
   const sectors = new Set(projects.map((p) => p.sector).filter(Boolean)).size;
   return (
-    <section className="relative overflow-hidden pb-12 pt-36 md:pb-16 md:pt-44" aria-labelledby="projects-title">
+    <section className="relative overflow-hidden pb-12 pt-28 md:pb-16 md:pt-44" aria-labelledby="projects-title">
       <MouseParallax depth={26} className="pointer-events-none absolute right-[6%] top-[18%]">
         <IrisOrb className="relative h-48 w-48 md:h-72 md:w-72" tone="teal" />
       </MouseParallax>

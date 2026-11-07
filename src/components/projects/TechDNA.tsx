@@ -23,7 +23,7 @@ const TechDNA: React.FC = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-canvas dark:bg-transparent overflow-hidden">
+    <section className="py-12 md:py-20 px-6 bg-canvas dark:bg-transparent overflow-hidden">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

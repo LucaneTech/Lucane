@@ -50,7 +50,7 @@ export default function Section({ children, id, className, tone = "default", ble
     : children;
 
   return (
-    <section ref={ref} id={id} aria-labelledby={labelledBy} className={cn("relative overflow-clip py-24 md:py-32", TONES[tone], className)}>
+    <section ref={ref} id={id} aria-labelledby={labelledBy} className={cn("relative overflow-clip py-14 md:py-32", TONES[tone], className)}>
       <motion.div style={animate ? { scale, opacity } : undefined} className="origin-top will-change-transform">
         {bleed ? content : <div className="mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">{content}</div>}
       </motion.div>

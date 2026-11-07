@@ -14,7 +14,7 @@ const VALUE_ICONS = [Lightbulb, HeartHandshake, ShieldCheck, Rocket, Sparkles, G
 export default function TeamSection() {
   const team = visibleTeam();
   return (
-    <section className="relative py-20 md:py-28" aria-labelledby="team-title">
+    <section className="relative py-12 md:py-28" aria-labelledby="team-title">
       <div className="mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
         <Eyebrow index="08">L'équipe</Eyebrow>
         <M.H2 className="mt-6 max-w-3xl" id="team-title">

@@ -19,7 +19,7 @@ interface PageHeroProps {
 /** En-tête commun des pages intérieures : titre géant fin + gras, chapeau, formes irisées qui suivent la souris. */
 export default function PageHero({ light, bold, lead, children, tone = "teal" }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden pb-16 pt-36 md:pb-24 md:pt-44" aria-labelledby="page-title">
+    <section className="relative overflow-hidden pb-10 pt-28 md:pb-24 md:pt-44" aria-labelledby="page-title">
       <MouseParallax depth={26} className="pointer-events-none absolute right-[5%] top-[16%]">
         <IrisOrb className="relative h-48 w-48 md:h-80 md:w-80" tone={tone} />
       </MouseParallax>

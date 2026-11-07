@@ -57,7 +57,7 @@ export default function FeaturedWork() {
   const featured = featuredProjects();
   return (
     <div className="relative" aria-labelledby="work-title">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-end justify-between gap-6 px-5 pt-24 md:px-10 lg:px-16">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-end justify-between gap-6 px-5 pt-12 md:px-10 md:pt-24 lg:px-16">
         <div>
           <Eyebrow index="05">Réalisations</Eyebrow>
           <h2 id="work-title" className="display-2 mt-6 text-ink">

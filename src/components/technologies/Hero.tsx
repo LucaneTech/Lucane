@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="mt-15  px-3 relative min-h-screen lg:min-h-[92vh] flex items-center overflow-hidden">
+    <section className="mt-15 px-3 relative min-h-screen lg:min-h-[92vh] flex items-center overflow-hidden">
 
       {/* ── Teal radial atmospheric glow ─────────────────────────────────── */}
       <div

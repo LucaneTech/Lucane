@@ -139,7 +139,7 @@ const StackTopography: React.FC = () => {
   }, [calculateLines]);
 
   return (
-    <section className="py-20 px-6 bg-transparent overflow-hidden">
+    <section className="py-12 md:py-20 px-6 bg-transparent overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-16"

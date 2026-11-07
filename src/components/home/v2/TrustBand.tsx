@@ -30,7 +30,7 @@ export default function TrustBand() {
   );
 
   return (
-    <section className="relative py-14 md:py-20" aria-label="Ils nous font confiance">
+    <section className="relative py-10 md:py-20" aria-label="Ils nous font confiance">
       <div className="mx-auto mb-8 flex w-full max-w-[1440px] flex-wrap items-center justify-center gap-6 px-5 md:px-10 lg:px-16">
         <Eyebrow index="01">Ils nous font confiance</Eyebrow>
        

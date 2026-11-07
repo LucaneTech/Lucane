@@ -43,7 +43,7 @@ export default function DesignStudio() {
   const cols = [c1, c2, c3];
 
   return (
-    <section ref={ref} className="relative overflow-hidden py-20 md:py-28" aria-labelledby="studio-title">
+    <section ref={ref} className="relative overflow-hidden py-12 md:py-28" aria-labelledby="studio-title">
       <div className="mx-auto mb-16 w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
         <Eyebrow index="07">Studio design</Eyebrow>
         <M.H2 className="mt-6 max-w-3xl" id="studio-title">

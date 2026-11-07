@@ -26,7 +26,7 @@ export function AboutHero() {
     { icon: Clock3, label: `Réponse sous ${site.responseTime}` },
   ];
   return (
-    <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-40" aria-labelledby="page-title">
+    <section className="relative overflow-hidden pb-10 pt-32 md:pb-24 md:pt-40" aria-labelledby="page-title">
       <IrisOrb className="-left-24 top-24 h-56 w-56 opacity-50 blur-2xl" tone="indigo" />
       <div className={`${WRAP} grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]`}>
         <div className="relative">
@@ -105,7 +105,7 @@ const PURPOSE = [
 
 export function Purpose() {
   return (
-    <section className="relative py-20 md:py-28" aria-labelledby="purpose-title">
+    <section className="relative py-12 md:py-28" aria-labelledby="purpose-title">
       <div className={WRAP}>
         <Eyebrow index="01">Notre raison d'être</Eyebrow>
         <h2 id="purpose-title" className="sr-only">Mission et vision</h2>
@@ -113,7 +113,7 @@ export function Purpose() {
           className="mt-8 max-w-5xl font-display text-[clamp(1.8rem,3.6vw,3.4rem)] font-bold leading-[1.08] tracking-[-0.035em] text-ink"
           text="La technologie est le meilleur levier pour développer l'Afrique. Notre métier : la rendre simple, utile et accessible à chaque entrepreneur."
         />
-        <div className="mt-16 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-6 md:mt-16 lg:grid-cols-2">
           {PURPOSE.map((p, i) => (
             <M.Card key={p.kicker} index={i} className="flex flex-col !p-0">
               <div className="border-b border-line bg-canvas-alt p-4 md:p-6">
@@ -206,7 +206,7 @@ function Mark({ level, text, strong = false }: { level: Level; text: string; str
 
 export function WhyTeam() {
   return (
-    <section className="relative py-24 md:py-32" aria-labelledby="why-title">
+    <section className="relative py-14 md:py-32" aria-labelledby="why-title">
       <div className={WRAP}>
         <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-end">
           <div>
@@ -282,7 +282,7 @@ const RITUALS = [
 
 export function HowWeWork() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-32" aria-labelledby="how-title">
+    <section className="relative overflow-hidden py-14 md:py-32" aria-labelledby="how-title">
       <IrisOrb className="-right-24 bottom-10 h-64 w-64 opacity-30 blur-2xl" tone="sunset" />
       <div className={`${WRAP} grid items-center gap-14 lg:grid-cols-[1fr_0.9fr]`}>
         <div>
@@ -324,7 +324,7 @@ export function HowWeWork() {
 
 export function Values() {
   return (
-    <section className="relative py-24 md:py-32" aria-labelledby="values-title">
+    <section className="relative py-14 md:py-32" aria-labelledby="values-title">
       <div className={WRAP}>
         <Eyebrow index="04">Nos valeurs</Eyebrow>
         <M.H2 className="mt-6 max-w-3xl" id="values-title">
@@ -393,7 +393,7 @@ const PLACES = [
 
 export function WhereWeAre() {
   return (
-    <section className="relative py-24 md:py-32" aria-labelledby="where-title">
+    <section className="relative py-14 md:py-32" aria-labelledby="where-title">
       <div className={WRAP}>
         <Eyebrow index="05">Où nous sommes</Eyebrow>
         <M.H2 className="mt-6 max-w-3xl" id="where-title">
@@ -443,7 +443,7 @@ export function Delivered() {
     bySector.set(p.sector, [...(bySector.get(p.sector) ?? []), p]);
   });
   return (
-    <section className="relative py-20 md:py-28" aria-labelledby="delivered-title">
+    <section className="relative py-12 md:py-28" aria-labelledby="delivered-title">
       <div className={WRAP}>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>

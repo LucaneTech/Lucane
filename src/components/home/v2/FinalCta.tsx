@@ -8,7 +8,7 @@ import { whatsappHref } from "../../../data/site";
 /** Final (plan 3.13) : « Parlons de votre projet. » en typographie géante, formes irisées autour. */
 export default function FinalCta() {
   return (
-    <section className="relative overflow-hidden py-20 md:py-32" aria-labelledby="final-title">
+    <section className="relative overflow-hidden py-12 md:py-32" aria-labelledby="final-title">
       <MouseParallax depth={30} className="pointer-events-none absolute left-[6%] top-[12%]">
         <IrisOrb className="relative h-40 w-40 md:h-56 md:w-56" tone="indigo" />
       </MouseParallax>

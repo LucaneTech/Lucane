@@ -6,7 +6,7 @@ import { Parallax } from "../../../motion/Parallax";
 /** Manifeste : une phrase immense qui s'allume mot à mot au défilement, avec deux formes irisées. */
 export default function Manifesto() {
   return (
-    <section className="relative overflow-hidden py-20 md:py-32" aria-labelledby="manifesto">
+    <section className="relative overflow-hidden py-12 md:py-32" aria-labelledby="manifesto">
       <Parallax speed={0.4} className="pointer-events-none absolute -left-24 top-10">
         <IrisOrb className="relative h-64 w-64 md:h-80 md:w-80" tone="sunset" />
       </Parallax>

@@ -13,7 +13,7 @@ export default function LegalPage({ eyebrow, light, bold, updated, blocks }: { e
   return (
     <>
       <PageHero eyebrow={eyebrow} light={light} bold={bold} lead={`Dernière mise à jour : ${updated}`} tone="indigo" />
-      <section className="relative pb-28" aria-label={eyebrow}>
+      <section className="relative pb-16 md:pb-28" aria-label={eyebrow}>
         <div className="mx-auto w-full max-w-4xl space-y-5 px-5 md:px-10">
           {blocks.map((b, i) => (
             <motion.article

@@ -54,7 +54,7 @@ const ImpactStrip: React.FC = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="py-16 px-6 bg-transparent border-t border-b border-gray-300/50 dark:border-gray-700/50">
+    <section ref={ref} className="py-10 md:py-16 px-6 bg-transparent border-t border-b border-gray-300/50 dark:border-gray-700/50">
       <div className="max-w-5xl mx-auto">
         <p className="kicker text-center text-sm text-slate-500 dark:text-slate-300 mb-10">
           &gt;_ impact en chiffres

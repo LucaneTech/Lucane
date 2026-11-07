@@ -57,7 +57,7 @@ export default function ProjectsGrid() {
   const list = filter === "Tous" ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <section className="relative pb-24 md:pb-36" aria-label="Liste des réalisations">
+    <section className="relative pb-14 md:pb-36" aria-label="Liste des réalisations">
       <div className="mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
         <LayoutGroup>
           <div className="hidden sticky top-24 z-30 mb-10 md:flex w-fit flex-wrap gap-1 rounded-full border border-glass-line bg-glass p-1.5 backdrop-blur-2xl" role="tablist" aria-label="Filtrer par catégorie">

@@ -9,7 +9,7 @@ import { ease } from "../../../motion/presets";
 /** Formules (plan 6.1) : cartes arrondies, la formule mise en avant en fond inversé. Prix affiché seulement s'il est fourni. */
 export default function Offers() {
   return (
-    <section id="formules" className="relative scroll-mt-28 py-24 md:py-32" aria-labelledby="offers-title">
+    <section id="formules" className="relative scroll-mt-28 py-14 md:py-32" aria-labelledby="offers-title">
       <div className="mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <Eyebrow index="02">Nos formules</Eyebrow>

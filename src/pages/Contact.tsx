@@ -179,7 +179,7 @@ export default function Contact() {
       </section>
 
       {/* Formulaire */}
-      <section id="formulaire" className="relative scroll-mt-28 py-20 md:py-28" aria-labelledby="form-title">
+      <section id="formulaire" className="relative scroll-mt-28 py-12 md:py-28" aria-labelledby="form-title">
         <div className="mx-auto grid w-full max-w-[1440px] gap-12 px-5 md:px-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16 lg:px-16">
           <div className="space-y-8 lg:sticky lg:top-32 lg:self-start">
             <div>

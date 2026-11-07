@@ -111,7 +111,7 @@ export default function Thanks() {
         </motion.div>
 
         {/* Et maintenant ? */}
-        <div className="mt-20 w-full text-left md:mt-24">
+        <div className="mt-14 w-full text-left md:mt-24">
           <p className="kicker mb-6 text-center text-base text-ink-muted">Et maintenant ?</p>
           <div className="grid gap-4 md:grid-cols-3 md:gap-6">
             {NEXT_STEPS.map(({ icon: Icon, title, desc }, i) => (

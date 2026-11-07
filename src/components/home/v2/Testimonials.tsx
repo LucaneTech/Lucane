@@ -22,7 +22,7 @@ export default function Testimonials() {
   const t = items[i];
 
   return (
-    <section className="relative py-20 md:py-28" aria-labelledby="testimonials-title">
+    <section className="relative py-12 md:py-28" aria-labelledby="testimonials-title">
       <div className="mx-auto w-full max-w-[1200px] px-5 md:px-10">
         <Eyebrow index="10">Ils en parlent</Eyebrow>
         <h2 id="testimonials-title" className="sr-only">

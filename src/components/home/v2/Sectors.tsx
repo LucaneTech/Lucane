@@ -33,14 +33,14 @@ function SectorPill({ name, need }: { name: string; need: string }) {
 export default function Sectors() {
   const half = Math.ceil(sectors.length / 2);
   return (
-    <section className="relative overflow-hidden py-24 md:py-32" aria-labelledby="sectors-title">
-      <div className="mx-auto mb-12 w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
+    <section className="relative overflow-hidden py-14 md:py-32" aria-labelledby="sectors-title">
+      <div className="mx-auto mb-8 w-full max-w-[1440px] px-5 md:mb-12 md:px-10 lg:px-16">
         <Eyebrow index="04">Pour qui</Eyebrow>
         <M.H2 className="mt-6 max-w-3xl" id="sectors-title">
           Des solutions pour chaque métier.
         </M.H2>
       </div>
-      <div className="space-y-5 pb-24">
+      <div className="space-y-5 pb-6 md:pb-24">
         <M.Marquee speed={2}>
           {sectors.slice(0, half).map((s) => (
             <SectorPill key={s.name} name={s.name} need={s.need} />

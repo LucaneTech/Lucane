@@ -108,7 +108,7 @@ function Row({ s, i }: { s: Service; i: number }) {
 /** Les 7 expertises en sections ancrées (/services#web, #mobile…) — liens du pied de page et de l'accueil. */
 export default function ExpertiseRows() {
   return (
-    <section className="relative py-24 md:py-32" aria-labelledby="expertises-title">
+    <section className="relative py-14 md:py-32" aria-labelledby="expertises-title">
       <div className="mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
         <div className="mb-20 max-w-3xl">
           <Eyebrow>Nos expertises</Eyebrow>
