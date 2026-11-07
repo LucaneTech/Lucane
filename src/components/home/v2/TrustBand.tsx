@@ -2,7 +2,7 @@ import { M } from "../../../motion/kit";
 import Eyebrow from "../../../ui/Eyebrow";
 // import Counter from "../../../motion/Counter";
 import { confirmedClients } from "../../../data/clients";
-import { verifiedFacts } from "../../../data/site";
+// import { verifiedFacts } from "../../../data/site";
 
 /**
  * Bande de preuve (révisée) : comme l'ancienne version, les logos clients (blancs) défilent
