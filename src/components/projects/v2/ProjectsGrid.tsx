@@ -16,7 +16,7 @@ function ProjectCard({ project, wide }: { project: Project; wide: boolean }) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.94 }}
       transition={{ duration: 0.7, ease: ease.out }}
-      className={`group relative rounded-md border border-glass-line bg-panel p-3 transition-shadow duration-700 hover:shadow-glow ${wide ? "md:col-span-2" : ""}`}
+      className={`group relative min-w-0 rounded-md border border-glass-line bg-panel p-3 transition-shadow duration-700 hover:shadow-glow ${wide ? "md:col-span-2" : ""}`}
       data-cursor="Voir"
     >
       <ProjectVisual project={project} />

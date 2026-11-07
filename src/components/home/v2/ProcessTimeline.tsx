@@ -45,7 +45,7 @@ export default function ProcessTimeline() {
   const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 25 });
 
   return (
-    <section className="relative py-20 md:py-28" aria-labelledby="process-title">
+    <section className="relative overflow-x-clip py-20 md:py-28" aria-labelledby="process-title">
       <div className="mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
         <div className="mx-auto max-w-3xl text-center">
           <Eyebrow index="06">Notre méthode</Eyebrow>
