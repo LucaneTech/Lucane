@@ -30,7 +30,7 @@ export function AboutHero() {
       <IrisOrb className="-left-24 top-24 h-56 w-56 opacity-50 blur-2xl" tone="indigo" />
       <div className={`${WRAP} grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]`}>
         <div className="relative">
-          <Eyebrow>À propos de Lucane</Eyebrow>
+          <Eyebrow className="hidden md:block">À propos de Lucane</Eyebrow>
           <h1 id="page-title" className="mt-8 font-display text-[clamp(2.4rem,5.6vw,5.6rem)] leading-[0.94] tracking-[-0.045em] text-ink">
             <SplitText text="Une équipe passionnée," by="char" className="block font-light" stagger={0.02} immediate />
             <SplitText text="un impact réel." by="char" className="block font-extrabold" delay={0.3} stagger={0.02} immediate />

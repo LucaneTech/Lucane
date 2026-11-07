@@ -85,7 +85,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16, scale: 0.9 }}
           animate={ready ? { opacity: 1, y: 0, scale: 1 } : undefined}
           transition={{ duration: dur.base, ease: ease.out }}
-          className="eyebrow mb-8 inline-flex w-fit items-center gap-2.5 rounded-full border border-glass-line bg-glass px-4 py-2 text-primary-ink backdrop-blur-xl"
+          className="hidden  eyebrow mb-8 md:inline-flex w-fit items-center gap-2.5 rounded-full border border-glass-line bg-glass px-4 py-2 text-primary-ink backdrop-blur-xl"
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />

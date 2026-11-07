@@ -18,7 +18,7 @@ export default function ProjectsHero() {
       </MouseParallax>
 
       <div className="relative mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
-        <Eyebrow>Réalisations</Eyebrow>
+        <Eyebrow className="hidden md:block">Réalisations</Eyebrow>
         <h1 id="projects-title" className="mt-8 max-w-5xl font-display text-[clamp(2.4rem,6vw,6rem)] leading-[0.92] tracking-[-0.045em] text-ink">
           <SplitText text="Des projets qui" by="char" className="block font-light" stagger={0.02} immediate />
           <SplitText text="propulsent." by="char" className="block font-extrabold" delay={0.3} stagger={0.02} immediate />
