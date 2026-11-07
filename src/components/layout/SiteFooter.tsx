@@ -74,7 +74,7 @@ export default function SiteFooter() {
             <div>
               <h2 className="kicker mb-5 text-base text-white/50">Navigation</h2>
               <ul className="space-y-2.5">
-                {[{ to: "/", label: "Accueil" }, ...NAV_LINKS].map((l) => (
+                {NAV_LINKS.map((l) => (
                   <li key={l.to}>
                     <M.Link to={l.to} className="text-white/75 hover:text-white">
                       {l.label}

@@ -33,6 +33,8 @@ export interface Project {
   caseStudy?: CaseStudy;
   /** false si le site refuse d'être affiché dans une iframe (aperçu remplacé par une affiche). */
   frameable?: boolean;
+  /** Illustration à afficher à la place de l'aperçu en direct (site non affichable en cadre). */
+  illustration?: "crm" | "agency";
 }
 
 const TODO_CASE: CaseStudy = {
@@ -142,7 +144,8 @@ export const projects: Project[] = [
     technologies: ["React", "TypeScript", "Softphone", "API"],
     githubUrl: "https://lucane-crm.vercel.app",
     liveUrl: "https://lucane-crm.vercel.app",
-    frameable: true, // l'application interdit l'affichage en iframe (CSP frame-ancestors)
+    frameable: false, // l'application interdit l'affichage en cadre (CSP frame-ancestors)
+    illustration: "crm",
     category: "Application",
     sector: "Centres d'appels",
     year: 2026,
@@ -177,6 +180,8 @@ export const projects: Project[] = [
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Framer Motion"],
     githubUrl: "https://github.com/LucaneTech/Lucane",
     liveUrl: "https://lucanetech.com",
+    frameable: false, // c'est ce site lui-même : pas d'aperçu dans un cadre
+    illustration: "agency",
     category: "Interne",
     date: "Octobre 2025",
     year: 2025,

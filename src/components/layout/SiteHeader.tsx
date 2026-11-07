@@ -43,7 +43,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           transition={{ duration: 0.7, ease: ease.inOut }}
         >
           <nav className="flex flex-1 flex-col justify-center gap-1" aria-label="Navigation mobile">
-            {[{ to: "/", label: "Accueil" }, ...NAV_LINKS].map((l, i) => (
+            {NAV_LINKS.map((l, i) => (
               <div key={l.to} className="overflow-hidden">
                 <motion.div
                   initial={{ y: "110%" }}
@@ -155,7 +155,7 @@ export default function SiteHeader() {
                   l.prefetch();
                 }}
                 onFocus={() => l.prefetch()}
-                className={`relative rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
+                className={`relative whitespace-nowrap rounded-full px-3.5 py-2.5 text-sm font-medium transition-colors duration-300 xl:px-5 ${
                   highlighted === l.to ? "text-on-primary" : "text-ink-muted hover:text-ink"
                 }`}
               >

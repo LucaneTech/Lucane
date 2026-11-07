@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import type { Project } from "../data/projects";
 import { cn } from "./utils";
+import ProjectIllustration from "./ProjectIllustrations";
 
 const FRAME_W = 1440;
 const FRAME_H = 900;
@@ -48,7 +49,7 @@ function Poster({ project }: { project: Project }) {
 
 /**
  * Visuel d'un projet dans une fenêtre de navigateur arrondie :
- * vidéo de démonstration, sinon aperçu réel du site, sinon affiche.
+ * vidéo de démonstration, sinon illustration dédiée, sinon aperçu réel du site, sinon affiche.
  */
 export default function ProjectVisual({ project, className, chrome = true }: { project: Project; className?: string; chrome?: boolean }) {
   return (
@@ -66,6 +67,8 @@ export default function ProjectVisual({ project, className, chrome = true }: { p
       <div className="transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]">
         {project.videoUrl ? (
           <video src={project.videoUrl} className="aspect-[16/10] w-full object-cover" autoPlay muted loop playsInline preload="none" />
+        ) : project.illustration ? (
+          <ProjectIllustration kind={project.illustration} />
         ) : project.liveUrl && project.frameable !== false ? (
           <LivePreview url={project.liveUrl} title={project.title} />
         ) : (

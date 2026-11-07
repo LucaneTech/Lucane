@@ -6,6 +6,7 @@ export interface NavLink {
 }
 
 export const NAV_LINKS: NavLink[] = [
+  { to: "/", label: "Accueil", prefetch: () => import("../../pages/Home") },
   { to: "/services", label: "Services", prefetch: () => import("../../pages/Services") },
   { to: "/realisations", label: "Réalisations", prefetch: () => import("../../pages/Projects") },
   { to: "/technologies", label: "Technologies", prefetch: () => import("../../pages/Technologies") },
