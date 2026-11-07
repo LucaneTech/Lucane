@@ -1,6 +1,6 @@
 import { M } from "../../../motion/kit";
 import Eyebrow from "../../../ui/Eyebrow";
-import Counter from "../../../motion/Counter";
+// import Counter from "../../../motion/Counter";
 import { confirmedClients } from "../../../data/clients";
 import { verifiedFacts } from "../../../data/site";
 
@@ -11,7 +11,7 @@ import { verifiedFacts } from "../../../data/site";
  */
 export default function TrustBand() {
   const clients = confirmedClients();
-  const facts = verifiedFacts();
+  // const facts = verifiedFacts();
   const row = (reverse: boolean) => (
     <M.Marquee speed={2.2} reverse={reverse}>
       {clients.map((c) => (
