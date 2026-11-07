@@ -105,6 +105,17 @@ export const PAGES = {
     priority: 0.2,
     changefreq: "yearly",
   },
+  thanks: {
+    path: "/merci",
+    title: "Merci, votre message est bien arrivé | Lucane Tech",
+    description: "Votre demande a bien été envoyée à l'équipe Lucane Tech. Nous vous répondons sous 24 heures.",
+    h1: "Merci, votre message est bien arrivé",
+    crumb: "Merci",
+    priority: 0,
+    changefreq: "yearly",
+    // page de confirmation après envoi d'un formulaire : générée au build, mais hors du plan du site et des résultats de recherche
+    noindex: true,
+  },
   notFound: {
     path: "/404",
     title: "Page introuvable | Lucane Tech",

@@ -22,6 +22,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const CaseStudy = lazy(() => import("./pages/CaseStudy"));
 const Legal = lazy(() => import("./pages/Legal"));
 const Privacy = lazy(() => import("./pages/Privacy"));
+const Thanks = lazy(() => import("./pages/Thanks"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 // Banc d'essai des animations — développement uniquement
 const MotionLab = import.meta.env.DEV ? lazy(() => import("./pages/MotionLab")) : null;
@@ -52,6 +53,7 @@ function App() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/mentions-legales" element={<Legal />} />
                     <Route path="/confidentialite" element={<Privacy />} />
+                    <Route path="/merci" element={<Thanks />} />
                     {MotionLab && <Route path="/__motion" element={<MotionLab />} />}
                   </Route>
                   <Route path="*" element={<NotFound />} />

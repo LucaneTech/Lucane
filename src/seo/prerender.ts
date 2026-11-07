@@ -85,12 +85,14 @@ export interface RouteOutput {
   body: string;
 }
 
-/** Toutes les pages à générer (pages indexables + page 404). */
+/** Toutes les pages à générer (pages indexables + page de remerciement + page 404). */
 export function routes(): RouteOutput[] {
   const out: RouteOutput[] = indexablePages().map((meta) => {
     const project = projects.find((p) => projectMeta(p).path === meta.path);
     return { path: meta.path, meta, schema: JSON.stringify(schemaFor(meta, project)), body: body(meta, project) };
   });
+  // Pages non indexées mais servies avec leur propre fichier HTML (sinon /merci renverrait la 404)
+  out.push({ path: PAGES.thanks.path, meta: PAGES.thanks, schema: JSON.stringify(schemaFor(PAGES.thanks)), body: body(PAGES.thanks) });
   out.push({ path: PAGES.notFound.path, meta: PAGES.notFound, schema: JSON.stringify(schemaFor(PAGES.notFound)), body: body(PAGES.notFound) });
   return out;
 }
