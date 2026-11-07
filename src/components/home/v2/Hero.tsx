@@ -74,6 +74,8 @@ export default function Hero() {
   const titleScale = useTransform(smooth, [0, 1], [1, 0.86]);
   const titleOpacity = useTransform(smooth, [0, 0.8], [1, 0]);
   const sceneScale = useTransform(smooth, [0, 1], [1, 1.25]);
+  // Mobile : le logo est sous le texte, il faut défiler pour le voir → il reste formé jusqu'à mi-parcours.
+  const mobileScatter = useTransform(scrollYProgress, [0, 0.55, 1], [0, 0, 0.8]);
 
   return (
     <section ref={ref} className="relative min-h-[100svh] overflow-hidden pt-28 md:pt-32" aria-labelledby="hero-title">
@@ -94,23 +96,9 @@ export default function Hero() {
       <div className="pointer-events-none absolute right-[8%] top-1/2 hidden h-[60vh] w-[60vh] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,163,163,0.18),transparent_65%)] blur-2xl lg:block" />
 
       <motion.div
-        style={{ y: titleY, scale: titleScale, opacity: titleOpacity }}
+        style={desktop ? { y: titleY, scale: titleScale, opacity: titleOpacity } : undefined}
         className="relative z-10 mx-auto flex min-h-[calc(100svh-8rem)] w-full max-w-[1440px] origin-top-left flex-col justify-center px-5 md:px-10 lg:px-16"
       >
-
-        {/* Téléphone et tablette : le logo en particules, bien visible, au-dessus du titre (jamais derrière le texte) */}
-        {!desktop && (
-          <div className="pointer-events-none relative -mx-5 mb-4 h-[38svh] min-h-[240px] max-h-[400px] [mask-image:radial-gradient(ellipse_at_center,black_62%,transparent_82%)] md:-mx-10 md:h-[42svh]">
-            <div className="absolute left-1/2 top-1/2 h-[80%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,163,163,0.20),transparent_65%)] blur-2xl" />
-            {use3d ? (
-              <Suspense fallback={null}>
-                <HeroScene scrollProgress={scrollYProgress} dark={theme === "dark"} fit={1.75} className="absolute inset-0" />
-              </Suspense>
-            ) : (
-              <IrisOrb className="left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2" />
-            )}
-          </div>
-        )}
 
         <h1 id="hero-title" className="max-w-[14ch] font-display text-[clamp(2.4rem,6.2vw,6.25rem)] leading-[1.02] tracking-[-0.045em] text-ink">
           <SplitText text="Nous construisons des" by="char" play={ready} className="block font-light" stagger={0.025} />
@@ -156,6 +144,20 @@ export default function Hero() {
             iconLeft={<MessageCircle className="h-5 w-5" />}
           />
         </motion.div>
+
+        {/* Téléphone et tablette : le logo en particules, bien visible, sous le texte et les boutons (jamais derrière le texte) */}
+        {!desktop && (
+          <div className="pointer-events-none relative -mx-5 mt-8 h-[38svh] min-h-[240px] max-h-[400px] [mask-image:radial-gradient(ellipse_at_center,black_62%,transparent_82%)] md:-mx-10 md:h-[42svh]">
+            <div className="absolute left-1/2 top-1/2 h-[80%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,163,163,0.20),transparent_65%)] blur-2xl" />
+            {use3d ? (
+              <Suspense fallback={null}>
+                <HeroScene scrollProgress={mobileScatter} dark={theme === "dark"} fit={1.75} className="absolute inset-0" />
+              </Suspense>
+            ) : (
+              <IrisOrb className="left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2" />
+            )}
+          </div>
+        )}
       </motion.div>
 
       {/* Pilules flottantes : chiffres vérifiés et engagements */}
