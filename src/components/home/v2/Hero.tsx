@@ -144,7 +144,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 hidden xl:block">
         <FloatPill play={ready} delay={1.2} className="right-[6%] top-[20%]" icon={<Layers className="h-4 w-4" />} value={`${projects.length}`} label="projets en ligne" />
         <FloatPill play={ready} delay={1.35} className="right-[2%] top-[56%]" icon={<Timer className="h-4 w-4" />} value="24 h" label="pour vous répondre" />
-        <FloatPill play={ready} delay={1.5} className="bottom-[10%] right-[24%]" icon={<Sparkles className="h-4 w-4" />} value="0 €" label="devis et étude du besoin" />
+        <FloatPill play={ready} delay={1.5} className="bottom-[10%] right-[24%]" icon={<Sparkles className="h-4 w-4" />} value="0 €/CFA/MAD" label="devis et étude du besoin" />
       </div>
 
       {/* Indicateur de défilement */}

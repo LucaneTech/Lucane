@@ -18,6 +18,7 @@
   --ink-faint: #a3a29c;
   --line: #e3e5e9;
   --line-strong: #0f0f0e;
+  --field-line: #9ca1aa; /* contour des champs de formulaire, visible au repos (≈ 3:1 sur blanc) */
   --primary: #008080;
   --primary-ink: #006b6b; /* accent utilisé comme couleur de texte */
   --on-primary: #ffffff;
@@ -38,6 +39,7 @@
   --ink-faint: #5f5e5a;
   --line: #22242a;
   --line-strong: #f4f4f1;
+  --field-line: #5a5f69;
   --primary: #00a3a3;
   --primary-ink: #3ce0d0;
   --on-primary: #ffffff;
@@ -59,6 +61,7 @@
   --color-ink-faint: var(--ink-faint);
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
+  --color-field-line: var(--field-line);
   --color-primary: var(--primary);
   --color-primary-ink: var(--primary-ink);
   --color-on-primary: var(--on-primary);
@@ -110,6 +113,7 @@
   --line: rgba(244, 244, 241, 0.16);
   --glass: rgba(255, 255, 255, 0.08);
   --glass-line: rgba(255, 255, 255, 0.16);
+  --field-line: rgba(244, 244, 241, 0.45);
   --ink-muted: rgba(244, 244, 241, 0.65);
 }
 .dark .bg-canvas-inverse {
@@ -117,5 +121,6 @@
   --line: rgba(11, 11, 10, 0.14);
   --glass: rgba(0, 0, 0, 0.05);
   --glass-line: rgba(0, 0, 0, 0.12);
+  --field-line: rgba(11, 11, 10, 0.4);
   --ink-muted: rgba(11, 11, 10, 0.6);
 }

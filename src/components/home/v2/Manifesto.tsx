@@ -21,7 +21,7 @@ export default function Manifesto() {
         </h2>
         <ScrollWords
           className="mt-10 max-w-6xl font-display text-[clamp(1.5rem,3.4vw,3.25rem)] font-light leading-[1.05] tracking-[-0.035em] text-ink"
-          text="Nous sommes une équipe de développeurs qui conçoit des sites, des applications web et mobiles et des logiciels sur mesure — pour que votre entreprise soit trouvée, crue et choisie."
+          text="Nous sommes une équipe de développeurs qui conçoit des sites, des applications web et mobiles et des logiciels sur mesure pour que votre entreprise soit trouvée, crue et choisie."
         />
       </div>
     </section>

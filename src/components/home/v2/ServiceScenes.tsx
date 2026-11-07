@@ -257,7 +257,7 @@ function MobileScene() {
       {(id) => (
         <>
           {/* téléphone de fond (Android) */}
-          <motion.g initial={{ opacity: 0, rotate: 0 }} animate={{ opacity: 0.85, rotate: 9 }} style={{ originX: "320px", originY: "150px" }} transition={{ duration: 1.1, ease: ease.out, delay: 0.3 }}>
+          <motion.g initial={{ opacity: 0, rotate: 0 }} animate={{ opacity: 0.85, rotate: 9 }} transition={{ duration: 1.1, ease: ease.out, delay: 0.3 }}>
             <rect x={262} y={36} width={118} height={232} rx={18} fill={PHONE} />
             <rect x={268} y={42} width={106} height={220} rx={14} fill={C.alt} />
             <rect x={278} y={60} width={86} height={50} rx={8} fill={C.indigo} opacity={0.85} />
@@ -543,7 +543,7 @@ function CloudScene() {
                   <motion.g
                     initial={{ scale: 0 }}
                     animate={{ scale: [0, 1, 1, 0] }}
-                    style={{ originX: `${sx + 78}px`, originY: "258px" }}
+                   
                     transition={{ duration: 5, times: [0, 0.08, 0.9, 1], repeat: Infinity, delay: 1.2 + i * 0.6, repeatDelay: 0.6 }}
                   >
                     <circle cx={sx + 78} cy={258} r={7} fill={C.primary} />
@@ -643,7 +643,7 @@ function MarketingScene() {
               { l: "Prospects", w: 86, c: C.primary },
               { l: "Clients", w: 54, c: C.orange },
             ].map(({ l, w, c }, i) => (
-              <motion.g key={l} initial={{ scaleX: 0, opacity: 0 }} animate={{ scaleX: 1, opacity: 1 }} style={{ originX: "397px" }} transition={{ duration: 0.8, ease: ease.out, delay: 1.1 + i * 0.15 }}>
+              <motion.g key={l} initial={{ scaleX: 0, opacity: 0 }} animate={{ scaleX: 1, opacity: 1 }} transition={{ duration: 0.8, ease: ease.out, delay: 1.1 + i * 0.15 }}>
                 <path d={`M${397 - w / 2} ${192 + i * 28} h${w} l-8 22 h${-(w - 16)} Z`} fill={c} opacity={0.9} />
                 <text x={397} y={207 + i * 28} fontSize={7} fontFamily={SANS} fontWeight={700} fill="#fff" textAnchor="middle">{l}</text>
               </motion.g>
@@ -705,7 +705,7 @@ function AutomationScene() {
           {nodes.map((n, i) => <FlowNode key={n.title} n={n} id={id} delay={0.15 + i * 0.1} />)}
 
           {/* engrenage */}
-          <motion.g style={{ originX: "239px", originY: "62px" }} animate={{ rotate: 360 }} transition={{ duration: 9, repeat: Infinity, ease: "linear" }}>
+          <motion.g animate={{ rotate: 360 }} transition={{ duration: 9, repeat: Infinity, ease: "linear" }}>
             <Settings x={223} y={46} size={32} color={C.faint} strokeWidth={1.4} />
           </motion.g>
 
@@ -775,7 +775,7 @@ function MaintenanceScene() {
             <circle cx={400} cy={70} r={40} fill={C.panel} stroke={C.line} filter={`url(#sh-${id})`} />
             <motion.circle
               cx={400} cy={70} r={32} fill="none" stroke={C.primary} strokeWidth={1.5} strokeDasharray="4 6"
-              style={{ originX: "400px", originY: "70px" }} animate={{ rotate: 360 }} transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+              animate={{ rotate: 360 }} transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
             />
             <ShieldCheck x={386} y={56} size={28} color={C.primaryInk} />
             <text x={400} y={126} fontSize={7.5} fontFamily={SANS} fontWeight={700} fill={C.muted} textAnchor="middle">Sécurité suivie</text>

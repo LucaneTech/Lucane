@@ -89,7 +89,7 @@ export default function QuickQuote() {
                 </motion.div>
               ) : (
                 <motion.form key="form" onSubmit={submit} className="space-y-6" exit={{ opacity: 0, y: -10 }}>
-                  <p className="font-display text-2xl font-bold">Demandez votre devis gratuit</p>
+                  <p className="font-display text-2xl font-bold">Demandez votre devis gratuit!</p>
                   <M.Field label="Votre nom" name="q-name" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
                   <M.Field label="Votre e-mail professionnel" name="q-email" type="email" required index={1} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
                   <fieldset>
@@ -105,7 +105,7 @@ export default function QuickQuote() {
                             onClick={() => setForm({ ...form, besoin: n })}
                             aria-pressed={on}
                             className={`rounded-full border px-4 py-2 text-sm transition-colors duration-300 ${
-                              on ? "border-primary bg-primary text-on-primary" : "border-glass-line bg-canvas-alt text-ink hover:border-primary"
+                              on ? "border-primary bg-primary text-on-primary" : "border-field-line bg-canvas-alt text-ink hover:border-primary"
                             }`}
                           >
                             {n}

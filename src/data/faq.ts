@@ -17,7 +17,7 @@ export const faq: Faq[] = [
   // ── À propos (existantes)
   // À VALIDER : année de création et villes de l'équipe (le site affiche 2021 et Paris / Brazzaville ; le numéro est marocain)
   { page: "about", q: "Depuis quand existe Lucane Tech ?", a: "Lucane Tech accompagne les entreprises depuis 2021 dans la conception de solutions digitales performantes, modernes et évolutives." },
-  { page: "about", q: "Où se situe votre équipe ?", a: "Nos talents sont répartis entre Paris et Brazzaville afin d'offrir un accompagnement international tout en restant proches de nos clients." },
+  { page: "about", q: "Où se situe votre équipe ?", a: "Notre équipe de développeurs travaille depuis le Maroc, avec un partenaire relais à Brazzaville pour les rendez-vous et l'accompagnement sur place. Nous suivons aussi des projets à distance, en Afrique, en Europe et dans la diaspora." },
   { page: "about", q: "Quels profils composent votre équipe ?", a: "Développeurs, designers UX/UI et chefs de projet collaborent étroitement pour assurer la réussite de chaque mission." },
   { page: "about", q: "Travaillez-vous à distance ?", a: "Oui. Notre organisation est entièrement remote et s'appuie sur des outils collaboratifs performants garantissant réactivité et transparence." },
   { page: "about", q: "Quels types de projets réalisez-vous ?", a: "Nous concevons des sites web, applications mobiles, plateformes SaaS, solutions métier sur mesure et expériences digitales innovantes." },

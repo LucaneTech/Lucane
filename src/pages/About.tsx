@@ -1,36 +1,29 @@
 /**
- * À propos (phase 6.2) : en-tête, mission et vision (conservées), chiffres sourcés, équipe et valeurs,
- * où nous sommes (Maroc + relais à Brazzaville), FAQ, appel final.
+ * À propos : en-tête avec la constellation de l'équipe, raison d'être (mission et vision illustrées),
+ * repères vérifiables, notre modèle d'équipe, collaboration à distance, valeurs illustrées,
+ * où nous sommes (carte), projets déjà en ligne, FAQ et appel final.
  */
-import { ArrowUpRight } from "lucide-react";
-import PageHero from "../ui/PageHero";
-import Button from "../ui/Button";
 import FaqAccordion from "../ui/FaqAccordion";
-import Mission from "../components/about/Mission";
-import StatsSection from "../components/about/State";
-import TeamSection from "../components/home/v2/TeamSection";
-import WhereWeAre from "../components/about/v2/WhereWeAre";
 import FinalCta from "../components/home/v2/FinalCta";
+import { AboutHero, Delivered, HowWeWork, Landmarks, Purpose, Values, WhereWeAre, WhyTeam } from "../components/about/v2/AboutSections";
 import { faqFor } from "../data/faq";
 import { useSeo } from "../ui/useSeo";
 
 export default function About() {
-  useSeo("À propos", "Lucane Tech, une équipe de développeurs basée au Maroc avec un relais à Brazzaville : mission, valeurs et équipe.");
+  useSeo(
+    "À propos",
+    "Lucane Tech, une équipe de développeurs basée au Maroc avec un relais à Brazzaville : mission, vision, valeurs et façon de travailler."
+  );
   return (
     <>
-      <PageHero
-        eyebrow="À propos de Lucane"
-        light="Une équipe passionnée,"
-        bold="un impact réel."
-        lead="La technologie est le meilleur levier pour développer l'Afrique. Notre mission est de la rendre accessible à tous les entrepreneurs."
-        tone="indigo"
-      >
-        <Button to="/contact" label="Travaillons ensemble" size="lg" iconRight={<ArrowUpRight className="h-5 w-5" />} />
-      </PageHero>
-      <Mission />
-      <StatsSection />
-      <TeamSection />
+      <AboutHero />
+      <Purpose />
+      <Landmarks />
+      <WhyTeam />
+      <HowWeWork />
+      <Values />
       <WhereWeAre />
+      <Delivered />
       <FaqAccordion items={faqFor("about")} />
       <FinalCta />
     </>
