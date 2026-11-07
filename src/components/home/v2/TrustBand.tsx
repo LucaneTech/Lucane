@@ -2,13 +2,15 @@ import { M } from "../../../motion/kit";
 import Eyebrow from "../../../ui/Eyebrow";
 // import Counter from "../../../motion/Counter";
 import { confirmedClients } from "../../../data/clients";
-// import { verifiedFacts } from "../../../data/site";
 
 /**
  * Bande de preuve (révisée) : comme l'ancienne version, les logos clients (blancs) défilent
  * sur un bandeau teal pleine largeur — deux rangées en sens inverse, logos grands et nets.
  * Le bandeau accélère avec la vitesse de défilement de la page.
  */
+const fadeGradient = "linear-gradient(to right, transparent, #000 15%, #000 85%, transparent)";
+const edgeFade = { maskImage: fadeGradient, WebkitMaskImage: fadeGradient };
+
 export default function TrustBand() {
   const clients = confirmedClients();
   // const facts = verifiedFacts();
@@ -35,9 +37,10 @@ export default function TrustBand() {
       </div>
 
       {/* Bandeau teal pleine largeur, comme l'ancienne version */}
-      <div className="relative overflow-hidden  py-6 md:py-8 ">
-       
-        <div className="space-y-4 md:space-y-6">
+      <div className="relative overflow-hidden  py-6 md:py-8 bg-primary dark:bg-transparent">
+      
+        {/* Fondu aux extrémités : les logos apparaissent / disparaissent dans le fond */}
+        <div className="space-y-4 md:space-y-6" style={edgeFade}>
           {row(false)}
           {row(true)}
         </div>
