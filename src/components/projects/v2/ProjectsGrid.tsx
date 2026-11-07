@@ -25,7 +25,7 @@ function ProjectCard({ project, wide }: { project: Project; wide: boolean }) {
           <div className="flex flex-wrap gap-2">
             <span className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-on-primary">{project.category}</span>
             {project.sector && <span className="rounded-full border border-glass-line px-3 py-1 text-xs text-ink-muted">{project.sector}</span>}
-            {project.year && <span className="rounded-full border border-glass-line px-3 py-1 font-mono text-xs text-ink-muted">{project.year}</span>}
+            {project.year && <span className="rounded-full border border-glass-line px-3 py-1 font-sans text-xs text-ink-muted">{project.year}</span>}
           </div>
           <h2 className="mt-3 font-display text-xl font-bold tracking-[-0.03em] text-ink md:text-2xl">
             <Link to={`/realisations/${project.slug}`} className="after:absolute after:inset-0 after:rounded-md">
@@ -75,7 +75,7 @@ export default function ProjectsGrid() {
                 >
                   {on && <motion.span layoutId="filter-pill" className="absolute inset-0 rounded-full bg-primary" transition={{ type: "spring", stiffness: 380, damping: 32 }} />}
                   <span className="relative">
-                    {c} <span className="font-mono text-xs opacity-60">{count}</span>
+                    {c} <span className="font-sans text-xs opacity-60">{count}</span>
                   </span>
                 </button>
               );

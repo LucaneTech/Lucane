@@ -30,8 +30,7 @@ export function AboutHero() {
       <IrisOrb className="-left-24 top-24 h-56 w-56 opacity-50 blur-2xl" tone="indigo" />
       <div className={`${WRAP} grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]`}>
         <div className="relative">
-          <Eyebrow className="hidden md:block">À propos de Lucane</Eyebrow>
-          <h1 id="page-title" className="mt-8 font-display text-[clamp(2.4rem,5.6vw,5.6rem)] leading-[0.94] tracking-[-0.045em] text-ink">
+          <h1 id="page-title" className="font-display text-[clamp(2.4rem,5.6vw,5.6rem)] leading-[0.94] tracking-[-0.045em] text-ink">
             <SplitText text="Une équipe passionnée," by="char" className="block font-light" stagger={0.02} immediate />
             <SplitText text="un impact réel." by="char" className="block font-extrabold" delay={0.3} stagger={0.02} immediate />
           </h1>
@@ -121,7 +120,7 @@ export function Purpose() {
                 <p.Illustration />
               </div>
               <div className="p-7 md:p-8">
-                <p className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-primary-ink">
+                <p className="kicker inline-flex items-center gap-2 text-sm text-primary-ink">
                   <p.icon className="h-4 w-4" /> {p.kicker}
                 </p>
                 <h3 className="mt-3 font-display text-[clamp(1.5rem,2.2vw,2.1rem)] font-bold tracking-[-0.03em] text-ink">{p.title}</h3>
@@ -150,7 +149,7 @@ export function Purpose() {
 export function Landmarks() {
   const sectors = new Set(projects.map((p) => p.sector).filter(Boolean));
   const items = [
-    { value: projects.length, label: "projets en ligne", hint: "consultables dans nos réalisations" },
+    { value: projects.length, label: "projets publics", hint: "hors projets privés et outils internes de nos clients" },
     { value: sectors.size, label: "secteurs d'activité", hint: [...sectors].slice(0, 3).join(", ") + "…" },
     { value: services.length, label: "expertises réunies", hint: "du design à la maintenance" },
     { value: 24, suffix: " h", label: "pour vous répondre", hint: "au plus tard, jours ouvrés" },
@@ -232,8 +231,8 @@ export function WhyTeam() {
           {/* en-têtes (ordinateur) */}
           <div className="hidden grid-cols-[1.5fr_1fr_1fr_1.15fr] border-b border-line md:grid">
             <span className="px-6 py-5" />
-            <span className="px-6 py-5 font-mono text-xs uppercase tracking-[0.14em] text-ink-faint">Freelance seul</span>
-            <span className="px-6 py-5 font-mono text-xs uppercase tracking-[0.14em] text-ink-faint">Grande agence</span>
+            <span className="kicker px-6 py-5 text-sm text-ink-faint">Freelance seul</span>
+            <span className="kicker px-6 py-5 text-sm text-ink-faint">Grande agence</span>
             <span className="relative bg-primary/10 px-6 py-5 font-display text-base font-bold text-primary-ink">
               <Sparkles className="mr-1.5 inline h-4 w-4" />
               Lucane Tech
@@ -347,7 +346,7 @@ export function Values() {
                     </div>
                   </div>
                   <div className={`flex items-baseline gap-4 p-6 md:p-7 ${last ? "lg:items-center lg:p-10" : ""}`}>
-                    <span className="font-mono text-xs text-primary-ink">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-sans text-xs text-primary-ink">{String(i + 1).padStart(2, "0")}</span>
                     <div>
                       <h3 className="font-display text-2xl font-bold tracking-[-0.02em] text-ink">{v.title}</h3>
                       <p className="mt-1.5 text-ink-muted">{v.desc}</p>
@@ -425,7 +424,7 @@ export function WhereWeAre() {
                 </motion.span>
                 <h3 className="mt-5 font-display text-xl font-bold text-ink">{p.title}</h3>
                 <p className="mt-1.5 text-[15px] leading-relaxed text-ink-muted">{p.desc}</p>
-                <span className="mt-4 inline-flex rounded-full border border-glass-line bg-canvas-alt px-3.5 py-1 font-mono text-xs text-ink">{p.detail}</span>
+                <span className="mt-4 inline-flex rounded-full border border-glass-line bg-canvas-alt px-3.5 py-1 font-sans text-xs text-ink">{p.detail}</span>
               </M.Card>
             ))}
           </div>
@@ -465,7 +464,7 @@ export function Delivered() {
               transition={{ duration: 0.7, ease: ease.out, delay: i * 0.07 }}
               className="group rounded-md border border-glass-line bg-panel p-6 transition-shadow duration-500 hover:shadow-glow"
             >
-              <p className="font-mono text-xs uppercase tracking-[0.14em] text-ink-faint">Secteur</p>
+              <p className="kicker text-sm text-ink-faint">Secteur</p>
               <h3 className="mt-2 font-display text-2xl font-bold text-ink">{sector}</h3>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {list.map((p) => (
@@ -490,7 +489,7 @@ export function Delivered() {
             className="flex flex-col justify-between gap-6 rounded-md border border-dashed border-primary/50 bg-primary/5 p-6"
           >
             <div>
-              <p className="font-mono text-xs uppercase tracking-[0.14em] text-primary-ink">Votre secteur ?</p>
+              <p className="kicker text-sm text-primary-ink">Votre secteur ?</p>
               <h3 className="mt-2 font-display text-2xl font-bold text-ink">Le prochain projet pourrait être le vôtre.</h3>
             </div>
             <Link to="/contact" className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-on-primary" data-cursor="pointer">

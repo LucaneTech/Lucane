@@ -41,7 +41,7 @@ export default function SiteFooter() {
                 Lucane, c'est une équipe de développeurs passionnés qui conçoit des applications web, mobiles et logicielles modernes pour booster votre
                 business.
               </p>
-              <p className="eyebrow mt-4 text-[#3ce0d0]">{site.tagline}</p>
+              <p className="kicker mt-4 text-base text-[#3ce0d0]">{site.tagline}</p>
             </div>
             <a
               href={whatsappHref()}
@@ -60,7 +60,7 @@ export default function SiteFooter() {
           {/* Colonnes */}
           <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr]">
             <div>
-              <h2 className="eyebrow mb-5 text-white/40">Services</h2>
+              <h2 className="kicker mb-5 text-base text-white/50">Services</h2>
               <ul className="grid gap-2.5 sm:grid-cols-2 sm:gap-x-6">
                 {services.map((s) => (
                   <li key={s.slug}>
@@ -72,7 +72,7 @@ export default function SiteFooter() {
               </ul>
             </div>
             <div>
-              <h2 className="eyebrow mb-5 text-white/40">Navigation</h2>
+              <h2 className="kicker mb-5 text-base text-white/50">Navigation</h2>
               <ul className="space-y-2.5">
                 {[{ to: "/", label: "Accueil" }, ...NAV_LINKS].map((l) => (
                   <li key={l.to}>
@@ -84,7 +84,7 @@ export default function SiteFooter() {
               </ul>
             </div>
             <div>
-              <h2 className="eyebrow mb-5 text-white/40">Contact</h2>
+              <h2 className="kicker mb-5 text-base text-white/50">Contact</h2>
               <ul className="space-y-3 text-white/75">
                 <li className="flex items-center gap-3">
                   <Phone className="h-4 w-4 text-[#3ce0d0]" />

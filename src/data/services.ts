@@ -6,11 +6,14 @@ export interface Service {
   features: string[];
   /** Engagements vérifiables à la livraison (remplacent les indicateurs non prouvés). */
   commitments: string[];
+  /** Réalisations en ligne qui illustrent l'expertise (slugs de src/data/projects.ts). */
+  projects?: string[];
 }
 
 export const services: Service[] = [
   {
     slug: "web",
+    projects: ["kfk-agrobusiness", "oralise", "kone-shop"],
     title: "Développement Web",
     desc: "Applications web modernes, performantes et accessibles, optimisées pour le référencement et les Core Web Vitals.",
     features: ["React, Next.js, TypeScript", "APIs REST & GraphQL", "Architecture scalable", "Performance & SEO"],
@@ -32,6 +35,7 @@ export const services: Service[] = [
   },
   {
     slug: "cloud",
+    projects: ["lucane-filter"],
     title: "Cloud & Infrastructure",
     desc: "Hébergement cloud, déploiement scalable et optimisation des performances pour accompagner votre croissance.",
     features: ["AWS / GCP / Azure", "CI/CD automatisé", "Docker & Kubernetes", "Scalabilité & haute disponibilité"],
@@ -46,6 +50,7 @@ export const services: Service[] = [
   },
   {
     slug: "automatisation",
+    projects: ["lucane-filter", "lucane-crm"],
     title: "Automatisation & Conseil",
     desc: "Automatisation de processus et développement d'outils sur mesure pour améliorer votre productivité.",
     features: ["Scripts & bots métiers", "Intégrations API tierces", "Tableaux de bord analytiques", "Conseil en architecture"],

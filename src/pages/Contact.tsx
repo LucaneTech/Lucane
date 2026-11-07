@@ -1,6 +1,6 @@
 /**
  * Contact (phase 6.3) : canaux (WhatsApp en avant), engagements, formulaire enrichi
- * (type de projet, secteur, budget indicatif, délai) envoyé par FormSubmit vers contact@.
+ * (type de projet, secteur, budget indicatif, délai) envoyé par Formspree.
  * Une formule choisie sur la page Services arrive pré-sélectionnée (?formule=…).
  */
 import { useState } from "react";
@@ -19,8 +19,25 @@ import { ease } from "../motion/presets";
 import { useSeo } from "../ui/useSeo";
 import { PAGES } from "../seo/pages";
 
-const BUDGETS = ["À définir ensemble", "< 500 €", "500 – 2 000 €", "2 000 – 5 000 €", "> 5 000 €"];
+const BUDGETS = [
+  "À définir ensemble",
+  "< 60 000 FCFA / < 1 000 MAD / < 300 €",
+  "60 000 – 150 000 FCFA / 1 000 – 2 500 MAD / 300 – 800 €",
+  "150 000 – 300 000 FCFA / 2 500 – 5 000 MAD / 800 – 1 500 €",
+  "300 000 – 500 000 FCFA / 5 000 – 8 000 MAD / 1 500 – 3 000 €",
+  "500 000 – 1 000 000 FCFA / 8 000 – 15 000 MAD / 3 000 – 5 000 €",
+  "> 1 000 000 FCFA / > 15 000 MAD / > 5 000 €"
+];
 const DELAYS = ["Urgent (< 2 semaines)", "Dans le mois", "2 à 3 mois", "Pas pressé"];
+
+/** Point d'envoi Formspree (identifiant public du formulaire, visible côté client par nature). */
+const FORM_ENDPOINT = "https://formspree.io/f/mwlljnqw";
+const MAX_LEN = 200;
+const MAX_MESSAGE = 5000;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const clean = (v: string, max = MAX_LEN) => v.trim().slice(0, max);
+/** N'accepte qu'une valeur de la liste prévue. */
+const pick = (v: string, allowed: string[]) => (allowed.includes(v) ? v : "Non précisé");
 
 const COMMITMENTS = [
   { icon: Clock, title: "Réponse sous 24 h", desc: "Chaque demande reçoit une réponse personnalisée dans la journée." },
@@ -65,19 +82,46 @@ export default function Contact() {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
+    if (sending) return;
+    // Champ piège rempli : c'est un robot. On simule un succès sans rien envoyer.
+    if (honeypot) {
+      setSent(true);
+      return;
+    }
+    const name = clean(form.name);
+    const email = clean(form.email);
+    if (!name || !EMAIL_RE.test(email)) {
+      setError(true);
+      return;
+    }
     setSending(true);
     setError(false);
     const data = new FormData();
-    Object.entries({ ...form, ...choice }).forEach(([k, v]) => data.append(k, v || "Non précisé"));
-    data.append("_subject", `Nouveau projet — ${form.name || "site Lucane"}`);
-    data.append("_captcha", "false");
-    data.append("_template", "table");
+    data.append("name", name);
+    data.append("email", email);
+    data.append("phone", clean(form.phone) || "Non précisé");
+    data.append("company", clean(form.company) || "Non précisé");
+    data.append("type", pick(choice.type, offers.map((o) => o.name)));
+    data.append("sector", pick(choice.sector, sectors.map((s) => s.name)));
+    data.append("budget", pick(choice.budget, BUDGETS));
+    data.append("delay", pick(choice.delay, DELAYS));
+    data.append("message", clean(form.message, MAX_MESSAGE) || "Non précisé");
+    data.append("_subject", `Nouveau projet — ${name}`);
+    data.append("_gotcha", "");
     try {
-      const res = await fetch(`https://formsubmit.co/${site.email}`, { method: "POST", headers: { Accept: "application/json" }, body: data });
-      if (!res.ok) throw new Error(String(res.status));
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+        referrerPolicy: "strict-origin-when-cross-origin",
+      });
+      // Formspree répond { ok: true } en cas de succès, { errors: [...] } sinon.
+      const json = (await res.json().catch(() => null)) as { ok?: boolean } | null;
+      if (!res.ok || !json?.ok) throw new Error(String(res.status));
       setSent(true);
     } catch {
       setError(true);
@@ -195,8 +239,19 @@ export default function Contact() {
                     <Pills legend="Délai souhaité" options={DELAYS} value={choice.delay} onChange={(v) => setChoice({ ...choice, delay: v })} />
                   </div>
                   <M.Field label="Votre projet en quelques mots" name="c-message" multiline value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
+                  {/* Champ piège : invisible pour les humains, rempli par les robots. Doit rester vide. */}
+                  <input
+                    type="text"
+                    name="_gotcha"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    hidden
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
                   {error && (
-                    <p className="rounded-2xl bg-[#ff7a3d]/10 px-5 py-3 text-sm text-ink">
+                    <p role="alert" className="rounded-2xl bg-[#ff7a3d]/10 px-5 py-3 text-sm text-ink">
                       L'envoi n'a pas abouti. Réessayez, ou écrivez-nous directement sur WhatsApp ou à {site.email}.
                     </p>
                   )}

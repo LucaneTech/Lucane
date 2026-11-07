@@ -15,6 +15,19 @@ const HeroScene = lazy(() => import("./HeroScene"));
 
 const ROTATING = ["applications", "plateformes", "logiciels", "expériences"];
 
+/** Vrai sur grand écran (≥ 1024 px) ; suit le redimensionnement. */
+function useIsDesktop() {
+  const query = "(min-width: 1024px)";
+  const [desktop, setDesktop] = useState(() => typeof window !== "undefined" && window.matchMedia(query).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const on = () => setDesktop(mq.matches);
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  return desktop;
+}
+
 /** Pilule vitrée flottante (chiffre ou engagement), qui entre après le titre puis flotte. */
 function FloatPill({ icon, value, label, className, delay, play }: { icon: React.ReactNode; value: string; label: string; className: string; delay: number; play: boolean }) {
   return (
@@ -47,6 +60,7 @@ export default function Hero() {
   const { theme } = useTheme();
   const [word, setWord] = useState(0);
   const [use3d] = useState(() => !prefersReducedMotion());
+  const desktop = useIsDesktop();
 
   useEffect(() => {
     const id = setInterval(() => setWord((w) => (w + 1) % ROTATING.length), 2600);
@@ -63,16 +77,18 @@ export default function Hero() {
 
   return (
     <section ref={ref} className="relative min-h-[100svh] overflow-hidden pt-28 md:pt-32" aria-labelledby="hero-title">
-      {/* Scène 3D (ou repli irisé en mouvement réduit) */}
-      <motion.div style={{ scale: sceneScale }} className="pointer-events-none absolute inset-0 opacity-25 lg:left-[44%] lg:opacity-100 xl:left-[38%]">
-        {use3d ? (
-          <Suspense fallback={null}>
-            <HeroScene scrollProgress={scrollYProgress} dark={theme === "dark"} className="pointer-events-auto absolute inset-0" />
-          </Suspense>
-        ) : (
-          <IrisOrb className="right-[10%] top-[20%] h-[50vh] w-[50vh]" />
-        )}
-      </motion.div>
+      {/* Ordinateur : scène 3D à droite du titre (ou repli irisé en mouvement réduit) */}
+      {desktop && (
+        <motion.div style={{ scale: sceneScale }} className="pointer-events-none absolute inset-0 left-[44%] xl:left-[38%]">
+          {use3d ? (
+            <Suspense fallback={null}>
+              <HeroScene scrollProgress={scrollYProgress} dark={theme === "dark"} className="pointer-events-auto absolute inset-0" />
+            </Suspense>
+          ) : (
+            <IrisOrb className="right-[10%] top-[20%] h-[50vh] w-[50vh]" />
+          )}
+        </motion.div>
+      )}
 
       {/* Halo lumineux derrière le logo */}
       <div className="pointer-events-none absolute right-[8%] top-1/2 hidden h-[60vh] w-[60vh] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,163,163,0.18),transparent_65%)] blur-2xl lg:block" />
@@ -81,18 +97,20 @@ export default function Hero() {
         style={{ y: titleY, scale: titleScale, opacity: titleOpacity }}
         className="relative z-10 mx-auto flex min-h-[calc(100svh-8rem)] w-full max-w-[1440px] origin-top-left flex-col justify-center px-5 md:px-10 lg:px-16"
       >
-        <motion.div
-          initial={{ opacity: 0, y: 16, scale: 0.9 }}
-          animate={ready ? { opacity: 1, y: 0, scale: 1 } : undefined}
-          transition={{ duration: dur.base, ease: ease.out }}
-          className="hidden  eyebrow mb-8 md:inline-flex w-fit items-center gap-2.5 rounded-full border border-glass-line bg-glass px-4 py-2 text-primary-ink backdrop-blur-xl"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-          </span>
-          Équipe de développement · Web · Mobile · Logiciels
-        </motion.div>
+
+        {/* Téléphone et tablette : le logo en particules, bien visible, au-dessus du titre (jamais derrière le texte) */}
+        {!desktop && (
+          <div className="pointer-events-none relative -mx-5 mb-4 h-[38svh] min-h-[240px] max-h-[400px] [mask-image:radial-gradient(ellipse_at_center,black_62%,transparent_82%)] md:-mx-10 md:h-[42svh]">
+            <div className="absolute left-1/2 top-1/2 h-[80%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,163,163,0.20),transparent_65%)] blur-2xl" />
+            {use3d ? (
+              <Suspense fallback={null}>
+                <HeroScene scrollProgress={scrollYProgress} dark={theme === "dark"} fit={1.75} className="absolute inset-0" />
+              </Suspense>
+            ) : (
+              <IrisOrb className="left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2" />
+            )}
+          </div>
+        )}
 
         <h1 id="hero-title" className="max-w-[14ch] font-display text-[clamp(2.4rem,6.2vw,6.25rem)] leading-[1.02] tracking-[-0.045em] text-ink">
           <SplitText text="Nous construisons des" by="char" play={ready} className="block font-light" stagger={0.025} />
@@ -142,7 +160,7 @@ export default function Hero() {
 
       {/* Pilules flottantes : chiffres vérifiés et engagements */}
       <div className="pointer-events-none absolute inset-0 hidden xl:block">
-        <FloatPill play={ready} delay={1.2} className="right-[6%] top-[20%]" icon={<Layers className="h-4 w-4" />} value={`${projects.length}`} label="projets en ligne" />
+        <FloatPill play={ready} delay={1.2} className="right-[6%] top-[20%]" icon={<Layers className="h-4 w-4" />} value={`${projects.length}`} label="projets publics" />
         <FloatPill play={ready} delay={1.35} className="right-[2%] top-[56%]" icon={<Timer className="h-4 w-4" />} value="24 h" label="pour vous répondre" />
         <FloatPill play={ready} delay={1.5} className="bottom-[10%] right-[24%]" icon={<Sparkles className="h-4 w-4" />} value="0 €/CFA/MAD" label="devis et étude du besoin" />
       </div>
@@ -152,7 +170,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={ready ? { opacity: 1 } : undefined}
         transition={{ delay: 1.6 }}
-        className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full border border-glass-line bg-glass px-4 py-2 text-xs text-ink-muted backdrop-blur-xl"
+        className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 md:flex items-center gap-2 rounded-full border border-glass-line bg-glass px-4 py-2 text-xs text-ink-muted backdrop-blur-xl"
       >
         <motion.span animate={{ y: [0, 4, 0] }} transition={{ duration: 1.6, repeat: Infinity }}>
           <ArrowDown className="h-3.5 w-3.5" />

@@ -1,4 +1,3 @@
-import Eyebrow from "../../../ui/Eyebrow";
 import IrisOrb from "../../../ui/IrisOrb";
 import SplitText from "../../../motion/SplitText";
 import Counter from "../../../motion/Counter";
@@ -18,14 +17,13 @@ export default function ProjectsHero() {
       </MouseParallax>
 
       <div className="relative mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
-        <Eyebrow className="hidden md:block">Réalisations</Eyebrow>
-        <h1 id="projects-title" className="mt-8 max-w-5xl font-display text-[clamp(2.4rem,6vw,6rem)] leading-[0.92] tracking-[-0.045em] text-ink">
+        <h1 id="projects-title" className="max-w-5xl font-display text-[clamp(2.4rem,6vw,6rem)] leading-[0.92] tracking-[-0.045em] text-ink">
           <SplitText text="Des projets qui" by="char" className="block font-light" stagger={0.02} immediate />
           <SplitText text="propulsent." by="char" className="block font-extrabold" delay={0.3} stagger={0.02} immediate />
         </h1>
         <div className="mt-12 flex flex-wrap gap-4">
           {[
-            { value: projects.length, label: "projets en ligne" },
+            { value: projects.length, label: "projets publics" },
             { value: sectors, label: "secteurs d'activité" },
           ].map((s) => (
             <div key={s.label} className="flex items-center gap-4 rounded-md border border-glass-line bg-glass py-2 pl-2 pr-6 backdrop-blur-xl">
@@ -36,6 +34,7 @@ export default function ProjectsHero() {
             </div>
           ))}
         </div>
+        <p className="mt-4 max-w-xl text-sm text-ink-faint">Projets publics uniquement : les projets privés et les outils internes réalisés pour nos clients ne sont pas comptés.</p>
       </div>
     </section>
   );

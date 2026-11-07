@@ -48,7 +48,7 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
 // ⚠️ Remplacer par les vraies données
 const STATS: Stat[] = [
   // Chiffres non prouvés retirés (15+ dépôts, 2 400+ commits) — voir src/data/site.ts
-  { value: String(projects.length), label: "projets en ligne" },
+  { value: String(projects.length), label: "projets publics" },
   { value: "Mensuelle", label: "veille technique partagée" },
   { value: "Open", label: "dépôts publics sur GitHub" },
 ];
@@ -75,7 +75,7 @@ const Veille: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block text-xs uppercase tracking-[0.2em] font-mono text-primary mb-3">
+          <span className="kicker inline-block text-sm text-primary mb-3">
             Engagement
           </span>
           <h2 className="text-3xl lg:text-4xl font-bold text-ink dark:text-white max-w-xl leading-tight">
@@ -112,14 +112,14 @@ const Veille: React.FC = () => {
                   {/* Dot + year above axis */}
                   <div className="absolute -top-[42px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-0.5">
                     <span className="text-primary text-xs">◉</span>
-                    <span className="font-mono text-[15px] text-ink-faint">
+                    <span className="font-sans text-[15px] text-ink-faint">
                       {event.year}
                     </span>
                   </div>
 
                   {/* Content */}
                   <span
-                    className={`inline-block font-mono text-[9px] uppercase px-1.5 py-0.5 rounded ${TYPE_STYLES[event.type]}`}
+                    className={`kicker inline-block text-xs px-1.5 py-0.5 rounded ${TYPE_STYLES[event.type]}`}
                   >
                     {event.type}
                   </span>
@@ -146,10 +146,10 @@ const Veille: React.FC = () => {
                   : ""
               }`}
             >
-              <span className="font-mono text-3xl font-bold text-ink dark:text-primary">
+              <span className="font-sans text-3xl font-bold text-ink dark:text-primary">
                 {stat.value}
               </span>
-              <span className="text-xs text-ink-muted dark:text-slate-300 font-mono mt-1">
+              <span className="text-xs text-ink-muted dark:text-slate-300 font-sans mt-1">
                 {stat.label}
               </span>
             </div>

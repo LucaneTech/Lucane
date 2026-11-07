@@ -90,7 +90,7 @@ function ArbitrageRow({
       className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 md:gap-6 py-6 border-b border-white/8 hover:bg-white/[0.02] transition-colors duration-150 px-2 -mx-2 rounded"
     >
       {/* Domain label */}
-      <span className="font-mono text-xs md:text-xs uppercase tracking-widest text-primary w-32 md:w-36 flex-shrink-0">
+      <span className="kicker text-sm text-primary w-32 md:w-36 flex-shrink-0">
         {item.domain}
       </span>
 
@@ -106,14 +106,14 @@ function ArbitrageRow({
       {/* VS separator */}
       <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
         <div className="w-10 border-t border-primary/15" />
-        <span className="font-mono text-xs text-primary">VS</span>
+        <span className="font-sans text-xs text-primary">VS</span>
         <div className="w-10 border-t border-primary/15" />
       </div>
 
       {/* Chosen + pill */}
       <div className="flex-1 flex items-center gap-3">
         <span className="text-white font-semibold">{item.chosen}</span>
-        <span className="bg-primary/15 text-primary border border-primary/30 rounded-sm text-[10px] px-2 py-0.5 font-mono uppercase tracking-wide flex-shrink-0">
+        <span className="kicker bg-primary/15 text-primary border border-primary/30 rounded-sm text-xs px-2 py-0.5 flex-shrink-0">
           Retenu
         </span>
       </div>
@@ -137,7 +137,7 @@ const Arbitrages: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block text-xs uppercase tracking-[0.2em] font-mono text-primary mb-3">
+          <span className="kicker inline-block text-sm text-primary mb-3">
             Décisions techniques
           </span>
           <h2 className="text-3xl lg:text-4xl font-bold text-white">

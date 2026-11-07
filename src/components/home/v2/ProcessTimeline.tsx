@@ -19,7 +19,7 @@ function Step({ step, index, total, progress }: { step: (typeof process)[number]
       {/* pastille sur la ligne */}
       <motion.span
         style={{ scale, opacity: dotOpacity }}
-        className="absolute left-5 top-8 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-primary font-mono text-xs text-on-primary shadow-glow md:left-1/2"
+        className="absolute left-5 top-8 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-primary font-sans text-xs text-on-primary shadow-glow md:left-1/2"
       >
         {step.step}
       </motion.span>
@@ -27,7 +27,7 @@ function Step({ step, index, total, progress }: { step: (typeof process)[number]
         style={{ opacity: on, x }}
         className={`ml-14 rounded-md border border-glass-line bg-panel p-7 md:ml-0 md:p-9 ${left ? "md:col-start-1 md:mr-10" : "md:col-start-2 md:ml-10"}`}
       >
-        <p className="font-mono text-sm text-primary-ink">Étape {step.step}</p>
+        <p className="kicker text-base text-primary-ink">{step.tag}</p>
         <h3 className="mt-2 font-display text-2xl font-bold tracking-[-0.03em] text-ink">{step.title}</h3>
         <p className="mt-3 leading-relaxed text-ink-muted">{step.detail}</p>
         <span className="mt-5 inline-flex rounded-full border border-glass-line bg-canvas-alt px-4 py-1.5 text-sm text-ink">

@@ -111,10 +111,12 @@ interface HeroSceneProps {
   /** 0 → 1 : progression du défilement du hero (dispersion). */
   scrollProgress?: { get: () => number };
   dark: boolean;
+  /** Agrandissement du logo dans son cadre (1 = taille ordinateur). Utilisé sur mobile, où le cadre est plus petit. */
+  fit?: number;
   className?: string;
 }
 
-export default function HeroScene({ scrollProgress, dark, className }: HeroSceneProps) {
+export default function HeroScene({ scrollProgress, dark, className, fit = 1 }: HeroSceneProps) {
   const mountRef = useRef<HTMLDivElement>(null);
   const darkRef = useRef(dark);
   darkRef.current = dark;
@@ -184,7 +186,8 @@ export default function HeroScene({ scrollProgress, dark, className }: HeroScene
       if (disposed) return;
       const flat = sampleLogo(img);
       const available = flat.length / 2;
-      const count = Math.min(small ? 5000 : MAX_POINTS, available * 2);
+      // plus le logo est agrandi, plus il faut de points pour qu'il reste dense
+      const count = Math.min(Math.round((small ? 5000 : MAX_POINTS) * Math.min(fit, 1.8)), MAX_POINTS, available * 2);
       const start = new Float32Array(count * 3);
       const target = new Float32Array(count * 3);
       const random = new Float32Array(count);
@@ -212,6 +215,7 @@ export default function HeroScene({ scrollProgress, dark, className }: HeroScene
       geometry.setAttribute("aColor", new BufferAttribute(buildColors(target, count, darkRef.current), 3));
       points = new Points(geometry, material);
       points.frustumCulled = false;
+      points.scale.setScalar(fit);
       scene.add(points);
     };
 
@@ -285,7 +289,7 @@ export default function HeroScene({ scrollProgress, dark, className }: HeroScene
       renderer.dispose();
       mount.removeChild(renderer.domElement);
     };
-  }, [scrollProgress]);
+  }, [scrollProgress, fit]);
 
   return <div ref={mountRef} className={className} aria-hidden />;
 }

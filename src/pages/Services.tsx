@@ -1,6 +1,6 @@
 /**
  * Services (phase 6.1) : en-tête, défilé des technologies, 7 expertises ancrées, formules,
- * méthode, détail par domaine (conservé), pourquoi nous (conservé), FAQ, appel final.
+ * méthode, pourquoi nous, FAQ, appel final. Chaque expertise a son illustration animée et ses réalisations.
  */
 import { ArrowUpRight } from "lucide-react";
 import PageHero from "../ui/PageHero";
@@ -10,7 +10,6 @@ import AutoScrollElement from "../components/services/AutoScrollElement";
 import ExpertiseRows from "../components/services/v2/ExpertiseRows";
 import Offers from "../components/services/v2/Offers";
 import ProcessTimeline from "../components/home/v2/ProcessTimeline";
-import ExpertiseDeepDive from "../components/services/ExpertiseDeepDive";
 import WhyUs from "../components/services/WhyUs";
 import FinalCta from "../components/home/v2/FinalCta";
 import { faqFor } from "../data/faq";
@@ -36,7 +35,6 @@ export default function Services() {
       <ExpertiseRows />
       <Offers />
       <ProcessTimeline />
-      <ExpertiseDeepDive />
       <WhyUs />
       <FaqAccordion items={faqFor("services")} />
       <FinalCta />

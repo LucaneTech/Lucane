@@ -95,7 +95,7 @@ const Hero: React.FC = () => {
           {/* ─────────────── LEFT — Content (toujours en haut sur mobile) ─────────────── */}
           <div className="order-1 lg:order-none w-full flex flex-col items-center lg:items-start text-center lg:text-left">
 
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.6 }}
@@ -103,7 +103,7 @@ const Hero: React.FC = () => {
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Technologies
-            </motion.div>
+            </motion.div> */}
 
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
@@ -141,7 +141,7 @@ const Hero: React.FC = () => {
                 >
                   <span className="text-[11px] dark:text-white/30 uppercase tracking-wider font-medium">{p.label}</span>
                   <span className="w-px h-3 bg-slate-700/80" />
-                  <span className="text-sm font-semibold text-primary dark:text-primary font-mono">{p.value}</span>
+                  <span className="text-sm font-semibold text-primary dark:text-primary font-sans">{p.value}</span>
                 </div>
               ))}
             </motion.div>
@@ -233,10 +233,10 @@ const Hero: React.FC = () => {
                       animate={{ opacity: [1, 0.3, 1] }}
                       transition={{ duration: 1.2, repeat: Infinity }}
                     />
-                    <span className="text-[9px] font-mono text-primary/90 tracking-[0.18em] uppercase">Stack Verified</span>
+                    <span className="kicker text-xs text-primary/90">Stack Verified</span>
                   </div>
 
-                  <div className="absolute top-3 right-3 text-[9px] font-mono text-white/30 tracking-widest uppercase">
+                  <div className="kicker absolute top-3 right-3 text-xs text-white/30">
                     SYS:ACTIVE
                   </div>
                 </div>

@@ -1,13 +1,13 @@
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
-import Eyebrow from "./Eyebrow";
 import IrisOrb from "./IrisOrb";
 import SplitText from "../motion/SplitText";
 import { MouseParallax } from "../motion/Parallax";
 import { dur, ease } from "../motion/presets";
 
 interface PageHeroProps {
-  eyebrow: string;
+  /** Ancien badge en tête de page : n'est plus affiché. */
+  eyebrow?: string;
   /** Ligne fine puis ligne grasse du titre géant. */
   light: string;
   bold: string;
@@ -17,7 +17,7 @@ interface PageHeroProps {
 }
 
 /** En-tête commun des pages intérieures : titre géant fin + gras, chapeau, formes irisées qui suivent la souris. */
-export default function PageHero({ eyebrow, light, bold, lead, children, tone = "teal" }: PageHeroProps) {
+export default function PageHero({ light, bold, lead, children, tone = "teal" }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden pb-16 pt-36 md:pb-24 md:pt-44" aria-labelledby="page-title">
       <MouseParallax depth={26} className="pointer-events-none absolute right-[5%] top-[16%]">
@@ -28,8 +28,7 @@ export default function PageHero({ eyebrow, light, bold, lead, children, tone = 
       </MouseParallax>
 
       <div className="relative mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16">
-        <Eyebrow className="hidden md:block">{eyebrow}</Eyebrow>
-        <h1 id="page-title" className="mt-8 max-w-5xl font-display text-[clamp(2.4rem,6vw,6rem)] leading-[0.92] tracking-[-0.045em] text-ink">
+        <h1 id="page-title" className="max-w-5xl font-display text-[clamp(2.4rem,6vw,6rem)] leading-[0.92] tracking-[-0.045em] text-ink">
           <SplitText text={light} by="char" className="block font-light" stagger={0.02} immediate />
           <SplitText text={bold} by="char" className="block font-extrabold" delay={0.3} stagger={0.02} immediate />
         </h1>

@@ -148,7 +148,7 @@ const StackTopography: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block text-xs uppercase tracking-[0.2em] font-mono text-primary mb-3">
+          <span className="kicker inline-block text-sm text-primary mb-3">
             Architecture
           </span>
           <h2 className="text-3xl lg:text-4xl font-bold dark:text-white">
@@ -187,7 +187,7 @@ const StackTopography: React.FC = () => {
           {LAYERS.map((layer, layerIdx) => (
             <div key={layer.name} className="flex items-center gap-6 relative z-10">
               <div className="w-36 flex-shrink-0">
-                <span className="font-mono text-[12px] uppercase tracking-[0.3em] text-primary">
+                <span className="kicker text-sm text-primary">
                   {layer.name}
                 </span>
               </div>

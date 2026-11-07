@@ -60,7 +60,7 @@ function CaseStudyView({ project }: { project: Project }) {
           <div className="flex flex-wrap gap-2">
             <span className="rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-on-primary">{project.category}</span>
             {project.sector && <span className="rounded-full border border-glass-line bg-glass px-4 py-1.5 text-sm text-ink">{project.sector}</span>}
-            {project.year && <span className="rounded-full border border-glass-line bg-glass px-4 py-1.5 font-mono text-sm text-ink">{project.year}</span>}
+            {project.year && <span className="rounded-full border border-glass-line bg-glass px-4 py-1.5 font-sans text-sm text-ink">{project.year}</span>}
           </div>
           <h1 id="case-title" className="mt-6 max-w-6xl font-display text-[clamp(2.4rem,6.4vw,6.5rem)] font-extrabold leading-[0.9] tracking-[-0.05em] text-ink">
             <SplitText text={project.title} by="char" stagger={0.025} immediate />
@@ -120,7 +120,7 @@ function CaseStudyView({ project }: { project: Project }) {
               <div className="mt-16 space-y-6">
                 {caseSteps.map((s, i) => (
                   <M.Card key={s.key} index={i}>
-                    <p className="font-mono text-sm text-primary-ink">0{i + 1} — {s.label}</p>
+                    <p className="font-sans text-sm text-primary-ink">0{i + 1} — {s.label}</p>
                     <p className="mt-3 text-lg leading-relaxed text-ink">{project.caseStudy![s.key]}</p>
                   </M.Card>
                 ))}
@@ -139,7 +139,7 @@ function CaseStudyView({ project }: { project: Project }) {
         >
           <IrisOrb className="-right-10 -top-16 h-72 w-72 opacity-70" tone="sunset" />
           <div className="relative">
-            <p className="eyebrow opacity-60">Projet suivant</p>
+            <p className="kicker text-base opacity-70">Projet suivant</p>
             <p className="mt-4 font-display text-[clamp(2rem,5vw,4.25rem)] font-extrabold leading-none tracking-[-0.05em] transition-transform duration-700 group-hover:translate-x-4">
               {next.title}
             </p>

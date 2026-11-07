@@ -33,10 +33,10 @@ const BASE =
 
 /** Couleurs du bouton au repos et de l'aplat qui monte au survol. */
 const VARIANTS: Record<string, { base: string; fill: string; hoverText: string }> = {
-  primary: { base: "bg-primary text-on-primary shadow-glow", fill: "bg-ink", hoverText: "group-hover:text-canvas" },
-  outline: { base: "border border-glass-line bg-glass text-ink backdrop-blur-xl", fill: "bg-ink", hoverText: "group-hover:text-canvas" },
-  dark: { base: "bg-ink text-canvas", fill: "bg-primary", hoverText: "group-hover:text-on-primary" },
-  white: { base: "bg-white text-[#006b6b]", fill: "bg-ink", hoverText: "group-hover:text-canvas" },
+  primary: { base: "bg-primary text-on-primary shadow-glow", fill: "bg-ink", hoverText: "hover:text-canvas" },
+  outline: { base: "border border-glass-line bg-glass text-ink backdrop-blur-xl", fill: "bg-ink", hoverText: "hover:text-canvas" },
+  dark: { base: "bg-ink text-canvas", fill: "bg-primary", hoverText: "hover:text-on-primary" },
+  white: { base: "bg-white text-[#006b6b]", fill: "bg-ink", hoverText: "hover:text-canvas" },
   ghost: { base: "text-primary-ink", fill: "", hoverText: "" },
 };
 

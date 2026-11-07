@@ -297,7 +297,7 @@ function Field({ label, name, type = "text", multiline, required, value, onChang
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
   const inputClass =
-    "peer block w-full rounded-2xl border-[1.5px] border-field-line bg-transparent px-5 pb-3 pt-7 text-lg text-white border border-primary  transition-[border-color,box-shadow] duration-500  focus:border-primary focus:shadow-glow focus:outline-none focus-visible:outline-none";
+    "peer block w-full rounded-2xl border-[1px] border-field-line bg-transparent px-5 pt-6 md:pt-7 text-sm md:text-md text-primary border border-primary  transition-[border-color,box-shadow] duration-500  focus:border-primary focus:shadow-glow focus:outline-none focus-visible:outline-none";
 
   return (
     <motion.div

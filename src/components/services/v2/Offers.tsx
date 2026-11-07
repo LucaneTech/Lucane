@@ -37,7 +37,7 @@ export default function Offers() {
                 {hi && (
                   <span className="absolute right-5 top-5 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-on-primary">La plus choisie</span>
                 )}
-                <p className={`font-mono text-sm ${hi ? "text-primary-ink" : "text-primary-ink"}`}>0{i + 1}</p>
+                <p className={`font-sans text-sm ${hi ?"text-primary-ink" : "text-primary-ink"}`}>0{i + 1}</p>
                 <h3 className="mt-3 font-display text-3xl font-bold tracking-[-0.03em]">{o.name}</h3>
                 <p className={`mt-2 ${hi ? "opacity-70" : "text-ink-muted"}`}>{o.pitch}</p>
                 <ul className="mt-6 flex-1 space-y-2.5">

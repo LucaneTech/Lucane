@@ -6,7 +6,6 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Check, Mail, MessageCircle, PhoneCall, Search } from "lucide-react";
 import Button from "../ui/Button";
-import Eyebrow from "../ui/Eyebrow";
 import IrisOrb from "../ui/IrisOrb";
 import SplitText from "../motion/SplitText";
 import { M } from "../motion/kit";
@@ -87,8 +86,6 @@ export default function Thanks() {
           <Burst />
         </div>
 
-        <Eyebrow>Message envoyé</Eyebrow>
-
         <h1 id="thanks-title" className="mt-6 font-display text-[clamp(2.2rem,5.6vw,5.25rem)] leading-[1.02] tracking-[-0.045em] text-ink">
           <SplitText text="Merci, votre message" by="char" className="block font-light" stagger={0.02} immediate delay={0.3} />
           <SplitText text="est bien arrivé." by="char" className="block font-extrabold" stagger={0.02} immediate delay={0.6} />
@@ -115,7 +112,7 @@ export default function Thanks() {
 
         {/* Et maintenant ? */}
         <div className="mt-20 w-full text-left md:mt-24">
-          <p className="eyebrow mb-6 text-center text-ink-muted">Et maintenant ?</p>
+          <p className="kicker mb-6 text-center text-base text-ink-muted">Et maintenant ?</p>
           <div className="grid gap-4 md:grid-cols-3 md:gap-6">
             {NEXT_STEPS.map(({ icon: Icon, title, desc }, i) => (
               <M.Card key={title} index={i}>
@@ -125,7 +122,7 @@ export default function Thanks() {
                       <Icon className="h-5 w-5" strokeWidth={1.75} />
                     </M.Icon>
                   </span>
-                  <span className="font-mono text-sm text-primary-ink">0{i + 1}</span>
+                  <span className="font-sans text-sm text-primary-ink">0{i + 1}</span>
                 </div>
                 <h2 className="mt-5 font-display text-lg font-bold tracking-[-0.02em] text-ink md:text-xl">{title}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">{desc}</p>

@@ -2,6 +2,8 @@
 export const process = [
   {
     step: "01",
+    /** Accroche affichée au-dessus du titre de l'étape. */
+    tag: "On vous écoute",
     title: "Découverte",
     short: "Analyse de vos besoins, objectifs et contraintes techniques.",
     detail:
@@ -10,6 +12,7 @@ export const process = [
   },
   {
     step: "02",
+    tag: "On dessine",
     title: "Design",
     short: "Conception UX/UI et prototypage interactif.",
     detail:
@@ -18,6 +21,7 @@ export const process = [
   },
   {
     step: "03",
+    tag: "On construit",
     title: "Développement",
     short: "Implémentation agile en sprints bimensuels.",
     detail:
@@ -26,6 +30,7 @@ export const process = [
   },
   {
     step: "04",
+    tag: "On met en ligne",
     title: "Livraison",
     short: "Tests, déploiement et formation de vos équipes.",
     detail:
@@ -34,6 +39,7 @@ export const process = [
   },
   {
     step: "05",
+    tag: "On reste à vos côtés",
     title: "Suivi",
     short: "Maintenance, évolutions et support technique dédié.",
     detail:

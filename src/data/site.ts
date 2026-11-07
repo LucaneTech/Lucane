@@ -47,7 +47,7 @@ export interface Fact {
 }
 
 export const facts: Fact[] = [
-  { value: projects.length, label: "projets en ligne", source: "src/data/projects.ts (liste publique, calculé)" },
+  { value: projects.length, label: "projets publics", source: "src/data/projects.ts (liste publique, calculé ; hors projets privés et internes des clients)" },
   { value: 0, suffix: "+", label: "clients accompagnés", source: "À FOURNIR" },
   { value: 0, label: "pays clients", source: "À FOURNIR" },
   { value: 0, suffix: "+", label: "années d'activité", source: "À FOURNIR" },

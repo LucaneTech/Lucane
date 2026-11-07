@@ -75,7 +75,7 @@ export default function Intro() {
               transition={{ duration: 0.9, ease: ease.out, delay: 0.35 }}
             />
             <motion.span
-              className="eyebrow text-on-inverse/60"
+              className="kicker text-sm text-on-inverse/60"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.55 }}

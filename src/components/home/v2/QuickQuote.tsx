@@ -15,26 +15,54 @@ const STEPS = [
   { icon: Rocket, label: "Livraison" },
 ];
 
-/** Devis express (plan 3.12) : même envoi que l'ancien mini-formulaire (FormSubmit vers contact@). */
+/** Point d'envoi Formspree (identifiant public du formulaire, visible côté client par nature). */
+const FORM_ENDPOINT = "https://formspree.io/f/meaawlza";
+const MAX_LEN = 200;
+const clean = (v: string) => v.trim().slice(0, MAX_LEN);
+
+/** Devis express (plan 3.12) : envoi vers Formspree, avec champ piège anti-robots. */
 export default function QuickQuote() {
   const [form, setForm] = useState({ name: "", email: "", besoin: "" });
+  const [honeypot, setHoneypot] = useState("");
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
+    if (sending) return;
+    // Champ piège rempli : c'est un robot. On simule un succès sans rien envoyer.
+    if (honeypot) {
+      setSent(true);
+      return;
+    }
+    const name = clean(form.name);
+    const email = clean(form.email);
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError(true);
+      return;
+    }
     setSending(true);
+    setError(false);
     const data = new FormData();
-    data.append("name", form.name);
-    data.append("email", form.email);
-    data.append("besoin", form.besoin || "Non précisé");
-    data.append("_captcha", "false");
+    data.append("name", name);
+    data.append("email", email);
+    data.append("besoin", NEEDS.includes(form.besoin) ? form.besoin : "Non précisé");
     data.append("_subject", "Demande de devis rapide — Lucane");
+    data.append("_gotcha", "");
     try {
-      await fetch(`https://formsubmit.co/${site.email}`, { method: "POST", headers: { Accept: "application/json" }, body: data });
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+        referrerPolicy: "strict-origin-when-cross-origin",
+      });
+      // Formspree répond { ok: true } en cas de succès, { errors: [...] } sinon.
+      const json = (await res.json().catch(() => null)) as { ok?: boolean } | null;
+      if (!res.ok || !json?.ok) throw new Error(String(res.status));
       setSent(true);
     } catch {
-      /* l'équipe reste joignable par WhatsApp et e-mail */
+      setError(true);
     } finally {
       setSending(false);
     }
@@ -114,8 +142,24 @@ export default function QuickQuote() {
                       })}
                     </div>
                   </fieldset>
+                  {/* Champ piège : invisible pour les humains, rempli par les robots. Doit rester vide. */}
+                  <input
+                    type="text"
+                    name="_gotcha"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    hidden
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                  {error && (
+                    <p role="alert" className="text-center text-sm text-red-500">
+                      Envoi impossible. Vérifiez vos informations ou écrivez-nous à {site.email}.
+                    </p>
+                  )}
                   <Button type="submit" size="lg" label={sending ? "Envoi en cours…" : "Envoyer ma demande"} disabled={sending} className="w-full" />
-                  <p className="text-center text-xs text-ink-muted">Sans engagement · Réponse sous {site.responseTime}</p>
+                  <p className="text-center text-xs text-primary">Sans engagement · Réponse sous {site.responseTime}</p>
                 </motion.form>
               )}
             </AnimatePresence>

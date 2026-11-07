@@ -28,7 +28,7 @@ const DOMAINS: Domain[] = [
   },
   {
     name: "Backend",
-    primary: { value: projects.length, suffix: "", label: "projets en ligne" },
+    primary: { value: projects.length, suffix: "", label: "projets publics" },
     secondary: "API documentées",
     stack: ["Node.js", "Django"],
   },
@@ -74,7 +74,7 @@ function AnimatedCounter({
       : count.toLocaleString("fr-FR");
 
   return (
-    <span className="font-mono text-5xl font-bold text-white tabular-nums">
+    <span className="font-sans text-5xl font-bold text-white tabular-nums">
       {prefix}
       {display}
       {suffix}
@@ -90,7 +90,7 @@ const TechInProd: React.FC = () => {
     <section ref={ref} className="mx-2 my-6 overflow-hidden rounded-md bg-dark px-6 py-20 md:mx-4 md:rounded-md md:py-28">
       <div className="max-w-6xl mx-auto">
         <motion.span
-          className="inline-block text-xs uppercase tracking-[0.2em] font-mono text-primary mb-16"
+          className="kicker inline-block text-sm text-primary mb-16"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.4 }}
@@ -108,7 +108,7 @@ const TechInProd: React.FC = () => {
               className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-6 px-4 py-8 border-b border-white/8 hover:bg-white/[0.03] transition-colors duration-150"
             >
               {/* Domain */}
-              <span className="font-mono text-[12px] uppercase tracking-[0.3em] text-primary w-28 flex-shrink-0">
+              <span className="kicker text-sm text-primary w-28 flex-shrink-0">
                 {domain.name}
               </span>
 
@@ -127,12 +127,12 @@ const TechInProd: React.FC = () => {
               </div>
 
               {/* Dot separator */}
-              <span className="hidden sm:inline text-white/20 font-mono text-lg flex-shrink-0">
+              <span className="hidden sm:inline text-white/20 font-sans text-lg flex-shrink-0">
                 ·
               </span>
 
               {/* Secondary metric */}
-              <span className="font-mono text-base text-white/55 flex-shrink-0">
+              <span className="font-sans text-base text-white/55 flex-shrink-0">
                 {domain.secondary}
               </span>
 

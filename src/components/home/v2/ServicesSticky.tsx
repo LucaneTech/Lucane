@@ -33,7 +33,7 @@ function Details({ service, animate = true }: { service: Service; animate?: bool
   return (
     <div className="grid gap-5 md:grid-cols-[1.25fr_1fr]">
       <div>
-        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint">Savoir-faire</p>
+        <p className="kicker text-sm text-ink-faint">Savoir-faire</p>
         <div className="mt-2.5 flex flex-wrap gap-1.5">
           {service.features.map((f, i) => (
             <motion.span
@@ -49,7 +49,7 @@ function Details({ service, animate = true }: { service: Service; animate?: bool
         </div>
       </div>
       <div>
-        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint">Nos engagements</p>
+        <p className="kicker text-sm text-ink-faint">Nos engagements</p>
         <ul className="mt-2.5 space-y-1.5">
           {service.commitments.map((c, i) => (
             <motion.li
@@ -82,7 +82,7 @@ function MobileCard({ service, index }: { service: Service; index: number }) {
       </div>
       <div className="px-5 pb-6 pt-2">
         <div className="flex items-center justify-between">
-          <p className="font-mono text-xs text-primary-ink">
+          <p className="font-sans text-xs text-primary-ink">
             {pad(index + 1)} / {pad(services.length)}
           </p>
           <Link
@@ -137,7 +137,7 @@ export default function ServicesSticky() {
                       className="group flex items-baseline gap-5 rounded-full py-1.5 pr-4 transition-colors"
                       data-cursor="pointer"
                     >
-                      <span className={`font-mono text-xs transition-colors duration-500 ${i === active ? "text-primary-ink" : "text-ink-faint"}`}>
+                      <span className={`font-sans text-xs transition-colors duration-500 ${i === active ?"text-primary-ink" : "text-ink-faint"}`}>
                         {pad(i + 1)}
                       </span>
                       <motion.span
@@ -161,7 +161,7 @@ export default function ServicesSticky() {
             <article className="relative flex h-[min(80vh,780px)] min-h-[540px] flex-col overflow-hidden rounded-md border border-glass-line bg-panel shadow-glow">
               {/* en-tête : numéro, segments de progression, lien */}
               <header className="flex items-center gap-4 border-b border-line px-7 py-3.5">
-                <span className="font-mono text-xs text-primary-ink">
+                <span className="font-sans text-xs text-primary-ink">
                   {pad(active + 1)} / {pad(services.length)}
                 </span>
                 <div className="flex flex-1 gap-1" aria-hidden>

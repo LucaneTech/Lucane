@@ -71,6 +71,14 @@
   letter-spacing: -0.03em;
 }
 
+/* Libellé de section : texte simple en Sen, sans pilule ni capitales espacées. */
+@utility kicker {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
 @utility eyebrow {
   font-family: var(--font-mono);
   font-size: 0.75rem;

@@ -65,7 +65,7 @@ export default function FeaturedWork() {
           </h2>
         </div>
         <p className="max-w-sm text-ink-muted">
-          {projects.length} projets en ligne, consultables dès maintenant. Voici une sélection.
+          {projects.length} projets publics, consultables dès maintenant, sans compter les projets privés et les outils internes réalisés pour nos clients. Voici une sélection.
         </p>
       </div>
 
@@ -82,7 +82,7 @@ export default function FeaturedWork() {
             <ArrowRight className="h-8 w-8" />
           </span>
           <span className="font-display text-2xl font-bold text-ink">Toutes les réalisations</span>
-          <span className="text-ink-muted">{projects.length} projets</span>
+          <span className="text-ink-muted">{projects.length} projets publics</span>
         </Link>
       </HorizontalScroll>
     </div>

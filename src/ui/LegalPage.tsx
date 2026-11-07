@@ -24,7 +24,7 @@ export default function LegalPage({ eyebrow, light, bold, updated, blocks }: { e
               transition={{ duration: 0.8, ease: ease.out }}
               className="rounded-md border border-glass-line bg-panel p-7 md:p-10"
             >
-              <p className="font-mono text-sm text-primary-ink">0{i + 1}</p>
+              <p className="font-sans text-sm text-primary-ink">0{i + 1}</p>
               <h2 className="mt-2 font-display text-2xl font-bold tracking-[-0.02em] text-ink md:text-3xl">{b.title}</h2>
               <div className="mt-4 space-y-3 leading-relaxed text-ink-muted [&_strong]:text-ink">{b.body}</div>
             </motion.article>

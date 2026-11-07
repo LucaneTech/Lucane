@@ -17,7 +17,7 @@ export default function FinalCta() {
       </MouseParallax>
 
       <div className="relative mx-auto w-full max-w-[1440px] px-5 text-center md:px-10 lg:px-16">
-        <p className="eyebrow text-primary-ink">Notre équipe vous attend</p>
+        <p className="kicker text-base text-primary-ink md:text-lg">Notre équipe vous attend</p>
         <h2 id="final-title" className="mt-6 font-display text-[clamp(2.4rem,7vw,6.75rem)] leading-[0.9] tracking-[-0.05em] text-ink">
           <SplitText text="Parlons de" by="char" className="block font-light" stagger={0.03} />
           <SplitText text="votre projet." by="char" className="block font-extrabold" delay={0.25} stagger={0.03} />
