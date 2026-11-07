@@ -1,0 +1,14 @@
+{
+  "name": "Lucane Tech",
+  "short_name": "Lucane",
+  "description": "Création de sites web et d'applications sur mesure.",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#008080",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

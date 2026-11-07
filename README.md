@@ -30,7 +30,7 @@ Tout le texte et les chiffres vivent dans `src/data/`. Les pages lisent ces fich
 
 **Règle de confiance :** une valeur marquée `"À FOURNIR"` n'est jamais affichée. Un chiffre sans source reste caché (`verifiedFacts()`), un témoignage n'apparaît qu'avec `consent: true`, un logo seulement s'il est confirmé. On remplace la valeur, et l'élément s'affiche tout seul.
 
-Après avoir ajouté un projet, `npm run sitemap` met à jour `public/sitemap.xml` (le build le fait aussi).
+Après avoir ajouté un projet, `npm run build` crée sa page HTML et l'ajoute au plan du site.
 
 ## Organisation
 
@@ -44,7 +44,7 @@ src/
   theme/            bascule clair / sombre
   data/             contenu (voir plus haut)
 scripts/
-  generate-sitemap.mjs   plan du site depuis src/data/projects.ts
+  prerender.mjs          après le build : une page HTML par adresse, 404.html et sitemap.xml
   optimize-images.mjs    convertit les images lourdes de public/ en WebP et met à jour les chemins
 docs/superpowers/plans/  plan de la refonte (direction artistique, phases)
 ```
@@ -58,9 +58,15 @@ docs/superpowers/plans/  plan de la refonte (direction artistique, phases)
 
 ## Référencement
 
-- Chaque page appelle `useSeo(titre, description)` : titre d'onglet, description, canonique et balises de partage.
-- `index.html` porte les valeurs par défaut et les données structurées (Organization).
-- `public/robots.txt` et `public/sitemap.xml` pointent vers `https://lucane.tech`. **À vérifier :** ce domaine ne répondait pas le 6 nov. 2026 (site actuel : lucanetech.netlify.app). Si le domaine change, modifier `site.domain` dans `src/data/site.ts`, `DOMAIN` dans `scripts/generate-sitemap.mjs`, `robots.txt` et `index.html`.
+Domaine officiel : **https://lucanetech.com**.
+
+- `src/seo/pages.ts` : adresse du site et, pour chaque page, titre, description et titre principal. **C'est le seul fichier à modifier** pour changer le référencement d'une page (les études de cas sont générées depuis `src/data/projects.ts`).
+- `src/seo/schema.ts` : données structurées schema.org (entreprise, site, fil d'Ariane, services, formules, FAQ, liste des réalisations, études de cas).
+- `scripts/prerender.mjs` (lancé par `npm run build`) : écrit une page HTML par adresse avec ses balises, ses données structurées et une version texte de son contenu (lisible par les robots et les aperçus de liens sans JavaScript), plus `404.html` (exclue des moteurs) et `sitemap.xml`.
+- `src/ui/useSeo.ts` : garde ces valeurs à jour quand on navigue dans le site.
+- `public/robots.txt`, `public/og-image.jpg` (image de partage 1200 × 630), `public/site.webmanifest`.
+- `public/_redirects` : l'ancienne adresse lucanetech.netlify.app redirige vers lucanetech.com ; une adresse inconnue renvoie une vraie erreur 404.
+- `public/_headers` : cache long des fichiers du build et en-têtes de sécurité.
 
 ## Déploiement
 

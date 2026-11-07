@@ -1,9 +1,12 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { site } from "../data/site";
+import { OG_IMAGE, OG_IMAGE_ALT, absolute, type PageMeta } from "../seo/pages";
+import { schemaFor } from "../seo/schema";
+import type { Project } from "../data/projects";
 
-function setMeta(selector: string, attr: "name" | "property", key: string, value: string) {
-  let el = document.head.querySelector<HTMLMetaElement>(selector);
+const ROBOTS = "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
+
+function setMeta(attr: "name" | "property", key: string, value: string) {
+  let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
   if (!el) {
     el = document.createElement("meta");
     el.setAttribute(attr, key);
@@ -12,32 +15,47 @@ function setMeta(selector: string, attr: "name" | "property", key: string, value
   el.setAttribute("content", value);
 }
 
+function setLink(rel: string, href: string, extra?: Record<string, string>) {
+  const selector = `link[rel="${rel}"]${extra ? Object.entries(extra).map(([k, v]) => `[${k}="${v}"]`).join("") : ""}`;
+  let el = document.head.querySelector<HTMLLinkElement>(selector);
+  if (!el) {
+    el = document.createElement("link");
+    el.rel = rel;
+    Object.entries(extra ?? {}).forEach(([k, v]) => el!.setAttribute(k, v));
+    document.head.appendChild(el);
+  }
+  el.href = href;
+}
+
 /**
- * Titre, description, canonique et balises de partage propres à chaque page.
- * Les robots qui exécutent le JavaScript (Google) lisent ces valeurs.
+ * Titre, description, canonique, balises de partage et données structurées de la page.
+ * Les mêmes valeurs sont écrites dans les pages HTML générées au build (scripts/prerender.mjs),
+ * ce hook les tient à jour quand on navigue dans le site.
  */
-const ROBOTS = "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
-
-export function useSeo(title: string, description: string, { noindex = false } = {}) {
-  const { pathname } = useLocation();
-
+export function useSeo(meta: PageMeta, project?: Project) {
   useEffect(() => {
-    const fullTitle = pathname === "/" ? title : `${title} · ${site.name}`;
-    const url = `${site.domain}${pathname === "/" ? "/" : pathname}`;
-    document.title = fullTitle;
-    setMeta('meta[name="robots"]', "name", "robots", noindex ? "noindex, follow" : ROBOTS);
-    setMeta('meta[name="description"]', "name", "description", description);
-    setMeta('meta[property="og:title"]', "property", "og:title", fullTitle);
-    setMeta('meta[property="og:description"]', "property", "og:description", description);
-    setMeta('meta[property="og:url"]', "property", "og:url", url);
-    setMeta('meta[name="twitter:title"]', "name", "twitter:title", fullTitle);
-    setMeta('meta[name="twitter:description"]', "name", "twitter:description", description);
-    let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.rel = "canonical";
-      document.head.appendChild(canonical);
+    const url = absolute(meta.path === "/404" ? window.location.pathname : meta.path);
+    document.title = meta.title;
+    setMeta("name", "robots", meta.noindex ? "noindex, follow" : ROBOTS);
+    setMeta("name", "description", meta.description);
+    setMeta("property", "og:title", meta.title);
+    setMeta("property", "og:description", meta.description);
+    setMeta("property", "og:url", url);
+    setMeta("property", "og:type", project ? "article" : "website");
+    setMeta("property", "og:image", OG_IMAGE);
+    setMeta("property", "og:image:alt", OG_IMAGE_ALT);
+    setMeta("name", "twitter:title", meta.title);
+    setMeta("name", "twitter:description", meta.description);
+    setLink("canonical", url);
+    setLink("alternate", url, { hreflang: "fr" });
+
+    let ld = document.getElementById("ld-page");
+    if (!ld) {
+      ld = document.createElement("script");
+      ld.id = "ld-page";
+      ld.setAttribute("type", "application/ld+json");
+      document.head.appendChild(ld);
     }
-    canonical.href = url;
-  }, [title, description, pathname, noindex]);
+    ld.textContent = JSON.stringify(schemaFor(meta, project));
+  }, [meta, project]);
 }

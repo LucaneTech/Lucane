@@ -19,7 +19,44 @@
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- ====== RÉFÉRENCEMENT ======
+       Valeurs de la page d'accueil. Au build, scripts/prerender.mjs écrit une page HTML par adresse
+       avec ses propres valeurs (source : src/seo/pages.ts) ; useSeo les tient à jour pendant la navigation. -->
+  <title>Création de sites web et d'applications | Lucane Tech</title>
+  <meta name="description" content="Équipe de développeurs au Maroc et à Brazzaville : sites vitrines, e-commerce, applications web et mobiles sur mesure. Devis gratuit, réponse sous 24 h." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="author" content="Lucane Tech" />
+  <link rel="canonical" href="https://lucanetech.com/" />
+  <link rel="alternate" hreflang="fr" href="https://lucanetech.com/" />
+  <link rel="alternate" hreflang="x-default" href="https://lucanetech.com/" />
+  <meta name="google-site-verification" content="kkZXfrXCMNPavbtnhalEhj7B5Dgu9lp5DOAbeyrSUC0" />
+
+  <!-- Partage (Facebook, WhatsApp, LinkedIn…) -->
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Lucane Tech" />
+  <meta property="og:title" content="Création de sites web et d'applications | Lucane Tech" />
+  <meta property="og:description" content="Équipe de développeurs au Maroc et à Brazzaville : sites vitrines, e-commerce, applications web et mobiles sur mesure. Devis gratuit, réponse sous 24 h." />
+  <meta property="og:url" content="https://lucanetech.com/" />
+  <meta property="og:image" content="https://lucanetech.com/og-image.jpg" />
+  <meta property="og:image:secure_url" content="https://lucanetech.com/og-image.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Lucane Tech, création de sites web et d'applications sur mesure" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Création de sites web et d'applications | Lucane Tech" />
+  <meta name="twitter:description" content="Équipe de développeurs au Maroc et à Brazzaville : sites vitrines, e-commerce, applications web et mobiles sur mesure. Devis gratuit, réponse sous 24 h." />
+  <meta name="twitter:image" content="https://lucanetech.com/og-image.jpg" />
+  <meta name="twitter:image:alt" content="Lucane Tech, création de sites web et d'applications sur mesure" />
+
+  <!-- Icônes et application -->
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0b0b0a" media="(prefers-color-scheme: dark)" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-14LNSKXLV0"></script>
@@ -30,58 +67,14 @@
 
     gtag('config', 'G-14LNSKXLV0');
   </script>
-  
-  <!-- ====== SEO ESSENTIEL (chaque page remplace titre, description et canonique : src/ui/useSeo.ts) ====== -->
-  <title>Lucane Tech | Sites, applications web et mobiles sur mesure</title>
-  <meta name="description" content="Équipe de développeurs : sites vitrines, boutiques en ligne, applications web et mobiles et logiciels sur mesure pour les entreprises du Maroc, du Congo et d'ailleurs. Devis gratuit, réponse sous 24 h." />
-  <meta name="keywords"
-    content="Lucane Tech, création site web, site vitrine, boutique en ligne, application web, application mobile, logiciel sur mesure, développement web Maroc, développement web Brazzaville, Congo, agence web Afrique, UX UI design, maintenance site web" />
-  <meta name="author" content="Lucane Tech" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <link rel="canonical" href="https://lucanetech.com/" />
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0b0b0a" media="(prefers-color-scheme: dark)">
-
-  <meta property="og:locale" content="fr_FR" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Lucane Tech | Sites, applications web et mobiles sur mesure" />
-  <meta property="og:description" content="Équipe de développeurs : sites vitrines, boutiques en ligne, applications web et mobiles et logiciels sur mesure pour les entreprises du Maroc, du Congo et d'ailleurs. Devis gratuit, réponse sous 24 h." />
-  <meta property="og:url" content="https://lucanetech.com/" />
-  <meta property="og:site_name" content="Lucane Tech" />
-  <meta property="og:image" content="https://lucanetech.com/preview.png" />
-  <meta property="og:image:alt" content="Lucane Tech, sites et applications sur mesure" />
-
-  <!-- ====== TWITTER ====== -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Lucane Tech | Sites, applications web et mobiles sur mesure" />
-  <meta name="twitter:description" content="Équipe de développeurs : sites vitrines, boutiques en ligne, applications web et mobiles et logiciels sur mesure pour les entreprises du Maroc, du Congo et d'ailleurs. Devis gratuit, réponse sous 24 h." />
-  <meta name="twitter:image" content="https://lucanetech.com/preview.png" />
-
-  <meta name="google-site-verification" content="kkZXfrXCMNPavbtnhalEhj7B5Dgu9lp5DOAbeyrSUC0" />
 
   <!-- ====== PERFORMANCE & STYLE ====== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Sen:wght@400;500;700;800&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Sen:wght@400;500;700;800&display=swap" />
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Lucane Tech",
-    "url": "https://lucanetech.com",
-    "logo": "https://lucanetech.com/logo_color.png",
-    "email": "lucanetech@gmail.com",
-    "telephone": "+212781343642",
-    "description": "Équipe de développeurs : sites web, applications web et mobiles et logiciels sur mesure pour les entreprises du Maroc, du Congo et d'ailleurs.",
-    "areaServed": ["MA", "CG"],
-    "sameAs": [
-      "https://github.com/LucaneTech",
-      "https://www.instagram.com/lucane.tech/",
-      "https://www.facebook.com/profile.php?id=61583245903926"
-    ]
-  }
-  </script>
+  <!-- Données structurées (schema.org) : remplacées page par page au build et pendant la navigation -->
+  <script type="application/ld+json" id="ld-page">{"@context":"https://schema.org","@type":"Organization","name":"Lucane Tech","url":"https://lucanetech.com/"}</script>
 </head>
 
 <body>

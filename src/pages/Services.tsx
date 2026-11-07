@@ -15,9 +15,10 @@ import WhyUs from "../components/services/WhyUs";
 import FinalCta from "../components/home/v2/FinalCta";
 import { faqFor } from "../data/faq";
 import { useSeo } from "../ui/useSeo";
+import { PAGES } from "../seo/pages";
 
 export default function Services() {
-  useSeo("Services", "Développement web et mobile, UX/UI design, cloud, marketing digital, automatisation et maintenance : nos expertises et nos formules, avec engagements écrits.");
+  useSeo(PAGES.services);
   return (
     <>
       <PageHero

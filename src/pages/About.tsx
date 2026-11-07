@@ -8,12 +8,10 @@ import FinalCta from "../components/home/v2/FinalCta";
 import { AboutHero, Delivered, HowWeWork, Landmarks, Purpose, Values, WhereWeAre, WhyTeam } from "../components/about/v2/AboutSections";
 import { faqFor } from "../data/faq";
 import { useSeo } from "../ui/useSeo";
+import { PAGES } from "../seo/pages";
 
 export default function About() {
-  useSeo(
-    "À propos",
-    "Lucane Tech, une équipe de développeurs basée au Maroc avec un relais à Brazzaville : mission, vision, valeurs et façon de travailler."
-  );
+  useSeo(PAGES.about);
   return (
     <>
       <AboutHero />

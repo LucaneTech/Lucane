@@ -3,7 +3,7 @@
  * Hero plein écran avec le visuel qui se dévoile, fiche (secteur, année, technologies),
  * puis Contexte → Défi → Solution → Résultat quand ces textes sont fournis, et le projet suivant.
  */
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
@@ -19,6 +19,7 @@ import { ease } from "../motion/presets";
 import NotFound from "./NotFound";
 import FinalCta from "../components/home/v2/FinalCta";
 import { useSeo } from "../ui/useSeo";
+import { projectMeta } from "../seo/pages";
 
 const STEPS = [
   { key: "context", label: "Contexte" },
@@ -36,7 +37,8 @@ export default function CaseStudy() {
 }
 
 function CaseStudyView({ project }: { project: Project }) {
-  useSeo(project.title, project.description);
+  const seo = useMemo(() => projectMeta(project), [project]);
+  useSeo(seo, project);
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const visualScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);

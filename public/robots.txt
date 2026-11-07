@@ -12,4 +12,4 @@ Disallow: /
 User-agent: SemrushBot
 Disallow: /
 
-Sitemap: https://lucane.tech/sitemap.xml
+Sitemap: https://lucanetech.com/sitemap.xml

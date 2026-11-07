@@ -176,7 +176,7 @@ export const projects: Project[] = [
     image: "",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Framer Motion"],
     githubUrl: "https://github.com/LucaneTech/Lucane",
-    liveUrl: "https://lucanetech.netlify.app/",
+    liveUrl: "https://lucanetech.com/",
     category: "Interne",
     date: "Octobre 2025",
     year: 2025,

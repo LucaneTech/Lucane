@@ -17,6 +17,7 @@ import { offers } from "../data/offers";
 import { sectors } from "../data/sectors";
 import { ease } from "../motion/presets";
 import { useSeo } from "../ui/useSeo";
+import { PAGES } from "../seo/pages";
 
 const BUDGETS = ["À définir ensemble", "< 500 €", "500 – 2 000 €", "2 000 – 5 000 €", "> 5 000 €"];
 const DELAYS = ["Urgent (< 2 semaines)", "Dans le mois", "2 à 3 mois", "Pas pressé"];
@@ -56,7 +57,7 @@ function Pills({ legend, options, value, onChange }: { legend: string; options: 
 }
 
 export default function Contact() {
-  useSeo("Contact", "Parlez-nous de votre projet : WhatsApp, téléphone, e-mail ou formulaire. Devis gratuit et réponse sous 24 heures.");
+  useSeo(PAGES.contact);
   const [params] = useSearchParams();
   const preset = offers.find((o) => o.slug === params.get("formule"))?.name ?? "";
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", message: "" });

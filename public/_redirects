@@ -1,1 +1,11 @@
-/*    /index.html   200
+# Ancienne adresse Netlify -> domaine officiel (redirection permanente, utile au référencement)
+https://lucanetech.netlify.app/*  https://lucanetech.com/:splat  301!
+http://lucanetech.netlify.app/*   https://lucanetech.com/:splat  301!
+
+# Anciennes adresses du site
+/projets    /realisations  301
+/projets/*  /realisations  301
+
+# Chaque page a son propre fichier HTML (généré au build). Une adresse inconnue renvoie
+# la page 404 avec le vrai code 404, au lieu de l'accueil en 200.
+/*  /404.html  404
